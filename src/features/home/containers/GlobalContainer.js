@@ -8,14 +8,12 @@ import GlobalNavbar from "../../app/components/GlobalNavbar"
 const GlobalContainer = props => {
     const { match } = props
     return (
-        <div>
+        <div className="container-fluid px-0">
             <GlobalNavbar {...props} />
-            <div className="p-3">
-                <Switch>
-                    <Route path={`${match.path}/:pageName`} component={GlobalPage} />
-                    <Redirect to={`${match.path}/${route.map}`} />
-                </Switch>
-            </div>
+            <Switch>
+                <Route path={`${match.path}/:pageName`} component={GlobalPage} />
+                <Redirect to={`${match.path}/${route.map}`} />
+            </Switch>
         </div>
     )
 }

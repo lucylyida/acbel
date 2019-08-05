@@ -1,25 +1,24 @@
 import React from "react"
 import ChartContainer from "../../app/components/ChartContainer"
-
+import DashMap from '../components/DashMapView';
 
 const DashboardContainer = props => {
     // console.log({ props })
 
     return (
-
         <div className="container-fluid ">
             <div className="row">
-                <div className="col-sm-7 p-0 d-flex flex-column flex-fill" style={{ height: 320 }}>
+                <div className="col-sm-7 p-0 d-flex flex-column flex-fill" style={{ height: "320" }}>
                     <div className=" h-50 p-1" >
-                       <div className="bg-white h-100"> status 1</div>
+                        <div className="bg-white h-100"> status 1</div>
                     </div>
-                    
+
                     <div className="h-50 p-1">
-                    <div className="bg-white h-100"> status 2</div>
+                        <div className="bg-white h-100"> status 2</div>
                     </div>
                 </div>
                 <div className="col-sm-5 p-1">
-                    <div className="bg-white h-100" >Map</div>
+                    <div className="bg-white h-100" ><DashMap /></div>
                 </div>
 
                 <div className="col-sm-6 p-1">
@@ -41,15 +40,7 @@ const DashboardContainer = props => {
                             chartType='area'
                             data={data}
                             color={'#FEC71F'}
-                            axisLeft={{
-                                orient: 'left',
-                                tickSize: 0,
-                                tickPadding: 20,
-                                tickRotation: 0,
-                                legend: '%',
-                                legendOffset: -50,
-                                legendPosition: 'middle'
-                            }}
+                            axisLeftLegend="%"
                         />
                     </div>
                 </div>
@@ -74,26 +65,11 @@ const DashboardContainer = props => {
                             headerText={'ACTUAL POWER OUTPUT VS RADIATION'}
                             data={data2}
                             color={['#29CE22', '#00C1D2']}
-                            axisLeft={{
-                                orient: 'left',
-                                tickSize: 0,
-                                tickPadding: 6,
-                                tickRotation: 0,
-                                legend: 'Power(kw)',
-                                legendOffset: -50,
-                                legendPosition: 'middle'
-                            }}
-                            axisRight={{
-                                orient: 'right',
-                                tickSize: 5, tickPadding: 10,
-                                tickRotation: 0, legend: 'Irradiance',
-                                legendOffset: 59, legendPosition: 'middle'
-                            }}
+                            axisLeftLegend="Power(kw)"
+                            axisRightLegend="Irradiance"
                         />
                     </div>
                 </div>
-
-
             </div>
         </div>
     )

@@ -6,35 +6,6 @@ const DashboardContainer = props => {
     // console.log({ props })
 
     return (
-
-<<<<<<< HEAD
-                <ChartContainer
-                    headerText={'SITE EFFICIENCY TREND'}
-                    chartType='area'
-                    data={data}
-                    color={'#FEC71F'}
-                    axisLeftLegend = "%"
-                />
-            </div>
-
-            <div className="d-flex flex-wrap flex-sm-nowrap">
-                <ChartContainer
-                    chartType='area'
-                    headerText={'POWER GENERATION NORMALIZED AGAINST RADIANCE'}
-                    data={data1}
-                    color={['#6522CE', '#309BF3']}
-                    axisLeftLegend = "Power(kw)"
-                    axisRightLegend = "Radiance"
-                />
-                <ChartContainer
-                    chartType='area'
-                    headerText={'ACTUAL POWER OUTPUT VS RADIATION'}
-                    data={data2}
-                    color={['#29CE22', '#00C1D2']}
-                    axisLeftLegend = "Power(kw)"
-                    axisRightLegend = "Irradiance"
-                />
-=======
         <div className="container-fluid ">
             <div className="row">
                 <div className="col-sm-7 p-0 d-flex flex-column flex-fill" style={{ height: 320 }}>
@@ -69,15 +40,7 @@ const DashboardContainer = props => {
                             chartType='area'
                             data={data}
                             color={'#FEC71F'}
-                            axisLeft={{
-                                orient: 'left',
-                                tickSize: 0,
-                                tickPadding: 20,
-                                tickRotation: 0,
-                                legend: '%',
-                                legendOffset: -50,
-                                legendPosition: 'middle'
-                            }}
+                            axisLeftLegend = "%"
                         />
                     </div>
                 </div>
@@ -102,27 +65,11 @@ const DashboardContainer = props => {
                             headerText={'ACTUAL POWER OUTPUT VS RADIATION'}
                             data={data2}
                             color={['#29CE22', '#00C1D2']}
-                            axisLeft={{
-                                orient: 'left',
-                                tickSize: 0,
-                                tickPadding: 6,
-                                tickRotation: 0,
-                                legend: 'Power(kw)',
-                                legendOffset: -50,
-                                legendPosition: 'middle'
-                            }}
-                            axisRight={{
-                                orient: 'right',
-                                tickSize: 5, tickPadding: 10,
-                                tickRotation: 0, legend: 'Irradiance',
-                                legendOffset: 59, legendPosition: 'middle'
-                            }}
+                            axisLeftLegend = "Power(kw)"
+                            axisRightLegend = "Irradiance"
                         />
                     </div>
                 </div>
-
-
->>>>>>> cac3b7a78b6c209a99bf58f62525548095e8d658
             </div>
         </div>
     )

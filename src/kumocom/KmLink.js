@@ -2,7 +2,8 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 const KmLink = props => {
-    const { isSelected, onClick, text, className, style,to} = props
+    const { onClick, text, className, style, to, currentLink} = props
+    const isSelected = currentLink===to
     const defaultStyle = {
         display: "inline-block",
         fontSze:13,
@@ -19,10 +20,8 @@ const KmLink = props => {
             className={`px-1 pb-1 p-1 text-center coolLink ${className}`}
             style={{...defaultStyle,...userStyle }}
             onClick={onClick}
-            to={to}
-        >
+            to={to} >
             {text}
-
         </Link>
         </div>
     )

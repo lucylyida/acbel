@@ -9,14 +9,6 @@ const GlobalMapContainer = props => {
     const { location } = props
     return (
             <MapView />
-        // <div className="container-fluid">
-        //     <MapView />
-        //     <div className="p-3" style={{ fontSize: 20 }}>
-        //         <Link to={`/${route.site}/${siteData.siteId}${location.search}`}>
-        //             Organic Farmer's Association
-        //         </Link>
-        //     </div>
-        // </div>
     )
 }
 

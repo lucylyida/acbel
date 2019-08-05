@@ -38,7 +38,7 @@ const GlobalContainer = props => {
                     <HomefilterView />
                     <Switch>
                         <Route path={`${match.path}/:pageName`} component={GlobalPage} />
-                        <Redirect to={`${match.path}/${route.map}${location.search}?${route.had}=${queryDataEnc}`} />
+                        <Redirect to={`${match.path}/${route.map}`} />
                     </Switch>
                 </div>
 

@@ -21,7 +21,7 @@ const ChartContainer = props => {
     }
     return (
         <div className="p-1 w-100">
-            <div className="rounded" style={{ backgroundColor: "white", width: "100%", height: 420 }}>
+            <div className="rounded" style={{ backgroundColor: "white", width: "100%", height: 380 }}>
                 <div style={{
                         position: 'relative',
                         top: 20,
@@ -35,7 +35,7 @@ const ChartContainer = props => {
                     }}>
                         {headerText}
                     </div>
-                <div className="" style={{ width: "100%", height: 380 }}>
+                <div className="" style={{ width: "100%", height: 340 }}>
                     {chartType === "area" && <AreaChart data={data} color={color} axisLeft={axisLeft} axisRight={axisRight} />}
                     {chartType === 'bar' && <BarChart data={data} color={color} keys={keys} />}
                 </div>

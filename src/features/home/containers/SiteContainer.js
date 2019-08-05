@@ -24,7 +24,7 @@ const SiteContainer = props => {
     }
     const queryDataEnc = enc(queryData)
     return (
-        <div>
+        <div style={{ width: "100%"}}>
             <SiteNavbar {...props} />
             <div className="p-3">
                 <Switch>

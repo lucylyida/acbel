@@ -7,7 +7,7 @@ import MapView from './Map';
 const GlobalMapContainer = props => {
     const { location } = props
     return (
-        <div className="bg-dark"><MapView /></div>
+        <MapView />
     )
 }
 

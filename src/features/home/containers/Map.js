@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { Map, Marker, GoogleApiWrapper, InfoWindow } from 'google-maps-react';
-import MapStyle from '../../home/containers/Mapstyle';
 
-
-
+import MapStyle from './MapStyle';
 export class MapContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
             stores: [{ lat: 21.498556299, lng: 96.141844169 },
             { name: "Myanmar", latitude: 21.359423, longitude: 96.021071 },
             { name: "Myanmar", latitude: 21.20521928, longitude: 96.988426208 },
@@ -17,11 +14,9 @@ export class MapContainer extends Component {
         }
     }
 
-
     _onMarkerClick = () => {
         alert('clicked me!')
     }
-
 
     displayMarkers = () => {
         return this.state.stores.map((store, index) => {
@@ -51,14 +46,10 @@ export class MapContainer extends Component {
 
     render() {
 
-
         return (
-
-
-            <div style={{ position: 'relative', paddingBottom: '30%',paddingRight:'10',paddingLeft:'0%', height: 100, overflow: 'hidden',margin:'0px' }} className='border border-primary'>
+            <div className="mt-3" style={{ border: '1px solid #00000022', borderRadius: 4, position: 'relative', paddingBottom: '30%', paddingRight: '10', paddingLeft: '0%', height: 100, overflow: 'hidden', margin: '0px' }}>
                 <Map
                     styles={MapStyle}
-                    style={{width:'100%'}}
                     google={this.props.google}
                     zoom={9}
                     initialCenter={{ lat: 21.444, lng: 96.176 }} >
@@ -69,8 +60,6 @@ export class MapContainer extends Component {
     }
 }
 export default GoogleApiWrapper({
-
     apiKey: ('AIzaSyDjz91l2P3tnwy9phAWvqEU_V4VPEviW-I')
-
 })(MapContainer)
 

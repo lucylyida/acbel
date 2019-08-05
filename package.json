@@ -6,6 +6,7 @@
     "@nivo/bar": "^0.59.2",
     "@nivo/line": "^0.59.3",
     "bootstrap": "^4.3.1",
+    "google-maps-react": "^2.0.2",
     "jquery": "^3.4.1",
     "md5": "^2.2.1",
     "moment": "^2.24.0",

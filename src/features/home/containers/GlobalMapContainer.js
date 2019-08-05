@@ -2,12 +2,16 @@ import React from "react"
 import { Link } from "react-router-dom"
 import * as route from "../../../config/route.config"
 import { enc } from "../../../network-sec/cypher"
+import { Map, Marker, GoogleApiWrapper, InfoWindow } from 'google-maps-react';
+import MapView from './Map';
 
 const GlobalMapContainer = props => {
     const { location } = props
     return (
         <div className="p-3">
+
             <div className="p-3" style={{ fontSize: 18 }}>Global Map Container</div>
+            <div><MapView /></div>
             <div className="p-3" style={{ fontSize: 20 }}>
                 {/* <Link to={`/${route.site}/${siteData.siteId}${location.search}`}>
                     Organic Farmer's Association
@@ -17,4 +21,4 @@ const GlobalMapContainer = props => {
     )
 }
 
-export default GlobalMapContainer
+export default GlobalMapContainer;

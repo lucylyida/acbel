@@ -2,22 +2,22 @@ import React from 'react'
 
 const KmButton = props => {
     const { text, type, onClick, icon, style, className, iconPlace } = props
-    const defaultStyle = { width: 150, background: '#86bdd1',padding:'7px' }
+    const defaultStyle = { background: '#86bdd1', padding: 7 }
     const userStyle = style === undefined ? {} : style
 
     return (
         <div>
             <button
-                onClick={onClick}        
+                onClick={onClick}
                 type={type === undefined ? "button" : type}
-                className={`btn btn-block ${className} text-center`}                                                                                           
+                className={`btn  ${className} text-center`}
                 style={{ ...defaultStyle, ...userStyle }}
             >
                 {/* added iconPlace to styling front and back of icon position */}
                 {
-                    iconPlace !== undefined || iconPlace ?        
-                       <div> <span className="m-1">{text}</span><span>{icon} </span></div>  :
-                       <div> <span className="m-1">{icon}</span><span>{text} </span></div>
+                    iconPlace !== undefined || iconPlace ?
+                        <div className="d-flex justify-content-center"> <span style={{ color: '#ffffff',fontSize:15,fontWeight:'bold' }}>{text}</span><span>{icon} </span></div> :
+                        <div className="d-flex justify-content-center"> <span >{icon}</span><span style={{ color: '#ffffff',fontSize:15,fontWeight:'bold' }}>{text} </span></div>
                 }
 
             </button>

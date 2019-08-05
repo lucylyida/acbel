@@ -1,6 +1,7 @@
 import React from "react"
 
 const KmLink = props => {
+    const {} = props
     return (
         <div>KmLink</div>
     )

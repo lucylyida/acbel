@@ -1,5 +1,5 @@
 import React from 'react'
-import Select from 'react-select';
+import Select from 'react-select'
 
 const KmSelector = (props) => {
     const { style, optionLabel } = props
@@ -13,16 +13,13 @@ const KmSelector = (props) => {
             ...base,
             background: userStyle.background,
             cursor: 'pointer',
-            padding:1,
+            padding: 1,
             //boxShadow: 'none',
             //borderColor: 'none',
-            '&:hover': {
-                borderColor: userStyle.borderColor
-            },
+            '&:hover': { borderColor: userStyle.borderColor },
         }),
         valueContainer: (base, state) => ({
             ...base,
-
         }),
         option: (base, state) => ({
             ...base,
@@ -33,7 +30,6 @@ const KmSelector = (props) => {
             ...base,
             color: userStyle.color
         }),
-
     };
 
     return (

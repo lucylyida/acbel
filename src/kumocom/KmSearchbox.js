@@ -1,19 +1,19 @@
 import React from 'react'
 
 const KmSearchbox = props => {
-    const { style, onChange, onClick  } = props
-    const defaultStyle = { width: 250 ,cursor:'pointer'}
+    const { style, onChange, onClick } = props
+    const defaultStyle = { width: 250,cursor: 'pointer' }
     const userStyle = style === undefined ? {} : style
     return (
         <div className="input-group"
             style={{ ...defaultStyle, ...userStyle }}>
             <input
-                className="form-control  py-2 border-right-0 border"
+                className="form-control py-2 border-right-0 border"
                 type="search"
                 aria-label="Search"
                 placeholder="Search..."
                 id="search-input"
-                style={{ background: style === undefined ? null: style.background ,color:style === undefined ? null : style.color,padding:'8px'}}
+                style={{ background: style === undefined ? null : style.background, color: style === undefined ? null : style.color, padding: 8 }}
                 onChange={onChange}
             />
             <span className="input-group-append">

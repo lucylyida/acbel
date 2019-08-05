@@ -23,15 +23,7 @@ const DashboardContainer = props => {
                     chartType='area'
                     data={data}
                     color={'#FEC71F'}
-                    axisLeft={{
-                        orient: 'left',
-                        tickSize: 0,
-                        tickPadding: 20,
-                        tickRotation: 0,
-                        legend: '%',
-                        legendOffset: -50,
-                        legendPosition: 'middle'
-                    }}
+                    axisLeftLegend = "%"
                 />
             </div>
 
@@ -49,21 +41,8 @@ const DashboardContainer = props => {
                     headerText={'ACTUAL POWER OUTPUT VS RADIATION'}
                     data={data2}
                     color={['#29CE22', '#00C1D2']}
-                    axisLeft={{
-                        orient: 'left',
-                        tickSize: 0,
-                        tickPadding: 6,
-                        tickRotation: 0,
-                        legend: 'Power(kw)',
-                        legendOffset: -50,
-                        legendPosition: 'middle'
-                    }}
-                    axisRight={{
-                        orient: 'right',
-                        tickSize: 5, tickPadding: 10,
-                        tickRotation: 0, legend: 'Irradiance',
-                        legendOffset: 59, legendPosition: 'middle'
-                    }}
+                    axisLeftLegend = "Power(kw)"
+                    axisRightLegend = "Irradiance"
                 />
             </div>
         </div>

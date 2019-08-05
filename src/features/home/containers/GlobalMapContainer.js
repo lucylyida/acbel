@@ -8,16 +8,15 @@ import MapView from './Map';
 const GlobalMapContainer = props => {
     const { location } = props
     return (
-        <div className="p-3">
-
-            <div className="p-3" style={{ fontSize: 18 }}>Global Map Container</div>
-            <div><MapView /></div>
-            <div className="p-3" style={{ fontSize: 20 }}>
-                {/* <Link to={`/${route.site}/${siteData.siteId}${location.search}`}>
-                    Organic Farmer's Association
-                </Link> */}
-            </div>
-        </div>
+            <MapView />
+        // <div className="container-fluid">
+        //     <MapView />
+        //     <div className="p-3" style={{ fontSize: 20 }}>
+        //         <Link to={`/${route.site}/${siteData.siteId}${location.search}`}>
+        //             Organic Farmer's Association
+        //         </Link>
+        //     </div>
+        // </div>
     )
 }
 

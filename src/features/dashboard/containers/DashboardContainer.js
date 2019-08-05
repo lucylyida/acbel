@@ -6,18 +6,8 @@ const DashboardContainer = props => {
     // console.log({ props })
 
     return (
-        <div className="">
-            <div className="">DashboardContainer</div>
-            {/* Status A, StatusB, DashMap */}
-            <div className="d-flex flex-wrap flex-sm-nowrap">
-                <ChartContainer
-                    headerText={'SITE OUTPUT TREND'}
-                    chartType='bar'
-                    data={sampleData}
-                    keys={['CurrentOutput']}
-                    color={'#6FD1F6'}
-                />
 
+<<<<<<< HEAD
                 <ChartContainer
                     headerText={'SITE EFFICIENCY TREND'}
                     chartType='area'
@@ -44,6 +34,95 @@ const DashboardContainer = props => {
                     axisLeftLegend = "Power(kw)"
                     axisRightLegend = "Irradiance"
                 />
+=======
+        <div className="container-fluid ">
+            <div className="row">
+                <div className="col-sm-7 p-0 d-flex flex-column flex-fill" style={{ height: 320 }}>
+                    <div className=" h-50 p-1" >
+                       <div className="bg-white h-100"> status 1</div>
+                    </div>
+                    
+                    <div className="h-50 p-1">
+                    <div className="bg-white h-100"> status 2</div>
+                    </div>
+                </div>
+                <div className="col-sm-5 p-1">
+                    <div className="bg-white h-100" >Map</div>
+                </div>
+
+                <div className="col-sm-6 p-1">
+                    <div className="bg-white">
+                        <ChartContainer
+                            headerText={'SITE OUTPUT TREND'}
+                            chartType='bar'
+                            data={sampleData}
+                            keys={['CurrentOutput']}
+                            color={'#6FD1F6'}
+                        />
+                    </div>
+                </div>
+
+                <div className="col-sm-6 p-1">
+                    <div className="bg-white">
+                        <ChartContainer
+                            headerText={'SITE EFFICIENCY TREND'}
+                            chartType='area'
+                            data={data}
+                            color={'#FEC71F'}
+                            axisLeft={{
+                                orient: 'left',
+                                tickSize: 0,
+                                tickPadding: 20,
+                                tickRotation: 0,
+                                legend: '%',
+                                legendOffset: -50,
+                                legendPosition: 'middle'
+                            }}
+                        />
+                    </div>
+                </div>
+
+                <div className="col-sm-6 p-1">
+                    <div className="bg-white">
+                        <ChartContainer
+                            chartType='area'
+                            headerText={'POWER GENERATION NORMALIZED AGAINST RADIANCE'}
+                            data={data1}
+                            color={['#6522CE', '#309BF3']}
+                            axisLeftLegend="Power(kw)"
+                            axisRightLegend="Radiance"
+                        />
+                    </div>
+                </div>
+
+                <div className="col-sm-6 p-1">
+                    <div className="bg-white">
+                        <ChartContainer
+                            chartType='area'
+                            headerText={'ACTUAL POWER OUTPUT VS RADIATION'}
+                            data={data2}
+                            color={['#29CE22', '#00C1D2']}
+                            axisLeft={{
+                                orient: 'left',
+                                tickSize: 0,
+                                tickPadding: 6,
+                                tickRotation: 0,
+                                legend: 'Power(kw)',
+                                legendOffset: -50,
+                                legendPosition: 'middle'
+                            }}
+                            axisRight={{
+                                orient: 'right',
+                                tickSize: 5, tickPadding: 10,
+                                tickRotation: 0, legend: 'Irradiance',
+                                legendOffset: 59, legendPosition: 'middle'
+                            }}
+                        />
+                    </div>
+                </div>
+
+
+>>>>>>> cac3b7a78b6c209a99bf58f62525548095e8d658
             </div>
         </div>
     )

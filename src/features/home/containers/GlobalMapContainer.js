@@ -1,16 +1,17 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import * as route from "../../../config/route.config"
+import { enc } from "../../../network-sec/cypher"
 
 const GlobalMapContainer = props => {
-    const siteId = 1
+    const { location } = props
     return (
         <div className="p-3">
-            <div className="p-3 border-bottom">Global Map Container</div>
-            <div className="p-3">
-                <Link to={`/${route.site}/${siteId}`}>
-                   Site A
-                </Link>
+            <div className="p-3" style={{ fontSize: 18 }}>Global Map Container</div>
+            <div className="p-3" style={{ fontSize: 20 }}>
+                {/* <Link to={`/${route.site}/${siteData.siteId}${location.search}`}>
+                    Organic Farmer's Association
+                </Link> */}
             </div>
         </div>
     )

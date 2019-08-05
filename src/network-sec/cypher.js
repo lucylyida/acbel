@@ -16,12 +16,14 @@ export const enc = (objText, isString=false) => {
 }
 
 export const dec = (encrypted, isString=false) => {
+    console.log({ encrypted})
     try {
         const decipher = crypto.createDecipher(algorithm, password)
         let decrypted = decipher.update(encrypted, 'hex', 'utf8')
         decrypted += decipher.final('utf8')
         return isString ? decrypted : JSON.parse(decrypted)
     } catch (ex) {
+        console.log({ ex })
         return null
     }
 }

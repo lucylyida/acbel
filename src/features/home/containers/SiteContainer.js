@@ -15,14 +15,21 @@ const ReportContainer = React.lazy( ()=> import("../../report/containers/ReportC
 
 
 const SiteContainer = props => {
-    const { match } = props
+    const { match, location } = props
+    const queryData = {
+        siteId: 1, 
+        siteName: "Organic Farmer's Association",
+        city: "Hualien City",
+        country: "Taiwan"
+    }
+    const queryDataEnc = enc(queryData)
     return (
         <div>
             <SiteNavbar {...props} />
             <div className="p-3">
                 <Switch>
                     <Route path={`${match.path}/:pageName`} component={SitePage} />
-                    <Redirect to={`${match.path}/${route.dashboard}`} />
+                    <Redirect to={`${match.path}/${route.dashboard}?${route.had}=${queryDataEnc}`} />
                 </Switch>
             </div>
         </div>

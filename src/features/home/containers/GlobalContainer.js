@@ -4,18 +4,25 @@ import * as route from "../../../config/route.config"
 import GlobalMapContainer from "./GlobalMapContainer"
 import GlobalListContainer from "./GlobalListContainer"
 import GlobalNavbar from "../../app/components/GlobalNavbar"
+import { enc } from "../../../network-sec/cypher"
 
 const GlobalContainer = props => {
-    const { match } = props
+    const { match, location } = props
+    const queryData = {
+        siteId: 1, 
+        siteName: "Organic Farmer's Association",
+        city: "Hualien City",
+        country: "Taiwan"
+    }
+    const queryDataEnc = enc(queryData)
     return (
-        <div>
+        <div className="container-fluid px-0">
             <GlobalNavbar {...props} />
-            <div className="p-3">
-                <Switch>
-                    <Route path={`${match.path}/:pageName`} component={GlobalPage} />
-                    <Redirect to={`${match.path}/${route.map}`} />
-                </Switch>
-            </div>
+            
+            <Switch>
+                <Route path={`${match.path}/:pageName`} component={GlobalPage} />
+                <Redirect to={`${match.path}/${route.map}${location.search}?${route.had}=${queryDataEnc}`} />
+            </Switch>
         </div>
     )
 }

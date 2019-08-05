@@ -1,15 +1,19 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import * as route from "../../../config/route.config"
+import { dec } from "../../../network-sec/cypher"
+import querystring from "query-string"
 
 const GlobalListContainer = props => {
-    const siteId = 1
+    const { location } = props
+    const queryData = dec(querystring.parse(location.search).had)
+
     return (
         <div className="p-3">
-            <div className="p-3 border-bottom">Global List Container</div>
-            <div className="p-3">
-                <Link to={`/${route.site}/${siteId}`}>
-                   Site A
+            <div className="p-3" style={{ fontSize: 18 }}>Global List Container</div>
+            <div className="p-3" style={{ fontSize: 20 }}>
+                <Link to={`/${route.site}/${queryData.siteId}${location.search}`}>
+                    Organic Farmer's Association
                 </Link>
             </div>
         </div>

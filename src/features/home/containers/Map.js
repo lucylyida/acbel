@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Map, Marker, GoogleApiWrapper, InfoWindow } from 'google-maps-react';
-// import MapStyle from './MapStyle';
+import MapStyle from '../../home/containers/Mapstyle';
 
 
 
@@ -28,8 +28,8 @@ export class MapContainer extends Component {
             const icon = {
                 anchor: new this.props.google.maps.Point(0, 0),
                 url: 'data:image/svg+xml;utf-8, \<svg width="80" height="90" xmlns="http://www.w3.org/2000/svg" version="1.1">\
-                <circle id="c1" cx="50" cy="35" r="10" fill="green">\
-                    <animate id="c1Animation1" attributeName="r" attributeType="XML" begin="0s" dur="3000ms" from="10" to="20" repeatCount="indefinite" fill="blue"></animate>\
+                <circle id="c1" cx="50" cy="35" r="10" fill="blue">\
+                    <animate id="c1Animation1" attributeName="r" attributeType="XML" begin="0s" dur="3000ms" from="10" to="20" repeatCount="indefinite" fill="gradient"></animate>\
                     <animate id="c1Animation1" attributeName="r" attributeType="XML" begin="3s" dur="3000ms" values="20;10;20" repeatCount="indefinite" fill="red"></animate>\
                 </circle>\
                 </svg>',
@@ -48,14 +48,19 @@ export class MapContainer extends Component {
         })
     }
 
+
     render() {
 
+
         return (
-            <div>
+
+
+            <div style={{ position: 'relative', paddingBottom: '30%',paddingRight:'10',paddingLeft:'0%', height: 100, overflow: 'hidden',margin:'0px' }} className='border border-primary'>
                 <Map
-                    // styles={MapStyle}
+                    styles={MapStyle}
+                    style={{width:'100%'}}
                     google={this.props.google}
-                    zoom={8}
+                    zoom={9}
                     initialCenter={{ lat: 21.444, lng: 96.176 }} >
                     {this.displayMarkers()}
                 </Map>

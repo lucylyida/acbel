@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Map, Marker, GoogleApiWrapper, InfoWindow } from 'google-maps-react';
-// import MapStyle from './MapStyle';
+import MapStyle from './MapStyle';
 
 
 
@@ -49,11 +49,10 @@ export class MapContainer extends Component {
     }
 
     render() {
-
         return (
-            <div>
+            <div className="mt-3" style={{ border: '1px solid #00000022', borderRadius: 4, position: 'relative', paddingBottom: '30%', paddingRight: '10', paddingLeft: '0%', height: 100, overflow: 'hidden', margin: '0px' }}>
                 <Map
-                    // styles={MapStyle}
+                    styles={MapStyle}
                     google={this.props.google}
                     zoom={8}
                     initialCenter={{ lat: 21.444, lng: 96.176 }} >
@@ -64,8 +63,6 @@ export class MapContainer extends Component {
     }
 }
 export default GoogleApiWrapper({
-
     apiKey: ('AIzaSyDjz91l2P3tnwy9phAWvqEU_V4VPEviW-I')
-
 })(MapContainer)
 

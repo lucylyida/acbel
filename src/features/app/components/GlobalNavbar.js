@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import * as route from "../../../config/route.config"
 
 import Flag from '../../../assets/icons/Flag_Kingdom'
+import AcbelLogo from '../../../assets/icons/Acbel_Logo'
 
 const GlobalNavbar = props => {
     const { match, location } = props
@@ -16,7 +17,7 @@ const GlobalNavbar = props => {
                 </div>
                 <div className="d-flex flex-column justify-content-center px-4">
                     <a className="" style={{ borderRadius: 4, cursor: "pointer" }} href={`/${route.global}${location.search}`}>
-                        <i className="fab fa-app-store-ios fa-3x text-primary" />
+                        <AcbelLogo width={40} height={40} />
                     </a>
                 </div>
                 <div className="d-flex justify-content-center align-items-center">

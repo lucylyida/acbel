@@ -32,8 +32,8 @@ const GlobalContainer = props => {
                             />
                         </div>
                         : null
-                }     
-                <div className="w-100">           
+                }
+                <div className="w-100">
                     <HomeStatusView />
                     <HomefilterView />
                     <Switch>
@@ -41,8 +41,9 @@ const GlobalContainer = props => {
                         <Redirect to={`${match.path}/${route.map}${location.search}?${route.had}=${queryDataEnc}`} />
                     </Switch>
                 </div>
-            </div>
 
+            </div>
+            {/* <div className="p-5 bg-dark" style={{ display: "block"}}><GlobalMapContainer /></div> */}
         </div>
     )
 }

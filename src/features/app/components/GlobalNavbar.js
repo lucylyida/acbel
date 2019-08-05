@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import * as route from "../../../config/route.config"
+import KmLink from '../../../kumocom/KmLink'
 
 import Flag from '../../../assets/icons/Flag_Kingdom'
 import AcbelLogo from '../../../assets/icons/Acbel_Logo'
@@ -20,10 +21,10 @@ const GlobalNavbar = props => {
                         <AcbelLogo width={40} height={40} />
                     </a>
                 </div>
-                <div className="d-flex justify-content-center align-items-center">
+                <div className="d-flex justify-content-center align-items-center pl-2">
                     <div className="h2" style={{ color: "#2244aa", fontWeight: 900 }}>Global</div>
-                    <Link to={`${match.url}/${route.map}${location.search}`} className="h6 ml-3 py-2">Map View</Link>
-                    <Link to={`${match.url}/${route.list}${location.search}`} className="h6 ml-3 py-2">List View</Link>
+                    <KmLink text="Map View"  to={`${match.url}/${route.map}${location.search}`} isSelected />
+                    <KmLink text="List View" to={`${match.url}/${route.list}${location.search}`}  />
                 </div>
                 <div style={{ flex: 1 }} />
                 <div className="d-flex justify-content-between align-items-center">
@@ -37,3 +38,6 @@ const GlobalNavbar = props => {
 }
 
 export default GlobalNavbar
+
+{/* <Link to={`${match.url}/${route.list}${location.search}`} className="h6 ml-3 py-2">List View</Link> */ }
+{/* <Link to={`${match.url}/${route.list}${location.search}`} className=" ml-3 py-2"><KmLink text="List View" isSelected /></Link> */ }

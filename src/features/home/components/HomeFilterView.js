@@ -7,7 +7,7 @@ const HomefilterView = props => {
     return (
         <div className="container-fluid mt-3 py-3" style={{ backgroundColor: '#ffffff', borderRadius: 4 }}>
             <div className="py-2" style={{ color: '#FF8902',fontSize: 10 }}>FILTER</div>
-            <div className="row flex-wrap pl-2" style={{ color: '#A3A3A3' }}>
+            <div className="row flex-wrap pl-2" style={{ color: '#A3A3A3' ,fontSize:10}}>
                 <div className=" flex-column p-2 ">
                     <div>SEARCH</div>
                     <div>

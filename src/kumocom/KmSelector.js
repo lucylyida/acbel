@@ -14,6 +14,7 @@ const KmSelector = (props) => {
             background: userStyle.background,
             cursor: 'pointer',
             padding: 1,
+            fontSize:13,
             //boxShadow: 'none',
             //borderColor: 'none',
             '&:hover': { borderColor: userStyle.borderColor },
@@ -25,6 +26,8 @@ const KmSelector = (props) => {
             ...base,
             cursor: 'pointer',
             background: state.isSelected ? userStyle.optionbg : null,
+            fontSize:15,
+            color:style=== undefined ? null : style.color,
         }),
         singleValue: (base, state) => ({
             ...base,

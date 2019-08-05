@@ -13,7 +13,7 @@ const KmSearchbox = props => {
                 aria-label="Search"
                 placeholder="Search..."
                 id="search-input"
-                style={{ background: style === undefined ? null : style.background, color: style === undefined ? null : style.color, padding: 8 }}
+                style={{ background: style === undefined ? null : style.background, color: style === undefined ? null : style.color, padding: 8 ,fontSize:13}}
                 onChange={onChange}
             />
             <span className="input-group-append">

@@ -9,6 +9,7 @@ export class MapContainer extends Component {
         selectedPlace: {},
     };
 
+
     onMarkerClick = (props, marker, e) =>
         this.setState({
             selectedPlace: props,
@@ -48,9 +49,11 @@ export class MapContainer extends Component {
             scale: 1
         }
         return (
-            <div className="" style={{ height: '100%', position: 'relative', bottom: '0', paddingBottom: '52%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
+
+
+            <div className="" style={{ height: '342px', position: 'relative', bottom: '0', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map
-                    styles={MapStyle}
+                    style={{ height: '100%', width: '100%' }}
                     zoom={9}
                     google={this.props.google}
                     onClick={this.onMapClicked}>

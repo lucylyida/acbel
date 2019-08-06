@@ -9,7 +9,7 @@ import AcbelLogo from '../../../assets/icons/Acbel_Logo'
 const GlobalNavbar = props => {
     const { match, location } = props
     return (
-        <div className="container-fluid pt-4 pb-3">
+        <div className="container-fluid p-0 pb-2">
             <div className="d-flex align-items-center">
                 <div className="d-flex flex-column justify-content-center">
                     <div className="px-3 py-2" style={{ backgroundColor: "#ffffff", borderRadius: 4, cursor: "pointer" }}>
@@ -22,9 +22,9 @@ const GlobalNavbar = props => {
                     </a>
                 </div>
                 <div className="d-flex justify-content-center align-items-center pl-2">
-                    <div className="h2" style={{ color: "#2244aa", fontWeight: 900 }}>Global</div>
-                    <KmLink text="Map View"  to={`${match.url}/${route.map}${location.search}`} currentLink={location.pathname+location.search} />
-                    <KmLink text="List View" to={`${match.url}/${route.list}${location.search}`} currentLink={location.pathname+location.search} />
+                    <div style={{ color: "#2244aa", fontSize: 28 }}>Global</div>
+                    <div className="pl-3"><KmLink text="Map View" to={`${match.url}/${route.map}${location.search}`} currentLink={location.pathname + location.search} /></div>
+                    <div className="pl-3"><KmLink text="List View" to={`${match.url}/${route.list}${location.search}`} currentLink={location.pathname + location.search} /></div>
                 </div>
                 <div style={{ flex: 1 }} />
                 <div className="d-flex justify-content-between align-items-center">

@@ -19,6 +19,7 @@ const DashboardContainer = props => {
                         <div className="bg-white h-100"><DashStatusViewB /></div>
                     </div>
                 </div>
+
                 <div className="col-md-5 p-1">
                     <div className="bg-white" ><DashMap /></div>
                 </div>

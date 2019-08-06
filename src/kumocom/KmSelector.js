@@ -7,7 +7,8 @@ const KmSelector = (props) => {
     const customStyles = {
         container: (base, state) => ({
             ...base,
-            width: userStyle.width === undefined ? 250 : userStyle.width,
+            width: "100%", //userStyle.width === undefined ? 250 : userStyle.width,
+            minWidth: 250,
         }),
         control: (base, state) => ({
             ...base,
@@ -36,6 +37,7 @@ const KmSelector = (props) => {
     };
 
     return (
+        <div className="w-100">
         <Select
             options={options}
             getOptionLabel={option => option[optionLabel]}
@@ -46,6 +48,7 @@ const KmSelector = (props) => {
             classNamePrefix="name-select"
             styles={customStyles}
         />
+        </div>
     )
 }
 

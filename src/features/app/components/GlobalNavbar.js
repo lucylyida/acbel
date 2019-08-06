@@ -2,7 +2,11 @@ import React from "react"
 import { Link } from "react-router-dom"
 import * as route from "../../../config/route.config"
 import KmLink from '../../../kumocom/KmLink'
+import KmDropdown from "../../../kumocom/KmDropdown"
 
+import SgFlag from '../../../assets/icons/Flag_Singapore'
+import ThaiFlag from '../../../assets/icons/Flag_Thailand'
+import ThaiwanFlag from '../../../assets/icons/Flag_Thaiwan'
 import Flag from '../../../assets/icons/Flag_Kingdom'
 import AcbelLogo from '../../../assets/icons/Acbel_Logo'
 
@@ -28,9 +32,19 @@ const GlobalNavbar = props => {
                 </div>
                 <div style={{ flex: 1 }} />
                 <div className="d-flex justify-content-between align-items-center">
-                    <Flag width={24} height={24} />
+                    {/* <Flag width={24} height={24} />
                     <span className="px-2" style={{ fontSize: 14 }}>{'UK English'}</span>
-                    <i className="fa fa-caret-down" />
+                    <i className="fa fa-caret-down" /> */}
+                    <KmDropdown
+                        onClick={() => console.log('click')}
+                        selectedItem={{ icon: <Flag width={24} height={24} />, text: 'UK English' }}
+                        data={[
+                            { icon: <ThaiwanFlag width={24} height={24} />, text: 'TW ThaiWan' },
+                            { icon: <ThaiFlag width={24} height={24} />, text: 'TH Thailand' },
+                            { icon: <SgFlag width={24} height={24} />, text: 'Sg Singapore' }
+                        ]}
+                        style={{ backgroundColor: ' #e5e5e5' }}
+                    />
                 </div>
             </div>
         </div>

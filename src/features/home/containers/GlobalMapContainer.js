@@ -7,7 +7,9 @@ import MapView from './Map';
 const GlobalMapContainer = props => {
     const { location } = props
     return (
-        <MapView />
+        <div className="mt-3" style={{ border: '0.7px solid #cccccc', borderRadius: 4 }}>
+            <MapView />
+        </div>
     )
 }
 

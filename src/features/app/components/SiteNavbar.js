@@ -31,7 +31,7 @@ const SiteNavbar = props => {
             </div>
 
             <div className="d-flex flex-row flex-wrap align-items-baseline">
-                <div className="pt-4 pb-2 d-flex flex-direction-row" style={{ overflowX: 'auto' }}>
+                <div className="py-1 d-flex flex-direction-row" style={{ overflowX: 'auto' }}>
                     <div className="pr-2"><KmLink text="Dashboard" to={`${match.url}/${route.dashboard}${location.search}`} currentLink={location.pathname + location.search} /></div>
                     <div className="pr-2"><KmLink text="Site Forecast" to={`${match.url}/${route.forecast}${location.search}`} currentLink={location.pathname + location.search} /></div>
                     <div className="pr-2"><KmLink text="Site Revenue" to={`${match.url}/${route.revenue}${location.search}`} currentLink={location.pathname + location.search} /></div>
@@ -44,9 +44,9 @@ const SiteNavbar = props => {
                 <div style={{ flex: 1 }} />
                 <div className="d-flex">
                     <div style={{ fontSize: 16, color: 'gray' }}>{"Alerts"}</div>
-                    <div className="d-flex align-items-center px-3 mx-1" style={{ backgroundColor: '#FDEDB2', borderRadius: 40, fontSize: 12 }}><i className="fa fa-circle pr-1" style={{ color: 'orange', fontSize: 10 }} />{waring}</div>
-                    <div className="d-flex align-items-center px-3 mx-1" style={{ backgroundColor: '#FBD2B3', borderRadius: 40, fontSize: 12 }}><i className="fa fa-circle pr-1" style={{ color: 'red', fontSize: 10 }} />{bad}</div>
-                    <div className="d-flex align-items-center px-3 mx-1" style={{ backgroundColor: '#DCEF93', borderRadius: 40, fontSize: 12 }}><i className="fa fa-circle pr-1" style={{ color: 'green', fontSize: 10 }} />{good}</div>
+                    <div className="d-flex align-items-center px-3 mx-1" style={{ backgroundColor: '#FDEDB2', borderRadius: 40, fontSize: 1 }}><i className="fa fa-circle pr-1" style={{ color: 'orange', fontSize: 10 }} />{waring}</div>
+                    <div className="d-flex align-items-center px-3 mx-1" style={{ backgroundColor: '#FBD2B3', borderRadius: 40, fontSize: 1 }}><i className="fa fa-circle pr-1" style={{ color: 'red', fontSize: 10 }} />{bad}</div>
+                    <div className="d-flex align-items-center px-3 mx-1" style={{ backgroundColor: '#DCEF93', borderRadius: 40, fontSize: 1 }}><i className="fa fa-circle pr-1" style={{ color: 'green', fontSize: 10 }} />{good}</div>
                     <i className="fa fa-caret-down pt-1 pl-1" />
                 </div>
             </div>

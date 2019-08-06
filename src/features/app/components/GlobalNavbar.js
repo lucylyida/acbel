@@ -9,7 +9,7 @@ import AcbelLogo from '../../../assets/icons/Acbel_Logo'
 const GlobalNavbar = props => {
     const { match, location } = props
     return (
-        <div className="container-fluid px-0 pb-2 pt-3">
+        <div className="container-fluid px-0 py-3">
             <div className="d-flex align-items-center">
                 <div className="d-flex flex-column justify-content-center">
                     <div className="px-3 py-2" style={{ backgroundColor: "#ffffff", borderRadius: 4, cursor: "pointer" }}>

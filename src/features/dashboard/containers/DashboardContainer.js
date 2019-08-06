@@ -10,8 +10,10 @@ const DashboardContainer = props => {
     return (
         <div className="container-fluid">
             <div className="row ">
+
                 <div className="col-md-7 p-0 mb-1 d-flex flex-column">
                     <div className="p-1">
+
                         <div className="bg-white h-100"><DashStatusViewA /></div>
                     </div>
 
@@ -19,6 +21,7 @@ const DashboardContainer = props => {
                         <div className="bg-white h-100"><DashStatusViewB /></div>
                     </div>
                 </div>
+
                 <div className="col-md-5 p-1">
                     <div className="bg-white" ><DashMap /></div>
                 </div>

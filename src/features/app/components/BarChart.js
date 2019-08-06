@@ -7,7 +7,6 @@ const BarChart = (props) => {
       return  <ResponsiveBar {...configCommonProperties(data, keys, color)} />
 }
 
-
 const configCommonProperties = (data, keys, color) => ({
   data: data,
   colors: color,

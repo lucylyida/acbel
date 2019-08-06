@@ -18,7 +18,7 @@ const DashboardContainer = props => {
                     </div>
                 </div>
                 <div className="col-sm-5 p-1">
-                    <div className="bg-white h-100" >Map</div>
+                    <div className="bg-white h-100" >Map View Here</div>
                 </div>
 
                 <div className="col-sm-6 p-1">

@@ -47,7 +47,7 @@ export class MapContainer extends Component {
     render() {
 
         return (
-            <div className="mt-3" style={{ border: '1px solid #00000022', borderRadius: 4, position: 'relative', paddingBottom: '30%', paddingRight: '10', paddingLeft: '0%', height: 100, overflow: 'hidden', margin: '0px' }}>
+            <div className="mt-3" style={{ border: '1px solid #00000022', borderRadius: 4, position: 'relative', paddingBottom: '30%', paddingRight: '10', paddingLeft: '0%', height: '100%', overflow: 'hidden', margin: '0px' }}>
                 <Map
                     styles={MapStyle}
                     google={this.props.google}

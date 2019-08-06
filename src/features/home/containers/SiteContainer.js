@@ -24,9 +24,9 @@ const SiteContainer = props => {
     }
     // const queryDataEnc = enc(queryData)
     return (
-        <div style={{ width: "100%"}}>
+        <div className="container-fluid p-2">
             <SiteNavbar {...props} />
-            <div className="p-3">
+            <div className="p-0">
                 <Switch>
                     <Route path={`${match.path}/:pageName`} component={SitePage} />
                     <Redirect to={`${match.path}/${route.dashboard}`} />

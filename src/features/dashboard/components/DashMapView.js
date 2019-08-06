@@ -20,7 +20,7 @@ export class DashMap extends Component {
     displayMarkers = () => {
         return this.state.stores.map((store, index) => {
             return <Marker
-                
+
                 key={index} id={index} position={{
                     lat: store.latitude,
                     lng: store.longitude
@@ -35,9 +35,9 @@ export class DashMap extends Component {
     render() {
 
         return (
-            <div className="" style={{ height:'100%', position: 'relative',bottom:'0', paddingBottom: '52%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
+            <div className="" style={{ height: '347px', position: 'relative', bottom: '0', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map
-                    style={{height:'100%',width:'100%'}}
+                    style={{ height: '100%', width: '100%' }}
                     google={this.props.google}
                     zoom={5}
                     initialCenter={{ lat: 21.444, lng: 96.176 }} >

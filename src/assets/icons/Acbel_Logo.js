@@ -47,10 +47,10 @@ const Logo = props => {
                 height="57.318386"
                 x="-1511.5222"
                 y="-1525.5358"
-                clip-path="url(#clipPath74)"
+                clipPath="url(#clipPath74)"
                 transform="matrix(0.39586687,0,0,0.39478822,622.80441,604.66579)" />
             <rect
-                clip-path="url(#clipPath74)"
+                clipPath="url(#clipPath74)"
                 y="-1525.5358"
                 x="-1511.5222"
                 height="57.318386"
@@ -66,7 +66,7 @@ const Logo = props => {
                 height="57.318386"
                 x="-1511.5222"
                 y="-1525.5358"
-                clip-path="url(#clipPath74)" />
+                clipPath="url(#clipPath74)" />
             <ellipse
                 style={{ fill: '#f6b40a', fillOpacity: 1, fillRule: 'evenodd', strokeWidth: 0.41031581 }}
                 id="path82"

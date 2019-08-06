@@ -32,9 +32,6 @@ const GlobalNavbar = props => {
                 </div>
                 <div style={{ flex: 1 }} />
                 <div className="d-flex justify-content-between align-items-center">
-                    {/* <Flag width={24} height={24} />
-                    <span className="px-2" style={{ fontSize: 14 }}>{'UK English'}</span>
-                    <i className="fa fa-caret-down" /> */}
                     <KmDropdown
                         onClick={() => console.log('click')}
                         selectedItem={{ icon: <Flag width={24} height={24} />, text: 'UK English' }}

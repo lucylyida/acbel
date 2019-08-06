@@ -2,7 +2,12 @@ import React from "react"
 import { Link } from "react-router-dom"
 import * as route from "../../../config/route.config"
 import KmLink from '../../../kumocom/KmLink'
+import KmDropdown from "../../../kumocom/KmDropdown"
 
+import SgFlag from '../../../assets/icons/Flag_Singapore'
+import ThaiFlag from '../../../assets/icons/Flag_Thailand'
+import ThaiwanFlag from '../../../assets/icons/Flag_Thaiwan'
+import Flag from '../../../assets/icons/Flag_Kingdom'
 import AcbelLogo from '../../../assets/icons/Acbel_Logo'
 
 const SiteNavbar = props => {
@@ -12,7 +17,7 @@ const SiteNavbar = props => {
     const bad = 35
 
     return (
-        <div className="container-fluid px-0 pb-2 pt-3">
+        <div className="container-fluid px-0 py-3">
             <div className="d-flex">
                 <div className="d-flex flex-column justify-content-center p-0">
                     <div className="px-3 py-2" style={{ backgroundColor: "#ffffff", borderRadius: 4, cursor: "pointer" }}>
@@ -28,9 +33,22 @@ const SiteNavbar = props => {
                     <div style={{ color: "#2244aa", fontSize: 28 }}>{"Organic Farmer's Association"}</div>
                     <div className="" style={{ color: "gray", fontSize: 16 }}>{"Hualien City, Taiwan"}</div>
                 </div>
+                <div style={{ flex: 1 }} />
+                <div className="d-flex justify-content-between align-items-center">
+                    <KmDropdown
+                        onClick={() => console.log('click')}
+                        selectedItem={{ icon: <Flag width={24} height={24} />, text: 'UK English' }}
+                        data={[
+                            { icon: <ThaiwanFlag width={24} height={24} />, text: 'TW ThaiWan' },
+                            { icon: <ThaiFlag width={24} height={24} />, text: 'TH Thailand' },
+                            { icon: <SgFlag width={24} height={24} />, text: 'Sg Singapore' }
+                        ]}
+                        style={{ backgroundColor: ' #e5e5e5' }}
+                    />
+                </div>
             </div>
 
-            <div className="d-flex flex-row flex-wrap align-items-baseline">
+            <div className="d-flex flex-row flex-wrap align-items-baseline pt-3">
                 <div className="py-1 d-flex flex-direction-row" style={{ overflowX: 'auto' }}>
                     <div className="pr-2"><KmLink text="Dashboard" to={`${match.url}/${route.dashboard}${location.search}`} currentLink={location.pathname + location.search} /></div>
                     <div className="pr-2"><KmLink text="Site Forecast" to={`${match.url}/${route.forecast}${location.search}`} currentLink={location.pathname + location.search} /></div>

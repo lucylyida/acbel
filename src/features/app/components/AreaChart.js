@@ -3,7 +3,7 @@ import { ResponsiveLine } from '@nivo/line'
 
 
 const MyResponsiveLine = (props) => {
-    const { data, color, axisRight, axisLeft } = props
+    const { data, color, axisRight, axisLeft, legendAnchor} = props
     return (
             <ResponsiveLine
                 data={data}
@@ -57,8 +57,7 @@ const MyResponsiveLine = (props) => {
                 }}
                 legends={[
                     {
-                        dataFrom: 'keys',
-                        anchor: 'top-right',
+                        anchor: legendAnchor,
                         direction: 'row',
                         translateX: -40,
                         translateY: -27,

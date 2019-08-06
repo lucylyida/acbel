@@ -7,15 +7,15 @@ const HomefilterView = props => {
     return (
         <div className="container-fluid mt-3 py-3" style={{ backgroundColor: '#ffffff', borderRadius: 4 }}>
             <div className="py-2" style={{ color: '#FF8902',fontSize: 10 }}>FILTER</div>
-            <div className="row flex-wrap pl-2" style={{ color: '#A3A3A3' ,fontSize:10}}>
-                <div className=" flex-column p-2 ">
-                    <div>SEARCH</div>
+            <div className="d-flex align-items-baseline flex-wrap" style={{ color: '#A3A3A3' ,fontSize:10}}>
+                <div className=" flex-column py-2 pl-3 pr-2 ">
+                    <div className="pb-1">SEARCH</div>
                     <div>
-                        <KmSearchbox />
+                        <KmSearchbox text="Search" />
                     </div>
                 </div>
-                <div className="flex-column p-2">
-                    <div>VENDOR</div>
+                <div className="flex-column py-2 pl-3 pr-2">
+                    <div className="pb-1">VENDOR</div>
                     <div>
                         <KmSelector
                             placeholder="Select Vendor"
@@ -31,7 +31,7 @@ const HomefilterView = props => {
                     </div>
                 </div>
                 <div className=" flex-column p-2">
-                    <div>COUNTRY</div>
+                    <div className="pb-1">COUNTRY</div>
                     <div>
                         <KmSelector
                             placeholder="Select Country"
@@ -39,7 +39,7 @@ const HomefilterView = props => {
                     </div>
                 </div>
                 <div className=" flex-column p-2 ">
-                    <div>CITY</div>
+                    <div className="pb-1">CITY</div>
                     <div>
                         <KmSelector
                             placeholder="Select City"
@@ -47,16 +47,16 @@ const HomefilterView = props => {
                     </div>
                 </div>
                 <div className=" flex-column p-2 ">
-                    <div>SITE</div>
+                    <div className="pb-1">SITE</div>
                     <div>
                         <KmSelector
                             placeholder="Select Site"
                         />
                     </div>
                 </div>
-                <div className="flex-column flex-grow-1 p-2">
-                    <label></label>
-                    <div>
+                <div className="flex-column flex-grow-1 p-2 ">   
+                    <br />
+                    <div className="pt-1">
                         <KmButton
                             text="FILTER"
                             className="px-3"

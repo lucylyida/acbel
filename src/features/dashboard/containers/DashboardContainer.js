@@ -1,27 +1,30 @@
 import React from "react"
 import ChartContainer from "../../app/components/ChartContainer"
-
+import DashMap from '../components/DashMapView';
+import DashStatusViewA from '../components/DashStatusViewA';
+import DashStatusViewB from '../components/DashStatusViewB';
 
 const DashboardContainer = props => {
     // console.log({ props })
 
     return (
-        <div className="container-fluid ">
-            <div className="row">
-                <div className="col-sm-7 p-0 d-flex flex-column flex-fill" style={{ height: 320 }}>
-                    <div className=" h-50 p-1" >
-                       <div className="bg-white h-100"> status 1</div>
+        <div className="container-fluid">
+            <div className="row ">
+                <div className="col-md-7 p-0 mb-1 d-flex flex-column" style={{height: 350}}>
+                    <div className="pr-1 pb-1 pt-1">
+                        <div className="bg-white h-100"><DashStatusViewA /></div>
                     </div>
-                    
-                    <div className="h-50 p-1">
-                    <div className="bg-white h-100"> status 2</div>
+
+                    <div className="pr-1 pt-1">
+                        <div className="bg-white h-100"><DashStatusViewB /></div>
                     </div>
-                </div>
-                <div className="col-sm-5 p-1">
-                    <div className="bg-white h-100" >Map View Here</div>
                 </div>
 
-                <div className="col-sm-6 p-1">
+                <div className="col-md-5 p-1">
+                    <div className="bg-white" ><DashMap /></div>
+                </div>
+
+                <div className="col-md-6 p-1">
                     <div className="bg-white">
                         <ChartContainer
                             headerText={'SITE OUTPUT TREND'}
@@ -33,19 +36,19 @@ const DashboardContainer = props => {
                     </div>
                 </div>
 
-                <div className="col-sm-6 p-1">
+                <div className="col-md-6 p-1">
                     <div className="bg-white">
                         <ChartContainer
                             headerText={'SITE EFFICIENCY TREND'}
                             chartType='area'
                             data={data}
                             color={'#FEC71F'}
-                            axisLeftLegend = "%"
+                            axisLeftLegend="%"
                         />
                     </div>
                 </div>
 
-                <div className="col-sm-6 p-1">
+                <div className="col-md-6 p-1">
                     <div className="bg-white">
                         <ChartContainer
                             chartType='area'
@@ -58,15 +61,15 @@ const DashboardContainer = props => {
                     </div>
                 </div>
 
-                <div className="col-sm-6 p-1">
+                <div className="col-md-6 p-1">
                     <div className="bg-white">
                         <ChartContainer
                             chartType='area'
                             headerText={'ACTUAL POWER OUTPUT VS RADIATION'}
                             data={data2}
                             color={['#29CE22', '#00C1D2']}
-                            axisLeftLegend = "Power(kw)"
-                            axisRightLegend = "Irradiance"
+                            axisLeftLegend="Power(kw)"
+                            axisRightLegend="Irradiance"
                         />
                     </div>
                 </div>

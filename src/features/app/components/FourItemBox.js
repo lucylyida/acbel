@@ -2,7 +2,6 @@ import React from 'react'
 
 const formatNumber = (num) => num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 
-
 const FourItemBox = props => {
     const { value, unit, desc, active, icon } = props
     const data = formatNumber(value)
@@ -20,7 +19,11 @@ const FourItemBox = props => {
             </div>
             <div className={`${active === undefined ? 'pl-2' : ''}`}>
                 <div className="d-flex align-items-baseline">
-                    <div style={{ color: '#153784', fontSize: 20, fontWeight: 'bold' }}>
+                    <div style={{
+                        fontSize: 20, fontWeight: 'bold',
+                        color: data === 'Normal' ? 'green' : '#153784',
+                    }}
+                    >
                         {unit === 'NT$' ? unit + data : data}
                     </div>
                     <div className="pl-1" style={{ fontSize: 13, fontWeight: 100 }}>{unit === 'NT$' ? null : unit}</div>

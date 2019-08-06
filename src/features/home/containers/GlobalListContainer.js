@@ -6,13 +6,13 @@ import querystring from "query-string"
 
 const GlobalListContainer = props => {
     const { location } = props
-    const queryData = dec(querystring.parse(location.search).had)
+    // const queryData = dec(querystring.parse(location.search).had)
 
     return (
         <div className="p-3">
             <div className="p-3" style={{ fontSize: 18 }}>Global List Container</div>
             <div className="p-3" style={{ fontSize: 20 }}>
-                <Link to={`/${route.site}/${queryData.siteId}${location.search}`}>
+                <Link to={`/${route.site}/${1}${location.search}`}>
                     Organic Farmer's Association
                 </Link>
             </div>

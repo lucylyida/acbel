@@ -35,9 +35,8 @@ export class DashMap extends Component {
     render() {
 
         return (
-            <div className="" style={{ height: '347px', position: 'relative', bottom: '0', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
-                <Map
-                    style={{ height: '100%', width: '100%' }}
+            <div className="" style={{ height: '347px', position: 'relative', bottom: '0', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0' }}>
+                <Map                  
                     google={this.props.google}
                     zoom={5}
                     initialCenter={{ lat: 21.444, lng: 96.176 }} >

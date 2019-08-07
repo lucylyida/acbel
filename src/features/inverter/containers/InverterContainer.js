@@ -1,29 +1,84 @@
-import React from "react"
+import React, { useState } from "react"
 import ChartContainer from "../../app/components/ChartContainer"
 import KmToggleButton from "../../../kumocom/KmToggleButton";
+import KmSearchbox from "../../../kumocom/KmSearchbox"
+import KmButton from "../../../kumocom/KmButton"
+import InverterCollapseItem from "../components/InverterCollapseItem"
 
-const isCompare = true
 const InverterContainer = props => {
     const { } = props
+    const [ compareMode, switchNormalMode ] = useState(false)
     const selected = 'btn_3'
     return (
         <div className="container-fluid">
             <div className="row">
                 <div className="col-md-5 p-2">
-                    <div style={{ color: '#FF8800', fontSize: 14 }}>{"INVERTERS"}</div>
-                    {/* Inverter Lists */}
+                    <div className="py-2 px-1 d-flex align-items-center" style={{ color: '#FF8800', fontSize: 14, height: 42 }}>{"INVERTERS"}</div>
+                    <div>
+                        <KmSearchbox placeholder="Search Inverters" style={{ height: 48, backgroundColor: "white" }} />
+                        <div className="py-2">
+                            <InverterCollapseItem
+                                text="Inverter001"
+                                codeno={"002-001245bea87f3d"}
+                                selected={ compareMode }
+                                data={[
+                                    { name: 'Panels', value: '65' },
+                                    { name: 'Temp(C)', value: '45' },
+                                    { name: 'Dc Input(kW)', value: '0.11' },
+                                    { name: 'Efficiency', value: '0.11' }
+                                ]} />
+
+                            <InverterCollapseItem
+                                text="Inverter001"
+                                codeno={"002-001245bea87f3d"}
+                                data={[
+                                    { name: 'Panels', value: '65' },
+                                    { name: 'Temp(C)', value: '45' },
+                                    { name: 'Dc Input(kW)', value: '0.11' },
+                                    { name: 'Efficiency', value: '0.11' }
+                                ]}
+                            />
+                            <InverterCollapseItem
+                                text="Inverter001"
+                                codeno={"002-001245bea87f3d"}
+                                selected={ compareMode }
+                                data={[
+                                    { name: 'Panels', value: '65' },
+                                    { name: 'Temp(C)', value: '45' },
+                                    { name: 'Dc Input(kW)', value: '0.11' },
+                                    { name: 'Efficiency', value: '0.11' }
+                                ]}
+                            />
+                            <InverterCollapseItem
+                                text="Inverter001"
+                                codeno={"002-001245bea87f3d"}
+                                data={[
+                                    { name: 'Panels', value: '65' },
+                                    { name: 'Temp(C)', value: '45' },
+                                    { name: 'Dc Input(kW)', value: '0.11' },
+                                    { name: 'Efficiency', value: '0.11' }
+                                ]}
+                            />
+                        </div>
+                        <div className="py-2">
+                            <KmButton text="View Selected Inverter Comparison" onClick={ ()=>switchNormalMode(!compareMode) } />
+                            <div className="py-3 font-weight-bold text-uppercase" align="center" style={{ fontSize: 14, color: "#a2a2a2" }}>Reset Selection</div>
+                        </div>
+                    </div>
+
                 </div>
                 <div className="col-md-7 p-1">
-                    <div className="p-1 d-flex justify-content-between align-items-center" style={{ fontSize: 14 }}>
-                        <div style={{ color: '#FF8800' }}>{"ALL INVERTERS"}</div>
+                    <div className="p-2 d-flex justify-content-between align-items-center" style={{ fontSize: 14, height: 42 }}>
+                        <div style={{ color: '#FF8800', fontSize: 14 }}>{"ALL INVERTERS"}</div>
                         <div className="d-flex align-items-center">
                             <div className="px-1" style={{ color: "gray" }}>{"Dates"}</div>
                             <i className="fa fa-calendar-alt pr-2" style={{ color: '#88A2CD', fontSize: 20 }} />
-                            <div className="px-1"><KmToggleButton
-                                text="YEAR"
-                                btnNumber="btn_1"
-                                // onClick={_onBtnSelected}
-                                selected={selected === "btn_1" ? true : false} />
+                            <div className="px-1">
+                                <KmToggleButton
+                                    text="YEAR"
+                                    btnNumber="btn_1"
+                                    // onClick={_onBtnSelected}
+                                    selected={selected === "btn_1" ? true : false} />
                             </div>
                             <div className="px-1"><KmToggleButton
                                 text="MONTH"
@@ -50,7 +105,7 @@ const InverterContainer = props => {
                         </div>
                     </div>
                     {
-                        isCompare ?
+                        compareMode ?
                             <CompareInverterComponent />
                             :
                             <AllInverterComponent />
@@ -78,7 +133,6 @@ const AllInverterComponent = props => {
                     />
                 </div>
             </div>
-
             <div className=" p-1">
                 <div className="bg-white">
                     <ChartContainer
@@ -91,7 +145,6 @@ const AllInverterComponent = props => {
                     />
                 </div>
             </div>
-
             <div className="p-1">
                 <div className="bg-white">
                     <ChartContainer

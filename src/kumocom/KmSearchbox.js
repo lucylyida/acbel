@@ -6,14 +6,14 @@ const KmSearchbox = props => {
     const userStyle = style === undefined ? {} : style
     
     return (
-        <div className="input-group" style={{ ...defaultStyle, ...userStyle }}>
+        <div className="input-group p-0" style={{ ...defaultStyle, backgroundColor: userStyle.backgroundColor }}>
             <input
-                className="form-control py-2 border-right-0 border "
+                className="form-control py-2 border-right-0 "
                 type="search"
                 aria-label="Search"
                 placeholder="Search"
                 id="search-input"
-                style={{ background: style === undefined ? null : style.background, color: style === undefined ? null : style.color,fontSize:15}}
+                style={{ ...{ fontSize:15,}, ...userStyle}}
                 onChange={onChange}
             />
             <span className="input-group-append">

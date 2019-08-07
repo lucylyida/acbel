@@ -55,7 +55,7 @@ const ChartContainer = props => {
                         axisLeft={axisLeft}
                         axisRight={axisRight}
                         legendAnchor={legendAnchor === undefined ? 'top-right' : 'top'} />}
-                    {chartType === 'bar' && <BarChart data={data} color={color} keys={keys} />}
+                    {chartType === 'bar' && <BarChart data={data} color={color} keys={keys} legendAnchor={legendAnchor === undefined ? 'top-right' : 'top'} />}
                 </div>
             </div>
         </div>

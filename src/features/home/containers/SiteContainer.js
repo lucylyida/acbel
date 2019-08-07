@@ -4,20 +4,20 @@ import { enc } from "../../../network-sec/cypher"
 import * as route from "../../../config/route.config"
 import SiteNavbar from "../../app/components/SiteNavbar"
 import { withPageLoading } from "../../app/hoc/withLoading"
+import LeftSidebar from "../../app/components/LeftSidebar";
 
-const ForecastContainer = React.lazy( ()=>import("../../forecast/containers/ForecastContainer"))
-const MaintenanceContainer = React.lazy( ()=>import( "../../maintenance/containers/MaintenanceContainer"))
-const ProfileContainer = React.lazy( ()=>import("../../profile/containers/ProfileContainer"))
-const InverterContainer = React.lazy( ()=>import("../../inverter/containers/InverterContainer"))
-const PanelContainer = React.lazy( ()=>import("../../panel/containers/PanelContainer"))
-const RevenueContainer = React.lazy( ()=> import("../../revenue/containers/RevenueContainer"))
-const ReportContainer = React.lazy( ()=> import("../../report/containers/ReportContainer"));
-
+const ForecastContainer = React.lazy(() => import("../../forecast/containers/ForecastContainer"))
+const MaintenanceContainer = React.lazy(() => import("../../maintenance/containers/MaintenanceContainer"))
+const ProfileContainer = React.lazy(() => import("../../profile/containers/ProfileContainer"))
+const InverterContainer = React.lazy(() => import("../../inverter/containers/InverterContainer"))
+const PanelContainer = React.lazy(() => import("../../panel/containers/PanelContainer"))
+const RevenueContainer = React.lazy(() => import("../../revenue/containers/RevenueContainer"))
+const ReportContainer = React.lazy(() => import("../../report/containers/ReportContainer"));
 
 const SiteContainer = props => {
     const { match, location } = props
     const queryData = {
-        siteId: 1, 
+        siteId: 1,
         siteName: "Organic Farmer's Association",
         city: "Hualien City",
         country: "Taiwan"
@@ -26,21 +26,29 @@ const SiteContainer = props => {
     return (
         <div className="container-fluid p-2">
             <SiteNavbar {...props} />
-            <div className="p-0">
-                <Switch>
-                    <Route path={`${match.path}/:pageName`} component={SitePage} />
-                    <Redirect to={`${match.path}/${route.dashboard}`} />
-                </Switch>
+            <div className="d-flex flex-row flex-wrap flex-md-nowrap">
+                <div className="flex-grow-1">
+                    <LeftSidebar
+                        online={218} offine={12} siteChoose={true} active={true} efficiency={100} capacity={170.00}
+                        siteName={"Organic Farmer's Association"}
+                    />
+                </div>
+                <div className="w-100 pb-3">
+                    <Switch>
+                        <Route path={`${match.path}/:pageName`} component={SitePage} />
+                        <Redirect to={`${match.path}/${route.dashboard}`} />
+                    </Switch>
+                </div>
             </div>
         </div>
-    )    
+    )
 }
 
 export default SiteContainer
 
 const SitePage = props => {
     const pageName = props.match.params.pageName
-    const DashboardContainer = React.lazy( ()=>import("../../dashboard/containers/DashboardContainer"))
+    const DashboardContainer = React.lazy(() => import("../../dashboard/containers/DashboardContainer"))
     switch (pageName) {
         case route.dashboard:
             return withPageLoading(DashboardContainer, props)

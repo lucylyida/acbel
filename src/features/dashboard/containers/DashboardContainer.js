@@ -23,11 +23,11 @@ const DashboardContainer = props => {
                 </div>
 
                 <div className="col-md-5 p-1">
-                    <div className="bg-white" ><DashMap /></div>
+                    <div className="bg-white " ><DashMap /></div>
                 </div>
 
                 <div className="col-md-6 p-1">
-                    <div className="bg-white">
+                    <div className="bg-white ">
                         <ChartContainer
                             headerText={'SITE OUTPUT TREND'}
                             chartType='bar'

@@ -19,23 +19,26 @@ const InverterContainer = props => {
                         <div className="d-flex align-items-center">
                             <div className="px-1" style={{ color: "gray" }}>{"Dates"}</div>
                             <i className="fa fa-calendar-alt pr-2" style={{ color: '#88A2CD', fontSize: 20 }} />
-                            <div className="px-1"><KmToggleButton
-                                text="YEAR"
-                                btnNumber="btn_1"
-                                // onClick={_onBtnSelected}
-                                selected={selected === "btn_1" ? true : false} />
+                            <div className="px-1">
+                                <KmToggleButton
+                                    text="YEAR"
+                                    btnNumber="btn_1"
+                                    // onClick={_onBtnSelected}
+                                    selected={selected === "btn_1" ? true : false} />
                             </div>
-                            <div className="px-1"><KmToggleButton
-                                text="MONTH"
-                                btnNumber="btn_2"
-                                // onClick={_onBtnSelected}
-                                selected={selected === "btn_2" ? true : false} />
+                            <div className="px-1">
+                                <KmToggleButton
+                                    text="MONTH"
+                                    btnNumber="btn_2"
+                                    // onClick={_onBtnSelected}
+                                    selected={selected === "btn_2" ? true : false} />
                             </div>
-                            <div className="pl-1"><KmToggleButton
-                                text="DATE"
-                                btnNumber="btn_3"
-                                // onClick={_onBtnSelected}
-                                selected={selected === "btn_3" ? true : false} />
+                            <div className="pl-1">
+                                <KmToggleButton
+                                    text="DATE"
+                                    btnNumber="btn_3"
+                                    // onClick={_onBtnSelected}
+                                    selected={selected === "btn_3" ? true : false} />
                             </div>
                         </div>
                     </div>

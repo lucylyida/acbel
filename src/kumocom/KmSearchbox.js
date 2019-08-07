@@ -2,12 +2,11 @@ import React from 'react'
 
 const KmSearchbox = props => {
     const { style, onChange, onClick } = props
-    const defaultStyle = { cursor: 'pointer',width:250 }
+    const defaultStyle = { cursor: 'pointer',/*width:250*/ }
     const userStyle = style === undefined ? {} : style
     
     return (
-        <div className="input-group"
-            style={{ ...defaultStyle, ...userStyle }}>
+        <div className="input-group" style={{ ...defaultStyle, ...userStyle }}>
             <input
                 className="form-control py-2 border-right-0 border "
                 type="search"

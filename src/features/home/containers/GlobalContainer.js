@@ -19,13 +19,13 @@ const GlobalContainer = props => {
     }
     const queryDataEnc = enc(queryData)
     const leftSidebarOpen = true
-    
+
     return (
         <div className="container-fluid p-2">
             <GlobalNavbar {...props} />
             <div className="d-flex flex-row flex-wrap flex-sm-nowrap">
                 {
-                !leftSidebarOpen ?
+                    !leftSidebarOpen ?
                         <div className="pr-4">
                             <LeftSidebar
                                 online={218} offine={12} siteChoose={true} active={true} efficiency={100} capacity={170.00}
@@ -42,7 +42,7 @@ const GlobalContainer = props => {
                         <Redirect to={`${match.path}/${route.map}`} />
                     </Switch>
                 </div>
-            </div>          
+            </div>
         </div>
     )
 }

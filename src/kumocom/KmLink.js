@@ -12,6 +12,7 @@ const KmLink = props => {
         color: isSelected ? 'black' : 'gray',
         fontWeight: isSelected ? 'bold' : null,
         textDecoration: 'none',
+        whiteSpace: 'nowrap'
     }
     const userStyle = style === undefined ? {} : style
     return (

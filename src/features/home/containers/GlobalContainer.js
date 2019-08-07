@@ -18,22 +18,17 @@ const GlobalContainer = props => {
         country: "Taiwan"
     }
     const queryDataEnc = enc(queryData)
-    const leftSidebarOpen = true
 
     return (
         <div className="container-fluid p-2">
             <GlobalNavbar {...props} />
-            <div className="d-flex flex-row flex-wrap flex-sm-nowrap">
-                {
-                    !leftSidebarOpen ?
-                        <div className="pr-4">
-                            <LeftSidebar
-                                online={218} offine={12} siteChoose={true} active={true} efficiency={100} capacity={170.00}
-                                siteName={"Organic Farmer's Association"}
-                            />
-                        </div>
-                        : null
-                }
+            <div className="d-flex flex-row flex-wrap flex-md-nowrap">
+                <div className="flex-grow-1">
+                    <LeftSidebar
+                        online={218} offine={12} siteChoose={true} active={true} efficiency={100} capacity={170.00}
+                    //siteName={"Organic Farmer's Association"}
+                    />
+                </div>
                 <div className="w-100">
                     <HomeStatusView />
                     <HomefilterView />

@@ -8,7 +8,7 @@ const KmSelector = (props) => {
         container: (base, state) => ({
             ...base,
             width: "100%", //userStyle.width === undefined ? 250 : userStyle.width,
-            minWidth: 250,
+            minWidth: 200,
         }),
         control: (base, state) => ({
             ...base,

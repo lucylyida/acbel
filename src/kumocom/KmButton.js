@@ -6,7 +6,7 @@ const KmButton = props => {
     const userStyle = style === undefined ? {} : style
 
     return (
-        <div style={{ minWidth: 250 }}>
+        <div style={{ minWidth: 200 }}>
         <div
             onClick={onClick}
             type={type === undefined ? "button" : type}

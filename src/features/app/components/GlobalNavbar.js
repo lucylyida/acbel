@@ -1,4 +1,5 @@
 import React from "react"
+import querystring from "query-string"
 import { Link } from "react-router-dom"
 import * as route from "../../../config/route.config"
 import KmLink from '../../../kumocom/KmLink'
@@ -11,11 +12,11 @@ import Flag from '../../../assets/icons/Flag_Kingdom'
 import AcbelLogo from '../../../assets/icons/Acbel_Logo'
 
 const GlobalNavbar = props => {
-    const { match, location } = props
+    const { match, location, history } = props
     return (
-        <div className="container-fluid px-0 py-3">
+        <div className="container-fluid px-2 py-3">
             <div className="d-flex align-items-center">
-                <div className="d-flex flex-column justify-content-center">
+                <div className="d-flex flex-column justify-content-center" onClick={()=>_hadleMenuClick({ match, location, history })}>
                     <div className="px-3 py-2" style={{ backgroundColor: "#ffffff", borderRadius: 4, cursor: "pointer" }}>
                         <i className="fas fa-bars text-primary" />
                     </div>
@@ -31,14 +32,15 @@ const GlobalNavbar = props => {
                     <div className="pl-3"><KmLink text="List View" to={`${match.url}/${route.list}${location.search}`} currentLink={location.pathname + location.search} /></div>
                 </div>
                 <div style={{ flex: 1 }} />
-                <div className="d-flex justify-content-between align-items-center">
+                <div className="d-flex justify-content-between align-items-center pr-2">
                     <KmDropdown
                         onClick={() => console.log('click')}
                         selectedItem={{ icon: <Flag width={24} height={24} />, text: 'UK English' }}
                         data={[
                             { icon: <ThaiwanFlag width={24} height={24} />, text: 'TW ThaiWan' },
                             { icon: <ThaiFlag width={24} height={24} />, text: 'TH Thailand' },
-                            { icon: <SgFlag width={24} height={24} />, text: 'Sg Singapore' }
+                            { icon: <SgFlag width={24} height={24} />, text: 'Sg Singapore' },
+                            { icon: <Flag width={24} height={24} />, text: 'UK English' }
                         ]}
                         style={{ backgroundColor: ' #e5e5e5' }}
                     />
@@ -50,5 +52,11 @@ const GlobalNavbar = props => {
 
 export default GlobalNavbar
 
-{/* <Link to={`${match.url}/${route.list}${location.search}`} className="h6 ml-3 py-2">List View</Link> */ }
-{/* <Link to={`${match.url}/${route.list}${location.search}`} className=" ml-3 py-2"><KmLink text="List View" isSelected /></Link> */ }
+export const _hadleMenuClick = ({ history, match, location }) => {
+    const qp = {...querystring.parse(location.search)}
+    const queryParams = {...qp, lsb: qp.lsb==="true" ? false : true }
+    history.push({
+        pathname: location.pathname,
+        search: `?${querystring.stringify(queryParams)}`
+    })
+}

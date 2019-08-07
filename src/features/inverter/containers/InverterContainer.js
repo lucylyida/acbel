@@ -283,7 +283,6 @@ const currentTrend = [
                 "x": "17:00",
                 "y": 6000
             }
-
         ]
     }
 ]

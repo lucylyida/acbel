@@ -36,16 +36,16 @@ const ChartContainer = props => {
                     {headerText}
                 </div>
                 {
-                    exportIcon === undefined ? null : <div  style={{
+                    exportIcon === undefined ? null : <div style={{
                         position: 'relative',
                         top: 20,
                         color: '#91A7CE',
                         background: "#00000000",
-                         paddingRight: 20,
-                        display: "inline",
-                        float: 'right'                        
+                        paddingRight: 20,
+                        float: 'right',
+                        cursor: 'pointer !important'
                     }}>
-                        <i className="fas fa-external-link-alt"> </i> <span style ={{marginTop: -3}}>Export</span>
+                        <i className="fas fa-external-link-alt" style={{cursor:'inherient'}}> </i> <span style={{ marginTop: -3, cursor:'pointer' }}>Export</span>
                     </div>
                 }
                 <div className="" style={{ width: "100%", height: 340 }}>

@@ -63,6 +63,95 @@ const InverterContainer = props => {
 
 export default InverterContainer
 
+const AllInverterComponent = props => {
+    return (
+        <div className="w-100 p-0">
+            <div className="p-1">
+                <div className="bg-white">
+                    <ChartContainer
+                        chartType='area'
+                        headerText={'PV INVERTER CONVERSION RATE'}
+                        data={pvData}
+                        color={['#6522CE', '#309BF3']}
+                        legendAnchor
+                        exportIcon
+                    />
+                </div>
+            </div>
+
+            <div className=" p-1">
+                <div className="bg-white">
+                    <ChartContainer
+                        chartType='area'
+                        headerText={'PV INVERTER WATT TREND'}
+                        data={wattTrend}
+                        color={['#FEC61B', '#54D74F', '#03C2D2']}
+                        legendAnchor
+                        exportIcon
+                    />
+                </div>
+            </div>
+
+            <div className="p-1">
+                <div className="bg-white">
+                    <ChartContainer
+                        chartType='area'
+                        headerText={'PV INVERTER CURRENT TREND'}
+                        data={pvData}
+                        color={['#FF78C8', '#03C2D2']}
+                        legendAnchor
+                        exportIcon
+                    />
+                </div>
+            </div>
+            <div className="p-1">
+                <div className="bg-white">
+                    <ChartContainer
+                        chartType='area'
+                        headerText={'PV INVERTER VOLTAGE TREND'}
+                        data={pvData}
+                        color={['#6522CE', '#54D74F']}
+                        legendAnchor
+                        exportIcon
+                    />
+                </div>
+            </div>
+        </div>
+    )
+}
+
+const CompareInverterComponent = props => {
+    const { } = props
+    return (
+        <div className="w-100 p-0">
+            <div className="p-1">
+                <div className="bg-white">
+                    <ChartContainer
+                        chartType='area'
+                        headerText={'PV INVERTER CURRENT TREND'}
+                        data={pvData}
+                        color={['#FF78C8', '#03C2D2']}
+                        legendAnchor
+                        exportIcon
+                    />
+                </div>
+            </div>
+            <div className="p-1">
+                <div className="bg-white">
+                    <ChartContainer
+                        chartType='area'
+                        headerText={'PV INVERTER VOLTAGE TREND'}
+                        data={pvData}
+                        color={['#6522CE', '#54D74F']}
+                        legendAnchor
+                        exportIcon
+                    />
+                </div>
+            </div>
+        </div>
+    )
+}
+
 const pvData = [
     {
         "id": "Inverter Conversion Rate",
@@ -449,93 +538,3 @@ const wattTrend = [
         ]
     }
 ]
-
-
-const AllInverterComponent = props => {
-    return (
-        <div className="w-100 p-0">
-            <div className="p-1">
-                <div className="bg-white">
-                    <ChartContainer
-                        chartType='area'
-                        headerText={'PV INVERTER CONVERSION RATE'}
-                        data={pvData}
-                        color={['#6522CE', '#309BF3']}
-                        legendAnchor
-                        exportIcon
-                    />
-                </div>
-            </div>
-
-            <div className=" p-1">
-                <div className="bg-white">
-                    <ChartContainer
-                        chartType='area'
-                        headerText={'PV INVERTER WATT TREND'}
-                        data={wattTrend}
-                        color={['#FEC61B', '#54D74F', '#03C2D2']}
-                        legendAnchor
-                        exportIcon
-                    />
-                </div>
-            </div>
-
-            <div className="p-1">
-                <div className="bg-white">
-                    <ChartContainer
-                        chartType='area'
-                        headerText={'PV INVERTER CURRENT TREND'}
-                        data={pvData}
-                        color={['#FF78C8', '#03C2D2']}
-                        legendAnchor
-                        exportIcon
-                    />
-                </div>
-            </div>
-            <div className="p-1">
-                <div className="bg-white">
-                    <ChartContainer
-                        chartType='area'
-                        headerText={'PV INVERTER VOLTAGE TREND'}
-                        data={pvData}
-                        color={['#6522CE', '#54D74F']}
-                        legendAnchor
-                        exportIcon
-                    />
-                </div>
-            </div>
-        </div>
-    )
-}
-
-const CompareInverterComponent = props => {
-    const { } = props
-    return (
-        <div className="w-100 p-0">
-            <div className="p-1">
-                <div className="bg-white">
-                    <ChartContainer
-                        chartType='area'
-                        headerText={'PV INVERTER CURRENT TREND'}
-                        data={pvData}
-                        color={['#FF78C8', '#03C2D2']}
-                        legendAnchor
-                        exportIcon
-                    />
-                </div>
-            </div>
-            <div className="p-1">
-                <div className="bg-white">
-                    <ChartContainer
-                        chartType='area'
-                        headerText={'PV INVERTER VOLTAGE TREND'}
-                        data={pvData}
-                        color={['#6522CE', '#54D74F']}
-                        legendAnchor
-                        exportIcon
-                    />
-                </div>
-            </div>
-        </div>
-    )
-}

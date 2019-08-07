@@ -2,7 +2,7 @@ import React from 'react'
 
 const KmSearchbox = props => {
     const { style, onChange, onClick } = props
-    const defaultStyle = { cursor: 'pointer',/*width:250*/ }
+    const defaultStyle = { cursor: 'pointer', minWidth:200 }
     const userStyle = style === undefined ? {} : style
     
     return (

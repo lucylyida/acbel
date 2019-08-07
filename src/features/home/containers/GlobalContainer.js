@@ -21,7 +21,7 @@ const GlobalContainer = props => {
     const leftSidebarOpen = true
 
     return (
-        <div className="container-fluid p-2">
+        <div className="container-fluid pt-2 pb-3">
             <GlobalNavbar {...props} />
             <div className="d-flex flex-row flex-wrap flex-sm-nowrap">
                 {

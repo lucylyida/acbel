@@ -20,8 +20,8 @@ const SiteNavbar = props => {
 
     return (
         <div className="container-fluid px-1 py-3">
-            <div className="d-flex">
-                <div className="d-flex flex-column justify-content-center p-0" onClick={()=>_hadleMenuClick({ match, location, history })}>
+            <div className="d-flex" style={{ whiteSpace: 'nowrap' }}>
+                <div className="d-flex flex-column justify-content-center p-0" onClick={() => _hadleMenuClick({ match, location, history })}>
                     <div className="px-3 py-2" style={{ backgroundColor: "#ffffff", borderRadius: 4, cursor: "pointer" }}>
                         <i className="fas fa-bars text-primary" />
                     </div>
@@ -68,7 +68,17 @@ const SiteNavbar = props => {
                     <div className="d-flex align-items-center px-3 mx-1" style={{ backgroundColor: '#FDEDB2', borderRadius: 40, fontSize: 12 }}><i className="fa fa-circle pr-1" style={{ color: 'orange', fontSize: 10 }} />{warning}</div>
                     <div className="d-flex align-items-center px-3 mx-1" style={{ backgroundColor: '#FBD2B3', borderRadius: 40, fontSize: 12 }}><i className="fa fa-circle pr-1" style={{ color: 'red', fontSize: 10 }} />{bad}</div>
                     <div className="d-flex align-items-center px-3 mx-1" style={{ backgroundColor: '#DCEF93', borderRadius: 40, fontSize: 12 }}><i className="fa fa-circle pr-1" style={{ color: 'green', fontSize: 10 }} />{good}</div>
-                    <i className="fa fa-caret-down pt-1 pl-1" />
+                    <div className="pl-1">
+                        <KmDropdown
+                            onClick={() => console.log('click')}
+                            // selectedItem={{ icon: <Flag width={24} height={24} />, text: 'UK English' }}
+                            data={[
+                                { text: 'Alerts' },
+                                { text: 'Rule Setup and Management' },
+                            ]}
+                            style={{ backgroundColor: ' #2244aa', color: '#ffffff' }}
+                        />
+                    </div>
                 </div>
             </div>
         </div>

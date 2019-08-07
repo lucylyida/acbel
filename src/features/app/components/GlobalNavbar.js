@@ -16,7 +16,7 @@ const GlobalNavbar = props => {
     return (
         <div className="container-fluid px-0 py-3">
             <div className="d-flex align-items-center">
-                <div className="d-flex flex-column justify-content-center" onClick={()=>_hadleMenuClick({ match, location, history })}>
+                <div className="d-flex flex-column justify-content-center" onClick={() => _hadleMenuClick({ match, location, history })}>
                     <div className="px-3 py-2" style={{ backgroundColor: "#ffffff", borderRadius: 4, cursor: "pointer" }}>
                         <i className="fas fa-bars text-primary" />
                     </div>
@@ -53,8 +53,8 @@ const GlobalNavbar = props => {
 export default GlobalNavbar
 
 export const _hadleMenuClick = ({ history, match, location }) => {
-    const qp = {...querystring.parse(location.search)}
-    const queryParams = {...qp, lsb: qp.lsb==="true" ? false : true }
+    const qp = { ...querystring.parse(location.search) }
+    const queryParams = { ...qp, lsb: qp.lsb === "true" ? false : true }
     history.push({
         pathname: location.pathname,
         search: `?${querystring.stringify(queryParams)}`

@@ -3,11 +3,11 @@ import { ResponsiveBar } from '@nivo/bar'
 
 
 const BarChart = (props) => {
-  const { data,keys, color, legendAnchor } = props
-      return  <ResponsiveBar {...configCommonProperties(data, keys, color,legendAnchor)} />
+  const { data,keys, color, legendAnchor,axisRight,axisLeft } = props
+      return  <ResponsiveBar {...configCommonProperties(data, keys, color,legendAnchor,axisRight,axisLeft)} />
 }
 
-const configCommonProperties = (data, keys, color, legendAnchor) => ({
+const configCommonProperties = (data, keys, color, legendAnchor,axisRight,axisLeft) => ({
   data: data,
   colors: color,
   padding: 0.4,
@@ -20,15 +20,8 @@ const configCommonProperties = (data, keys, color, legendAnchor) => ({
     bottom: 60,
     left: 80
   },
-  axisLeft: {
-    orient: 'left',
-    tickSize: 0,
-    tickPadding: 20,
-    tickRotation: 0,
-    legend: 'Power (kw)',
-    legendOffset: -50,
-    legendPosition: 'middle'
-  },
+  axisLeft:{axisLeft},
+  axisRight: {axisRight},
   axisBottom: {
     orient: 'bottom',
     tickSize: 0,

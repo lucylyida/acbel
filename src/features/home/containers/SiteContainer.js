@@ -1,6 +1,8 @@
 import React, { Suspense } from "react"
 import { Route, Link, Redirect, Switch } from "react-router-dom"
 import { enc } from "../../../network-sec/cypher"
+import { withMedia } from "react-media-query-hoc"
+import { fsc } from "../../../helper/fontColorHelper"
 import * as route from "../../../config/route.config"
 import SiteNavbar from "../../app/components/SiteNavbar"
 import { withPageLoading } from "../../app/hoc/withLoading"
@@ -15,7 +17,7 @@ const RevenueContainer = React.lazy(() => import("../../revenue/containers/Reven
 const ReportContainer = React.lazy(() => import("../../report/containers/ReportContainer"));
 
 const SiteContainer = props => {
-    const { match, location } = props
+    const { match, location, media } = props
     const queryData = {
         siteId: 1,
         siteName: "Organic Farmer's Association",
@@ -24,7 +26,7 @@ const SiteContainer = props => {
     }
     // const queryDataEnc = enc(queryData)
     return (
-        <div className="container-fluid p-2">
+        <div className={`container-fluid ${media.mobile ? "px-0" : "px-4"}`}>
             <SiteNavbar {...props} />
             <div className="d-flex flex-row flex-wrap flex-md-nowrap">
                 <div className="flex-grow-1">
@@ -44,7 +46,7 @@ const SiteContainer = props => {
     )
 }
 
-export default SiteContainer
+export default withMedia(SiteContainer)
 
 const SitePage = props => {
     const pageName = props.match.params.pageName

@@ -1,6 +1,8 @@
 import React from "react"
 import { Route, Link, Switch, Redirect } from "react-router-dom"
 import * as route from "../../../config/route.config"
+import { withMedia } from "react-media-query-hoc"
+import { fsc } from "../../../helper/fontColorHelper"
 import GlobalMapContainer from "./GlobalMapContainer"
 import GlobalListContainer from "./GlobalListContainer"
 import GlobalNavbar from "../../app/components/GlobalNavbar"
@@ -10,7 +12,7 @@ import LeftSidebar from "../../app/components/LeftSidebar";
 import HomefilterView from "../components/HomeFilterView";
 
 const GlobalContainer = props => {
-    const { match, location } = props
+    const { match, location, media } = props
     const queryData = {
         siteId: 1,
         siteName: "Organic Farmer's Association",
@@ -20,7 +22,7 @@ const GlobalContainer = props => {
     const queryDataEnc = enc(queryData)
 
     return (
-        <div className="container-fluid pt-2 pb-3">
+        <div className={`container-fluid pt-2 pb-3 ${ media.mobile ? "px-1" : "px-4"}`}>
             <GlobalNavbar {...props} />
             <div className="d-flex flex-row flex-wrap flex-md-nowrap">
                 <div className="flex-grow-1">
@@ -42,7 +44,7 @@ const GlobalContainer = props => {
     )
 }
 
-export default GlobalContainer
+export default withMedia(GlobalContainer)
 
 const GlobalPage = props => {
     const pageName = props.match.params.pageName

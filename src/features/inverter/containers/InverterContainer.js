@@ -19,7 +19,7 @@ const InverterContainer = props => {
                         <div className="py-2">
                             <InverterCollapseItem
                                 text="Inverter001"
-                                codeno={"002-001245bea87f3d"}
+                                codeno={"002-001245b3a87f3d"}
                                 selected={ compareMode }
                                 data={[
                                     { name: 'Panels', value: '65' },
@@ -29,8 +29,8 @@ const InverterContainer = props => {
                                 ]} />
 
                             <InverterCollapseItem
-                                text="Inverter001"
-                                codeno={"002-001245bea87f3d"}
+                                text="Inverter002"
+                                codeno={"002-00124abea87f3d"}
                                 data={[
                                     { name: 'Panels', value: '65' },
                                     { name: 'Temp(C)', value: '45' },
@@ -39,8 +39,8 @@ const InverterContainer = props => {
                                 ]}
                             />
                             <InverterCollapseItem
-                                text="Inverter001"
-                                codeno={"002-001245bea87f3d"}
+                                text="Inverter003"
+                                codeno={"002-00124bbea87f3d"}
                                 selected={ compareMode }
                                 data={[
                                     { name: 'Panels', value: '65' },
@@ -50,8 +50,28 @@ const InverterContainer = props => {
                                 ]}
                             />
                             <InverterCollapseItem
-                                text="Inverter001"
-                                codeno={"002-001245bea87f3d"}
+                                text="Inverter004"
+                                codeno={"002-001a45bea87f3d"}
+                                data={[
+                                    { name: 'Panels', value: '65' },
+                                    { name: 'Temp(C)', value: '45' },
+                                    { name: 'Dc Input(kW)', value: '0.11' },
+                                    { name: 'Efficiency', value: '0.11' }
+                                ]}
+                            />
+                            <InverterCollapseItem
+                                text="Inverter005"
+                                codeno={"002-097a45bea17f3d"}
+                                data={[
+                                    { name: 'Panels', value: '65' },
+                                    { name: 'Temp(C)', value: '45' },
+                                    { name: 'Dc Input(kW)', value: '0.11' },
+                                    { name: 'Efficiency', value: '0.11' }
+                                ]}
+                            />
+                            <InverterCollapseItem
+                                text="Inverter006"
+                                codeno={"002-00aa45bba85f3d"}
                                 data={[
                                     { name: 'Panels', value: '65' },
                                     { name: 'Temp(C)', value: '45' },

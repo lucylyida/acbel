@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 import InfoWindowEx from "./InfoWindowEx";
+import MapStyle from '../../home/containers/MapStyle';
+import { fsc } from '../../../helper/fontColorHelper';
+import { withMedia } from 'react-media-query-hoc';
 
 export class MapContainer extends Component {
     constructor(props) {
@@ -25,6 +28,7 @@ export class MapContainer extends Component {
     };
 
     render() {
+        const { media } = this.props
         const stores = [
             {
                 name: "Mandalay",
@@ -49,8 +53,9 @@ export class MapContainer extends Component {
             }
         ];
         return (
-            <div className="map-container">
+            <div style={{ height: '375px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map
+                    styles={MapStyle}
                     google={this.props.google}
                     className={"map"}
                     zoom={3}
@@ -73,14 +78,14 @@ export class MapContainer extends Component {
                         marker={this.state.activeMarker}
                         visible={this.state.showingInfoWindow}
                     >
-                        <div>
-                            <h3>{this.state.selectedPlace.name}</h3>
+                        <div style={{ fontSize: fsc(media, 16) }}>
+                            <div>{this.state.selectedPlace.name}</div>
                             <button
                                 type="button"
                                 onClick={this.showDetails.bind(this, this.state.selectedPlace)}
                             >
                                 Show details
-              </button>
+                            </button>
                         </div>
                     </InfoWindowEx>
                 </Map>
@@ -91,4 +96,4 @@ export class MapContainer extends Component {
 
 export default GoogleApiWrapper({
     apiKey: "AIzaSyDjz91l2P3tnwy9phAWvqEU_V4VPEviW-I"
-})(MapContainer);
+})(withMedia(MapContainer));

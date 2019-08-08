@@ -7,7 +7,8 @@ import AppRoute from "./AppRoute"
 
 const kmQuery = {
   mobile: 'screen and (max-width: 640px)',
-  desktop: 'screen and (min-width: 641px)',
+  tablet: "screen and (min-width: 1440px)",
+  desktop: 'screen and (min-width: 1441px)',
 };
 
 const App = () => {

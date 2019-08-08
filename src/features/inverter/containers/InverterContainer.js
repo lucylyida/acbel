@@ -12,7 +12,7 @@ const InverterContainer = props => {
     return (
         <div className="container-fluid">
             <div className="row">
-                <div className="col-md-5 p-2">
+                <div className="col-lg-5 p-2">
                     <div className="py-2 px-1 d-flex align-items-center" style={{ color: '#FF8800', fontSize: 14, height: 42 }}>{"INVERTERS"}</div>
                     <div>
                         <KmSearchbox placeholder="Search Inverters" style={{ height: 48, backgroundColor: "white" }} />
@@ -87,7 +87,7 @@ const InverterContainer = props => {
                     </div>
 
                 </div>
-                <div className="col-md-7 p-1">
+                <div className="col-lg-7 p-1">
                     <div className="p-2 d-flex justify-content-between align-items-center" style={{ fontSize: 14, height: 42 }}>
                         <div style={{ color: '#FF8800', fontSize: 14 }}>{"ALL INVERTERS"}</div>
                         <div className="d-flex align-items-center">
@@ -221,6 +221,7 @@ const CompareInverterComponent = props => {
                         color={['#1B9817','#29CE22','#6FD1F6']}
                         legendAnchor
                         exportIcon
+                       
                     />
                 </div>
             </div>

@@ -23,9 +23,9 @@ const HomefilterView = props => {
                             placeholder="Select Vendor"
                             options={
                                 [
-                                    { value: 'chocolate_value', label: 'Chocolate', type: '1' },
-                                    { value: 'strawberry_value', label: 'Strawberry', type: '2' },
-                                    { value: 'vanilla_value', label: 'Vanilla', type: '3' }
+                                    { value: 'chocolate_value', label: 'Vendor 1', type: '1' },
+                                    { value: 'strawberry_value', label: 'Vendor 2', type: '2' },
+                                    { value: 'vanilla_value', label: 'Vendor 3', type: '3' }
                                 ]
                             }
                             optionLabel='label'
@@ -38,6 +38,14 @@ const HomefilterView = props => {
                     <div>
                         <KmSelector
                             placeholder="Select Country"
+                            options={
+                                [
+                                    { value: 'chocolate_value', label: 'Signapore', type: '1' },
+                                    { value: 'strawberry_value', label: 'Taiwan', type: '2' },
+                                    { value: 'vanilla_value', label: 'China', type: '3' }
+                                ]
+                            }
+                            optionLabel='label'
                         />
                     </div>
                 </div>
@@ -46,6 +54,14 @@ const HomefilterView = props => {
                     <div>
                         <KmSelector
                             placeholder="Select City"
+                            options={
+                                [
+                                    { value: 'chocolate_value', label: 'Mandalay', type: '1' },
+                                    { value: 'strawberry_value', label: 'City1', type: '2' },
+                                    { value: 'vanilla_value', label: 'City2', type: '3' }
+                                ]
+                            }
+                            optionLabel='label'
                         />
                     </div>
                 </div>
@@ -54,6 +70,14 @@ const HomefilterView = props => {
                     <div>
                         <KmSelector
                             placeholder="Select Site"
+                            options={
+                                [
+                                    { value: 'chocolate_value', label: 'Site1', type: '1' },
+                                    { value: 'strawberry_value', label: 'Site2', type: '2' },
+                                    { value: 'vanilla_value', label: 'Site3', type: '3' }
+                                ]
+                            }
+                            optionLabel='label'
                         />
                     </div>
                 </div>
@@ -63,7 +87,7 @@ const HomefilterView = props => {
                         <KmButton
                             text="FILTER"
                             className="px-3"
-                            style={{ backgroundColor: 'blue' }}
+
                         />
                     </div>
                 </div>

@@ -2,12 +2,12 @@ import React from 'react'
 
 const KmButton = props => {
     const { text, type, onClick, icon, style, className, iconPlace } = props
-    const defaultStyle = { background: '#86bdd1', padding: 7 }
+    const defaultStyle = { background: '#006CF7', padding: 8, }
     const userStyle = style === undefined ? {} : style
 
     return (
-        <div style={{ minWidth: 250 }}>
-        <div
+        <div style={{ minWidth: 200 }}>
+        <button
             onClick={onClick}
             type={type === undefined ? "button" : type}
             className={`btn btn-block ${className} text-center`}
@@ -18,7 +18,7 @@ const KmButton = props => {
                     <div className="d-flex justify-content-center"> <span style={{ color: '#ffffff', fontSize: 15, fontWeight: 'bold' }}>{text}</span><span>{icon} </span></div> :
                     <div className="d-flex justify-content-center"> <span >{icon}</span><span style={{ color: '#ffffff', fontSize: 15, fontWeight: 'bold' }}>{text} </span></div>
             }
-        </div>
+        </button>
         </div>
     )
 }

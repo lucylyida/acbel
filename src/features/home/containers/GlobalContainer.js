@@ -1,6 +1,8 @@
 import React from "react"
 import { Route, Link, Switch, Redirect } from "react-router-dom"
 import * as route from "../../../config/route.config"
+import { withMedia } from "react-media-query-hoc"
+import { fsc } from "../../../helper/fontColorHelper"
 import GlobalMapContainer from "./GlobalMapContainer"
 import GlobalListContainer from "./GlobalListContainer"
 import GlobalNavbar from "../../app/components/GlobalNavbar"
@@ -10,7 +12,7 @@ import LeftSidebar from "../../app/components/LeftSidebar";
 import HomefilterView from "../components/HomeFilterView";
 
 const GlobalContainer = props => {
-    const { match, location } = props
+    const { match, location, media } = props
     const queryData = {
         siteId: 1,
         siteName: "Organic Farmer's Association",
@@ -18,23 +20,18 @@ const GlobalContainer = props => {
         country: "Taiwan"
     }
     const queryDataEnc = enc(queryData)
-    const leftSidebarOpen = true
 
     return (
-        <div className="container-fluid p-2">
+        <div className={`container-fluid pt-2 pb-3 ${ media.mobile ? "px-1" : "px-4"}`}>
             <GlobalNavbar {...props} />
-            <div className="d-flex flex-row flex-wrap flex-sm-nowrap">
-                {
-                    !leftSidebarOpen ?
-                        <div className="pr-4">
-                            <LeftSidebar
-                                online={218} offine={12} siteChoose={true} active={true} efficiency={100} capacity={170.00}
-                                siteName={"Organic Farmer's Association"}
-                            />
-                        </div>
-                        : null
-                }
-                <div className="w-100">
+            <div className="d-flex flex-row flex-wrap flex-md-nowrap">
+                <div className="flex-grow-1">
+                    <LeftSidebar
+                        online={218} offine={12} siteChoose={true} active={true} efficiency={100} capacity={170.00}
+                    //siteName={"Organic Farmer's Association"}
+                    />
+                </div>
+                <div className="w-100 pb-3">
                     <HomeStatusView />
                     <HomefilterView />
                     <Switch>
@@ -47,7 +44,7 @@ const GlobalContainer = props => {
     )
 }
 
-export default GlobalContainer
+export default withMedia(GlobalContainer)
 
 const GlobalPage = props => {
     const pageName = props.match.params.pageName

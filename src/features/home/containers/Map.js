@@ -56,7 +56,7 @@ export class MapContainer extends Component {
             <div style={{ height: '100%', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map
                     initialCenter={{ lat: 21.359423, lng: 96.021071 }}
-                    zoom={9}
+                    zoom={6}
                     styles={MapStyle}
                     google={this.props.google}
                     onClick={this.onMapClicked}>
@@ -76,6 +76,7 @@ export class MapContainer extends Component {
                     {
                         this.state.stores.map((store, index) => (
                             <InfoWindow
+                                key={index}
                                 maxWidth={350}
                                 marker={this.state.activeMarker}
                                 visible={this.state.showingInfoWindow}

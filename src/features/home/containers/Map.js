@@ -14,6 +14,7 @@ export class MapContainer extends Component {
         ]
     };
 
+
     onMarkerClick = (props, marker, e) =>
         this.setState({
             selectedPlace: props,
@@ -21,6 +22,7 @@ export class MapContainer extends Component {
             showingInfoWindow: true,
 
         });
+
 
     onMapClicked = (props) => {
         if (this.state.showingInfoWindow) {
@@ -30,6 +32,11 @@ export class MapContainer extends Component {
             })
         }
     };
+
+    
+    infoClick = () => {
+        alert('OkoKOKOK')
+    }
 
     render() {
         const icon = {
@@ -43,6 +50,7 @@ export class MapContainer extends Component {
             strokeWeight: 0,
             scale: 1
         }
+
         return (
 
             <div style={{ height: '100%', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
@@ -75,7 +83,7 @@ export class MapContainer extends Component {
                                 <div>
                                     <h4>{this.state.selectedPlace.name}</h4>
                                     <h5 style={{ color: 'blue' }}>Organic Farmer's Association</h5>
-                                    <div><span>Online</span></div>
+                                    <button onClick={this.infoClick}>Online</button>
                                     <div> <span>Power Output:: 147.45kW</span></div>
                                     <div><span>Online:: 320kW</span></div>
                                 </div>

@@ -3,21 +3,26 @@ import KmSearchbox from '../../../kumocom/KmSearchbox'
 import KmButton from '../../../kumocom/KmButton'
 import KmSelector from '../../../kumocom/KmSelector'
 
+import { withMedia } from 'react-media-query-hoc';
+import { fsc } from '../../../helper/fontColorHelper';
+
+
 const HomefilterView = props => {
+    const { media } = props
     return (
         <div className="container-fluid mt-3 py-3" style={{ backgroundColor: '#ffffff', borderRadius: 4 }}>
-            <div className="py-2" style={{ color: '#FF8902',fontSize: 10 }}>FILTER</div>
-            <div className="d-flex align-items-baseline flex-wrap" style={{ color: '#A3A3A3' ,fontSize:10}}>
+            <div className="py-2" style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"FILTER"}</div>
+            <div className="d-flex align-items-baseline flex-wrap" style={{ color: '#A3A3A3' }}>
 
                 <div className="flex-column p-2 flex-fill">
-                    <div className="pb-1">SEARCH</div>
+                    <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>SEARCH</div>
                     <div>
                         <KmSearchbox text="Search" />
                     </div>
                 </div>
 
                 <div className="flex-column p-2 flex-fill">
-                    <div className="pb-1">VENDOR</div>
+                    <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>VENDOR</div>
                     <div>
                         <KmSelector
                             placeholder="Select Vendor"
@@ -34,7 +39,7 @@ const HomefilterView = props => {
                 </div>
 
                 <div className=" flex-column p-2 flex-fill">
-                    <div className="pb-1">COUNTRY</div>
+                    <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>COUNTRY</div>
                     <div>
                         <KmSelector
                             placeholder="Select Country"
@@ -50,7 +55,7 @@ const HomefilterView = props => {
                     </div>
                 </div>
                 <div className=" flex-column p-2 flex-fill">
-                    <div className="pb-1">CITY</div>
+                    <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>CITY</div>
                     <div>
                         <KmSelector
                             placeholder="Select City"
@@ -66,7 +71,7 @@ const HomefilterView = props => {
                     </div>
                 </div>
                 <div className=" flex-column p-2 flex-fill">
-                    <div className="pb-1">SITE</div>
+                    <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>SITE</div>
                     <div>
                         <KmSelector
                             placeholder="Select Site"
@@ -81,7 +86,7 @@ const HomefilterView = props => {
                         />
                     </div>
                 </div>
-                <div className="flex-column p-2 flex-fill">   
+                <div className="flex-column p-2 flex-fill">
                     <br />
                     <div className="pt-1">
                         <KmButton
@@ -97,4 +102,4 @@ const HomefilterView = props => {
     )
 }
 
-export default HomefilterView;
+export default withMedia(HomefilterView);

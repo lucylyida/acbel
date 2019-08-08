@@ -14,7 +14,7 @@ const KmToggleButton = (props) => {
                 borderRadius: 4,
                 border: `1px solid ${selected ? "#416AAC" : "#88A2CD"}`,
                 color: selected ? "#416AAC" : "#88A2CD",
-                fontSize: 11,
+                fontSize: 12,
             }}>
             <b>{text}</b>
         </button>

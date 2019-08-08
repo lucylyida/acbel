@@ -4,23 +4,25 @@ import KmToggleButton from "../../../kumocom/KmToggleButton";
 import KmSearchbox from "../../../kumocom/KmSearchbox"
 import KmButton from "../../../kumocom/KmButton"
 import InverterCollapseItem from "../components/InverterCollapseItem"
+import { withMedia } from 'react-media-query-hoc'
+import { fsc } from "../../../helper/fontColorHelper";
 
 const InverterContainer = props => {
-    const { } = props
-    const [ compareMode, switchNormalMode ] = useState(false)
+    const { media } = props
+    const [compareMode, switchNormalMode] = useState(false)
     const selected = 'btn_3'
     return (
         <div className="container-fluid">
             <div className="row">
                 <div className="col-md-5 p-2">
-                    <div className="py-2 px-1 d-flex align-items-center" style={{ color: '#FF8800', fontSize: 14, height: 42 }}>{"INVERTERS"}</div>
+                    <div className="py-2 px-1 d-flex align-items-center" style={{ color: '#FF8800', fontSize: fsc(media, 14), height: 42 }}>{"INVERTERS"}</div>
                     <div>
                         <KmSearchbox placeholder="Search Inverters" style={{ height: 48, backgroundColor: "white" }} />
                         <div className="py-2">
                             <InverterCollapseItem
                                 text="Inverter001"
                                 codeno={"002-001245b3a87f3d"}
-                                selected={ compareMode }
+                                selected={compareMode}
                                 data={[
                                     { name: 'Panels', value: '65' },
                                     { name: 'Temp(C)', value: '45' },
@@ -41,7 +43,7 @@ const InverterContainer = props => {
                             <InverterCollapseItem
                                 text="Inverter003"
                                 codeno={"002-00124bbea87f3d"}
-                                selected={ compareMode }
+                                selected={compareMode}
                                 data={[
                                     { name: 'Panels', value: '65' },
                                     { name: 'Temp(C)', value: '45' },
@@ -81,15 +83,15 @@ const InverterContainer = props => {
                             />
                         </div>
                         <div className="py-2">
-                            <KmButton text="View Selected Inverter Comparison" onClick={ ()=>switchNormalMode(!compareMode) } />
+                            <KmButton text="View Selected Inverter Comparison" onClick={() => switchNormalMode(!compareMode)} />
                             <div className="py-3 font-weight-bold text-uppercase" align="center" style={{ fontSize: 14, color: "#a2a2a2" }}>Reset Selection</div>
                         </div>
                     </div>
 
                 </div>
                 <div className="col-md-7 p-1">
-                    <div className="p-2 d-flex justify-content-between align-items-center" style={{ fontSize: 14, height: 42 }}>
-                        <div style={{ color: '#FF8800', fontSize: 14 }}>{"ALL INVERTERS"}</div>
+                    <div className="p-2 d-flex justify-content-between align-items-center" style={{ height: 42, fontSize: fsc(media, 14) }}>
+                        <div style={{ color: '#FF8800' }}>{"ALL INVERTERS"}</div>
                         <div className="d-flex align-items-center">
                             <div className="px-1" style={{ color: "gray" }}>{"Dates"}</div>
                             <i className="fa fa-calendar-alt pr-2" style={{ color: '#88A2CD', fontSize: 20 }} />
@@ -117,7 +119,7 @@ const InverterContainer = props => {
                         </div>
                     </div>
                     <div className="p-1">
-                        <div className="bg-white px-4 py-3" style={{ borderRadius: 4, fontSize: 14 }}>
+                        <div className="bg-white px-4 py-3" style={{ borderRadius: 4, fontSize: fsc(media, 14) }}>
                             <div style={{ color: '#FF8800', }}>{"EFFICIENCY"}</div>
                             <div className="pt-2" style={{ color: '#153784', fontSize: 24, fontWeight: 800 }}>
                                 {"88"}
@@ -138,7 +140,7 @@ const InverterContainer = props => {
     )
 }
 
-export default InverterContainer
+export default withMedia(InverterContainer)
 
 const AllInverterComponent = props => {
     return (
@@ -217,8 +219,8 @@ const CompareInverterComponent = props => {
                         headerText={'GRAPH TITLE 2'}
                         chartType='bar'
                         data={compareBardata}
-                        keys={['inverter 001','inverter 002','inverter 003']}
-                        color={['#1B9817','#29CE22','#6FD1F6']}
+                        keys={['inverter 001', 'inverter 002', 'inverter 003']}
+                        color={['#1B9817', '#29CE22', '#6FD1F6']}
                         legendAnchor
                         exportIcon
                     />
@@ -229,50 +231,50 @@ const CompareInverterComponent = props => {
 }
 const compareBardata = [
     {
-      "time": "05:00",
-      "inverter 001": 80,
-      "inverter 002": 146,
-      "inverter 003": 20,
+        "time": "05:00",
+        "inverter 001": 80,
+        "inverter 002": 146,
+        "inverter 003": 20,
     },
     {
-      "time": "06:00",
-      "inverter 001": 80,
-      "inverter 002": 154,
-      "inverter 003": 40,
-  
+        "time": "06:00",
+        "inverter 001": 80,
+        "inverter 002": 154,
+        "inverter 003": 40,
+
     },
     {
-      "time": "07:00",
-      "inverter 001": 109,
-      "inverter 002": 131,
-      "inverter 003": 20,
-  
+        "time": "07:00",
+        "inverter 001": 109,
+        "inverter 002": 131,
+        "inverter 003": 20,
+
     },
     {
-      "time": "08:00",
-      "inverter 001": 156,
-      "inverter 002": 36,
-      "inverter 003": 20,
+        "time": "08:00",
+        "inverter 001": 156,
+        "inverter 002": 36,
+        "inverter 003": 20,
     },
     {
-      "time": "09:00",
-      "inverter 001": 116,
-      "inverter 002": 111,
-      "inverter 003": 40,
+        "time": "09:00",
+        "inverter 001": 116,
+        "inverter 002": 111,
+        "inverter 003": 40,
     },
     {
-      "time": "10:00",
-      "inverter 001": 16,
-      "inverter 002": 179,
-      "inverter 003": 35,
+        "time": "10:00",
+        "inverter 001": 16,
+        "inverter 002": 179,
+        "inverter 003": 35,
     },
     {
-      "time": "11:00",
-      "inverter 001": 49,
-      "inverter 002": 105,
-      "inverter 003": 66,
+        "time": "11:00",
+        "inverter 001": 49,
+        "inverter 002": 105,
+        "inverter 003": 66,
     }
-  ]
+]
 const compareAreaData = [
     {
         "id": "Inverter 1",

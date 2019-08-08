@@ -1,19 +1,21 @@
 import React from 'react'
 
-import { FourItemBox } from '../../app/components/FourItemBox';
-import SolarPanelIcon from '../../../assets/icons/solarpanel_icn'//'./icons/solarpanel_icn'; 
+import FourItemBox from '../../app/components/FourItemBox';
+import SolarPanelIcon from '../../../assets/icons/solarpanel_icn';
 import PowerIcon from '../../../assets/icons/Power_icon';
 import CapacityIcon from '../../../assets/icons/CapacityIcon';
 import ConnnectivityIcon from '../../../assets/icons/Connectivity_icon';
 import MoneyIcon from '../../../assets/icons/Money_Icon';
+import { withMedia } from 'react-media-query-hoc';
+import { fsc } from '../../../helper/fontColorHelper';
 
 const HomeStatusView = props => {
-    const { } = props
+    const { media } = props
     return (
         <div className="container-fluid" style={{ background: 'white', borderRadius: 4 }}>
 
             <div className='row py-3'>
-                <div className='col-12 py-2' style={{ color: '#FF8902', fontSize: 10 }}>{"TODAY"}</div>
+                <div className='col-12 py-2' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"TODAY"}</div>
 
                 <div className="col-6 col-sm-4 col-lg-3 py-2">
                     <FourItemBox value={230} desc={"TOTAL NO. OF SITES"} icon={<SolarPanelIcon />} />
@@ -43,7 +45,7 @@ const HomeStatusView = props => {
                     <FourItemBox value={56} unit={"%"} desc={"SITES CONNECTIVITY"} icon={<ConnnectivityIcon />} />
                 </div>
 
-                <div className="col-sm-4 col-lg-3 py-2">
+                <div className="col-6 col-sm-4 col-lg-3 py-2">
                     <FourItemBox value={456890.55} unit={"NT$"} desc={"TOTAL ACC. REVENUE"} icon={<MoneyIcon />} />
                 </div>
             </div>
@@ -51,4 +53,4 @@ const HomeStatusView = props => {
     )
 }
 
-export default HomeStatusView;
+export default withMedia(HomeStatusView);

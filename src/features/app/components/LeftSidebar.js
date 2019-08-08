@@ -4,6 +4,9 @@ import Capacity from '../../../assets/icons/CapacityIcon';
 import HomeIcon from "../../../assets/icons/Home-Icon"
 import querystring from "query-string"
 
+import { withMedia } from 'react-media-query-hoc';
+import { fsc } from '../../../helper/fontColorHelper';
+
 import { _hadleMenuClick } from "./GlobalNavbar"
 const LeftSidebar = props => {
     const { online, offline, active, siteName, efficiency, capacity, location, match, history } = props
@@ -98,4 +101,4 @@ const LeftSidebar = props => {
         )
 }
 
-export default withRouter(LeftSidebar);
+export default withRouter(withMedia(LeftSidebar));

@@ -50,7 +50,7 @@ export class MapContainer extends Component {
         }
         return (
 
-            <div className="" style={{ height: '346px', position: 'relative', bottom: '0', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
+            <div className="" style={{ height: '375px', position: 'relative', bottom: '0', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map
                     style={{ height: '100%', width: '100%' }}
                     zoom={9}

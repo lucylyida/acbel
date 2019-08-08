@@ -45,7 +45,7 @@ export class MapContainer extends Component {
         }
         return (
 
-            <div style={{ height: '100%', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
+            <div style={{ borderRadius: 4, border: '0.7px solid #cccccc', height: '400px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map
                     initialCenter={{ lat: 21.359423, lng: 96.021071 }}
                     zoom={6}

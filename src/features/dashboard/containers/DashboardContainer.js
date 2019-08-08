@@ -34,6 +34,9 @@ const DashboardContainer = props => {
                             data={sampleData}
                             keys={['CurrentOutput']}
                             color={'#6FD1F6'}
+                            axisLeftLegend="Power(kw)"
+                            axisRightLegend="Power(kw)"
+                            
                         />
                     </div>
                 </div>

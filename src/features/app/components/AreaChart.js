@@ -9,9 +9,10 @@ const MyResponsiveLine = (props) => {
                 data={data}
                 margin={{
                     "top": 40,
-                    "right": 80,
+                    "right": axisRight && axisRight.legend ?  70 : !axisRight ? 20 : 50,
                     "bottom": 60,
-                    "left": 70
+                    "left": axisLeft.legend ?  60 : 40
+                    
                 }}
                 xScale={{ type: 'point' }}
                 // yScale={{ type: 'linear', stacked: false, min: '0', max: 'auto' }}

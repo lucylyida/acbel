@@ -9,7 +9,7 @@ const RevenueStatusView = props => {
     return (
         <div className="container-fluid " style={{ background: 'white', borderRadius: 4 }}>
 
-            <div className='row py-3'>
+            <div className='row py-3 px-1'>
                 <div className='col-12 ' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"SITE INFORMATION"}</div>
 
                 <div className="col-6 col-md-4 col-lg-3 py-2">

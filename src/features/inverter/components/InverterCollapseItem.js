@@ -21,7 +21,7 @@ const InverterCollapseItem = props => {
                             style={{ cursor: 'pointer', fontSize: fsc(media, 18), color: '#dadadd ' }}
                             onClick={() => setExpand((!expand))}
                         >
-                            {expand ? <span ><i class="fas fa-sort-up"></i></span> : <span ><i class="fas fa-sort-down"></i></span>}
+                            {expand ? <span ><i className="fas fa-sort-up"></i></span> : <span ><i className="fas fa-sort-down"></i></span>}
                         </div>
                     </div>
                 </div>

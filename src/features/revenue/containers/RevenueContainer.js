@@ -19,13 +19,13 @@ const RevenueContainer = props => {
                 <div className=" col-md-6 p-1"><SearchPanel /></div>
 
                 <div className="col-md-6 p-1">
-                    <div className="bg-white" style={{ borderRadius: 4 }}>
+                    <div className="bg-white h-100" style={{ borderRadius: 4 }}>
                         <ChartContainer
                             chartType='area'
                             data={data}
                             color={'#FEC71F'}
                             axisLeftLegend="NT$"
-                            legendAnchor
+                            legendAnchor="top-left"
                         />
                     </div>
                 </div>

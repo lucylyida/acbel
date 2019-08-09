@@ -8,7 +8,7 @@ import { fsc } from '../../../helper/fontColorHelper'
 const SearchPanel = props => {
     const { media } = props
     return (
-        <div className="bg-white container-fluid py-3" >
+        <div className="container-fluid px-4 py-3 bg-white" style={{ borderRadius: 4 }}>
             <div className='  ' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"TRENDS"}</div>
             <div className="py-1 " style={{ fontSize: fsc(media, 13), color: '#999999' }}>GENERATE BY</div>
             <div className="d-flex py-2" >
@@ -34,7 +34,7 @@ const SearchPanel = props => {
                 </div>
             </div>
 
-            <div className="p-2">
+            <div className="pl-1 py-2">
                 <KmButton text="SEARCH" style={{ width: 120 }} />
             </div>
         </div>

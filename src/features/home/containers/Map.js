@@ -22,6 +22,13 @@ export class MapContainer extends Component {
             showingInfoWindow: true
         });
     };
+    infoWindowClose = () => {
+        this.setState({
+
+            showingInfoWindow: false
+        });
+    }
+
 
     showDetails = place => {
         alert("place");
@@ -66,6 +73,7 @@ export class MapContainer extends Component {
         return (
             <div style={{ height: '100%', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map
+                    onClick={this.infoWindowClose}
                     styles={MapStyle}
                     google={this.props.google}
                     className={"map"}
@@ -92,6 +100,8 @@ export class MapContainer extends Component {
                     >
                         <div style={{ fontSize: fsc(media, 16) }}>
                             <div>{this.state.selectedPlace.name}</div>
+                            <div style={{ color: 'blue' }}>Farmar Organization's </div>
+                            <div>Online </div>
                             <button
                                 type="button"
                                 onClick={this.showDetails.bind(this, this.state.selectedPlace)}

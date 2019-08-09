@@ -40,4 +40,4 @@ const InverterCollapseItem = props => {
         </div>
     )
 }
-export default InverterCollapseItem
+export default withMedia(InverterCollapseItem)

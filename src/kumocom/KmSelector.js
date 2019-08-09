@@ -34,6 +34,10 @@ const KmSelector = (props) => {
             ...base,
             color: userStyle.color
         }),
+        indicatorSeparator: (base,state) =>({
+            ...base,
+            display: userStyle.indicator === undefined ? null :  userStyle.indicator
+        })
     };
 
     return (

@@ -29,14 +29,14 @@ const ReportGeneratorView = props => {
                 <div className="flex-grow-1 d-flex px-2">
                     <div className="p-1 flex-grow-1">
                         <div style={{ fontSize: fsc(media,13), color: '#999999' }}>FROM</div>
-                        <div className="bg-light p-2 rounded border border-secondary d-flex justify-content-between" style={{ cursor: "pointer" }}>
+                        <div className="bg-light p-1 rounded border border-secondary d-flex justify-content-between" style={{ cursor: "pointer" }}>
                             <div>22/04/2019</div>
                             <div><i className="far fa-calendar" /></div>
                         </div>
                     </div>
                     <div className="p-1 flex-grow-1">
                         <div style={{ fontSize: fsc(media,13), color: '#999999' }}>TO</div>
-                        <div className="bg-light p-2 rounded border border-secondary d-flex justify-content-between" style={{ cursor: "pointer" }}>
+                        <div className="bg-light p-1 rounded border border-secondary d-flex justify-content-between" style={{ cursor: "pointer" }}>
                             <div>22/04/2019</div>
                             <div><i className="far fa-calendar" /></div>
                         </div>
@@ -45,7 +45,7 @@ const ReportGeneratorView = props => {
                 <div className=" flex-grow-1  flex-fill">
                     <div style={{ fontSize: fsc(media,13), color: '#999999' }}>EXPORT REPORT AS</div>
                     <div className="d-flex">
-                        <div className="px-2"> <KmButtom text="PDF" noMinWidth style={{ width: 80 }} /></div>
+                        <div > <KmButtom text="PDF" noMinWidth style={{ width: 80 }} /></div>
                         <div className="px-2"><KmButtom text="PRINT" noMinWidth style={{ width: 80 }} /> </div>
                     </div>
                 </div>

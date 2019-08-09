@@ -5,7 +5,7 @@ import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../../../helper/fontColorHelper'
 
 const ChartContainer = props => {
-    const { headerText, chartType, data, color, keys, axisLeftLegend, axisRightLegend, legendAnchor, exportIcon, media } = props
+    const { headerText, chartType, data, color, keys, axisLeftLegend, axisRightLegend, legendAnchor = 'top-right', axisBottomLegend='Time',  exportIcon, media } = props
     const axisLeft = {
         orient: 'left',
         tickSize: 0,
@@ -13,17 +13,28 @@ const ChartContainer = props => {
         tickRotation: 0,
         legend: axisLeftLegend,
         legendOffset: -50,
-        legendPosition: 'middle'
+        legendPosition: 'middle',
+        tickvalue: 5,
     }
     const axisRight = data.length === 1 ? undefined : {
         orient: 'right',
-        tickSize: 5, 
+        tickSize: 5,
         tickPadding: 10,
-        tickRotation: 0, 
+        tickRotation: 0,
         legend: axisRightLegend,
-        legendOffset: 59, 
+        legendOffset: 59,
         legendPosition: 'middle'
-    } 
+    }
+
+    const axisBottom = {
+        orient: 'bottom',
+        tickSize: 0,
+        tickPadding: 20,
+        tickRotation: 0,
+        legend: axisBottomLegend,
+        legendOffset: 50,
+        legendPosition: 'middle'
+    }
     return (
         <div className="p-1 w-100">
             <div className="rounded" style={{ backgroundColor: "white", width: "100%", height: media.tablet ? 380 : 280 }}>
@@ -54,7 +65,7 @@ const ChartContainer = props => {
                         float: 'right',
                         cursor: 'pointer !important',
                         fontSize: fsc(media, 14)
-                        
+
                     }}>
                         <i className="fas fa-external-link-alt" style={{ cursor: 'inherient' }}> </i> <span style={{ marginTop: -3, cursor: 'pointer' }}>Export</span>
                     </div>
@@ -65,14 +76,16 @@ const ChartContainer = props => {
                         color={color}
                         axisLeft={axisLeft}
                         axisRight={axisRight}
-                        legendAnchor={legendAnchor === undefined ? 'top-right' : 'top'} />}
+                        legendAnchor={legendAnchor}
+                        axisBottom= {axisBottom} />}
                     {chartType === 'bar' && <BarChart
                         data={data}
                         color={color}
                         keys={keys}
                         axisLeft={axisLeft}
                         axisRight={axisRight}
-                        legendAnchor={legendAnchor === undefined ? 'top-right' : 'top'} />}
+                        axisBottom={axisBottom}
+                        legendAnchor={legendAnchor} />}
                 </div>
             </div>
         </div>

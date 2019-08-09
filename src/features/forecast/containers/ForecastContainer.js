@@ -1,5 +1,7 @@
 import React from "react"
+import ChartContainer from "../../app/components/ChartContainer"
 import SearchPanel from '../../app/components/SearchPanel'
+
 
 const ForecastContainer = props => {
     return (
@@ -14,8 +16,20 @@ const ForecastContainer = props => {
                         <div className="bg-white h-100">Next Cards</div>
                     </div>
                 </div>
-                <div className="col-md-6 p-1" style={{ height: 300 }}>
-                    <div className="bg-white h-100" >Chart</div>
+                <div className="col-md-6 p-1">
+                    <div className="bg-white" >
+                        <ChartContainer
+                            chartType='area'
+                            headerText={''}
+                            data={areaData}
+                            color={['#2195F4', '#6522CE']}
+                            axisLeftLegend="Revenue"
+                            axisRightLegend="Temperature"
+                            axisBottomLegend='Date'
+                            legendAnchor
+                            exportIcon
+                        />
+                    </div>
                 </div>
             </div>
 
@@ -30,7 +44,18 @@ const ForecastContainer = props => {
                 </div>
 
                 <div className="col-md-6 p-1">
-                    <div className="bg-white" style={{ height: 300 }}>
+                    <div className="bg-white">
+                        <ChartContainer
+                            chartType='area'
+                            headerText={'COMPARE OUTPUT TREND'}
+                            data={areaData}
+                            color={['#57D752', '#36CEDC']}
+                            axisLeftLegend="Revenue"
+                            axisRightLegend="Temperature"
+                            axisBottomLegend="Date"
+                            legendAnchor ="top"
+                            exportIcon
+                        />
 
                     </div>
                 </div>
@@ -40,3 +65,115 @@ const ForecastContainer = props => {
 }
 
 export default ForecastContainer
+
+
+const areaData = [
+    {
+        "id": "Revenue",
+        "data": [
+            {
+                "x": "06:00",
+                "y": 7900
+            },
+            {
+                "x": "07:00",
+                "y": 3000
+            },
+            {
+                "x": "08:00",
+                "y": 3500
+            },
+            {
+                "x": "09:00",
+                "y": 10000
+            },
+            {
+                "x": "10:00",
+                "y": 4500
+            },
+            {
+                "x": "11:00",
+                "y": 14000
+            },
+            {
+                "x": "12:00",
+                "y": 11000
+            },
+            {
+                "x": "13:00",
+                "y": 15000
+            },
+            {
+                "x": "14:00",
+                "y": 9000
+            },
+            {
+                "x": "15:00",
+                "y": 8000
+            },
+            {
+                "x": "16:00",
+                "y": 19000
+            },
+            {
+                "x": "17:00",
+                "y": 6000
+            }
+
+        ]
+    },
+    {
+        "id": "Radiator",
+        "data": [
+            {
+                "x": "06:00",
+                "y": 3000
+            },
+            {
+                "x": "07:00",
+                "y": 4000
+            },
+            {
+                "x": "08:00",
+                "y": 5000
+            },
+            {
+                "x": "09:00",
+                "y": 8000
+            },
+            {
+                "x": "10:00",
+                "y": 5500
+            },
+            {
+                "x": "11:00",
+                "y": 5600
+            },
+            {
+                "x": "12:00",
+                "y": 5900
+            },
+            {
+                "x": "13:00",
+                "y": 6700
+            },
+            {
+                "x": "14:00",
+                "y": 4000
+            },
+            {
+                "x": "15:00",
+                "y": 19000
+            },
+            {
+                "x": "16:00",
+                "y": 3000
+            },
+            {
+                "x": "17:00",
+                "y": 6000
+            }
+
+        ]
+    }
+]

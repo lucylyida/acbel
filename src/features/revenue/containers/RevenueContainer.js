@@ -20,7 +20,7 @@ const RevenueContainer = props => {
 
                 <div className="col-md-6 p-1">
                     <div className="bg-white" style={{ borderRadius: 4 }}>
-                    <ChartContainer
+                        <ChartContainer
                             chartType='area'
                             data={data}
                             color={'#FEC71F'}

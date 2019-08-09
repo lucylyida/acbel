@@ -60,7 +60,7 @@ export class MapContainer extends Component {
         ];
         return (
 
-            <div style={{ height: '375px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
+            <div style={{ height: '385px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
 
                 <Map
                     onClick={this.infoWindowClose}

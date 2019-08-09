@@ -1,23 +1,24 @@
 import React from "react"
 import ChartContainer from "../../app/components/ChartContainer"
 import SearchPanel from '../../app/components/SearchPanel'
-
+import ForecastStatusViewA from "../components/ForecastStatusViewA";
+import ForecastStatusViewB from "../components/ForecastStatusViewB";
 
 const ForecastContainer = props => {
     return (
         <div className="container-fluid">
             <div className="row pb-2">
-                <div className="col-md-6 p-0 mb-1 d-flex flex-column justify-content-between">
+                <div className="col-md-6 p-0 d-flex flex-column justify-content-between">
                     <div className="p-1">
-                        <div className="bg-white h-100">Weather</div>
+                        <ForecastStatusViewA />
                     </div>
 
-                    <div className="pt-1 px-1">
-                        <div className="bg-white h-100">Next Cards</div>
+                    <div className="p-1">
+                        <ForecastStatusViewB />
                     </div>
                 </div>
                 <div className="col-md-6 p-1">
-                    <div className="bg-white" >
+                    <div className="bg-white d-flex align-items-center h-100">
                         <ChartContainer
                             chartType='area'
                             headerText={''}
@@ -33,18 +34,16 @@ const ForecastContainer = props => {
                 </div>
             </div>
 
-            <div className="row px-1">
+            <div className="row p-1">
                 <div className="col-12" style={{ border: '1px solid lightgrey' }}></div>
             </div>
             <div className="row pt-2">
                 <div className="col-md-6 p-1">
-                    <div className="bg-white " >
-                    <SearchPanel/>
-                    </div>
+                    <SearchPanel />
                 </div>
 
                 <div className="col-md-6 p-1">
-                    <div className="bg-white">
+                    <div className="bg-white h-100 d-flex align-items-center">
                         <ChartContainer
                             chartType='area'
                             headerText={'COMPARE OUTPUT TREND'}
@@ -53,7 +52,7 @@ const ForecastContainer = props => {
                             axisLeftLegend="Revenue"
                             axisRightLegend="Temperature"
                             axisBottomLegend="Date"
-                            legendAnchor ="top"
+                            legendAnchor="top"
                             exportIcon
                         />
 

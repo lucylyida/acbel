@@ -3,7 +3,7 @@ import { ResponsiveLine } from '@nivo/line'
 
 
 const MyResponsiveLine = (props) => {
-    const { data, color, axisRight, axisLeft, legendAnchor} = props
+    const { data, color, axisRight, axisLeft, legendAnchor,axisBottom} = props
     return (
             <ResponsiveLine
                 data={data}
@@ -17,15 +17,7 @@ const MyResponsiveLine = (props) => {
                 xScale={{ type: 'point' }}
                 // yScale={{ type: 'linear', stacked: false, min: '0', max: 'auto' }}
                 curve="monotoneX"
-                axisBottom={{
-                    orient: 'bottom',
-                    tickSize: 0,
-                    tickPadding: 20,
-                    tickRotation: 0,
-                    legend: 'Time',
-                    legendOffset: 50,
-                    legendPosition: 'middle'
-                }}
+                axisBottom={axisBottom}
                 axisLeft={axisLeft}
                 axisRight={axisRight}
                 enableGridX={false}
@@ -86,10 +78,6 @@ const MyResponsiveLine = (props) => {
             />
     )
 }
-
-
-
-
 
 
 export default MyResponsiveLine;

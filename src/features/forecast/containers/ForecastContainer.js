@@ -1,5 +1,7 @@
 import React from "react"
 import ChartContainer from "../../app/components/ChartContainer"
+import SearchPanel from '../../app/components/SearchPanel'
+
 
 const ForecastContainer = props => {
     return (
@@ -36,8 +38,8 @@ const ForecastContainer = props => {
             </div>
             <div className="row pt-2">
                 <div className="col-md-6 p-1">
-                    <div className="bg-white " style={{ height: 300 }}>
-
+                    <div className="bg-white " >
+                    <SearchPanel/>
                     </div>
                 </div>
 

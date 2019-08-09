@@ -21,7 +21,7 @@ const KmLink = props => {
     return (
 
         <Link
-            className={`px-1 pb-1 p-1 text-center coolLink ${className}`}
+            className={`text-center coolLink ${className}`}
             style={{ ...defaultStyle, ...userStyle }}
             onClick={onClick}
             to={to} >

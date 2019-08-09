@@ -1,10 +1,11 @@
 import React from "react"
+import RevenueStatusView from "../components/RevenueStatusView";
 
 const RevenueContainer = props => {
     return (
         <div className="container-fluid">
             <div className="row px-1">
-                <div className="p-1 bg-white w-100">revenue card</div>
+                <div className="p-1 bg-white w-100"><RevenueStatusView /></div>
             </div>
 
 

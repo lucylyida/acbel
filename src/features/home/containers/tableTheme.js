@@ -28,7 +28,7 @@ export default media => ({
         borderColor: '#00000011',
         hoverFontColor: '#232323',
         hoverBackgroundColor: '#ffffffcc',
-        height: '40px',
+        height: '54px',
     },
     cells: {
         cellPadding: '40px',

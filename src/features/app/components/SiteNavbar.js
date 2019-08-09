@@ -62,16 +62,16 @@ const SiteNavbar = props => {
                 </div>
             </div>
 
-            <div className="d-flex flex-row flex-wrap align-items-baseline pt-3 px-2">
+            <div className="d-flex flex-row flex-wrap align-items-baseline pt-3 px-1">
                 <div className="py-1 d-flex flex-direction-row" style={{ overflowX: 'auto' }}>
-                    <div className="pr-2"><KmLink text="Dashboard" to={`${match.url}/${route.dashboard}${location.search}`} currentLink={location.pathname + location.search} /></div>
-                    <div className="pr-2"><KmLink text="Forecast" to={`${match.url}/${route.forecast}${location.search}`} currentLink={location.pathname + location.search} /></div>
-                    <div className="pr-2"><KmLink text="Revenue" to={`${match.url}/${route.revenue}${location.search}`} currentLink={location.pathname + location.search} /></div>
-                    <div className="pr-2"><KmLink text="Maintenance" to={`${match.url}/${route.maintenance}${location.search}`} currentLink={location.pathname + location.search} /></div>
-                    <div className="pr-2"><KmLink text="Profile" to={`${match.url}/${route.profile}${location.search}`} currentLink={location.pathname + location.search} /></div>
-                    <div className="pr-2"><KmLink text="Inverters" to={`${match.url}/${route.inverter}${location.search}`} currentLink={location.pathname + location.search} /></div>
-                    <div className="pr-2"><KmLink text="Panels" to={`${match.url}/${route.panel}${location.search}`} currentLink={location.pathname + location.search} /></div>
-                    <div className="pr-2"><KmLink text="Report" to={`${match.url}/${route.report}${location.search}`} currentLink={location.pathname + location.search} /></div>
+                    <div className="pr-3"><KmLink text="Dashboard" to={`${match.url}/${route.dashboard}${location.search}`} currentLink={location.pathname + location.search} /></div>
+                    <div className="pr-3"><KmLink text="Forecast" to={`${match.url}/${route.forecast}${location.search}`} currentLink={location.pathname + location.search} /></div>
+                    <div className="pr-3"><KmLink text="Revenue" to={`${match.url}/${route.revenue}${location.search}`} currentLink={location.pathname + location.search} /></div>
+                    <div className="pr-3"><KmLink text="Maintenance" to={`${match.url}/${route.maintenance}${location.search}`} currentLink={location.pathname + location.search} /></div>
+                    <div className="pr-3"><KmLink text="Profile" to={`${match.url}/${route.profile}${location.search}`} currentLink={location.pathname + location.search} /></div>
+                    <div className="pr-3"><KmLink text="Inverters" to={`${match.url}/${route.inverter}${location.search}`} currentLink={location.pathname + location.search} /></div>
+                    <div className="pr-3"><KmLink text="Panels" to={`${match.url}/${route.panel}${location.search}`} currentLink={location.pathname + location.search} /></div>
+                    <div className="pr-3"><KmLink text="Report" to={`${match.url}/${route.report}${location.search}`} currentLink={location.pathname + location.search} /></div>
                 </div>
                 <div style={{ flex: 1 }} />
                 <div className="d-flex p-2">

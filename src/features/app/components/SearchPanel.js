@@ -8,16 +8,16 @@ import { fsc } from '../../../helper/fontColorHelper'
 const SearchPanel = props => {
     const { media } = props
     return (
-        <div className="container-fluid px-4 py-3 bg-white" style={{ borderRadius: 4 }}>
-            <div className='  ' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"TRENDS"}</div>
-            <div className="py-1 " style={{ fontSize: fsc(media, 13), color: '#999999' }}>GENERATE BY</div>
+        <div className="container-fluid p-4 bg-white h-100" style={{ borderRadius: 4 }}>
+            <div className='' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"TRENDS"}</div>
+            <div className="py-1 pt-3" style={{ fontSize: fsc(media, 13), color: '#999999' }}>GENERATE BY</div>
             <div className="d-flex py-2" >
                 <div className="px-1"> <KmToggleButton text="YEAR" className="py-2" style={{ width: 100 }} /> </div>
                 <div className="px-1"> <KmToggleButton text="MONTH" className="py-2" style={{ width: 100 }} /></div>
                 <div className="px-1"> <KmToggleButton text="DAY" selected className="py-2" style={{ width: 100 }} /> </div>
             </div>
 
-            <div className="d-flex" style={{ width: media.mobile ? '100%' : 400 }}>
+            <div className="d-flex pt-3" style={{ width: media.mobile ? '100%' : 400 }}>
                 <div className="p-1 flex-grow-1">
                     <div style={{ fontSize: fsc(media, 14), color: '#999999' }}>FROM</div>
                     <div className="bg-light p-2 rounded border border-secondary d-flex justify-content-between" style={{ cursor: "pointer" }}>
@@ -34,7 +34,7 @@ const SearchPanel = props => {
                 </div>
             </div>
 
-            <div className="pl-1 py-2">
+            <div className="pl-1 pt-4">
                 <KmButton text="SEARCH" style={{ width: 120 }} />
             </div>
         </div>

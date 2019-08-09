@@ -1,7 +1,9 @@
 import React from 'react'
+import {withMedia} from 'react-media-query-hoc'
+import {fsc} from '../helper/fontColorHelper'
 
 const KmSearchbox = props => {
-    const { style, onChange, onClick } = props
+    const { style, onChange, onClick,media } = props
     const defaultStyle = { cursor: 'pointer', minWidth:200 }
     const userStyle = style === undefined ? {} : style
     
@@ -13,7 +15,7 @@ const KmSearchbox = props => {
                 aria-label="Search"
                 placeholder="Search"
                 id="search-input"
-                style={{ ...{ fontSize:15,}, ...userStyle}}
+                style={{ ...{ fontSize:fsc(media,15),}, ...userStyle}}
                 onChange={onChange}
             />
             <span className="input-group-append">
@@ -24,4 +26,4 @@ const KmSearchbox = props => {
         </div>
     )
 }
-export default KmSearchbox;
+export default withMedia(KmSearchbox);

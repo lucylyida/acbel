@@ -86,7 +86,7 @@ const HomefilterView = props => {
                         />
                     </div>
                 </div>
-                <div className="flex-column p-2 flex-grow-1 ">
+                <div className="flex-column p-2 flex-fill flex-grow-1 ">
                     <br />
                     <div className="pt-1">
                         <KmButton

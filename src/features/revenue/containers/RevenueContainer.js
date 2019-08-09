@@ -25,6 +25,7 @@ const RevenueContainer = props => {
                             data={data}
                             color={'#FEC71F'}
                             axisLeftLegend="NT$"
+                            legendAnchor
                         />
                     </div>
                 </div>

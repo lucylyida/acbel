@@ -1,14 +1,14 @@
 import React from 'react'
 import KmSelector from '../../../kumocom/KmSelector'
 import KmButtom from '../../../kumocom/KmButton'
-import {Media} from 'react-media-query-hoc'
+import {withMedia} from 'react-media-query-hoc'
 import {fsc} from '../../../helper/fontColorHelper'
 
 const ReportGeneratorView = props => {
     const {media} = props
     return (
         <div>
-            <div className="py-2" style={{ color: '#FF8902' }}>REPORT GENERATION</div>
+            <div className="py-2" style={{ color: '#FF8902',fontSize:fsc(media,14) }}>REPORT GENERATION</div>
 
             <div className="d-flex flex-lg-nowrap flex-wrap">
                 <div className="py-1 px-2 flex-fill">
@@ -45,8 +45,8 @@ const ReportGeneratorView = props => {
                 <div className=" flex-grow-1  flex-fill">
                     <div style={{ fontSize: fsc(media,13), color: '#999999' }}>EXPORT REPORT AS</div>
                     <div className="d-flex">
-                        <div className="px-2"> <KmButtom text="PDF" style={{ width: 80 }} /></div>
-                        <div className="px-2"><KmButtom text="PRINT" style={{ width: 80 }} /> </div>
+                        <div className="px-2"> <KmButtom text="PDF" noMinWidth style={{ width: 80 }} /></div>
+                        <div className="px-2"><KmButtom text="PRINT" noMinWidth style={{ width: 80 }} /> </div>
                     </div>
                 </div>
 

@@ -4,7 +4,7 @@ import { ResponsiveBar } from '@nivo/bar'
 
 const BarChart = (props) => {
   const { data,keys, color, legendAnchor,axisRight,axisLeft } = props
-      console.log(axisLeft.legend)
+  
       return  <ResponsiveBar {...configCommonProperties(data, keys, color,legendAnchor,axisRight,axisLeft)} />
 }
 

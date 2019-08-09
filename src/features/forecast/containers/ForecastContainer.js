@@ -26,7 +26,7 @@ const ForecastContainer = props => {
                             axisLeftLegend="Revenue"
                             axisRightLegend="Temperature"
                             axisBottomLegend='Date'
-                            legendAnchor
+                            legendAnchor="top-left"
                             exportIcon
                         />
                     </div>

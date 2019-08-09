@@ -101,8 +101,10 @@ export class MapContainer extends Component {
                         visible={this.state.showingInfoWindow}
                     >
                         <div
-                            onClick={this.showDetails.bind(this, this.state.selectedPlace)} 
-                            className="" style={{ fontSize: fsc(media, 16) }}>
+                            className="d-flex flex-column justify-content-around"
+                            onClick={this.showDetails.bind(this, this.state.selectedPlace)}
+                            style={{ height: 80, fontSize: fsc(media, 16), cursor: 'pointer' }}
+                        >
                             <div>{this.state.selectedPlace.name}</div>
                             <div style={{ color: 'blue' }} >Organic  Farmer's Organization </div>
                             <div>Online</div>

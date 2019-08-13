@@ -9,7 +9,7 @@ const PanelInfo = props => {
     const date = moment().format('DD MMMM YY')
     const time = moment().format('hh:mm:ss A')
     return (
-        <div className="container-fluid px-0">
+        <div className="container-fluid px-0 pt-3">
             <FourItemBox value={"00123"} desc={'PANEL NUMBER'} useNumberFormat={false} icon={<div style={{ width: 50, height: 50, backgroundColor: '#F9C209' }} />} />
 
             <div className="pt-5 pb-2" style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"PANEL DETAILS"}</div>

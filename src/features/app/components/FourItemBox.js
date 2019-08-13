@@ -5,8 +5,8 @@ import { fsc } from '../../../helper/fontColorHelper';
 const formatNumber = (num) => num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 
 const FourItemBox = props => {
-    const { value, unit, desc, active, icon, media } = props
-    const data = formatNumber(value)
+    const { value, unit, desc, active, icon, media, useNumberFormat } = props
+    const data = useNumberFormat === undefined || useNumberFormat === true ? formatNumber(value) : value
     return (
         <div className="d-flex align-items-center">
             <div className="d-flex">

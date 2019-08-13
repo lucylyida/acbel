@@ -27,10 +27,10 @@ const GlobalListContainer = props => {
                         customTheme={tableTheme(media)}
                         pagination={true}
                         paginationDefaultPage={1}
-                        // paginationComponentOptions={{ rowsPerPageText: 'Rows per page:', rangeSeparatorText: 'of' }}
+                        paginationComponentOptions={{ rowsPerPageText: 'Rows per page:', rangeSeparatorText: 'on' }}
                         paginationTotalRows={data.length}
-                        paginationPerPage={10}
-                        paginationComponent={() => <CustomPagination media={media} setPage={setPage} />}                       
+                        paginationPerPage={3}
+                        paginationComponent={props => <CustomPagination media={media} setPage={setPage} {...props} />}
                     />
                 </div>
             </div>
@@ -39,6 +39,40 @@ const GlobalListContainer = props => {
 }
 
 export default withMedia(GlobalListContainer)
+
+const CustomPagination = props => {
+    const { media, setPage, onChangePage, currentPage, rowCount, rowsPerPage, onChangeRowsPerPage } = props
+    const last = Math.ceil(rowCount / rowsPerPage);
+    const left = currentPage > 1 ? currentPage - 1 : 0;
+    const right = currentPage < last ? currentPage + 1 : 0;
+
+    const pages = new Array(last).fill(null).map((v, k) => k + 1)
+    const pageList = pages < 6 ? [...pages] : pages.reduce((r, c, i, a) => {
+        if (c === 1 || c === left || c === currentPage || c === right || c === last) return [...r, c]
+        else if (r[r.length - 1] !== 0) return [...r, 0]
+        else return [...r]
+    }, [])
+
+    const pageView = pageList.map((v, k) => {
+        const { bgColor, txtColor } = currentPage === v ? { bgColor: "#153784", txtColor: "#ffffff" } : { bgColor: "#ffffff", txtColor: "#454545" }
+        const nextPage = v === 1 ? 1
+            : v === last ? last
+                : v === left ? left
+                    : v === right ? right : currentPage
+        return (
+            <div key={k} onClick={() => onChangePage(nextPage)} className="px-1" style={{ cursor: "pointer" }} >
+                {v === 0 && <span style={{ color: "#878787" }}><i className="fas fa-ellipsis-h"></i></span>}
+                {v > 0 && <span className="p-2" style={{ fontSize: 11, color: txtColor, backgroundColor: bgColor, borderRadius: 4 }} >{v}</span>}
+            </div>
+        )
+    })
+
+    return (
+        <div className={`w-100 d-flex align-items-center ${media.mobile ? 'justify-content-start' : 'justify-content-center'}`} style={{ }}>
+            {pageView}
+        </div>
+    )
+}
 
 const data = [
     { id: 1, site: '01 Conan the Barbarian', capacity: '1981', currentOutput: 23, efficiency: "Site1", siteStatus: "col21", more: "MORE INFO", },
@@ -53,6 +87,14 @@ const data = [
     { id: 10, site: '10 Conan the Barbarian', capacity: '1984', currentOutput: 23, efficiency: "Site1", siteStatus: "col21", more: "MORE INFO", },
     { id: 11, site: '11 Conan the Barbarian', capacity: '1985', currentOutput: 25, efficiency: "Site2", siteStatus: "col21", more: "MORE INFO", },
     { id: 12, site: '12 Conan the Barbarian', capacity: '1983', currentOutput: 43, efficiency: "Site3", siteStatus: "col21", more: "MORE INFO", },
+    { id: 13, site: '13 Conan the Barbarian', capacity: '1983', currentOutput: 43, efficiency: "Site3", siteStatus: "col21", more: "MORE INFO", },
+    { id: 14, site: '14 Conan the Barbarian', capacity: '1983', currentOutput: 43, efficiency: "Site3", siteStatus: "col21", more: "MORE INFO", },
+    { id: 15, site: '15 Conan the Barbarian', capacity: '1983', currentOutput: 43, efficiency: "Site3", siteStatus: "col21", more: "MORE INFO", },
+    { id: 16, site: '16 Conan the Barbarian', capacity: '1983', currentOutput: 43, efficiency: "Site3", siteStatus: "col21", more: "MORE INFO", },
+    { id: 17, site: '17 Conan the Barbarian', capacity: '1983', currentOutput: 43, efficiency: "Site3", siteStatus: "col21", more: "MORE INFO", },
+    { id: 18, site: '18 Conan the Barbarian', capacity: '1983', currentOutput: 43, efficiency: "Site3", siteStatus: "col21", more: "MORE INFO", },
+    { id: 19, site: '19 Conan the Barbarian', capacity: '1983', currentOutput: 43, efficiency: "Site3", siteStatus: "col21", more: "MORE INFO", },
+
 ];
 const columns = memoize((media, handleClick) => [
     {
@@ -101,40 +143,3 @@ const columns = memoize((media, handleClick) => [
         cell: row => <div onClick={handleClick} style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#a3a3a2' }}>{row.more}<span className="pl-2"><i className="fa fa-caret-right" /></span></div>
     },
 ]);
-
-const CustomPagination = props => {
-    const { media, setPage } = props
-    return (
-        <div className={`w-100 d-flex align-items-center ${media.mobile ? 'justify-content-start' : 'justify-content-center'}`}>
-            <div onClick={() => setPage(1)} className="px-1">
-                <span className="p-2"
-                    style={{ fontSize: 11, color: 'white', backgroundColor: "#153784", borderRadius: 4 }}
-                >
-                    {"1"}
-                </span>
-            </div>
-            <div onClick={() => setPage(2)} className="px-1">
-                <span className="p-2"
-                    style={{ fontSize: 11, color: 'black', backgroundColor: "white", borderRadius: 4 }}
-                >
-                    {"2"}
-                </span>
-            </div>
-            <div onClick={() => setPage(3)} className="px-1">
-                <span className="p-2"
-                    style={{ fontSize: 11, color: 'black', backgroundColor: "white", borderRadius: 4 }}
-                >
-                    {"3"}
-                </span>
-            </div>
-            <div>{"..."}</div>
-            <div onClick={() => setPage(10)} className="px-1">
-                <span className="p-2"
-                    style={{ fontSize: 11, color: 'black', backgroundColor: "white", borderRadius: 4 }}
-                >
-                    {"10"}
-                </span>
-            </div>
-        </div>
-    )
-}

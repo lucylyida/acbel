@@ -2,9 +2,10 @@ import React from 'react'
 import { ResponsiveHeatMap } from '@nivo/heatmap'
 
 const PanelMap = props => {
+
     const { data, color} = props
     return (
-        <div style={{ width: '100%', height: 200 }}>
+        <div className="" style={{ width: "100%", height: 165 }} >
             <ResponsiveHeatMap
                 data={data}
                 keys={[
@@ -25,21 +26,7 @@ const PanelMap = props => {
                 minValue={30}
                 padding={1}
                 colors={color}
-               // cellBorderColor={{ from: 'color', modifiers: [['darker', '1']] }}
                 enableLabels={false}
-                labelTextColor={{ from: 'color', modifiers: [['darker', 1.8]] }}
-                defs={[
-                    {
-                        id: 'lines',
-                        type: 'patternLines',
-                        background: 'inherit',
-                        color: 'rgba(0, 0, 0, 0.1)',
-                        rotation: -45,
-                        lineWidth: 4,
-                        spacing: 7
-                    }
-                ]}
-                fill={[{ id: 'lines' }]}
                 animate={true}
                 motionStiffness={80}
                 motionDamping={9}
@@ -47,6 +34,7 @@ const PanelMap = props => {
                 cellHoverOthersOpacity={0.7}
             />
         </div>
+
     )
 
 }

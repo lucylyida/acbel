@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import KmButton from '../../../kumocom/KmButton'
 import KmToggleButton from '../../../kumocom/KmToggleButton'
+import KmDatePicker from '../../../kumocom/KmDatePicker'
 import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../../../helper/fontColorHelper'
 
@@ -22,17 +23,11 @@ const SearchPanel = props => {
             <div className="d-flex pt-3" style={{ width: media.mobile ? '100%' : 400 }}>
                 <div className="p-1 flex-grow-1">
                     <div className="pb-2" style={{ fontSize: fsc(media, 14), color: '#999999' }}>FROM</div>
-                    <div className="bg-light p-2 rounded border border-secondary d-flex justify-content-between" style={{ cursor: "pointer" }}>
-                        <div>22/04/2019</div>
-                        <div><i className="far fa-calendar" /></div>
-                    </div>
+                    <div><KmDatePicker/></div>
                 </div>
                 <div className="p-1 flex-grow-1 ">
                     <div className="pb-2" style={{ fontSize: fsc(media, 14), color: '#999999' }}>TO</div>
-                    <div className="bg-light p-2 rounded border border-secondary d-flex justify-content-between" style={{ cursor: "pointer" }}>
-                        <div>22/04/2019</div>
-                        <div><i className="far fa-calendar" /></div>
-                    </div>
+                    <div><KmDatePicker/></div>   
                 </div>
             </div>
 

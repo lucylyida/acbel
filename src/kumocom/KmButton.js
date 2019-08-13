@@ -4,14 +4,14 @@ import { fsc } from '../helper/fontColorHelper'
 import { min } from 'moment';
 
 const KmButton = props => {
-    const { text, type, onClick, icon, style, className, iconPlace, media, noMinWidth, } = props
+    const { text, type, onClick, icon, style, className, iconPlace, media, noMinWidth } = props
     const defaultStyle = { background: '#006CF7', padding:8, }
 
     const userStyle = style === undefined ? {} : style
 
     // style={{ minWidth: 200 }}
     return (
-        <div style={{ minWidth: noMinWidth ? undefined : 200 }}>
+        <div style={{ minWidth: noMinWidth ? null : 200 }}>
             <button
                 onClick={onClick}
                 type={type === undefined ? "button" : type}

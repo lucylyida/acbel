@@ -11,25 +11,23 @@ code {
 
 .gm-style-iw {
   width: 300px;
-  height: 100px;
+  height: 150px;
   top: 0 !important;
   left: 0 !important;
   background-color: #fff;
-  /* box-shadow: 1px 1px 4px 2px rgba(6, 8, 8, 0.6); */
-  /* border: 0px solid rgba(8, 13, 15, 0.6); */
+  padding: 0%;
   border-radius: 2px 2px 0 0;
-  
-  
 }
 
 .gm-ui-hover-effect {
-
   opacity: 0;
-
 }
-.gm-style-iw + div + img { display: none; }
-.gm-style-iw + div + button { display: none; background-image: #fff; }
 
+.gm-style-iw+div+img {
+  display: none;
+}
 
-
-
+.gm-style-iw+div+button {
+  display: none;
+  background-image: #fff;
+}

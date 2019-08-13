@@ -23,11 +23,11 @@ const SiteNavbar = props => {
         <div className="container-fluid px-0 py-3">
             <div className="d-flex align-items-center pl-1" style={{ whiteSpace: 'nowrap' }}>
                 <div className="d-flex flex-column justify-content-center p-0" onClick={() => _hadleMenuClick({ match, location, history })}>
-                    <div  
-                        style={{ 
-                            backgroundColor: "#ffffff", 
-                            borderRadius: 4, 
-                            cursor: "pointer", 
+                    <div
+                        style={{
+                            backgroundColor: "#ffffff",
+                            borderRadius: 4,
+                            cursor: "pointer",
                             paddingLeft: fsc(media, 12),
                             paddingRight: fsc(media, 12),
                             paddingTop: fsc(media, 6),
@@ -46,7 +46,7 @@ const SiteNavbar = props => {
                     <div style={{ paddingLeft: fsc(media, 10) }} style={{ color: "gray", fontSize: fsc(media, 16) }}>{"Hualien City, Taiwan"}</div>
                 </div>
                 <div style={{ flex: 1 }} />
-                <div className="d-flex justify-content-between align-items-center pr-2">
+                <div className="d-flex justify-content-center align-items-center pr-2" style={window.innerWidth <= 355 ? { position: 'absolute', right: 0, top: 35 } : {}}>
                     <KmDropdown
                         labelHide={media.mobile}
                         onClick={() => console.log('click')}
@@ -65,9 +65,9 @@ const SiteNavbar = props => {
             <div className="d-flex flex-row flex-wrap align-items-baseline pt-3 px-2">
                 <div className="py-1 d-flex flex-direction-row" style={{ overflowX: 'auto' }}>
                     <div className="pr-2"><KmLink text="Dashboard" to={`${match.url}/${route.dashboard}${location.search}`} currentLink={location.pathname + location.search} /></div>
-                    <div className="pr-2"><KmLink text="Site Forecast" to={`${match.url}/${route.forecast}${location.search}`} currentLink={location.pathname + location.search} /></div>
-                    <div className="pr-2"><KmLink text="Site Revenue" to={`${match.url}/${route.revenue}${location.search}`} currentLink={location.pathname + location.search} /></div>
-                    <div className="pr-2"><KmLink text="Site Maintenance" to={`${match.url}/${route.maintenance}${location.search}`} currentLink={location.pathname + location.search} /></div>
+                    <div className="pr-2"><KmLink text="Forecast" to={`${match.url}/${route.forecast}${location.search}`} currentLink={location.pathname + location.search} /></div>
+                    <div className="pr-2"><KmLink text="Revenue" to={`${match.url}/${route.revenue}${location.search}`} currentLink={location.pathname + location.search} /></div>
+                    <div className="pr-2"><KmLink text="Maintenance" to={`${match.url}/${route.maintenance}${location.search}`} currentLink={location.pathname + location.search} /></div>
                     <div className="pr-2"><KmLink text="Profile" to={`${match.url}/${route.profile}${location.search}`} currentLink={location.pathname + location.search} /></div>
                     <div className="pr-2"><KmLink text="Inverters" to={`${match.url}/${route.inverter}${location.search}`} currentLink={location.pathname + location.search} /></div>
                     <div className="pr-2"><KmLink text="Panels" to={`${match.url}/${route.panel}${location.search}`} currentLink={location.pathname + location.search} /></div>

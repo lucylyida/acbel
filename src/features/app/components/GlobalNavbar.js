@@ -1,6 +1,5 @@
 import React from "react"
 import querystring from "query-string"
-import { Link } from "react-router-dom"
 import { withMedia } from "react-media-query-hoc"
 import * as route from "../../../config/route.config"
 import KmLink from '../../../kumocom/KmLink'

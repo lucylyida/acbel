@@ -1,15 +1,16 @@
 import React from 'react'
-
-import { FourItemBox } from '../../app/components/FourItemBox'
+import { withMedia } from 'react-media-query-hoc';
+import { fsc } from '../../../helper/fontColorHelper';
+import FourItemBox from '../../app/components/FourItemBox'
 
 const DashStatusViewB = props => {
-    const { } = props
+    const { media } = props
     return (
         <div className="container-fluid" style={{ background: 'white', borderRadius: 4 }}>
 
             <div className='row py-2'>
-                <div className='col-12 py-2' style={{ fontSize: 10 }}>
-                    <span style={{ color: '#FF8902' }}>{"PERFOMANCE"}</span>
+                <div className='col-12 py-2' >
+                    <span style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"PERFOMANCE"}</span>
                 </div>
 
                 <div className="col-6 col-sm-4 py-2 ">
@@ -20,11 +21,11 @@ const DashStatusViewB = props => {
                     <FourItemBox value={88} unit={'%'} desc={"EQUIPMENT RELIABILITY"} />
                 </div>
 
-                <div className="col-6 col-sm-4 py-2 ">
+                <div className="col-4 col-sm-4 py-2 ">
                     <FourItemBox value={'Normal'} desc={"SITE STATUS"} />
                 </div>
 
-                <div className="col-6 col-sm-4 py-2 ">
+                <div className="col-2 col-sm-4 py-2 ">
                     <FourItemBox value={93} unit={"%"} desc={"RA"} />
                 </div>
 
@@ -37,4 +38,4 @@ const DashStatusViewB = props => {
     )
 }
 
-export default DashStatusViewB;
+export default withMedia(DashStatusViewB);

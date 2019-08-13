@@ -22,16 +22,16 @@ const GlobalContainer = props => {
     const queryDataEnc = enc(queryData)
 
     return (
-        <div className={`container-fluid pt-2 pb-3 ${ media.mobile ? "px-1" : "px-4"}`}>
+        <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
             <GlobalNavbar {...props} />
             <div className="d-flex flex-row flex-wrap flex-md-nowrap">
                 <div className="flex-grow-1">
                     <LeftSidebar
                         online={218} offine={12} siteChoose={true} active={true} efficiency={100} capacity={170.00}
-                    //siteName={"Organic Farmer's Association"}
+                        siteName={"Organic Farmer's Association"}
                     />
                 </div>
-                <div className="w-100 pb-3">
+                <div className="w-100 pb-2">
                     <HomeStatusView />
                     <HomefilterView />
                     <Switch>

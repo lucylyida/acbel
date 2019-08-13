@@ -1,49 +1,51 @@
-export default ({
+import { fsc } from "../../../helper/fontColorHelper";
+
+export default media => ({
     title: {
-      height: '0px',
+        height: '0px',
     },
     header: {
-      fontSize: '15px',
-      fontWeight: '900',
-      fontColor: '#a3a3a2',
-      fontColorActive: '#737372',
-      backgroundColor: 'transparent',
-      height: '40px',
+        fontSize: fsc(media, 15) + 'px',
+        fontWeight: '500',
+        fontColor: '#a3a3a2',
+        fontColorActive: '#737372',
+        backgroundColor: 'transparent',
+        height: '40px',
     },
     contextMenu: {
-      backgroundColor: '#e3f2fd',
-      fontSize: '18px',
-      fontColor: 'rgba(0,0,0,.87)',
-      transitionTime: '225ms',
+        backgroundColor: '#e3f2fd',
+        fontSize: '18px',
+        fontColor: 'rgba(0,0,0,.87)',
+        transitionTime: '225ms',
     },
     rows: {
-      // default || spaced
-      spacing: 'default',
-      fontSize: '15px',
-      fontColor: '#343434',
-      backgroundColor: "white",
-      borderWidth: '1px',
-      borderColor: '#00000011',
-      hoverFontColor: '#232323',
-      hoverBackgroundColor: '#00000001',
-      height: '56px',
+        // default || spaced
+        spacing: 'default',
+        fontSize: fsc(media, 16) + 'px',
+        fontColor: '#343434',
+        backgroundColor: "white",
+        borderWidth: '1px',
+        borderColor: '#00000011',
+        hoverFontColor: '#232323',
+        hoverBackgroundColor: '#ffffffcc',
+        height: '40px',
     },
     cells: {
-      cellPadding: '40px',
+        cellPadding: '40px',
     },
     expander: {
-      fontColor: 'rgba(0,0,0,.87)',
-      expanderColor: 'rgba(0,0,0,.54)',
-      expanderColorDisabled: 'rgba(0,0,0,.12)',
-      backgroundColor: 'transparent',
+        fontColor: 'rgba(0,0,0,.87)',
+        expanderColor: 'rgba(0,0,0,.54)',
+        expanderColorDisabled: 'rgba(0,0,0,.12)',
+        backgroundColor: 'transparent',
     },
     pagination: {
-      fontSize: '14px',
-      fontColor: 'rgba(0,0,0,.54)',
-      backgroundColor: 'transparent',
-      buttonFontColor: 'rgba(0,0,0,.54)',
-      buttonHoverBackground: 'rgba(0,0,0,.12)',
+        fontSize: '14px',
+        fontColor: 'rgba(0,0,0,.54)',
+        backgroundColor: 'transparent',
+        buttonFontColor: 'rgba(0,0,0,.54)',
+        buttonHoverBackground: 'rgba(0,0,0,.12)',
     },
-  });
+});
 
   // https://jbetancur.github.io/react-data-table-component/?path=/story/basic--expandable-row-disable

@@ -1,12 +1,10 @@
 import React from 'react'
 import { withMedia } from 'react-media-query-hoc';
-import { fsc } from '../../../helper/fontColorHelper';
-
-const formatNumber = (num) => num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+import { fsc, numberFormat } from '../../../helper/fontColorHelper';
 
 const FourItemBox = props => {
     const { value, unit, desc, active, icon, media, useNumberFormat } = props
-    const data = useNumberFormat === undefined || useNumberFormat === true ? formatNumber(value) : value
+    const data = useNumberFormat === undefined || useNumberFormat === true ? numberFormat(value) : value
     return (
         <div className="d-flex align-items-center">
             <div className="d-flex">

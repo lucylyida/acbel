@@ -118,7 +118,7 @@ export class MapContainer extends Component {
     _markerDisplay = () => {
         const { stores, isClientToShow } = this.state
         return stores === undefined ? [] : stores.map((store, index) => {
-           const icon = !isClientToShow ? UnAnimatedicon(this.props): Animatedicon(this.props)
+            const icon = !isClientToShow ? UnAnimatedicon(this.props) : Animatedicon(this.props)
             // console.log({ stores })
             return <Marker
                 icon={icon}
@@ -129,7 +129,7 @@ export class MapContainer extends Component {
                     lng: store.lng
                 }}
                 onClick={this._onMarkerClick} >
-                    {/* <div key={1} id="nnhh" style={{ width: 100, height: 100, background: "red"}}></div> */}
+                {/* <div key={1} id="nnhh" style={{ width: 100, height: 100, background: "red"}}></div> */}
             </Marker>
         })
     }
@@ -174,9 +174,9 @@ export class MapContainer extends Component {
         const { isClientToShow } = this.state
         // console.log({ isClientToShow })
         return (
-            <div  style={{ borderRadius: 4, border: '0.7px solid #cccccc', height: '400px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
+            <div style={{ borderRadius: 4, border: '0.7px solid #cccccc', height: '400px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map
-                    
+
                     onZoomChanged={() => console.log("zoom changed")}
                     disableDefaultUI={true}
                     zoom={4}
@@ -189,6 +189,7 @@ export class MapContainer extends Component {
                     // onZoomChanged={this._handleZoomChange}
                     initialCenter={{ lat: 21.444, lng: 96.176 }}
                 >
+
                     {this._markerDisplay()}
                     {
                         !isClientToShow && clientLists.map((store, i) => {
@@ -216,9 +217,10 @@ export class MapContainer extends Component {
                                     </div>
                                 </InfoWindowEx>);
                         })}
-                </Map>
 
+                </Map>
             </div>
+
         );
     }
 }

@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "@nivo/bar": "^0.59.2",
+    "@nivo/heatmap": "^0.59.2",
     "@nivo/line": "^0.59.3",
+    "@nivo/waffle": "^0.59.1",
     "bootstrap": "^4.3.1",
     "google-maps-react": "^2.0.2",
     "jquery": "^3.4.1",
@@ -14,6 +16,7 @@
     "query-string": "^6.8.2",
     "react": "^16.8.6",
     "react-data-table-component": "^3.0.4",
+    "react-datepicker": "^2.8.0",
     "react-dom": "^16.8.6",
     "react-media-query-hoc": "^2.0.0",
     "react-router-dom": "^5.0.1",

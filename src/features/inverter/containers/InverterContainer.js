@@ -154,7 +154,7 @@ const AllInverterComponent = props => {
                         headerText={'PV INVERTER CONVERSION RATE'}
                         data={pvData}
                         color={['#6522CE', '#309BF3']}
-                        legendAnchor
+                        legendAnchor='top'
                         exportIcon
                     />
                 </div>
@@ -166,7 +166,7 @@ const AllInverterComponent = props => {
                         headerText={'PV INVERTER WATT TREND'}
                         data={wattTrend}
                         color={['#FEC61B', '#54D74F', '#03C2D2']}
-                        legendAnchor
+                        legendAnchor='top'
                         exportIcon
                     />
                 </div>
@@ -178,7 +178,7 @@ const AllInverterComponent = props => {
                         headerText={'PV INVERTER CURRENT TREND'}
                         data={pvData}
                         color={['#FF78C8', '#03C2D2']}
-                        legendAnchor
+                        legendAnchor='top'
                         exportIcon
                     />
                 </div>
@@ -190,7 +190,7 @@ const AllInverterComponent = props => {
                         headerText={'PV INVERTER VOLTAGE TREND'}
                         data={pvData}
                         color={['#6522CE', '#54D74F']}
-                        legendAnchor
+                        legendAnchor='top'
                         exportIcon
                     />
                 </div>
@@ -210,7 +210,7 @@ const CompareInverterComponent = props => {
                         headerText={'GRAPH TITLE 1'}
                         data={compareAreaData}
                         color={['#2195F4', '#6522CE']}
-                        legendAnchor
+                        legendAnchor='top'
                         exportIcon
                     />
                 </div>
@@ -223,7 +223,7 @@ const CompareInverterComponent = props => {
                         data={compareBardata}
                         keys={['inverter 001', 'inverter 002', 'inverter 003']}
                         color={['#1B9817', '#29CE22', '#6FD1F6']}
-                        legendAnchor
+                        legendAnchor='top'  
                         exportIcon
 
                     />

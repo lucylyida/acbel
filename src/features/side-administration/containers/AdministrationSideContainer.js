@@ -24,10 +24,7 @@ const AdministrationSideContainer = props => {
                     />
                 </div>
                 <div className="w-100 pb-2">
-                    <Switch>
-                        <Route path={`${match.path}/:pageName`} component={AdminstrationPage} />
-                        <Redirect to={`${match.path}/${route.userManagement}`} />
-                    </Switch>
+                    <AdminstrationPage {...props} />
                 </div>
             </div>
         </div>

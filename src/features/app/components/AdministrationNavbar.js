@@ -9,6 +9,7 @@ import Navbar from "./Navbar"
 
 const MaintenanceNavbar = props => {
     const { match, location, history, media } = props
+
     return (
         <Navbar {...props}>
             <div className={`d-flex flex-column justify-content-center ${media.mobile ? "pl-3 pr-1" : "px-4"}`} >
@@ -17,9 +18,8 @@ const MaintenanceNavbar = props => {
                 </a>
             </div>
             <div className="d-flex justify-content-center align-items-center pl-2">
-                <div style={{ color: "#2244aa", fontSize: fsc(media, 28) }}>{"Profile"}</div>
-                <div style={{ paddingLeft: fsc(media, 10) }}><KmLink text="List View" to={`${match.url}/${route.list}${location.search}`} currentLink={location.pathname + location.search} /></div>
-                <div style={{ paddingLeft: fsc(media, 10) }}><KmLink text="Calendar View" to={`${match.url}/${route.calendar}${location.search}`} currentLink={location.pathname + location.search} /></div>
+                <div style={{ color: "#2244aa", fontSize: fsc(media, 28) }}>{match.params.pageName===route.profile ? "Profile" : match.params.pageName===route.userManagement ? "User Management" : "" }</div>
+                
             </div>
             <div style={{ flex: 1 }} />
         </Navbar>

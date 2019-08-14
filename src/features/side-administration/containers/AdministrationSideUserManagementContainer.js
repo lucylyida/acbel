@@ -9,7 +9,6 @@ import tableTheme from "../../home/containers/tableTheme"
 import { memoize } from 'react-data-table-component';
 
 
-
 const MaintenanceSideCalendarContainer = props => {
     const { media, match } = props
 
@@ -31,7 +30,7 @@ const MaintenanceSideCalendarContainer = props => {
                     pagination={true}
                     paginationDefaultPage={1}
                     paginationTotalRows={data.length}
-                    paginationPerPage={0}
+                    paginationPerPage={2}
                     customPagination={true}
                 />
             </div>

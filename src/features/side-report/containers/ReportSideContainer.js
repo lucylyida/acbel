@@ -3,18 +3,18 @@ import moment from 'moment'
 import { Route, Link, Switch, Redirect, } from "react-router-dom"
 import { withMedia } from 'react-media-query-hoc'
 import { fsc, numberFormat } from '../../../helper/fontColorHelper'
-import AdministrationNavbar from "../../app/components/AdministrationNavbar"
+import ReportNavbar from "../../app/components/ReportNavbar"
 import LeftSidebar from "../../app/components/LeftSidebar";
 import MaintenanceSideProfileContainer from "./AdministrationSideProfileContainer"
 import MaintenanceSideCalendarContainer from "./AdministrationSideUserManagementContainer"
 import * as route from "../../../config/route.config"
 
-const AdministrationSideContainer = props => {
+const ReportSideContainer = props => {
     const { media, match } = props
 
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
-            <AdministrationNavbar {...props} />
+            <ReportNavbar {...props} />
 
             <div className="d-flex flex-row flex-wrap flex-md-nowrap">
                 <div className="flex-grow-1">
@@ -24,15 +24,11 @@ const AdministrationSideContainer = props => {
                     />
                 </div>
                 <div className="w-100 pb-2">
-                    <Switch>
-                        <Route path={`${match.path}/${route.profile}`} component={MaintenanceSideProfileContainer} />
-                        <Route path={`${match.path}/${route.userManagement}`} component={MaintenanceSideCalendarContainer} />
-                        <Redirect to={`${match.path}/${route.userManagement}`} />
-                    </Switch>
+                   Herere Report Data
                 </div>
             </div>
         </div>
     )
 }
 
-export default withMedia(AdministrationSideContainer)
+export default withMedia(ReportSideContainer)

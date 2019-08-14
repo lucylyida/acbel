@@ -25,7 +25,7 @@ const MaintenanceContainer = props => {
                 </div>
                 <div className="w-100 pb-2">
                     <Switch>
-                        <Route path={`${match.path}/:pageName`} component={MaintenanceSideListContainer} />
+                        <Route path={`${match.path}/:pageName`} component={MaintenancePage} />
                         <Redirect to={`${match.path}/${route.list}`} />
                     </Switch>
                 </div>

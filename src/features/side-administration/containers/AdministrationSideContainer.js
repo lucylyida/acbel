@@ -6,7 +6,9 @@ import { fsc, numberFormat } from '../../../helper/fontColorHelper'
 import AdministrationNavbar from "../../app/components/AdministrationNavbar"
 import LeftSidebar from "../../app/components/LeftSidebar";
 import MaintenanceSideProfileContainer from "./AdministrationSideProfileContainer"
+
 import AdministrationSideUserManagementContainer from "./AdministrationSideUserManagementContainer"
+
 import * as route from "../../../config/route.config"
 
 const AdministrationSideContainer = props => {
@@ -26,7 +28,7 @@ const AdministrationSideContainer = props => {
                 </div>
                 <div className="w-100 pb-2">
                     <Switch>
-                        <Route path={`${match.path}/:pageName`} component={MaintenanceSideProfileContainer} />
+                        <Route path={`${match.path}/:pageName`} component={AdminstrationPage} />
                         <Redirect to={`${match.path}/${route.userManagement}`} />
                     </Switch>
                 </div>
@@ -43,8 +45,10 @@ const AdminstrationPage = props => {
         case route.profile:
             return <MaintenanceSideProfileContainer {...props} />
         case route.userManagement:
+
             return <AdministrationSideUserManagementContainer {...props} />
         default:
             return <AdministrationSideUserManagementContainer {...props} />
+
     }
 }

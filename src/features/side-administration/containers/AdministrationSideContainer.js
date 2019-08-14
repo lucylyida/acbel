@@ -5,8 +5,8 @@ import { withMedia } from 'react-media-query-hoc'
 import { fsc, numberFormat } from '../../../helper/fontColorHelper'
 import AdministrationNavbar from "../../app/components/AdministrationNavbar"
 import LeftSidebar from "../../app/components/LeftSidebar";
-import MaintenanceSideProfileContainer from "./AdministrationSideProfileContainer"
-import MaintenanceSideUserManagementContainer from "./AdministrationSideUserManagementContainer"
+import AdministrationSideProfileContainer from "./AdministrationSideProfileContainer"
+import AdministrationSideUserManagementContainer from "./AdministrationSideUserManagementContainer"
 import * as route from "../../../config/route.config"
 
 const AdministrationSideContainer = props => {
@@ -40,10 +40,10 @@ const AdminstrationPage = props => {
     const pageName = props.match.params.pageName
     switch (pageName) {
         case route.profile:
-            return <MaintenanceSideProfileContainer {...props} />
+            return <AdministrationSideProfileContainer {...props} />
         case route.userManagement:
-            return <MaintenanceSideUserManagementContainer {...props} />
+            return <AdministrationSideUserManagementContainer {...props} />
         default:
-            return <MaintenanceSideProfileContainer {...props} />
+            return <AdministrationSideProfileContainer {...props} />
     }
 }

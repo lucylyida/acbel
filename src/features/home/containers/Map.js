@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 import InfoWindowEx from "../../dashboard/components/InfoWindowEx";
 import MapStyle from '../../home/containers/MapStyle';
-// import SiteIcon from '../../../assets/icons/solarpanel_icn';
 import { fsc } from '../../../helper/fontColorHelper';
+import SolarPanelIcon from "../../../assets/images/solarPanel.png";
 import { withMedia } from 'react-media-query-hoc';
 import * as route from '../../../config/route.config';
 import { withRouter } from 'react-router-dom'
@@ -17,10 +17,11 @@ const clientLists = [
         lng: 96.093292,
         id: 1,
         sites: [
-            { name: "site 1", lat: 21.946744, lng: 96.09322787 },
-            { name: "site 2", lat: 21.876744, lng: 96.09322787 },
-            { name: "site 3", lat: 21.786744, lng: 96.09322787 },
-            { name: "site 4", lat: 21.812367, lng: 96.09322787 }
+            { name: "site 1", lat: 21.946744, lng: 96.988676 },
+            { name: "site 2", lat: 21.876744, lng: 96.785456 },
+            { name: "site 3", lat: 21.786744, lng: 96.456456 },
+            { name: "site 4", lat: 21.978978, lng: 96.45645645 },
+
         ]
     },
     {
@@ -30,10 +31,10 @@ const clientLists = [
         lng: 100.523186,
         id: 2,
         sites: [
-            { name: "site 1", lat: 13.946744, lng: 100.09322787 },
-            { name: "site 2", lat: 13.876744, lng: 100.09322787 },
-            { name: "site 3", lat: 13.786744, lng: 100.09322787 },
-            { name: "site 4", lat: 13.812367, lng: 100.09322787 }
+            { name: "site 1", lat: 13.946744, lng: 100.345345 },
+            { name: "site 2", lat: 13.876744, lng: 100.24543545 },
+            { name: "site 3", lat: 13.786744, lng: 100.12312312 },
+            { name: "site 4", lat: 13.812367, lng: 100.4564456 }
         ]
     },
     {
@@ -43,10 +44,10 @@ const clientLists = [
         lng: 103.808053,
         id: 3,
         sites: [
-            { name: "site 1", lat: 1.946744, lng: 103.09322787 },
-            { name: "site 2", lat: 1.876744, lng: 103.09322787 },
-            { name: "site 3", lat: 1.786744, lng: 103.09322787 },
-            { name: "site 4", lat: 1.812367, lng: 103.09322787 }
+            { name: "site 1", lat: 1.946744, lng: 103.234232 },
+            { name: "site 2", lat: 1.876744, lng: 103.34534345 },
+            { name: "site 3", lat: 1.786744, lng: 103.6756567 },
+            { name: "site 4", lat: 1.812367, lng: 103.7856564 }
         ]
     }
 ];
@@ -69,19 +70,6 @@ const Animatedicon = props => ({
     strokeWeight: 0,
     scale: 1
 })
-
-const UnAnimatedicon = props => ({
-    anchor: new props.google.maps.Point(0, 0),
-    url: 'data:image/svg+xml;utf-8, \<svg width="80" height="90" xmlns="http://www.w3.org/2000/svg" version="1.1">\
-        <circle id="c1" cx="34" cy="23" r="10" fill="purple" >\
-            <animate id="c1Animation1" attributeName="r" attributeType="XML" begin="0s" dur="0s" from="10" to="20"  fill="gradient"></animate>\
-        </circle>\
-        </svg>',
-    strokeWeight: 0,
-    scale: 1
-})
-
-
 export class MapContainer extends Component {
     constructor(props) {
         super(props);
@@ -92,7 +80,8 @@ export class MapContainer extends Component {
             showingInfoWindow: false,
             activeMarker: {},
             selectedPlace: {},
-            isShowInfoWindow: false
+            isShowInfoWindow: false,
+            initialCenter: { lat: 21.444, lng: 96.176 }
         }
         this.mapRef = React.createRef()
     }
@@ -118,8 +107,7 @@ export class MapContainer extends Component {
     _markerDisplay = () => {
         const { stores, isClientToShow } = this.state
         return stores === undefined ? [] : stores.map((store, index) => {
-            const icon = !isClientToShow ? UnAnimatedicon(this.props) : Animatedicon(this.props)
-            // console.log({ stores })
+            const icon = !isClientToShow ? SolarPanelIcon : Animatedicon(this.props)
             return <Marker
                 icon={icon}
                 key={index}
@@ -134,54 +122,43 @@ export class MapContainer extends Component {
         })
     }
     _onMarkerClick = (props, marker, e) => {
+        // console.log({props})
         this.setState({
             selectedPlace: props,
             activeMarker: marker,
-            showingInfoWindow: !this.state.isClientToShow
+            showingInfoWindow: !this.state.isClientToShow,
+            initialCenter: { lat: props.position.lat, lng: props.position.lng }
         });
     };
 
     infoWindowClose = () => {
         this.setState({
-
             showingInfoWindow: false
         });
     }
-
-    // initZoomControl(map) {
-    //     document.querySelector('.zoom-control-in').onclick = function () {
-    //         map.setZoom(map.getZoom() + 1);
-    //     };
-    //     document.querySelector('.zoom-control-out').onclick = function () {
-    //         map.setZoom(map.getZoom() - 1);
-    //     };
-    //     map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(
-    //         document.querySelector('.zoom-control'));
-    // }
 
     infoWindowClose = () => {
         this.setState({
-
             showingInfoWindow: false
         });
     }
+
     showDetails = store => {
         this.props.history.push(`/${route.site}/${1}${this.props.location.search}`)
     };
 
+    
     render() {
         const { media } = this.props
-        const { isClientToShow } = this.state
-        // console.log({ isClientToShow })
+        // const { isClientToShow } = this.state
         return (
             <div style={{ borderRadius: 4, border: '0.7px solid #cccccc', height: '400px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map
-
-                    onZoomChanged={() => console.log("zoom changed")}
+                    // onZoomChanged={() => console.log("zoom changed")}
                     disableDefaultUI={true}
                     zoom={4}
                     zoomControl={true}
-                    onReady={() => console.log("map ready")}
+                    // onReady={() => console.log("map ready")}
                     styles={MapStyle}
                     google={this.props.google}
                     ref={this.mapRef}
@@ -189,10 +166,11 @@ export class MapContainer extends Component {
                     // onZoomChanged={this._handleZoomChange}
                     initialCenter={{ lat: 21.444, lng: 96.176 }}
                 >
-
                     {this._markerDisplay()}
                     {
-                        !isClientToShow && clientLists.map((store, i) => {
+                        clientLists.map((store, i) => {
+                            console.log({ i })
+                            console.log("Breakerssssssss")
                             return (
                                 < InfoWindowEx
                                     key={i}
@@ -200,27 +178,25 @@ export class MapContainer extends Component {
                                     visible={this.state.showingInfoWindow}
                                     position={{ lat: store.lat, lng: store.lng }} >
                                     <div
-                                        onClick={this.showDetails.bind(this, this.state.selectedPlace)}
-                                        className="" style={{ fontSize: fsc(media, 16) }}>
+                                        // onClick={this.showDetails.bind(this, this.state.selectedPlace)}
+                                        className="" style={{ fontSize: fsc(media, 12) }}>
                                         {/* <div>{this.state.selectedPlace.name}</div> */}
                                         <div style={{ color: 'blue' }}>Organic Farmars' Organization </div>
-                                        <div className='py-1'>Online</div>
+                                        <div className='py-1'>
+                                            <i className="fa fa-circle" style={{ fontSize: 10, color: 'green' }} /> Online</div>
                                         <div>Power Output : 147.45kW</div>
                                         <div className='py-1'>Capacity : 147.45kW</div>
-
-                                        <button
+                                        {/* <button
                                             type="button"
                                             onClick={this.showDetails.bind(this, this.state.selectedPlace)}
                                         >
                                             Show details
-                                         </button>
+                                         </button> */}
                                     </div>
                                 </InfoWindowEx>);
                         })}
-
                 </Map>
             </div>
-
         );
     }
 }

@@ -3,18 +3,18 @@ import moment from 'moment'
 import { Route, Link, Switch, Redirect, } from "react-router-dom"
 import { withMedia } from 'react-media-query-hoc'
 import { fsc, numberFormat } from '../../../helper/fontColorHelper'
-import MaintenanceNavbar from "../../app/components/MaintenanceNavbar"
+import AdministrationNavbar from "../../app/components/AdministrationNavbar"
 import LeftSidebar from "../../app/components/LeftSidebar";
-import MaintenanceSideListContainer from "./MaintenanceSideListContainer"
-import MaintenanceSideCalendarContainer from "./MaintenanceSideCalendarContainer"
+import MaintenanceSideProfileContainer from "./AdministrationSideProfileContainer"
+import MaintenanceSideCalendarContainer from "./AdministrationSideUserManagementContainer"
 import * as route from "../../../config/route.config"
 
-const MaintenanceContainer = props => {
+const AdministrationSideContainer = props => {
     const { media, match } = props
 
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
-            <MaintenanceNavbar {...props} />
+            <AdministrationNavbar {...props} />
 
             <div className="d-flex flex-row flex-wrap flex-md-nowrap">
                 <div className="flex-grow-1">
@@ -25,8 +25,9 @@ const MaintenanceContainer = props => {
                 </div>
                 <div className="w-100 pb-2">
                     <Switch>
-                        <Route path={`${match.path}/:pageName`} component={MaintenanceSideListContainer} />
-                        <Redirect to={`${match.path}/${route.list}`} />
+                        <Route path={`${match.path}/${route.profile}`} component={MaintenanceSideProfileContainer} />
+                        <Route path={`${match.path}/${route.userManagement}`} component={MaintenanceSideCalendarContainer} />
+                        <Redirect to={`${match.path}/${route.userManagement}`} />
                     </Switch>
                 </div>
             </div>
@@ -34,16 +35,4 @@ const MaintenanceContainer = props => {
     )
 }
 
-export default withMedia(MaintenanceContainer)
-
-const MaintenancePage = props => {
-    const pageName = props.match.params.pageName
-    switch (pageName) {
-        case route.list:
-            return <MaintenanceSideListContainer {...props} />
-        case route.calendar:
-            return <MaintenanceSideCalendarContainer {...props} />
-        default:
-            return <MaintenanceSideListContainer {...props} />
-    }
-}
+export default withMedia(AdministrationSideContainer)

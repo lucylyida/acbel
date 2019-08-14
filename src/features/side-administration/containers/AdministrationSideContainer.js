@@ -25,8 +25,7 @@ const AdministrationSideContainer = props => {
                 </div>
                 <div className="w-100 pb-2">
                     <Switch>
-                        <Route path={`${match.path}/${route.profile}`} component={MaintenanceSideProfileContainer} />
-                        <Route path={`${match.path}/${route.userManagement}`} component={MaintenanceSideCalendarContainer} />
+                        <Route path={`${match.path}/:pageName`} component={MaintenanceSideProfileContainer} />
                         <Redirect to={`${match.path}/${route.userManagement}`} />
                     </Switch>
                 </div>
@@ -36,3 +35,15 @@ const AdministrationSideContainer = props => {
 }
 
 export default withMedia(AdministrationSideContainer)
+
+const AdminstrationPage = props => {
+    const pageName = props.match.params.pageName
+    switch (pageName) {
+        case route.profile:
+            return <MaintenanceSideProfileContainer {...props} />
+        case route.userManagement:
+            return <MaintenanceSideCalendarContainer {...props} />
+        default:
+            return <MaintenanceSideCalendarContainer {...props} />
+    }
+}

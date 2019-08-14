@@ -14,7 +14,7 @@ const AppRoute = props => {
             <Switch>
                 <Route path={`/${route.global}`} component={GlobalContainer} />
                 <Route path={`/${route.maintenance}`} component={MaintenanceSide} />
-                <Route path={`/${route.administration}/:view`} component={AdministrationSideContainer} />
+                <Route path={`/${route.administration}`} component={AdministrationSideContainer} />
                 <Route path={`/${route.site}/:siteId`} component={SiteContainer} />
                 <Redirect to={`/${route.global}`} />
             </Switch>

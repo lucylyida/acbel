@@ -35,7 +35,7 @@ const SiteContainer = props => {
                         siteName={"Organic Farmer's Association"}
                     />
                 </div>
-                <div className="w-100 pb-3">
+                <div className="w-100 pb-3" style={{ overflow: 'hidden' }}>
                     <Switch>
                         <Route path={`${match.path}/:pageName`} component={SitePage} />
                         <Redirect to={`${match.path}/${route.dashboard}`} />

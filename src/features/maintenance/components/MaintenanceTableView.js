@@ -5,7 +5,9 @@ import { fsc, numberFormat } from '../../../helper/fontColorHelper'
 const MaintenanceTableView = props => {
     const { media } = props
     return (
-        <div className="py-2" style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"HISTORY"}</div>
+        <div className="container-fluid p-0">
+            <div className="pb-2" style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"HISTORY"}</div>
+        </div>
     )
 }
 

@@ -15,9 +15,9 @@ const SearchPanel = props => {
 
             <div className="pt-3" style={{ fontSize: fsc(media, 14), color: '#999999' }}>GENERATE BY</div>
             <div className="d-flex py-2" >
-                <div className="pr-1"> <KmToggleButton text="YEAR" className="py-2" style={{ width: 100 }} /> </div>
-                <div className="px-1"> <KmToggleButton text="MONTH" className="py-2" style={{ width: 100 }} /></div>
-                <div className="px-1"> <KmToggleButton text="DAY" selected className="py-2" style={{ width: 100 }} /> </div>
+                <div className="pr-1"> <KmToggleButton text="YEAR" className="py-2" style={{ width: 100 }}  onClick={()=> null} /> </div>
+                <div className="px-1"> <KmToggleButton text="MONTH" className="py-2" style={{ width: 100 }} onClick={()=>null} /></div>
+                <div className="px-1"> <KmToggleButton text="DAY" selected className="py-2" style={{ width: 100 }} onClick={()=>null} /> </div>
             </div>
 
             <div className="d-flex pt-3" style={{ width: media.mobile ? '100%' : 400 }}>

@@ -1,24 +1,20 @@
-import React from "react"
-import moment from 'moment'
-import { Route, Link, Switch, Redirect, } from "react-router-dom"
-import { withMedia } from 'react-media-query-hoc'
-import { fsc, numberFormat } from '../../../helper/fontColorHelper'
-import KmSearchbox from '../../../kumocom/KmSearchbox'
+import React from 'react'
 import KmTable from '../../../kumocom/KmTable'
 import tableTheme from "../../home/containers/tableTheme"
+import KmSearchbox from '../../../kumocom/KmSearchbox'
+import { withMedia } from 'react-media-query-hoc'
+import { fsc } from '../../../helper/fontColorHelper'
 import { memoize } from 'react-data-table-component';
 
-
-const MaintenanceSideCalendarContainer = props => {
-    const { media, match } = props
-
+const UserManagementView = props => {
+    const { media } = props
     return (
-        <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
-        <div className="d-flex justify-content-between align-items-center align-items-sm-center flex-wrap py-1  " >
+        <div>
+            <div className="d-flex justify-content-between align-items-center flex-wrap py-1  " >
                 <div > <KmSearchbox placeholder="Search User" /> </div>
-                <div style={{fontSize:fsc(media,14)}}> Showing 1 to 10 of 100 entries</div>
+                <div > Showing 1 to 10 of 100 entries</div>
             </div>
-            <div className="pt-3">
+            <div >
                 <KmTable
                     columns={columns(media)}
                     data={data}
@@ -30,7 +26,7 @@ const MaintenanceSideCalendarContainer = props => {
                     pagination={true}
                     paginationDefaultPage={1}
                     paginationTotalRows={data.length}
-                    paginationPerPage={10}
+                    paginationPerPage={0}
                     customPagination={true}
                 />
             </div>
@@ -38,8 +34,7 @@ const MaintenanceSideCalendarContainer = props => {
     )
 }
 
-export default withMedia(MaintenanceSideCalendarContainer)
-
+export default withMedia(UserManagementView)
 const data = [
     { id: 1, name: 'Chris Evans', shortName: 'CE', userId: 'chrisevans', email: 'chris@evan.com', client: "Acbel", userRole: "Administrator", edit: " EDIT", },
     { id: 2, name: 'Nasos Kouroupis', shortName: 'NK', userId: 'nasoku', email: 'nasos@melewi.net', client: "Acbel", userRole: "Administrator", edit: "EDIT", },
@@ -91,7 +86,6 @@ const columns = memoize((media, handleClick) => [
     {
         name: '',
         selector: 'edit',
-        allowOverflow: true,
         cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i class="fas fa-pencil-alt" /></span> {row.edit}</div>
 
     }

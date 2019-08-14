@@ -3,6 +3,8 @@ import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../../../helper/fontColorHelper'
 
 import ReportGeneratorView from '../components/ReportGenerateView'
+import ReportGenerateHistoryView from '../components/ReportGenerateHistoryView'
+
 
 const ReportContainer = props => {
     const { media } = props
@@ -11,7 +13,12 @@ const ReportContainer = props => {
             <div className="bg-white p-2" >
                 <ReportGeneratorView />
             </div>
-            <div className='py-3' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"HISTORY"}</div>
+            <div className="py-5">
+            <div className='py-2' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}> {"HISTORY"} </div>
+            <ReportGenerateHistoryView/>
+            </div>
+           
+
         </div>
     )
 }

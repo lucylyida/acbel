@@ -11,7 +11,7 @@ const MaintenanceInfoView = props => {
     const total_num = 6
     const total_cost = 123905.60
     return (
-        <div className="container-fluid p-0 d-flex justify-content-between align-items-center flex-wrap">
+        <div className="container-fluid p-0 pb-3 d-flex justify-content-between align-items-center flex-wrap">
 
             <div>
                 <div className="font-weight-bold" style={{ fontSize: fsc(media, 26) }}>{`Maintenance for ${moment().format("MMMM YYYY")}`}</div>

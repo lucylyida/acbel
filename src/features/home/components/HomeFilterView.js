@@ -17,7 +17,7 @@ const HomefilterView = props => {
                 <div className="flex-column p-2 flex-fill">
                     <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>SEARCH</div>
                     <div>
-                        <KmSearchbox text="Search" />
+                        <KmSearchbox placeholder="Search" />
                     </div>
                 </div>
 

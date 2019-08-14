@@ -11,7 +11,7 @@ import KmTable from '../../../kumocom/KmTable'
 const GlobalListContainer = props => {
     const { location, media } = props
     // const queryData = dec(querystring.parse(location.search).had)
-    const handleClick = () => props.history.push(`/${route.site}/${1}${location.search}`)
+    const handleClick = (row) => props.history.push(`/${route.site}/${row.id}${location.search}`)
     return (
         <div className="py-2">
             <div className="">
@@ -105,6 +105,10 @@ const columns = memoize((media, handleClick) => [
         ignoreRowClick: true,
         allowOverflow: true,
         button: true,
-        cell: row => <div onClick={handleClick} style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#a3a3a2' }}>{row.more}<span className="pl-2"><i className="fa fa-caret-right" /></span></div>
+        cell: row => {
+            return (
+                <div onClick={()=>handleClick(row)} style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#a3a3a2' }}>{row.more}<span className="pl-2"><i className="fa fa-caret-right" /></span></div>
+            )
+        }
     },
 ]);

@@ -33,7 +33,7 @@ const MaintenanceContainer = props => {
                     {
                         maintenanceData.map((v, k) =>
                             <div key={k} className={k === 0 ? 'pr-2' : k === maintenanceData.length - 1 ? 'pl-2' : 'px-2'}>
-                                <MaintenanceItemCardView type={v.type} desc={v.desc} date={v.date} time={v.time} />
+                                <MaintenanceItemCardView type={v.type} desc={v.desc} date={v.date} time={v.time} supplier={v.supplier} />
                             </div>
                         )
                     }

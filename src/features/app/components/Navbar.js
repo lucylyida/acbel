@@ -60,4 +60,6 @@ export const _hadleMenuClick = ({ history, match, location }) => {
         pathname: location.pathname,
         search: `?${querystring.stringify(queryParams)}`
     })
+    // document.getElementById("idddd").style.width = "75%"
+    
 }

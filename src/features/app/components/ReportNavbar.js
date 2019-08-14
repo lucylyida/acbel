@@ -18,8 +18,6 @@ const ReportNavbar = props => {
             </div>
             <div className="d-flex justify-content-center align-items-center pl-2">
                 <div style={{ color: "#2244aa", fontSize: fsc(media, 28) }}>Report</div>
-                <div style={{ paddingLeft: fsc(media, 10) }}><KmLink text="List View" to={`${match.url}/${route.list}${location.search}`} currentLink={location.pathname + location.search} /></div>
-                <div style={{ paddingLeft: fsc(media, 10) }}><KmLink text="Calendar View" to={`${match.url}/${route.calendar}${location.search}`} currentLink={location.pathname + location.search} /></div>
             </div>
             <div style={{ flex: 1 }} />
         </Navbar>

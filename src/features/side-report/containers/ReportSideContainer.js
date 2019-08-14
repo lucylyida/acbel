@@ -5,8 +5,6 @@ import { withMedia } from 'react-media-query-hoc'
 import { fsc, numberFormat } from '../../../helper/fontColorHelper'
 import ReportNavbar from "../../app/components/ReportNavbar"
 import LeftSidebar from "../../app/components/LeftSidebar";
-import MaintenanceSideProfileContainer from "./AdministrationSideProfileContainer"
-import MaintenanceSideCalendarContainer from "./AdministrationSideUserManagementContainer"
 import * as route from "../../../config/route.config"
 
 const ReportSideContainer = props => {

@@ -82,7 +82,7 @@ const LeftSidebar = props => {
                         <div><i className="fa fa-caret-right" /></div>
                     </div>
 
-                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }} onClick={() => history.push("/"+route.maintenance)} >
+                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }} onClick={() => history.push(`/${route.maintenance}/${route.list}`)} >
                         <div style={{ fontWeight: 'bold' }}>{"Maintenance"}</div>
                         <div><i className="fa fa-caret-right" /></div>
                     </div>
@@ -92,7 +92,7 @@ const LeftSidebar = props => {
                         <div><i className="fa fa-caret-right" /></div>
                     </div>
 
-                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }} onClick={() => history.push("/"+route.administration)} >
+                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }} onClick={() => history.push(`/${route.administration}/${route.userManagement}`)} >
                         <div style={{ fontWeight: 'bold' }}>{"Adminstration"}</div>
                         <div><i className="fa fa-caret-right" /></div>
                     </div>

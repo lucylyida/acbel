@@ -87,7 +87,7 @@ const LeftSidebar = props => {
                         <div><i className="fa fa-caret-right" /></div>
                     </div>
 
-                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }}>
+                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }} onClick={() => history.push("/"+route.report)}>
                         <div style={{ fontWeight: 'bold' }}>{"Reports"}</div>
                         <div><i className="fa fa-caret-right" /></div>
                     </div>

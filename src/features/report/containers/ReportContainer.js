@@ -4,6 +4,7 @@ import { fsc } from '../../../helper/fontColorHelper'
 
 import ReportGeneratorView from '../components/ReportGenerateView'
 
+
 const ReportContainer = props => {
     const { media } = props
     return (
@@ -12,6 +13,7 @@ const ReportContainer = props => {
                 <ReportGeneratorView />
             </div>
             <div className='py-3' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"HISTORY"}</div>
+
         </div>
     )
 }

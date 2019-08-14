@@ -6,10 +6,11 @@ import { fsc, numberFormat } from '../../../helper/fontColorHelper'
 import AdministrationNavbar from "../../app/components/AdministrationNavbar"
 import LeftSidebar from "../../app/components/LeftSidebar";
 import MaintenanceSideProfileContainer from "./AdministrationSideProfileContainer"
-import MaintenanceSideCalendarContainer from "./AdministrationSideUserManagementContainer"
+import AdministrationSideUserManagementContainer from "./AdministrationSideUserManagementContainer"
 import * as route from "../../../config/route.config"
 
 const AdministrationSideContainer = props => {
+
     const { media, match } = props
 
     return (
@@ -42,8 +43,8 @@ const AdminstrationPage = props => {
         case route.profile:
             return <MaintenanceSideProfileContainer {...props} />
         case route.userManagement:
-            return <MaintenanceSideCalendarContainer {...props} />
+            return <AdministrationSideUserManagementContainer {...props} />
         default:
-            return <MaintenanceSideCalendarContainer {...props} />
+            return <AdministrationSideUserManagementContainer {...props} />
     }
 }

@@ -14,11 +14,11 @@ const MaintenanceSideCalendarContainer = props => {
 
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
-        <div className="d-flex justify-content-between align-items-center flex-wrap py-1  " >
+        <div className="d-flex justify-content-between align-items-center align-items-sm-center flex-wrap py-1  " >
                 <div > <KmSearchbox placeholder="Search User" /> </div>
-                <div > Showing 1 to 10 of 100 entries</div>
+                <div style={{fontSize:fsc(media,14)}}> Showing 1 to 10 of 100 entries</div>
             </div>
-            <div >
+            <div className="pt-3">
                 <KmTable
                     columns={columns(media)}
                     data={data}
@@ -30,7 +30,7 @@ const MaintenanceSideCalendarContainer = props => {
                     pagination={true}
                     paginationDefaultPage={1}
                     paginationTotalRows={data.length}
-                    paginationPerPage={2}
+                    paginationPerPage={10}
                     customPagination={true}
                 />
             </div>
@@ -91,6 +91,7 @@ const columns = memoize((media, handleClick) => [
     {
         name: '',
         selector: 'edit',
+        allowOverflow: true,
         cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i class="fas fa-pencil-alt" /></span> {row.edit}</div>
 
     }

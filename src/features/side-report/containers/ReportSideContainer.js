@@ -7,6 +7,9 @@ import ReportNavbar from "../../app/components/ReportNavbar"
 import LeftSidebar from "../../app/components/LeftSidebar";
 import * as route from "../../../config/route.config"
 
+import ReportGeneratorView from '../components/ReportGeneratorView'
+
+
 const ReportSideContainer = props => {
     const { media, match } = props
 
@@ -22,7 +25,8 @@ const ReportSideContainer = props => {
                     />
                 </div>
                 <div className="w-100 pb-2">
-                   Herere Report Data
+                 <ReportGeneratorView/>
+                
                 </div>
             </div>
         </div>

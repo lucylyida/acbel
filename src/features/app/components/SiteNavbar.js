@@ -11,7 +11,7 @@ import Flag from '../../../assets/icons/Flag_Kingdom'
 import AcbelLogo from '../../../assets/icons/Acbel_Logo'
 import { withMedia } from "react-media-query-hoc"
 import { fsc } from "../../../helper/fontColorHelper"
-import { _hadleMenuClick } from "./GlobalNavbar"
+import { _hadleMenuClick } from "./Navbar"
 
 const SiteNavbar = props => {
     const { match, location, history, media } = props

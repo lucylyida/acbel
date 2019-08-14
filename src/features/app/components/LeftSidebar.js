@@ -6,8 +6,9 @@ import querystring from "query-string"
 
 import { withMedia } from 'react-media-query-hoc';
 import { fsc } from '../../../helper/fontColorHelper';
+import * as route from "../../../config/route.config"
+import { _hadleMenuClick } from "./Navbar"
 
-import { _hadleMenuClick } from "./GlobalNavbar"
 const LeftSidebar = props => {
     const { online, offline, active, siteName, efficiency, capacity, location, match, history } = props
     const queryParams = querystring.parse(location.search)
@@ -81,7 +82,7 @@ const LeftSidebar = props => {
                         <div><i className="fa fa-caret-right" /></div>
                     </div>
 
-                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }}>
+                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }} onClick={() => history.push("/"+route.maintenance)} >
                         <div style={{ fontWeight: 'bold' }}>{"Maintenance"}</div>
                         <div><i className="fa fa-caret-right" /></div>
                     </div>
@@ -91,7 +92,7 @@ const LeftSidebar = props => {
                         <div><i className="fa fa-caret-right" /></div>
                     </div>
 
-                    <div className='d-flex justify-content-between py-2' style={{ color: 'white' }}>
+                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }} onClick={() => history.push("/"+route.administration+"/"+route.profile)} >
                         <div style={{ fontWeight: 'bold' }}>{"Adminstration"}</div>
                         <div><i className="fa fa-caret-right" /></div>
                     </div>

@@ -12,7 +12,7 @@ const MaintenanceItemCardView = props => {
     }
 
     return (
-        <div className="bg-white card rounded border" style={{ fontSize: '14px', padding: '10px', width: 280 }}>
+        <div className="bg-white card rounded border" style={{ fontSize: 14, padding: 10, width: 280 }}>
 
             <div className="d-flex justify-content-between pt-1 pb-3">
                 <div>

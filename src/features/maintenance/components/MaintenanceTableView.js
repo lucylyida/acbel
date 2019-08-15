@@ -46,7 +46,7 @@ const columns = memoize((media, handleClick) => [
         name: "TYPE OF MAINTENANCE",
         selector: 'typeofmaintenance',
         sortable: true,
-        grow: 1,
+        grow: 4,
        
     },
     {
@@ -56,7 +56,7 @@ const columns = memoize((media, handleClick) => [
     {
         name: 'SUPPLIER',
         selector: 'supplier',
-        grow:1
+        
     },
     {
         name: 'COST(NT$)',

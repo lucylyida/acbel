@@ -5,15 +5,22 @@ import ProfilePanelView from '../components/ProfilePanelView'
 
 const ProfileContainer = props => {
     return (
-        <div className="container-fluid p-3">
-            <div className="d-flex flex-wrap ">
-                <div className="flex-grow-1">
+        <div className="container-fluid p-0">
+            <div className="d-flex align-items-stretch flex-wrap">
+
+                <div className="flex-grow-1 p-1 flex-fill">
                     <ProfileSiteProfielView />
                 </div>
-                <div className="flex-grow-1 px-3">
-                    <div className="pb-5"> <ProfileInverterView /> </div>
-                    <div> <ProfilePanelView /></div>
+
+                <div className="flex-grow-1">
+                    <div className="p-1">
+                        <ProfileInverterView />
+                    </div>
+                    <div className="p-1">
+                        <ProfilePanelView />
+                    </div>
                 </div>
+
             </div>
         </div>
 

@@ -2,24 +2,19 @@ import React from 'react'
 import Table from '../components/Table'
 import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../../../helper/fontColorHelper'
+import FourItemBox from '../../app/components/FourItemBox';
 
 
 const ProfileInverterView = props => {
     const { media } = props
     return (
-        <div>
-            <div style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>INVERTERS</div>
+        <div className="p-4" style={{ backgroundColor: '#FFFFFF', borderRadius: 4 }}>
+            <div className='p-2' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"INVERTERS"}</div>
             <div className="flex-fill py-2">
-                <div className="d-flex">
-                    <div style={{ fontSize: fsc(media, 25), color: '#0B3D92' }} className="font-weight-bold ">
-                        {"38"}
-                    </div>
-                    <div style={{ fontSize: fsc(media, 15) }} className=" pt-2"> &nbsp;Inverters</div>
-                </div>
-                <div style={{ fontSize: fsc(media, 12), color: '#C4C4C4' }}>NO.OF INVERTERS</div>
+                <FourItemBox value={38} desc={"NO. OF INVERTERS"} unit={'Inverters'} />
             </div>
 
-            <div style={{ color: '#FF8902', fontSize: fsc(media, 14) }} className="pt-3" >INVERTERS SPEC/BRAND MODEL</div>
+            <div className='p-2' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"INVERTERS SPEC/BRAND MODEL"}</div>
             <div className=" d-flex flex-wrap pt-0">
                 <div className="flex-grow-1">
                     <div className="table-responsive">
@@ -41,8 +36,8 @@ const ProfileInverterView = props => {
                             style={{
                                 fontSize: fsc(media, 15),
                                 borderSpacing: 0,
-                                paddingTop:0,
-                              
+                                paddingTop: 0,
+
                             }}
 
                         />
@@ -69,7 +64,7 @@ const ProfileInverterView = props => {
                             style={{
                                 fontSize: fsc(media, 15),
                                 borderSpacing: 0,
-                                paddingTop:0,
+                                paddingTop: 0,
                             }}
                         />
                     </div>

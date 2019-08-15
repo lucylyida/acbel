@@ -5,11 +5,14 @@ import { withMedia } from 'react-media-query-hoc'
 import { fsc, numberFormat } from '../../../helper/fontColorHelper'
 import AdministrationNavbar from "../../app/components/AdministrationNavbar"
 import LeftSidebar from "../../app/components/LeftSidebar";
+
 import AdministrationSideProfileContainer from "./AdministrationSideProfileContainer"
 import AdministrationSideUserManagementContainer from "./AdministrationSideUserManagementContainer"
+
 import * as route from "../../../config/route.config"
 
 const AdministrationSideContainer = props => {
+
     const { media, match } = props
 
     return (
@@ -20,7 +23,6 @@ const AdministrationSideContainer = props => {
                 <div className="flex-grow-1">
                     <LeftSidebar
                         online={218} offine={12} siteChoose={true} active={true} efficiency={100} capacity={170.00}
-                        siteName={"Organic Farmer's Association"}
                     />
                 </div>
                 <div className="w-100 pb-2">
@@ -39,8 +41,10 @@ const AdminstrationPage = props => {
         case route.profile:
             return <AdministrationSideProfileContainer {...props} />
         case route.userManagement:
+
             return <AdministrationSideUserManagementContainer {...props} />
         default:
             return <AdministrationSideProfileContainer {...props} />
+
     }
 }

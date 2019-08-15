@@ -3,7 +3,7 @@ import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../helper/fontColorHelper'
 
 const KmDropdown = props => {
-    const { className, onClick, style, data, media, selectedItem, labelHide = false, hideDropdownToggle = false } = props
+    const { className, onClick, style, data, media, selectedItem, labelHide = false, hideDropdownToggle = false,  } = props
     const className1 = className === undefined ? '' : className
     return (
         <div className={`dropdown ${className1}`}

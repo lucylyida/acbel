@@ -32,3 +32,11 @@ code {
   display: none;
   background-image: #fff;
 }
+
+.react-datepicker-wrapper {
+  display: block !important
+}
+
+.react-datepicker__input-container {
+  display: block !important
+}

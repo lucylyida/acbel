@@ -4,15 +4,18 @@ import { withMedia } from 'react-media-query-hoc'
 import { fsc, numberFormat } from '../../../helper/fontColorHelper'
 import KmDropdown from '../../../kumocom/KmDropdown'
 import KmButton from '../../../kumocom/KmButton'
+import MaintenanceItemCardView from './MaintenanceItemCardView'
 
 const MaintenanceInfoView = props => {
-    const { media } = props
-    const [filter, setFilter] = useState({ text: 'All types' })
+    const { media, filter, setFilter, contentSize, setLeft, setRight } = props
     const total_num = 6
-    const total_cost = 123905.60
-    return (
-        <div className="container-fluid p-0 d-flex justify-content-between align-items-center flex-wrap">
+    const total_cost = 123905.60  
+      
+    // setLeft(contentSize < window.innerWidth)
+    // setRight(contentSize < window.innerWidth)
 
+    return (
+        <div className="container-fluid p-1 pb-3 d-flex justify-content-between align-items-center flex-wrap">
             <div>
                 <div className="font-weight-bold" style={{ fontSize: fsc(media, 26) }}>{`Maintenance for ${moment().format("MMMM YYYY")}`}</div>
                 <div className="d-flex flex-wrap py-2">
@@ -26,7 +29,7 @@ const MaintenanceInfoView = props => {
                     </div>
                 </div>
             </div>
-
+            
             <div className="d-flex flex-row-reverse align-items-center">
                 <KmButton text={"ADD NEW"} noMinWidth style={{ width: 150 }} />
                 <KmDropdown
@@ -36,29 +39,33 @@ const MaintenanceInfoView = props => {
                     selectedItem={{ icon: <i className="fa fa-sliders-h" style={{ color: '#8AA3CE' }} />, text: <span style={{ color: '#8AA3CE' }}>FILTER</span> }}
                     data={[
                         {
+                            id: 1,
                             icon: <span className="border rounded" style={{ paddingLeft: 1, paddingRight: 1 }}>
-                                <i className="fa fa-square" style={{ color: filter.text === 'All types' ? '#ffffff' : '#ffffff00' }} />
+                                <i className="fa fa-square" style={{ color: filter.id === 1 ? '#ffffff' : '#ffffff00' }} />
                             </span>,
                             text: 'All types'
                         },
                         {
+                            id: 2,
                             icon:
                                 <span className="border rounded" style={{ paddingLeft: 1, paddingRight: 1 }}>
-                                    <i className="fa fa-square" style={{ color: filter.text === 'Ad-hoc Maintenance only' ? '#ffffff' : '#ffffff00' }} />
+                                    <i className="fa fa-square" style={{ color: filter.id === 2 ? '#ffffff' : '#ffffff00' }} />
                                 </span>,
                             text: 'Ad-hoc Maintenance only'
                         },
                         {
+                            id: 3,
                             icon:
                                 <span className="border rounded" style={{ paddingLeft: 1, paddingRight: 1 }}>
-                                    <i className="fa fa-square" style={{ color: filter.text === 'Water Proofing Maintenance only' ? '#ffffff' : '#ffffff00' }} />
+                                    <i className="fa fa-square" style={{ color: filter.id === 3 ? '#ffffff' : '#ffffff00' }} />
                                 </span>,
                             text: 'Water Proofing Maintenance only'
                         },
                         {
+                            id: 4,
                             icon:
                                 <span className="border rounded" style={{ paddingLeft: 1, paddingRight: 1 }}>
-                                    <i className="fa fa-square" style={{ color: filter.text === 'Annual Maintenance Only' ? '#ffffff' : '#ffffff00' }} />
+                                    <i className="fa fa-square" style={{ color: filter.id === 4 ? '#ffffff' : '#ffffff00' }} />
                                 </span>,
                             text: 'Annual Maintenance Only'
                         },

@@ -1,11 +1,13 @@
 import React from 'react'
 import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../helper/fontColorHelper'
-import { min } from 'moment';
+
 
 const KmButton = props => {
     const { text, type, onClick, icon, style, className, iconPlace, media, noMinWidth } = props
-    const defaultStyle = { background: '#006CF7', padding:8, }
+    const defaultStyle = { background: '#006CF7', padding:1 , 
+    height:"calc(1.5em + 0.75rem + 2px)"
+}
 
     const userStyle = style === undefined ? {} : style
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { withRouter } from "react-router-dom"
 import Capacity from '../../../assets/icons/CapacityIcon';
 import HomeIcon from "../../../assets/icons/Home-Icon"
@@ -13,6 +13,10 @@ const LeftSidebar = props => {
     const { online, offline, active, siteName, efficiency, capacity, location, match, history } = props
     const queryParams = querystring.parse(location.search)
     const leftSidebarVisible = queryParams.lsb
+
+    console.log({ match })
+    const url = match.path
+    const pageName = match.params.pageName
 
     if (leftSidebarVisible === undefined || leftSidebarVisible === "false") return null
     else
@@ -87,15 +91,22 @@ const LeftSidebar = props => {
                         <div><i className="fa fa-caret-right" /></div>
                     </div>
 
-                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }} onClick={() => history.push("/"+route.report)}>
+                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }} onClick={() => history.push("/" + route.report)}>
                         <div style={{ fontWeight: 'bold' }}>{"Reports"}</div>
                         <div><i className="fa fa-caret-right" /></div>
                     </div>
-
-                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }} onClick={() => history.push(`/${route.administration}/${route.userManagement}`)} >
-                        <div style={{ fontWeight: 'bold' }}>{"Adminstration"}</div>
-                        <div><i className="fa fa-caret-right" /></div>
-                    </div>
+                    
+                    <MenuItem 
+                        text={"Administration"} 
+                        url={url} 
+                        pageName={pageName} 
+                        history={history} 
+                        pageUrl = {"/administration/:pageName"}
+                        subItems = {[ 
+                            { text: "Profile Settings", clickRoute: `/${route.administration}/${route.profile}`, pageName: route.profile },
+                            { text: "User Management", clickRoute: `/${route.administration}/${route.userManagement}`, pageName: route.userManagement }
+                        ]}
+                    />
 
                 </div>
             </div>
@@ -103,3 +114,27 @@ const LeftSidebar = props => {
 }
 
 export default withRouter(withMedia(LeftSidebar));
+
+
+const MenuItem = props => {
+    const { text, history, url, pageName, subItems, pageUrl } = props 
+    const [collapse, setCollapse] = useState(url !== pageUrl)
+    const subItemsView = subItems.map((v, k) => (
+        <div key={k} className="pl-4 py-2"
+            style={{ color: url === pageUrl && pageName === v.pageName ? "#ffffff" : "#ffffff55" }}
+            onClick={() => history.push(v.clickRoute)}>
+            <b>{ v.text }</b>
+        </div>
+    ))
+    return (
+        <div className='' style={{ color: 'white', cursor: "pointer" }}  >
+            <div className="d-flex justify-content-between py-2" onClick={() => setCollapse(url !== pageUrl && !collapse)}>
+                <div style={{ fontWeight: 'bold' }}>{ text }</div>
+                <div><i className={`fa fa-caret-${collapse ? "right" : "down"}`} /></div>
+            </div>
+            <div className={`collapse ${(url === pageUrl || !collapse) && "show"}`}>
+                { subItemsView }
+            </div>
+        </div>
+    )
+}

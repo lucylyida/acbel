@@ -92,7 +92,7 @@ const columns = memoize((media, handleClick) => [
         name: '',
         selector: 'edit',
         allowOverflow: true,
-        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i class="fas fa-pencil-alt" /></span> {row.edit}</div>
+        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i className="fas fa-pencil-alt" /></span> {row.edit}</div>
 
     }
 ])

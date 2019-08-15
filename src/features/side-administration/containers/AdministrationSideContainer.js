@@ -23,7 +23,6 @@ const AdministrationSideContainer = props => {
                 <div className="flex-grow-1">
                     <LeftSidebar
                         online={218} offine={12} siteChoose={true} active={true} efficiency={100} capacity={170.00}
-                        siteName={"Organic Farmer's Association"}
                     />
                 </div>
                 <div className="w-100 pb-2">

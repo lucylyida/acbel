@@ -5,10 +5,10 @@ import { fsc } from '../../../helper/fontColorHelper'
 
 const Table = props => {
     const { tblInfo, columns, render, role, isEdit, style, media } = props
-    const defaultStyle = { verticalAlign: "middle", border: "none", }
+    const defaultStyle = { verticalAlign: "middle", border: "none", paddingLeft: 5 }
     const userStyle = style === undefined ? {} : style;
     const header = columns.map((v, k) =>
-        <td key={k} style={{ border: "none" }}>{v}</td>
+        <td key={k} style={{ border: "none", paddingLeft: 5 }}>{v}</td>
     )
 
     const defaultCellRender = v => <td key={Math.random()} style={{ ...defaultStyle, ...userStyle }}>{v}</td>
@@ -28,9 +28,9 @@ const Table = props => {
         </tr>
     ))
     return (
-        <table className="table table-borderless" style={{ borderCollapse: "separate"}}>
+        <table className="table table-borderless" style={{ borderCollapse: "separate" }}>
             <thead className="table-borderless" >
-                <tr style={{fontSize:fsc(media,14),color:'#C4C4C4',borderSpacing:0 ,paddingBottom:0 }}>
+                <tr style={{ fontSize: fsc(media, 14), color: '#C4C4C4', borderSpacing: 0, paddingBottom: 0 }}>
                     {header}
                 </tr>
             </thead>

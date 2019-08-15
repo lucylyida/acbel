@@ -8,7 +8,7 @@ const Edit_Icon = props => {
         <svg
             width={vw}
             height={vh}
-            viewBox="-10 -8 48 48" >
+            viewBox="-15 -3 48 48" >
 
             <g id="Style-Guide" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" opacity="0.45">
                 <g id="A-Icons" transform="translate(-385.000000, -220.000000)" fill="#0B3D92" fillRule="nonzero">

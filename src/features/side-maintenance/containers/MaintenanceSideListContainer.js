@@ -69,20 +69,20 @@ const columns = memoize((media, handleClick) => [
         name: '',
         selector: 'edit',
         allowOverflow: true,
-        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i class="fas fa-pencil-alt" /></span> {row.edit}</div>
+        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i className="fas fa-pencil-alt" /></span> {row.edit}</div>
     }
 
 ])
 
 export const CollapseTable = ({media }) => {
-    const [expand, setExpand] = useState(false)
+    const [expand, setExpand] = useState(true)
     return (
         <div>
             <div className="d-flex justify-content-between">
-                <div className="d-flex ">
+                <div className="d-flex align-items-center  justify-content-center">
                     <span style={{ fontSize: fsc(media, 17) }} className="px-2">June 17 </span>
-                    <span style={{ width: 30, height: 30, borderRadius: '50%' }} className=" text-center bg-primary px-2">4</span>
-                    <span onClick={() => setExpand((!expand))} className="px-2" style={{ cursor: 'pointer' }}> {expand ? <span ><i className="fas fa-sort-up"></i></span> : <span ><i className="fas fa-sort-down"></i></span>} </span>
+                    <span style={{ width: 30, height: 30, borderRadius: '50%',fontSize:fsc(media,17),textAlign:'center' }} className="align-content-center bg-primary text-white">{"4"}</span>
+                    <span onClick={() => setExpand((!expand))} className="px-2" style={{ cursor: 'pointer' }}> <span ><i className={`fas ${expand ?`fa-sort-up` :`fa-sort-down` }`} /></span></span>
                 </div>
                 <div className="font-weight-bold " style={{ fontSize: fsc(media, 15) }}>{"Total Cost:NT$ 126,400.00"}</div>
             </div>
@@ -107,14 +107,14 @@ export const CollapseTable = ({media }) => {
 }
 
 export const CollapseTable2 = ({media}) =>{
-    const [expand, setExpand] = useState(false)
+    const [expand, setExpand] = useState(true)
     return(
         <div>
             <div className="d-flex justify-content-between pt-4">
-                <div className="d-flex ">
+                <div className="d-flex align-items-center  justify-content-center">
                     <span style={{ fontSize: fsc(media, 17) }} className="px-2">June 18 </span>
-                    <span style={{ width: 30, height: 30, borderRadius: '50%' }} className=" text-center bg-primary px-2">4</span>
-                    <span onClick={() => setExpand((!expand))} className="px-2" style={{ cursor: 'pointer' }}> {expand ? <span ><i className="fas fa-sort-up"></i></span> : <span ><i className="fas fa-sort-down"></i></span>} </span>
+                    <span style={{ width: 30, height: 30, borderRadius: '50%',textAlign:'center', fontSize:fsc(media,17)}} className="align-content-center bg-primary text-white ">{"4"}</span>
+                    <span onClick={() => setExpand((!expand))} className="px-2" style={{ cursor: 'pointer' }}> <span ><i className={`fas ${expand ?`fa-sort-up` :`fa-sort-down` }`} /></span></span>
                 </div>
                 <div className="font-weight-bold " style={{ fontSize: fsc(media, 15) }}>{"Total Cost:NT$ 126,400.00"}</div>
             </div>

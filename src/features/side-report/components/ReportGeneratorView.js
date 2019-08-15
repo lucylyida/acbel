@@ -124,19 +124,19 @@ const columns = memoize((media, handleClick) => [
         name: '',
         selector: 'view',
         sortable: true,
-        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i class="far fa-eye" /></span> {row.view}</div>
+        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i className="far fa-eye" /></span> {row.view}</div>
 
     },
     {
         name: '',
         selector: 'export',
         sortable: true,
-        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i class="fas fa-external-link-alt" /></span> {row.export}</div>
+        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i className="fas fa-external-link-alt" /></span> {row.export}</div>
     },
     {
         name: '',
         selector: 'remove',
-        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#999999' }}><span className="px-1"><i class="fas fa-times" /></span> {row.remove}</div>
+        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#999999' }}><span className="px-1"><i className="fas fa-times" /></span> {row.remove}</div>
 
     }
 ])

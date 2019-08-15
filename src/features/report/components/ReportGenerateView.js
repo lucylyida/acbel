@@ -11,9 +11,8 @@ const ReportGeneratorView = props => {
     return (
         <div>
             <div className="py-2" style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>REPORT GENERATION</div>
-
             <div className="d-flex flex-lg-nowrap flex-wrap">
-                <div className="py-1 px-2 flex-fill">
+                <div className=" px-1 py-2 flex-fill ">
                     <div style={{ fontSize: fsc(media, 13), color: '#999999' }}>TYPE OF REPORT</div>
                     <KmSelector
                         style={{ indicator: 'none' }}
@@ -28,17 +27,17 @@ const ReportGeneratorView = props => {
                         optionLabel='label'
                     />
                 </div>
-                <div className=" d-flex">
-                    <div className="p-1 ">
+                <div className=" d-flex flex-wrap ">
+                    <div className="px-1 py-2 flex-fill ">
                         <div style={{ fontSize: fsc(media, 13), color: '#999999' }}>FROM</div>
-                          <div><KmDatePicker place="end" /></div>
+                        <div><KmDatePicker /></div>
                     </div>
-                    <div className="p-1 ">
+                    <div className="px-1 py-2 flex-fill">
                         <div style={{ fontSize: fsc(media, 13), color: '#999999' }}>TO</div>
-                        <div><KmDatePicker place="end" /></div>
+                        <div><KmDatePicker /></div>
                     </div>
                 </div>
-                <div className="flex-grow-1  flex-fill px-2">
+                <div className="  flex-fill px-1 py-2">
                     <div style={{ fontSize: fsc(media, 13), color: '#999999' }}>EXPORT REPORT AS</div>
                     <div className="d-flex">
                         <div > <KmButtom text="PDF" noMinWidth style={{ width: 80 }} /></div>
@@ -53,4 +52,3 @@ const ReportGeneratorView = props => {
 }
 export default withMedia(ReportGeneratorView)
 
-  

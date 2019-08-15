@@ -16,7 +16,7 @@ const RevenueContainer = props => {
             </div>
 
             <div className="row pt-2 ">
-                <div className=" col-md-6 p-1"><SearchPanel /></div>
+                <div className=" col-md-6 p-1 "><SearchPanel /></div>
 
                 <div className="col-md-6 p-1">
                     <div className="bg-white h-100" style={{ borderRadius: 4 }}>

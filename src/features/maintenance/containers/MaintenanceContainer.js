@@ -12,7 +12,7 @@ const MaintenanceContainer = props => {
     // const [right, setRight] = useState(false)
     const [left1, setLeft1] = useState(true)
     const [right1, setRight1] = useState(false)
-    const [filter, setFilter] = useState({ id: 2 })
+    const [filter, setFilter] = useState({ id: 1 })
     const move = 500
 
     const RightButton = () => {

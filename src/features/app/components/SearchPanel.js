@@ -9,7 +9,7 @@ import { fsc } from '../../../helper/fontColorHelper'
 const SearchPanel = props => {
     const { media } = props
     return (
-        <div className="container-fluid p-4 bg-white " style={{ borderRadius: 4 }}>
+        <div className="container-fluid p-4 bg-white h-100" style={{ borderRadius: 4 }}>
 
             <div className='pt-2' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"TRENDS"}</div>
 

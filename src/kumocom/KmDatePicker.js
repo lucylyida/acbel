@@ -6,14 +6,14 @@ import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../helper/fontColorHelper'
 
 const KmDatePicker = props => {
-    const { place, media } = props
+    const { place="auto-end", media } = props
     const [startDate, setStartDate] = useState(new Date())
     const [value, setValue] = useState(startDate)
     return (
         <div >
             <DatePicker
                 className="form-control "
-                calendarClassName=" border border-danger h-100"
+                calendarClassName=""
                 popperClassName=""
                 popperPlacement={place}
                 tabIndex={1}
@@ -35,6 +35,7 @@ export const InputField = ({ onClick, placeholder, onChange, value, noMinWidth, 
             <div >{value}</div>
             <div ><i className="far fa-calendar" /></div>
         </div>
+     
     )
 }
 

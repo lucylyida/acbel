@@ -9,7 +9,6 @@ const SolarPanel_icon = props => {
             width={vw}
             height={vh}
             viewBox="0 0 48 48" >
-
             <g id="Style-Guide" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="A-Icons" transform="translate(-103.000000, -116.000000)">
                     <g id="Group-3" transform="translate(87.000000, 100.000000)">

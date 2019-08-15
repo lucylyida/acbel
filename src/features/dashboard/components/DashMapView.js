@@ -67,7 +67,8 @@ export class MapContainer extends Component {
                     onClick={this.infoWindowClose}
                     styles={MapStyle}
                     google={this.props.google}
-                    className={"map"}
+                    disableDefaultUI={true}
+                    zoomControl={true}
                     zoom={3}
                     initialCenter={{
                         lat: 13.736717,

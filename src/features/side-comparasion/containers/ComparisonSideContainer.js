@@ -22,7 +22,7 @@ const ComparasionSideContainer = props => {
                 <div className="flex-grow-1">
                     <LeftSidebar online={218} offine={12} siteChoose={true} active={true} efficiency={100} capacity={170.00} />
                 </div>
-                <div className="w-100 pb-2 d-flex" style={{ height: 800 }}>
+                <div className="w-100 pb-2 d-flex" >
                     <div className="p-2" style={{ minWidth: 460 }}>
                         <SiteComprisonInputView {...props} />
                     </div>

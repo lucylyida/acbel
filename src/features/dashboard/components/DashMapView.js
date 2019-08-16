@@ -4,6 +4,7 @@ import InfoWindowEx from "./InfoWindowEx";
 import MapStyle from '../../home/containers/MapStyle';
 import { fsc } from '../../../helper/fontColorHelper';
 import { withMedia } from 'react-media-query-hoc';
+import SolarPanelIcon from '../../../assets/images/solarPanel.png'
 
 export class MapContainer extends Component {
     constructor(props) {
@@ -66,7 +67,8 @@ export class MapContainer extends Component {
                     onClick={this.infoWindowClose}
                     styles={MapStyle}
                     google={this.props.google}
-                    className={"map"}
+                    disableDefaultUI={true}
+                    zoomControl={true}
                     zoom={3}
                     initialCenter={{
                         lat: 13.736717,
@@ -76,6 +78,7 @@ export class MapContainer extends Component {
                     {stores.map((place, i) => {
                         return (
                             <Marker
+                                icon={SolarPanelIcon}
                                 onClick={this.onMarkerClick}
                                 key={place.id}
                                 place_={place}
@@ -87,15 +90,13 @@ export class MapContainer extends Component {
                         marker={this.state.activeMarker}
                         visible={this.state.showingInfoWindow}
                     >
-                        <div style={{ fontSize: fsc(media, 16) }}>
+                        <div style={{ fontSize: fsc(media, 12) }}>
                             <div>{this.state.selectedPlace.name}</div>
-                            <button
-                            className="btn btn-sm btn-primary"
-                                type="button"
-                                onClick={this.showDetails.bind(this, this.state.selectedPlace)}
-                            >
-                                Show details
-                            </button>
+                            <div style={{ color: 'blue' }}>Organic Farmars' Organization </div>
+                            <div className='py-1'>
+                                <i className="fa fa-circle" style={{ fontSize: 8, color: 'green' }} /> Online</div>
+                            <div>Power Output : 147.45kW</div>
+                            <div className='py-0'>Capacity : 147.45kW</div>
                         </div>
                     </InfoWindowEx>
                 </Map>

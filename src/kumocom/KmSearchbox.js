@@ -3,7 +3,7 @@ import {withMedia} from 'react-media-query-hoc'
 import {fsc} from '../helper/fontColorHelper'
 
 const KmSearchbox = props => {
-    const { style, onChange, onClick,media } = props
+    const { style, onChange, onClick,media ,placeholder} = props
     const defaultStyle = { cursor: 'pointer', minWidth:200 }
     const userStyle = style === undefined ? {} : style
     
@@ -13,7 +13,7 @@ const KmSearchbox = props => {
                 className="form-control py-2 border-right-0 "
                 type="search"
                 aria-label="Search"
-                placeholder="Search"
+                placeholder={placeholder}
                 id="search-input"
                 style={{ ...{ fontSize:fsc(media,15),}, ...userStyle}}
                 onChange={onChange}

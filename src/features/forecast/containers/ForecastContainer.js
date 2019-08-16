@@ -38,7 +38,7 @@ const ForecastContainer = props => {
                 <div className="col-12" style={{ border: '1px solid lightgrey' }}></div>
             </div>
             <div className="row pt-2">
-                <div className="col-md-6 p-1">
+                <div className="col-md-6 p-1 ">
                     <SearchPanel />
                 </div>
 

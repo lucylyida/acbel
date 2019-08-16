@@ -1,42 +1,40 @@
 import React from 'react'
-import { ResponsiveHeatMap } from '@nivo/heatmap'
 
 const PanelMap = props => {
+    const { data } = props
+    const col = 20
+    const row = 3
 
-    const { data, color} = props
+    const tempArr = new Array(row).fill(new Array(col).fill(0))
+    const panelView = tempArr.map((c, i) => {
+        const colView = c.map((vv, k) => {
+            const index = i * col + k
+            const v = data[index]
+            const color = v.value === 2 ? "#D7F0D2" : 
+            v.value === 1 ? "#EFFAED" : 
+            v.value === 3 ? '#FFD6D2' : 
+            v.value === 4 ? '#D5E2D2': v.value === 5 ? "#FFF4D2" :"#F9C209";
+
+            return (
+                <div>
+                    <div className="flex-fill border" style={{ minWidth: 40, maxWidth: 40, minHeight: 40, maxHeight: 40, backgroundColor: color }}>
+
+                    </div>
+                   
+                </div>
+            )
+        })
+        return (
+            <div className="d-flex">
+                {colView}
+            </div>
+        )
+    })
     return (
-        <div className="" style={{ width: "100%", height: 165 }} >
-            <ResponsiveHeatMap
-                data={data}
-                keys={[
-                    'panel1', 'panel2', 'panel3', 'panel4',
-                    'panel5', 'panel6', 'panel7', 'panel8',
-                    'panel9', 'panel10', 'panel11', 'panel12',
-                    'panel13', 'panel14', 'panel15', 'panel16',
-                    'panel17', 'panel18', 'panel19', 'panel20'
-                ]}
-                indexBy="row"
-                margin={{ top: 0, right: 10, bottom: 0, left: 10 }}
-                forceSquare={true}
-                axisTop={null}
-                axisRight={null}
-                axisBottom={null}
-                axisLeft={null}
-                cellOpacity={1}
-                minValue={30}
-                padding={1}
-                colors={color}
-                enableLabels={false}
-                animate={true}
-                motionStiffness={80}
-                motionDamping={9}
-                hoverTarget="cell"
-                cellHoverOthersOpacity={0.7}
-            />
+        <div className="" style={{ minWidth: 200, overflow: "auto" }}>
+            {panelView}
         </div>
-
     )
-
 }
 
 export default PanelMap;

@@ -4,8 +4,14 @@ import { fsc } from '../helper/fontColorHelper'
 
 
 const KmButton = props => {
+<<<<<<< HEAD
     const { text, type, onClick, icon, style, className, iconPlace, media, noMinWidth } = props
     const defaultStyle = { background: '#006CF7', padding:1 , height:"calc(1.5em + 0.75rem + 2px)"}
+=======
+    const { text, type, onClick, icon, style, className, iconPlace, media, noMinWidth, textColor="#ffffff" } = props
+    const defaultStyle = { background: '#006CF7', padding:1 , height:"calc(1.5em + 0.75rem + 2px)"
+}
+>>>>>>> af3acb83ecf3f1e594ff8204e64e986784a552e3
 
     const userStyle = style === undefined ? {} : style
 
@@ -20,7 +26,7 @@ const KmButton = props => {
                 {
                     iconPlace !== undefined || iconPlace ?
                         <div className="d-flex justify-content-center"> <span style={{ color: '#ffffff', fontSize: fsc(media, 13), fontWeight: 'bold' }}>{text}</span><span>{icon} </span></div> :
-                        <div className="d-flex justify-content-center"> <span >{icon}</span><span style={{ color: '#ffffff', fontSize: fsc(media, 15), fontWeight: 'bold' }}>{text} </span></div>
+                        <div className="d-flex justify-content-center"> <span >{icon}</span><span style={{ color: textColor, fontSize: fsc(media, 15), fontWeight: 'bold' }}>{text} </span></div>
                 }
             </button>
         </div>

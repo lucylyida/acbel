@@ -12,22 +12,25 @@ export class MapContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            zoom: 7,
+            zoom: 8.3,
             stores: [],
             isClientToShow: false,
             showingInfoWindow: false,
             activeMarker: {},
             selectedPlace: {},
             isShowInfoWindow: false,
-            initialCenter: { lat: 21.444, lng: 96.176 }
+            initialCenter: { lat: 20.444, lng: 96.176 },
+            markerPosition: {}
         }
         this.mapRef = React.createRef()
     }
     componentDidMount() {
         // console.log({ mapRef: this.mapRef.current })
         const mmap = this.mapRef.current
+        // console.log(mmap.props.google.maps.Marker.Cb)
         mmap.map.addListener("zoom_changed", () => {
             // console.log({ zoom: mmap.map.getZoom() })
+            this.setState({ showingInfoWindow: false })
         })
         mmap.map.addListener("bounds_changed", () => {
             const mapBound = mmap.map.getBounds()
@@ -45,9 +48,12 @@ export class MapContainer extends Component {
     _markerDisplay = () => {
         const { stores, isClientToShow } = this.state
 
+
         return stores === undefined ? [] : stores.map((store, index) => {
             const icon = !isClientToShow ? SolarPanelIcon : Animatedicon(this.props)
+
             return <Marker
+                fontSize={30}
                 icon={icon}
                 key={index}
                 id={index}
@@ -64,7 +70,6 @@ export class MapContainer extends Component {
         this.setState({
             selectedPlace: props,
             activeMarker: marker,
-            zoom: 9,
             showingInfoWindow: true,
             initialCenter: { lat: this.props.lat, lng: this.props.lng }
         });
@@ -72,9 +77,9 @@ export class MapContainer extends Component {
 
     _ClientSites = (props, marker, e) => {
         const mmap = this.mapRef.current
-
+        console.log(mmap)
         marker.addListener('click', function () {
-            mmap.map.setZoom(9);
+            mmap.map.setZoom(9.5);
             mmap.map.setCenter(marker.getPosition());
         });
     }
@@ -86,13 +91,15 @@ export class MapContainer extends Component {
     }
 
     showDetails = store => {
+        console.log(store)
+        localStorage.setItem('store', store);
         this.props.history.push(`/${route.site}/${1}${this.props.location.search}`)
     };
 
     render() {
         const { media } = this.props
         return (
-            <div style={{ borderRadius: 4, border: '0.7px solid #cccccc', height: '400px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
+            <div style={{ borderRadius: 4, border: '0.7px solid #cccccc', height: '500px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map
                     // onZoomChanged={() => console.log("zoom changed")}
                     disableDefaultUI={true}
@@ -104,6 +111,7 @@ export class MapContainer extends Component {
                     ref={this.mapRef}
                     onClick={this.infoWindowClose}
                     initialCenter={{ lat: 24.000000, lng: 120.50505 }}
+
                 >
                     {this._markerDisplay()}
                     <InfoWindowEx
@@ -133,7 +141,7 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: "AIzaSyDjz91l2P3tnwy9phAWvqEU_V4VPEviW-I"
+    apiKey: "AIzaSyAcWK8WHabUh0BMDZuIIPo0qfWXWarBzoo"
 })(withRouter(withMedia(MapContainer)));
 
 const clientLists = [
@@ -182,7 +190,7 @@ const clientLists = [
         title: "Xiamen",
         lat: 24.4798,
         lng: 118.089,
-        id: 3,
+        id: 4,
         sites: [
             { name: "site 1", lat: 24.5234, lng: 118.121 },
             { name: "site 2", lat: 24.5122, lng: 118.111 },

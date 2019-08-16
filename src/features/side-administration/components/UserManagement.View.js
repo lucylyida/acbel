@@ -11,7 +11,7 @@ const UserManagementView = props => {
     return (
         <div>
             <div className="d-flex justify-content-between align-items-center flex-wrap py-1  " >
-                <div > <KmSearchbox placeholder="Search User" /> </div>
+                <div className="flex-fill"> <KmSearchbox placeholder="Search User" noMinwidth /> </div>
                 <div > Showing 1 to 10 of 100 entries</div>
             </div>
             <div >

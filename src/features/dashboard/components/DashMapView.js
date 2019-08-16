@@ -7,6 +7,8 @@ import { withMedia } from 'react-media-query-hoc';
 import SolarPanelIcon from '../../../assets/images/solarPanel.png'
 
 export class MapContainer extends Component {
+
+
     constructor(props) {
         super(props);
         this.state = {
@@ -37,26 +39,13 @@ export class MapContainer extends Component {
     render() {
         const { media } = this.props
         const stores = [
+
             {
-                name: "Mandalay",
-                title: "Mandalay",
-                lat: 21.954510,
-                lng: 96.093292,
+                name: "Taiwan",
+                title: "Taiwan",
+                lat: 23.667567,
+                lng: 120.87866,
                 id: 1
-            },
-            {
-                name: "Bankok",
-                title: "Bankok",
-                lat: 13.736717,
-                lng: 100.523186,
-                id: 2
-            },
-            {
-                name: "Singapore",
-                title: "Singapore",
-                lat: 1.351616,
-                lng: 103.808053,
-                id: 3
             }
         ];
         return (
@@ -69,10 +58,10 @@ export class MapContainer extends Component {
                     google={this.props.google}
                     disableDefaultUI={true}
                     zoomControl={true}
-                    zoom={3}
+                    zoom={15}
                     initialCenter={{
-                        lat: 13.736717,
-                        lng: 100.523186,
+                        lat: 23.667567,
+                        lng: 120.87866,
                     }}
                 >
                     {stores.map((place, i) => {
@@ -86,7 +75,7 @@ export class MapContainer extends Component {
                             />
                         );
                     })}
-                    <InfoWindowEx
+                    {/* <InfoWindowEx
                         marker={this.state.activeMarker}
                         visible={this.state.showingInfoWindow}
                     >
@@ -98,7 +87,7 @@ export class MapContainer extends Component {
                             <div>Power Output : 147.45kW</div>
                             <div className='py-0'>Capacity : 147.45kW</div>
                         </div>
-                    </InfoWindowEx>
+                    </InfoWindowEx> */}
                 </Map>
             </div>
         );
@@ -106,5 +95,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: "AIzaSyDjz91l2P3tnwy9phAWvqEU_V4VPEviW-I"
+    apiKey: "AIzaSyAcWK8WHabUh0BMDZuIIPo0qfWXWarBzoo"
 })(withMedia(MapContainer));

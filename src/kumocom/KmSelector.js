@@ -1,8 +1,8 @@
 import React from 'react'
-import Select from 'react-select'
+import Select, { components } from 'react-select'
 
 const KmSelector = (props) => {
-    const { style, optionLabel, options, placeholder, onChange, className } = props
+    const { style, optionLabel, options, placeholder, onChange, className, icon,isSearch } = props
     const userStyle = style === undefined ? {} : style
     const customStyles = {
         container: (base, state) => ({
@@ -34,9 +34,12 @@ const KmSelector = (props) => {
             ...base,
             color: userStyle.color
         }),
-        indicatorSeparator: (base,state) =>({
+        indicatorSeparator: (base, state) => ({
             ...base,
-            display: userStyle.indicator === undefined ? null :  userStyle.indicator
+            display: userStyle.indicator === undefined ? null : userStyle.indicator
+        }),
+        DropdownIndicator: (base, state) => ({
+            ...base,
         })
     };
 
@@ -50,11 +53,36 @@ const KmSelector = (props) => {
                 isClearable
                 className={className}
                 classNamePrefix="name-select"
-                styles={customStyles}                
-                isSearchable={ false }
+                styles={customStyles}
+                isSearchable={isSearch ? true : false}
+                components={{
+                    DropdownIndicator: (props) => {
+                        return (
+                            components.DropdownIndicator && (
+                                <components.DropdownIndicator {...props}>
+                                    {icon}
+                                </components.DropdownIndicator>
+                            )
+                        );
+                    }
+                }}
+
             />
         </div>
     )
 }
 
 export default KmSelector;
+
+
+// const DropdownIndicator = props => {
+//     return (
+//         components.DropdownIndicator && (
+//             <components.DropdownIndicator {...props}>
+//                 {/* <i class="fas fa-search"></i> */}
+//                 {props.icon}
+//             </components.DropdownIndicator>
+//         )
+//     );
+// };
+

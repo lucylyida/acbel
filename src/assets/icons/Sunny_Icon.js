@@ -8,7 +8,7 @@ const Sunny_Icon = props => {
         <svg
             width={vw}
             height={vh}
-            viewBox="0 0 48 48" >
+            viewBox="-8 -3 48 48" >
 
             <g id="Style-Guide" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="A-Icons" transform="translate(-107.000000, -217.000000)" fill="#FFCD59" fillRule="nonzero">

@@ -4,14 +4,8 @@ import { fsc } from '../helper/fontColorHelper'
 
 
 const KmButton = props => {
-<<<<<<< HEAD
-    const { text, type, onClick, icon, style, className, iconPlace, media, noMinWidth } = props
-    const defaultStyle = { background: '#006CF7', padding:1 , height:"calc(1.5em + 0.75rem + 2px)"}
-=======
     const { text, type, onClick, icon, style, className, iconPlace, media, noMinWidth, textColor="#ffffff" } = props
-    const defaultStyle = { background: '#006CF7', padding:1 , height:"calc(1.5em + 0.75rem + 2px)"
-}
->>>>>>> af3acb83ecf3f1e594ff8204e64e986784a552e3
+    const defaultStyle = { background: '#006CF7', padding:1 , height:"calc(1.5em + 0.75rem + 2px)"}
 
     const userStyle = style === undefined ? {} : style
 

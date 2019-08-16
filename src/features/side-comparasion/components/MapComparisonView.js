@@ -2,10 +2,9 @@ import React, { Component } from "react"
 import { withMedia } from 'react-media-query-hoc'
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 import MapStyle from '../../home/containers/MapStyle'
+import SolarPanelIcon from '../../../assets/images/solarPanel.png'
 
 export class MapComprisonView extends Component {
-
-
     constructor(props) {
         super(props);
         this.state = {
@@ -36,7 +35,7 @@ export class MapComprisonView extends Component {
         ];
         return (
 
-            <div style={{ height: '385px', position: 'relative', bottom: '0', paddingBottom: '59.6%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
+            <div style={{ height: '500px', position: 'relative', bottom: '0', paddingBottom: media.mobile ? "30%" : '58%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
 
                 <Map
                     onClick={this.infoWindowClose}
@@ -46,15 +45,14 @@ export class MapComprisonView extends Component {
                     zoomControl={true}
                     zoom={8.7}
                     initialCenter={{
-                        lat: 23.99781,
-                        lng: 120.660515,
+                        lat: 24.22781,
+                        lng: 121.2,
                     }}
                 >
                     {stores.map((place, i) => {
-                        const icon = Animatedicon(this.props)
                         return (
                             <Marker
-                                icon={icon}
+                                icon={SolarPanelIcon}
                                 onClick={this.onMarkerClick}
                                 key={place.id}
                                 place_={place}

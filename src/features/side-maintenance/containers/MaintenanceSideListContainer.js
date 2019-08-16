@@ -18,8 +18,12 @@ const MaintenanceSideListContainer = props => {
 
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
-            <CollapseTable media={media} />
-            <CollapseTable2 media={media}/>      
+            <div className="py-3">
+                <CollapseTable media={media} noSchedule={4} />
+            </div>
+            <div className="py-3">
+                <CollapseTable media={media} noSchedule={5} />
+            </div>   
         </div>
     )
 }
@@ -74,14 +78,15 @@ const columns = memoize((media, handleClick) => [
 
 ])
 
-export const CollapseTable = ({media }) => {
+const CollapseTable = ({media, noSchedule }) => {
     const [expand, setExpand] = useState(true)
     return (
         <div>
             <div className="d-flex justify-content-between">
                 <div className="d-flex align-items-sm-center align-content-sm-center align-items-sm-start justify-content-sm-center">
                     <span  className="px-2">June 17 </span>
-                    <span style={{ width: 35, height: 35, borderRadius: '50%',textAlign:'center', display:'inline-block',padding:3}} className="align-self-center align-self-sm-center bg-primary text-white ">{"4"}</span>
+                    <div style={{ width: 35, height: 35, borderRadius: '50%', display:'inline-block',padding:3}} 
+                        className="d-flex justify-content-center align-items-center bg-primary text-white ">{noSchedule}</div>
                     <span onClick={() => setExpand((!expand))} className="px-2" style={{ cursor: 'pointer' }}> <span ><i className={`fas ${expand ?`fa-sort-up` :`fa-sort-down` }`} /></span></span>
                 </div>
                 <div className="font-weight-bold " style={{ fontSize: fsc(media, 15) }}>{"Total Cost:NT$ 126,400.00"}</div>
@@ -106,34 +111,34 @@ export const CollapseTable = ({media }) => {
     )
 }
 
-export const CollapseTable2 = ({media}) =>{
-    const [expand, setExpand] = useState(true)
-    return(
-        <div>
-            <div className="d-flex justify-content-between pt-4">
-                <div className="d-flex align-items-sm-center align-content-sm-center justify-content-sm-center">
-                    <span  className="px-2">June 18 </span>
-                    <span style={{ width: 35, height: 35, borderRadius: '50%',textAlign:'center', display:'inline-block',padding:3}} className="align-self-center align-self-sm-center bg-primary text-white ">{"5"}</span>
-                    <span onClick={() => setExpand((!expand))} className="px-2" style={{ cursor: 'pointer' }}> <span ><i className={`fas ${expand ?`fa-sort-up` :`fa-sort-down` }`} /></span></span>
-                </div>
-                <div className="font-weight-bold " style={{ fontSize: fsc(media, 15) }}>{"Total Cost:NT$ 126,400.00"}</div>
-            </div>
-            <div className={`collapse ${expand ? `show` : `none`}`}>
-                <KmTable
-                    columns={columns(media)}
-                    data={data}
-                    keyField={"id"}
-                    defaultSortField={"id"}
-                    highlightOnHover={true}
-                    style={{ borderRadius: 6, whiteSpace: 'nowrap', }}
-                    customTheme={tableTheme(media)}
-                    pagination={false}
-                    paginationDefaultPage={1}
-                    paginationTotalRows={data.length}
-                    paginationPerPage={5}
-                    customPagination={true}
-                />
-            </div>
-        </div>
-    )
-}
+// export const CollapseTable2 = ({media}) =>{
+//     const [expand, setExpand] = useState(true)
+//     return(
+//         <div>
+//             <div className="d-flex justify-content-between pt-4">
+//                 <div className="d-flex align-items-sm-center align-content-sm-center justify-content-sm-center">
+//                     <span  className="px-2">June 18 </span>
+//                     <span style={{ width: 35, height: 35, borderRadius: '50%',textAlign:'center', display:'inline-block',padding:3}} className="align-self-center align-self-sm-center bg-primary text-white ">{"5"}</span>
+//                     <span onClick={() => setExpand((!expand))} className="px-2" style={{ cursor: 'pointer' }}> <span ><i className={`fas ${expand ?`fa-sort-up` :`fa-sort-down` }`} /></span></span>
+//                 </div>
+//                 <div className="font-weight-bold " style={{ fontSize: fsc(media, 15) }}>{"Total Cost:NT$ 126,400.00"}</div>
+//             </div>
+//             <div className={`collapse ${expand ? `show` : `none`}`}>
+//                 <KmTable
+//                     columns={columns(media)}
+//                     data={data}
+//                     keyField={"id"}
+//                     defaultSortField={"id"}
+//                     highlightOnHover={true}
+//                     style={{ borderRadius: 6, whiteSpace: 'nowrap', }}
+//                     customTheme={tableTheme(media)}
+//                     pagination={false}
+//                     paginationDefaultPage={1}
+//                     paginationTotalRows={data.length}
+//                     paginationPerPage={5}
+//                     customPagination={true}
+//                 />
+//             </div>
+//         </div>
+//     )
+// }

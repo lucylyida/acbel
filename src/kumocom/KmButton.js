@@ -5,9 +5,7 @@ import { fsc } from '../helper/fontColorHelper'
 
 const KmButton = props => {
     const { text, type, onClick, icon, style, className, iconPlace, media, noMinWidth } = props
-    const defaultStyle = { background: '#006CF7', padding:1 , 
-    height:"calc(1.5em + 0.75rem + 2px)"
-}
+    const defaultStyle = { background: '#006CF7', padding:1 , height:"calc(1.5em + 0.75rem + 2px)"}
 
     const userStyle = style === undefined ? {} : style
 

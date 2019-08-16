@@ -79,14 +79,14 @@ export const CollapseTable = ({media }) => {
     return (
         <div>
             <div className="d-flex justify-content-between">
-                <div className="d-flex align-items-center  justify-content-center">
-                    <span style={{ fontSize: fsc(media, 17) }} className="px-2">June 17 </span>
-                    <span style={{ width: 30, height: 30, borderRadius: '50%',fontSize:fsc(media,17),textAlign:'center' }} className="align-content-center bg-primary text-white">{"4"}</span>
+                <div className="d-flex align-items-sm-center align-content-sm-center align-items-sm-start justify-content-sm-center">
+                    <span  className="px-2">June 17 </span>
+                    <span style={{ width: 35, height: 35, borderRadius: '50%',textAlign:'center', display:'inline-block',padding:3}} className="align-self-center align-self-sm-center bg-primary text-white ">{"4"}</span>
                     <span onClick={() => setExpand((!expand))} className="px-2" style={{ cursor: 'pointer' }}> <span ><i className={`fas ${expand ?`fa-sort-up` :`fa-sort-down` }`} /></span></span>
                 </div>
                 <div className="font-weight-bold " style={{ fontSize: fsc(media, 15) }}>{"Total Cost:NT$ 126,400.00"}</div>
             </div>
-            <div className={`collapse ${expand ? `show` : `none`}`}>
+            <div className={`collapse show`}>
                 <KmTable
                     columns={columns(media)}
                     data={data}
@@ -111,9 +111,9 @@ export const CollapseTable2 = ({media}) =>{
     return(
         <div>
             <div className="d-flex justify-content-between pt-4">
-                <div className="d-flex align-items-center  justify-content-center">
-                    <span style={{ fontSize: fsc(media, 17) }} className="px-2">June 18 </span>
-                    <span style={{ width: 30, height: 30, borderRadius: '50%',textAlign:'center', fontSize:fsc(media,17)}} className="align-content-center bg-primary text-white ">{"4"}</span>
+                <div className="d-flex align-items-sm-center align-content-sm-center justify-content-sm-center">
+                    <span  className="px-2">June 18 </span>
+                    <span style={{ width: 35, height: 35, borderRadius: '50%',textAlign:'center', display:'inline-block',padding:3}} className="align-self-center align-self-sm-center bg-primary text-white ">{"5"}</span>
                     <span onClick={() => setExpand((!expand))} className="px-2" style={{ cursor: 'pointer' }}> <span ><i className={`fas ${expand ?`fa-sort-up` :`fa-sort-down` }`} /></span></span>
                 </div>
                 <div className="font-weight-bold " style={{ fontSize: fsc(media, 15) }}>{"Total Cost:NT$ 126,400.00"}</div>

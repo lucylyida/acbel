@@ -27,7 +27,7 @@ const GlobalListContainer = props => {
                         pagination={true}
                         paginationDefaultPage={1}
                         paginationTotalRows={data.length}
-                        paginationPerPage={3}
+                        paginationPerPage={6}
                         customPagination={true}
                     />
                 </div>

@@ -62,7 +62,7 @@ const SiteNavbar = props => {
                 </div>
             </div>
 
-            <div className="d-flex flex-row flex-wrap align-items-baseline pt-3 px-1">
+            <div className="d-flex flex-row flex-wrap align-items-baseline py-3 px-1">
                 <div className="py-1 d-flex flex-direction-row" style={{ overflowX: 'auto' }}>
                     <div className="pr-3"><KmLink text="Dashboard" to={`${match.url}/${route.dashboard}${location.search}`} currentLink={location.pathname + location.search} /></div>
                     <div className="pr-3"><KmLink text="Forecast" to={`${match.url}/${route.forecast}${location.search}`} currentLink={location.pathname + location.search} /></div>

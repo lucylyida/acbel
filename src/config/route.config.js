@@ -31,3 +31,5 @@ export const panel = "panel"
 export const report = "report"
 
 export const had = "had"
+
+export const result = "result"

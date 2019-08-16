@@ -14,7 +14,6 @@ const LeftSidebar = props => {
     const queryParams = querystring.parse(location.search)
     const leftSidebarVisible = queryParams.lsb
 
-    console.log({ match })
     const url = match.path
     const pageName = match.params.pageName
 
@@ -81,17 +80,17 @@ const LeftSidebar = props => {
                         </div>
                     </div>
 
-                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }}>
+                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }} onClick={() => history.push(`/${route.comparison}${location.search}`)} >
                         <div style={{ fontWeight: 'bold' }}>{"Comparison"}</div>
                         <div><i className="fa fa-caret-right" /></div>
                     </div>
 
-                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }} onClick={() => history.push(`/${route.maintenance}/${route.list}`)} >
+                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }} onClick={() => history.push(`/${route.maintenance}/${route.list}${location.search}`)} >
                         <div style={{ fontWeight: 'bold' }}>{"Maintenance"}</div>
                         <div><i className="fa fa-caret-right" /></div>
                     </div>
 
-                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }} onClick={() => history.push("/" + route.report)}>
+                    <div className='d-flex justify-content-between py-2' style={{ color: 'white', cursor: "pointer" }} onClick={() => history.push(`/${route.report}${location.search}`)} >
                         <div style={{ fontWeight: 'bold' }}>{"Reports"}</div>
                         <div><i className="fa fa-caret-right" /></div>
                     </div>

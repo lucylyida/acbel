@@ -10,8 +10,8 @@ const MaintenanceSideProfileContainer = props => {
     const { media, match, location } = props
     const edit = querystring.parse(location.search).e
     return (
-        <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
-            { edit==="1" ? <UserProfileView {...props} edit /> : <UserProfileView {...props} /> }
+        <div className="container-fluid p-0">
+            {edit === "1" ? <UserProfileView {...props} edit /> : <UserProfileView {...props} />}
         </div>
     )
 }

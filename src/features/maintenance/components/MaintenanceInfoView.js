@@ -30,7 +30,7 @@ const MaintenanceInfoView = props => {
                 </div>
             </div>
             
-            <div className="d-flex flex-row-reverse align-items-center">
+            <div className="d-flex flex-row-reverse align-items-center pl-3">
                 <KmButton text={"ADD NEW"} noMinWidth style={{ width: 150 }} />
                 <KmDropdown
                     className="pr-3"

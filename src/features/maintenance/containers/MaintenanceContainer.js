@@ -8,24 +8,23 @@ import MaintenanceTableView from "../components/MaintenanceTableView";
 
 const MaintenanceContainer = props => {
     const { media } = props
-    // const [left, setLeft] = useState(false)
-    // const [right, setRight] = useState(false)
-    const [left1, setLeft1] = useState(true)
-    const [right1, setRight1] = useState(false)
+    const [left, setLeft] = useState(true)
+    const [right, setRight] = useState(false)
     const [filter, setFilter] = useState({ id: 1 })
+    const [resizeLR, setResizeLR] = useState({ left: left, right: right })    
     const move = 500
 
     const RightButton = () => {
         const elmt = document.getElementById('box')
-        setLeft1(false)
+        setLeft(false)
         elmt.scrollLeft += move
-        if (elmt.scrollWidth - (elmt.scrollLeft + elmt.offsetWidth) <= move) setRight1(true)
+        if (elmt.scrollWidth - (elmt.scrollLeft + elmt.offsetWidth) <= move) setRight(true)
     }
     const LeftButton = () => {
         const elmt = document.getElementById('box')
         elmt.scrollLeft -= move
-        if (elmt.scrollLeft <= move) setLeft1(true)
-        setRight1(false)
+        if (elmt.scrollLeft <= move) setLeft(true)
+        setRight(false)
     }
 
     const temp = filter.id === 2
@@ -38,24 +37,15 @@ const MaintenanceContainer = props => {
 
     const contentSize = 290 * temp.length
 
-    // const isArrowShow = () => {
-    //     const cond = contentSize < window.innerWidth
-    //     setLeft(cond)
-    //     setRight(cond)
-    // }
+    const isShowArrow = contentSize < window.innerWidth - 55
 
-    // setLeft(contentSize < window.innerWidth)
-    // setRight(contentSize < window.innerWidth)
-
-    // window.onresize = isArrowShow
-    
     const slider = temp.map((v, k) =>
-        <div key={k} style={{ paddingLeft: 5, paddingRight: 5 }
-        }>
+        <div key={k} style={{ paddingLeft: 5, paddingRight: 5 }}>
             <MaintenanceItemCardView type={v.type} desc={v.desc} date={v.date} time={v.time} supplier={v.supplier} />
         </div>
     )
 
+    window.onresize = () => setResizeLR({ left: 1, right: 1 })
 
     return (
         <div className="container-fluid p-0">
@@ -71,23 +61,23 @@ const MaintenanceContainer = props => {
                 <div className="d-flex justify-content-between" style={{ position: "relative", top: -140 }}>
                     <i id="rightArrow" className="fa fa-chevron-circle-left"
                         style={{
-                            color: contentSize < window.innerWidth ? '#00000000' : left1 ? '#00000000' : '#00000055',
+                            color: isShowArrow ? '#00000000' : left ? '#00000000' : '#00000055',
                             fontSize: 30,
-                            cursor: contentSize < window.innerWidth ? null : left1 ? null : 'pointer'
+                            cursor: isShowArrow ? null : left ? null : 'pointer'
                         }}
-                        onClick={contentSize >= window.innerWidth ? LeftButton : null}
-                        onMouseOver={e => document.getElementById('rightArrow').style.color = contentSize < window.innerWidth ? '#00000000' : left1 ? '#00000000' : '#000000'}
-                        onMouseOut={e => document.getElementById('rightArrow').style.color = contentSize < window.innerWidth ? '#00000000' : left1 ? '#00000000' : '#00000055'}
+                        onClick={!isShowArrow ? LeftButton : null}
+                        onMouseOver={e => document.getElementById('rightArrow').style.color = isShowArrow ? '#00000000' : left ? '#00000000' : '#000000'}
+                        onMouseOut={e => document.getElementById('rightArrow').style.color = isShowArrow ? '#00000000' : left ? '#00000000' : '#00000055'}
                     />
                     <i id="leftArrow" className="fa fa-chevron-circle-right"
                         style={{
-                            color: contentSize < window.innerWidth ? '#00000000' : right1 ? '#00000000' : '#00000055',
+                            color: isShowArrow ? '#00000000' : right ? '#00000000' : '#00000055',
                             fontSize: 30,
-                            cursor: contentSize < window.innerWidth ? null : right1 ? null : 'pointer'
+                            cursor: isShowArrow ? null : right ? null : 'pointer'
                         }}
-                        onClick={contentSize >= window.innerWidth ? RightButton : null}
-                        onMouseOver={e => document.getElementById('leftArrow').style.color = contentSize < window.innerWidth ? '#00000000' : right1 ? '#00000000' : '#000000'}
-                        onMouseOut={e => document.getElementById('leftArrow').style.color = contentSize < window.innerWidth ? '#00000000' : right1 ? '#00000000' : '#00000055'}
+                        onClick={!isShowArrow ? RightButton : null}
+                        onMouseOver={e => document.getElementById('leftArrow').style.color = isShowArrow ? '#00000000' : right ? '#00000000' : '#000000'}
+                        onMouseOut={e => document.getElementById('leftArrow').style.color = isShowArrow ? '#00000000' : right ? '#00000000' : '#00000055'}
                     />
                 </div>
             }

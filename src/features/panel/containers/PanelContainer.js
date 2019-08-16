@@ -19,18 +19,19 @@ const PanelContainer = props => {
 
                 <div className="row pl-2">
                     <div className="col-md-6 pb-4">
-                        <div style={{ }}>
-                            <PanelMap data={data} color={['#FFC200', '#D7F0D2']} />
+                        <div className="px-1 py-4">
+                            <PanelMap data={data} />
                         </div>
-                        <div style={{ }}>
-                            <PanelMap data={data1} color={['#FFD6D2', '#D7F0D2']} />
+                        <div className="px-1 py-4">
+                            <PanelMap data={data1} />
                         </div>
-                        <div style={{ }}>
-                            <PanelMap data={data2} color={['#D5E2D2', '#D7F0D2']} />
+                        <div className="px-1 py-4">
+                            <PanelMap data={data2}/>
                         </div>
-                        <div style={{ }}>
-                            <PanelMap data={data3} color={['#FFF4D2', '#D7F0D2']} />
+                        <div className="px-1 py-4">
+                            <PanelMap data={data3}/>
                         </div>
+
                     </div>
                     <div className="col-md-6">
                         <PanelInfo />
@@ -44,295 +45,989 @@ const PanelContainer = props => {
 
 const data = [
     {
-        "row": "1",
-        "panel1": 100,
-        "panel2": 98,
-        "panel3": 83,
-        "panel4": 85,
-        "panel5": 70,
-        "panel6": 70,
-        "panel7": 75,
-        "panel8": 88,
-        "panel9": 86,
-        "panel10": 98,
-        "panel11": 79,
-        "panel12": 88,
-        "panel13": 86,
-        "panel14": 98,
-        "panel15": 99,
-        "panel16": 78,
-        "panel17": 86,
-        "panel18": 98,
-        "panel19": 89,
-        "panel20": 58,
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
     },
     {
-        "row": "2",
-        "panel1": 86,
-        "panel2": 98,
-        "panel3": 79,
-        "panel4": 88,
-        "panel5": 76,
-        "panel6": 98,
-        "panel7": 79,
-        "panel8": 88,
-        "panel9": 96,
-        "panel10": 108,
-        "panel11": 99,
-        "panel12": 78,
-        "panel13": 86,
-        "panel14": 98,
-        "panel15": 79,
-        "panel16": 78,
-        "panel17": 76,
-        "panel18": 78,
-        "panel19": 99,
-        "panel20": 78,
- 
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
     },
     {
-        "row": "3",
-        "panel1": 86,
-        "panel2": 98,
-        "panel3": 79,
-        "panel4": 88,
-        "panel5": 76,
-        "panel6": 98,
-        "panel7": 79,
-        "panel8": 88,
-        "panel9": 96,
-        "panel10": 108,
-        "panel11": 99,
-        "panel12": 78,
-        "panel13": 86,
-        "panel14": 98,
-        "panel15": 79,
-        "panel16": 78,
-        "panel17": 76,
-        "panel18": 78,
-        "panel19": 99,
-        "panel20": 78,
-    }
-
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 0, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 1, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 1, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
 ]
 
 const data1 = [
     {
-        "row": "1",
-        "panel1": 14,
-        "panel2": 98,
-        "panel3": 83,
-        "panel4": 85,
-        "panel5": 70,
-        "panel6": 70,
-        "panel7": 75,
-        "panel8": 88,
-        "panel9": 86,
-        "panel10": 98,
-        "panel11": 79,
-        "panel12": 88,
-        "panel13": 86,
-        "panel14": 98,
-        "panel15": 99,
-        "panel16": 78,
-        "panel17": 86,
-        "panel18": 98,
-        "panel19": 89,
-        "panel20": 88,
+        value: 3, // 0, 1, 2, 3, ...
+        panelNo: "0001",
     },
     {
-        "row": "2",
-        "panel1": 86,
-        "panel2": 98,
-        "panel3": 79,
-        "panel4": 88,
-        "panel5": 76,
-        "panel6": 98,
-        "panel7": 79,
-        "panel8": 88,
-        "panel9": 96,
-        "panel10": 108,
-        "panel11": 99,
-        "panel12": 78,
-        "panel13": 86,
-        "panel14": 50,
-        "panel15": 79,
-        "panel16": 78,
-        "panel17": 76,
-        "panel18": 78,
-        "panel19": 99,
-        "panel20": 78,
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
     },
     {
-        "row": "3",
-        "panel1": 86,
-        "panel2": 98,
-        "panel3": 79,
-        "panel4": 88,
-        "panel5": 76,
-        "panel6": 98,
-        "panel7": 79,
-        "panel8": 88,
-        "panel9": 96,
-        "panel10": 108,
-        "panel11": 99,
-        "panel12": 78,
-        "panel13": 86,
-        "panel14": 98,
-        "panel15": 79,
-        "panel16": 78,
-        "panel17": 76,
-        "panel18": 78,
-        "panel19": 99,
-        "panel20": 78,
-    }
-
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 0, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 3, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
 ]
 
 const data2 = [
     {
-        "row": "1",
-        "panel1": 90,
-        "panel2": 98,
-        "panel3": 83,
-        "panel4": 85,
-        "panel5": 70,
-        "panel6": 70,
-        "panel7": 75,
-        "panel8": 88,
-        "panel9": 86,
-        "panel10": 98,
-        "panel11": 79,
-        "panel12": 88,
-        "panel13": 86,
-        "panel14": 98,
-        "panel15": 99,
-        "panel16": 78,
-        "panel17": 86,
-        "panel18": 98,
-        "panel19": 89,
-        "panel20": 58,
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
     },
     {
-        "row": "2",
-        "panel1": 86,
-        "panel2": 98,
-        "panel3": 49,
-        "panel4": 88,
-        "panel5": 76,
-        "panel6": 98,
-        "panel7": 79,
-        "panel8": 88,
-        "panel9": 96,
-        "panel10": 108,
-        "panel11": 99,
-        "panel12": 78,
-        "panel13": 86,
-        "panel14": 98,
-        "panel15": 79,
-        "panel16": 78,
-        "panel17": 76,
-        "panel18": 78,
-        "panel19": 99,
-        "panel20": 78,
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
     },
     {
-        "row": "3",
-        "panel1": 86,
-        "panel2": 98,
-        "panel3": 79,
-        "panel4": 88,
-        "panel5": 76,
-        "panel6": 98,
-        "panel7": 79,
-        "panel8": 88,
-        "panel9": 96,
-        "panel10": 108,
-        "panel11": 99,
-        "panel12": 78,
-        "panel13": 86,
-        "panel14": 98,
-        "panel15": 79,
-        "panel16": 78,
-        "panel17": 76,
-        "panel18": 78,
-        "panel19": 99,
-        "panel20": 78,
-    }
-
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 4, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 4, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
 ]
 
 const data3 = [
     {
-        "row": "1",
-        "panel1": 90,
-        "panel2": 98,
-        "panel3": 83,
-        "panel4": 85,
-        "panel5": 70,
-        "panel6": 70,
-        "panel7": 75,
-        "panel8": 88,
-        "panel9": 86,
-        "panel10": 98,
-        "panel11": 79,
-        "panel12": 88,
-        "panel13": 86,
-        "panel14": 98,
-        "panel15": 99,
-        "panel16": 78,
-        "panel17": 86,
-        "panel18": 98,
-        "panel19": 89,
-        "panel20": 58,
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
     },
     {
-        "row": "2",
-        "panel1": 86,
-        "panel2": 98,
-        "panel3": 79,
-        "panel4": 88,
-        "panel5": 76,
-        "panel6": 98,
-        "panel7": 79,
-        "panel8": 88,
-        "panel9": 46,
-        "panel10": 108,
-        "panel11": 99,
-        "panel12": 78,
-        "panel13": 86,
-        "panel14": 98,
-        "panel15": 79,
-        "panel16": 78,
-        "panel17": 76,
-        "panel18": 78,
-        "panel19": 99,
-        "panel20": 78,
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
     },
     {
-        "row": "3",
-        "panel1": 86,
-        "panel2": 98,
-        "panel3": 79,
-        "panel4": 88,
-        "panel5": 76,
-        "panel6": 98,
-        "panel7": 79,
-        "panel8": 48,
-        "panel9": 96,
-        "panel10": 108,
-        "panel11": 99,
-        "panel12": 78,
-        "panel13": 86,
-        "panel14": 98,
-        "panel15": 79,
-        "panel16": 78,
-        "panel17": 76,
-        "panel18": 78,
-        "panel19": 99,
-        "panel20": 78,
-    }
-
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 5, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 5, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
+    {
+        value: 2, // 0, 1, 2, 3, ...
+        panelNo: "0001",
+    },
 ]
-
 export default withMedia(PanelContainer)

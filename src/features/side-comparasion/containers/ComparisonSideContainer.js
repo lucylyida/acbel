@@ -15,7 +15,7 @@ const ComparasionSideContainer = props => {
     const { media, match } = props
 
     return (
-        <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
+        <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`} style={{ overflow: "auto" }}>
             <ComparasionNavbar {...props} />
 
             <div className="d-flex flex-row flex-wrap flex-md-nowrap">

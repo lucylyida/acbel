@@ -12,7 +12,6 @@ import AdministrationSideUserManagementContainer from "./AdministrationSideUserM
 import * as route from "../../../config/route.config"
 
 const AdministrationSideContainer = props => {
-
     const { media, match } = props
 
     return (

@@ -1,12 +1,11 @@
 import React from "react"
-
-
+import querystring from 'query-string'
 import RevenueStatusView from "../components/RevenueStatusView";
 import SearchPanel from '../../app/components/SearchPanel'
 import ChartContainer from "../../app/components/ChartContainer"
 
 const RevenueContainer = props => {
-
+    const { } = props
     return (
         <div className="container-fluid ">
             <div className="row px-1">
@@ -16,11 +15,11 @@ const RevenueContainer = props => {
             </div>
 
             <div className="row pt-2 h-100">
-                <div className=" col-md-6 p-1 ">
+                <div className=" col-md-6 px-1 pt-1">
                     <SearchPanel />
                 </div>
 
-                <div className="col-md-6 p-1">
+                <div className="col-md-6 px-1 pt-1">
                     <div className="bg-white h-100" style={{ borderRadius: 4 }}>
                         <ChartContainer
                             chartType='area'
@@ -29,9 +28,7 @@ const RevenueContainer = props => {
                             axisLeftLegend="NT$"
                             legendAnchor="top-left"
                         />
-                           
                     </div>
-                
                 </div>
             </div>
         </div >

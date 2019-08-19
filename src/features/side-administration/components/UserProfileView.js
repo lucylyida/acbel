@@ -28,13 +28,13 @@ const UserProfileView = props => {
                             <label style={{ color: '#aaaaaa', fontSize: 14 }}>
                                 {`FIRST NAME ${edit ? '*' : ''}`}
                             </label>
-                            <KmInputBox id="firstName" value={"Chris"} disabled={!edit} style={{ color: edit ? '#000000' : '#aaaaaa' }} />
+                            <KmInputBox id={"firstName"} value={"Chris"} disabled={!edit} style={{ color: edit ? '#000000' : '#aaaaaa' }} />
                         </div>
                         <div className='col-12 col-sm-6 col-lg-4 col-xl-3 col-md-6 py-2'>
                             <label style={{ color: '#aaaaaa', fontSize: 14 }}>
                                 {`LAST NAME ${edit ? '*' : ''}`}
                             </label>
-                            <KmInputBox id="lastName" value={"Evans"} disabled={!edit} style={{ color: edit ? '#000000' : '#aaaaaa' }} />
+                            <KmInputBox id={"lastName"} value={"Evans"} disabled={!edit} style={{ color: edit ? '#000000' : '#aaaaaa' }} />
                         </div>
                     </div>
 
@@ -43,13 +43,13 @@ const UserProfileView = props => {
                             <label style={{ color: '#aaaaaa', fontSize: 14 }}>
                                 {`EMAIL ADDRESS ${edit ? '*' : ''}`}
                             </label>
-                            <KmInputBox type='email' id="email1" value={"chris@evans.com"} disabled={!edit} style={{ color: edit ? '#000000' : '#aaaaaa' }} />
+                            <KmInputBox type='email' id={"email1"} value={"chris@evans.com"} disabled={!edit} style={{ color: edit ? '#000000' : '#aaaaaa' }} />
                         </div>
                         <div className='col-12 col-sm-6 col-lg-4 col-xl-3 col-md-6 py-2'>
                             <label style={{ color: '#aaaaaa', fontSize: 14 }}>
                                 {`ROLE ${edit ? '*' : ''}`}
                             </label>
-                            <KmInputBox id="role" value={"Administrator"} disabled={!edit} style={{ color: edit ? '#000000' : '#aaaaaa' }} />
+                            <KmInputBox id={"role"} value={"Administrator"} disabled={!edit} style={{ color: edit ? '#000000' : '#aaaaaa' }} />
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@ const UserProfileView = props => {
 
             <div className="pb-3">
                 <div className="bg-white p-3" style={{ borderRadius: 4 }}>
-                    <div className='col-12 pt-2' style={{ color: '#FF8902', fontSize: fsc(media,14) }}>
+                    <div className='col-12 pt-2' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>
                         {"PASSWORD"}
                     </div>
 
@@ -67,7 +67,7 @@ const UserProfileView = props => {
                             <label style={{ color: '#aaaaaa', fontSize: 14 }}>
                                 {`${edit ? 'OLD PASSWORD *' : 'PASSWORD'}`}
                             </label>
-                            <KmInputBox id="p1" type={oldpass} onClick={() => setOldpass(oldpass === 'password' ? 'text' : 'password')} value={"PASSWORD"} disabled={!edit} style={{ color: edit ? '#000000' : '#aaaaaa' }} icon={<i className="fa fa-eye" />} />
+                            <KmInputBox id={"p1"} type={oldpass} onClick={() => setOldpass(oldpass === 'password' ? 'text' : 'password')} value={"PASSWORD"} disabled={!edit} style={{ color: edit ? '#000000' : '#aaaaaa' }} icon={<i className="fa fa-eye" />} />
                         </div>
                         <div className="offset-0 offset-sm-6  offset-lg-0 offset-xl-0" />
                         {
@@ -76,7 +76,7 @@ const UserProfileView = props => {
                                 <label style={{ color: '#aaaaaa', fontSize: 14 }}>
                                     {"NEW PASSWORD"}
                                 </label>
-                                <KmInputBox id="p2" type={newpass} onClick={() => setNewpass(newpass === 'password' ? 'text' : 'password')} value={"NEW PASSWORD"} disabled={!edit} style={{ color: edit ? '#000000' : '#aaaaaa' }} icon={<i className="fa fa-eye" />} />
+                                <KmInputBox id={"p2"} type={newpass} onClick={() => setNewpass(newpass === 'password' ? 'text' : 'password')} value={"NEW PASSWORD"} disabled={!edit} style={{ color: edit ? '#000000' : '#aaaaaa' }} icon={<i className="fa fa-eye" />} />
                             </div>
                         }
                         {
@@ -85,7 +85,7 @@ const UserProfileView = props => {
                                 <label style={{ color: '#aaaaaa', fontSize: 14 }}>
                                     {"CONFIRM PASSWORD"}
                                 </label>
-                                <KmInputBox id="p3" type={conpass} onClick={() => setConpass(conpass === 'password' ? 'text' : 'password')} value={"CONFIRM PASSWORD"} disabled={!edit} style={{ color: edit ? '#000000' : '#aaaaaa' }} icon={<i className="fa fa-eye" />} />
+                                <KmInputBox id={"p3"} type={conpass} onClick={() => setConpass(conpass === 'password' ? 'text' : 'password')} value={"CONFIRM PASSWORD"} disabled={!edit} style={{ color: edit ? '#000000' : '#aaaaaa' }} icon={<i className="fa fa-eye" />} />
                             </div>
                         }
                     </div>
@@ -96,7 +96,7 @@ const UserProfileView = props => {
                 edit &&
                 <KmButton text="Save Profile"
                     onClick={() => _handleClickedProfileEditedSaved({ match, history, search })}
-                    noMinWidth style={{ width: 250  }}
+                    noMinWidth style={{ width: 250 }}
                 />
             }
 

@@ -15,7 +15,7 @@ const InverterContainer = props => {
         <div className="container-fluid">
             <div className="row">
                 <div className="col-lg-5 p-2">
-                    <div className="py-2 px-1 d-flex align-items-center" style={{ color: '#FF8800', fontSize: fsc(media, 14), height: 42 }}>{"INVERTERS"}</div>
+                    <div className="pb-2 px-1 d-flex align-items-center" style={{ color: '#FF8800', fontSize: fsc(media, 14), height: 42 }}>{"INVERTERS"}</div>
                     <div>
                         <KmSearchbox placeholder="Search Inverters" style={{ height: 48, backgroundColor: "white" }} />
                         <div className="py-2">
@@ -84,7 +84,11 @@ const InverterContainer = props => {
                         </div>
                         <div className="py-2">
                             <KmButton text="View Selected Inverter Comparison" onClick={() => switchNormalMode(!compareMode)} />
-                            <div className="py-3 font-weight-bold text-uppercase" align="center" style={{ fontSize: 14, color: "#a2a2a2" }}>Reset Selection</div>
+                            <div className="py-3 font-weight-bold text-uppercase" align="center"
+                                style={{ fontSize: 14, color: "#a2a2a2", cursor: 'pointer'}}
+                            >
+                                Reset Selection
+                            </div>
                         </div>
                     </div>
 
@@ -223,7 +227,7 @@ const CompareInverterComponent = props => {
                         data={compareBardata}
                         keys={['inverter 001', 'inverter 002', 'inverter 003']}
                         color={['#1B9817', '#29CE22', '#6FD1F6']}
-                        legendAnchor='top'  
+                        legendAnchor='top'
                         exportIcon
 
                     />

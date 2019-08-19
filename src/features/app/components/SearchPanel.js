@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import KmButton from '../../../kumocom/KmButton'
 import KmToggleButton from '../../../kumocom/KmToggleButton'
 import KmDatePicker from '../../../kumocom/KmDatePicker'
@@ -20,7 +20,7 @@ const SearchPanel = props => {
                 <div className="px-1"> <KmToggleButton text="DAY" selected className="py-2" style={{ width: 100 }} onClick={() => null} /> </div>
             </div>
 
-            <div className="d-flex flex-lg-nowrap flex-wrap pt-0" style={{ width: media.mobile ? '100%' : 400 ,cursor:'pointer'}}>
+            {/* <div className="d-flex flex-lg-nowrap flex-wrap pt-0" style={{ width: media.mobile ? '100%' : 400 ,cursor:'pointer'}}>
                 <div className="p-1 flex-fill">
                     <div className="pb-2" style={{ fontSize: fsc(media, 14), color: '#999999' }}>FROM</div>
                     <KmDatePicker />
@@ -29,11 +29,22 @@ const SearchPanel = props => {
                     <div className="pb-2" style={{ fontSize: fsc(media, 14), color: '#999999' }}>TO</div>
                     <KmDatePicker />
                 </div>
-            </div>
+            </div> */}
 
+
+            <div className="row pt-0" style={{ cursor: 'pointer' }}>
+                <div className="col-sm-6">
+                    <div className="pb-2" style={{ fontSize: fsc(media, 14), color: '#999999' }}>FROM</div>
+                    <KmDatePicker />
+                </div>
+                <div className="col-sm-6">
+                    <div className="pb-2" style={{ fontSize: fsc(media, 14), color: '#999999' }}>TO</div>
+                    <KmDatePicker />
+                </div>
+            </div>
             <div className="pl-1 pt-4 pb-2">
                 <KmButton text="SEARCH" style={{ width: 120 }} />
-            </div>  
+            </div>
         </div>
     )
 }

@@ -10,8 +10,8 @@ const MaintenanceContainer = props => {
     const { media } = props
     const [left, setLeft] = useState(true)
     const [right, setRight] = useState(false)
-    const [filter, setFilter] = useState({ id: 1 })
-    const [resizeLR, setResizeLR] = useState({ left: left, right: right })    
+    const [filter, setFilter] = useState({ id: 1 })    
+    const [width, setWidth] = useState(window.innerWidth)
     const move = 500
 
     const RightButton = () => {
@@ -37,7 +37,7 @@ const MaintenanceContainer = props => {
 
     const contentSize = 290 * temp.length
 
-    const isShowArrow = contentSize < window.innerWidth - 55
+    const isShowArrow = contentSize < width - 55
 
     const slider = temp.map((v, k) =>
         <div key={k} style={{ paddingLeft: 5, paddingRight: 5 }}>
@@ -45,7 +45,7 @@ const MaintenanceContainer = props => {
         </div>
     )
 
-    window.onresize = () => setResizeLR({ left: 1, right: 1 })
+    window.onresize = () => setWidth(window.innerWidth)
 
     return (
         <div className="container-fluid p-0">

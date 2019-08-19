@@ -7,9 +7,9 @@ import ChartContainer from "../../app/components/ChartContainer"
 const ChartComparisonView = props => {
     const { } = props
     return (
-        <div className="w-100 p-0">
-            <div className="p-1">
-                <div className="bg-white">
+        <div className="container-fluid p-0" style={{ overflow: 'hidden' }}>
+            <div className="pb-1 px-1">
+                <div className="d-flex align-items-center bg-white">
                     <ChartContainer
                         chartType='area'
                         headerText={'GRAPH TITLE 1'}
@@ -20,8 +20,8 @@ const ChartComparisonView = props => {
                     />
                 </div>
             </div>
-            <div className="p-1">
-                <div className="bg-white">
+            <div className="pt-1 px-1">
+                <div className="bg-white d-flex align-items-center">
                     <ChartContainer
                         headerText={'GRAPH TITLE 2'}
                         chartType='bar'
@@ -30,7 +30,6 @@ const ChartComparisonView = props => {
                         color={['#1B9817', '#29CE22', '#6FD1F6']}
                         legendAnchor='top'
                         exportIcon
-
                     />
                 </div>
             </div>

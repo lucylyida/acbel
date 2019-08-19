@@ -20,7 +20,7 @@ const LeftSidebar = props => {
     if (leftSidebarVisible === undefined || leftSidebarVisible === "false") return null
     else
         return (
-            <div className="pb-3 h-100 pr-2">
+            <div className="h-100 px-1">
                 <div className="p-3 h-100" style={{ background: '#193D91', borderRadius: 4, minWidth: 300 }}>
 
                     <div className="d-flex align-items-center justify-content-between">

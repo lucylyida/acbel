@@ -9,7 +9,7 @@ const ForecastContainer = props => {
         <div className="container-fluid">
             <div className="row pb-2">
                 <div className="col-md-6 p-0 d-flex flex-column justify-content-between">
-                    <div className="p-1">
+                    <div className="px-1 pb-1">
                         <ForecastStatusViewA />
                     </div>
 
@@ -17,7 +17,7 @@ const ForecastContainer = props => {
                         <ForecastStatusViewB />
                     </div>
                 </div>
-                <div className="col-md-6 p-1">
+                <div className="col-md-6 px-1 pb-1">
                     <div className="bg-white d-flex align-items-center h-100">
                         <ChartContainer
                             chartType='area'
@@ -38,11 +38,11 @@ const ForecastContainer = props => {
                 <div className="col-12" style={{ border: '1px solid lightgrey' }}></div>
             </div>
             <div className="row pt-2">
-                <div className="col-md-6 p-1 ">
+                <div className="col-md-6 pt-1 px-1">
                     <SearchPanel />
                 </div>
 
-                <div className="col-md-6 p-1">
+                <div className="col-md-6 pt-1 px-1">
                     <div className="bg-white h-100 d-flex align-items-center">
                         <ChartContainer
                             chartType='area'
@@ -55,11 +55,11 @@ const ForecastContainer = props => {
                             legendAnchor="top"
                             exportIcon
                         />
-
                     </div>
                 </div>
+                
             </div>
-        </div >
+        </div>
     )
 }
 

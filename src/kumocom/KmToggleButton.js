@@ -6,8 +6,7 @@ const KmToggleButton = (props) => {
     const { text, btnNumber, selected, onClick, media,style, className } = props
     const defaultStyle = {
         outline: 'none',
-        boxShadow: 'none',
-        border: 'none',
+        boxShadow: 'none',        
         borderRadius: 4,
         border: `1px solid ${selected ? "#416AAC" : "#88A2CD"}`,
         color: selected ? "#416AAC" : "#88A2CD",

@@ -15,7 +15,7 @@ const Navbar = props => {
     const { match, location, history, media } = props
     
     return (
-        <div className="container-fluid px-0 py-3">
+        <div className="container-fluid px-1 py-3">
             <div className="d-flex align-items-center">
                 <div className="d-flex flex-column justify-content-center" onClick={() => _hadleMenuClick({ match, location, history })}>
                     <div 

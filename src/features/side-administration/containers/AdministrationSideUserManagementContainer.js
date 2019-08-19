@@ -13,12 +13,12 @@ const MaintenanceSideCalendarContainer = props => {
     const { media, match } = props
 
     return (
-        <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
-        <div className="d-flex justify-content-between align-items-center align-items-sm-center flex-wrap py-1  " >
-                <div > <KmSearchbox placeholder="Search User" /> </div>
-                <div style={{fontSize:fsc(media,14)}}> Showing 1 to 10 of 100 entries</div>
+        <div className={`container-fluid p-0`}>
+            <div className="d-flex justify-content-between align-items-center align-items-center flex-wrap">
+                <div><KmSearchbox placeholder="Search User" /></div>
+                <div style={{ fontSize: fsc(media, 14) }}> Showing 1 to 10 of 100 entries</div>
             </div>
-            <div className="pt-3">
+            <div className="pt-2">
                 <KmTable
                     columns={columns(media)}
                     data={data}

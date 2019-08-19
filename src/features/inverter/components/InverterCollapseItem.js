@@ -28,12 +28,13 @@ const InverterCollapseItem = props => {
                 <div className={`drop collapse ${expand ? `show` : `none`}`}
                     style={{ cursor: 'pointer' }}
                     onClick={onClick} >
-                    {data.map((v, k) =>
-                        <div className="py-2 px-3 d-flex justify-content-between" key={k} style={{ borderTop: '1px solid #e5e5e5' }}>
-                            <div style={{ color: "gray", fontWeight: 600, fontSize: fsc(media, 14) }}>{v.name}</div>
-                            <div style={{ color: "#343434", fontSize: fsc(media, 14) }}>{v.value}</div>
-                        </div>
-                    )
+                    {
+                        data.map((v, k) =>
+                            <div className="py-2 px-3 d-flex justify-content-between" key={k} style={{ borderTop: '1px solid #e5e5e5' }}>
+                                <div style={{ color: "gray", fontWeight: 600, fontSize: fsc(media, 14) }}>{v.name}</div>
+                                <div style={{ color: "#343434", fontSize: fsc(media, 14) }}>{v.value}</div>
+                            </div>
+                        )
                     }
                 </div>
             </div>

@@ -22,17 +22,11 @@ const KmInputBox = props => {
                 style={{ ...defaultStyle, ...userStyle, outline: 'none', boxShadow: 'none' }}
                 disabled={disabled}
                 required={required}
-                onFocus={e => inputbox.style.border = '2px solid #193D91'}
-                onBlur={e => inputbox.style.border = '1px solid #cccccc'}
+                onFocus={e => document.getElementById(id).style.border = '2px solid #193D91'}
+                onBlur={e => document.getElementById(id).style.border = '1px solid #cccccc'}
             />
-            <div className="pr-2"
-                style={{ position: 'relative', top: -28, textAlign: 'right', cursor: 'pointer', color: userStyle.color, }}
-                onClick={disabled ? null : onClick}
-            >
-                {icon}
-            </div>
+            <div onClick={onClick} style={{ cursor: 'pointer', position: 'absolute', right: 20, marginTop: -28 }}>{icon}</div>
         </div>
-
     )
 }
 export default withMedia(KmInputBox)

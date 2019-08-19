@@ -4,6 +4,7 @@ import InfoWindowEx from "../../dashboard/components/InfoWindowEx";
 import MapStyle from '../../home/containers/MapStyle';
 import { fsc } from '../../../helper/fontColorHelper';
 import SolarPanelIcon from "../../../assets/images/solarPanel.png";
+// import ClientIcon from '../../../assets/images/ClientIcon.gif';
 import { withMedia } from 'react-media-query-hoc';
 import * as route from '../../../config/route.config';
 import { withRouter } from 'react-router-dom'
@@ -47,13 +48,16 @@ export class MapContainer extends Component {
     }
     _markerDisplay = () => {
         const { stores, isClientToShow } = this.state
+        const mmap = this.mapRef.current
 
 
         return stores === undefined ? [] : stores.map((store, index) => {
             const icon = !isClientToShow ? SolarPanelIcon : Animatedicon(this.props)
 
-            return <Marker
-                fontSize={30}
+
+            return < Marker
+                label={isClientToShow ? { text: `${store.sites.length}`, color: 'white' } : null}
+                // title={{ text: `${store.sites.length}`, color: 'red' }}
                 icon={icon}
                 key={index}
                 id={index}
@@ -67,17 +71,18 @@ export class MapContainer extends Component {
         })
     }
     _onMarkerClick = (props, marker, e) => {
+
         this.setState({
             selectedPlace: props,
             activeMarker: marker,
             showingInfoWindow: true,
-            initialCenter: { lat: this.props.lat, lng: this.props.lng }
+
         });
     };
 
     _ClientSites = (props, marker, e) => {
         const mmap = this.mapRef.current
-        console.log(mmap)
+
         marker.addListener('click', function () {
             mmap.map.setZoom(9.5);
             mmap.map.setCenter(marker.getPosition());
@@ -91,18 +96,19 @@ export class MapContainer extends Component {
     }
 
     showDetails = store => {
-        console.log(store)
-        localStorage.setItem('store', store);
+
         this.props.history.push(`/${route.site}/${1}${this.props.location.search}`)
     };
 
     render() {
         const { media } = this.props
+
         return (
             <div style={{ borderRadius: 4, border: '0.7px solid #cccccc', height: '500px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map
                     // onZoomChanged={() => console.log("zoom changed")}
                     disableDefaultUI={true}
+                    // disableDoubleClickZoom={false}
                     zoom={this.state.zoom}
                     zoomControl={true}
                     // onReady={() => console.log("map ready")}
@@ -168,8 +174,7 @@ const clientLists = [
         sites: [
             { name: "site 1", lat: 22.3245, lng: 114.2313 },
             { name: "site 2", lat: 22.6576, lng: 114.3322 },
-            { name: "site 3", lat: 22.4455, lng: 114.1234 },
-            { name: "site 4", lat: 22.5656, lng: 114.4543 }
+
         ]
     },
     {
@@ -182,7 +187,9 @@ const clientLists = [
             { name: "site 1", lat: 25.0456457, lng: 121.2342342 },
             { name: "site 2", lat: 25.0546464, lng: 121.3233333 },
             { name: "site 3", lat: 25.06789273, lng: 121.5454544 },
-            { name: "site 4", lat: 25.073676, lng: 121.23254454 }
+            { name: "site 4", lat: 25.073676, lng: 121.23254454 },
+            { name: "site 5", lat: 25.12323, lng: 121.23254454 },
+            { name: "site 6", lat: 25.231313, lng: 121.23254454 }
         ]
     },
     {
@@ -195,24 +202,25 @@ const clientLists = [
             { name: "site 1", lat: 24.5234, lng: 118.121 },
             { name: "site 2", lat: 24.5122, lng: 118.111 },
             { name: "site 3", lat: 24.3456, lng: 118.089 },
-            { name: "site 4", lat: 24.4123, lng: 118.099 }
+            { name: "site 4", lat: 24.4123, lng: 118.099 },
+            { name: "site 4", lat: 24.473676, lng: 118.23254454 }
         ]
     }
 ];
 const Animatedicon = props => ({
-    anchor: new props.google.maps.Point(0, 0),
-    url: 'data:image/svg+xml;utf-8, \<svg width="80" height="90" xmlns="http://www.w3.org/2000/svg" version="1.1">\
-        <circle id="c1" cx="50" cy="35" r="10" fill="rgba(9, 91, 138, 0.9)" >\
-            <animate id="c1Animation1" attributeName="r" attributeType="XML" begin="0s" dur="3000ms" from="5" to="20" repeatCount="indefinite" fill="gradient"></animate>\
-            <animate id="c1Animation1" attributeName="r" attributeType="XML" begin="5s" dur="3000ms" values="20;5;20" repeatCount="indefinite" fill="red"></animate>\
+    anchor: new props.google.maps.Point(30, 30),
+    url: 'data:image/svg+xml;utf-8, \<svg viewBox="-5 -5 100 -100"  width="70"  height="60" xmlns="http://www.w3.org/2000/svg" version="1.1">\
+        <circle id="c1" cx="35" cy="30" r="10" fill="rgba(0, 0, 128, 0.2)" >\
+            <animate id="c1Animation1" attributeName="r" attributeType="XML" begin="0s" dur="4000ms" from="15" to="20" repeatCount="indefinite" fill="gradient"></animate>\
+            <animate id="c1Animation1" attributeName="r" attributeType="XML" begin="5s" dur="4000ms" values="10;5;20" repeatCount="indefinite" fill="red"></animate>\
         </circle>\
-        <circle id="c1" cx="50" cy="35" r="10" fill="rgba(60, 143, 255, 0.8)" >\
-        <animate id="c1Animation1" attributeName="r" attributeType="XML" begin="1s" dur="3000ms" from="15" to="30" repeatCount="indefinite" fill="gradient"></animate>\
-        <animate id="c1Animation1" attributeName="r" attributeType="XML" begin="3s" dur="3000ms" values="30;15;30" repeatCount="indefinite" fill="red"></animate>\
+        <circle id="c1" cx="35" cy="30" r="10" fill="rgba(60, 143, 255, 0.8)" >\
+        <animate id="c1Animation1" attributeName="r" attributeType="XML" begin="1s" dur="4000ms" from="15" to="20" repeatCount="indefinite" fill="gradient"></animate>\
+        <animate id="c1Animation1" attributeName="r" attributeType="XML" begin="3s" dur="4000ms" values="20;10;20" repeatCount="indefinite" fill="red"></animate>\
     </circle>\
-    <circle id="c1" cx="50" cy="35" r="10" fill="rgba(60, 143, 255, 0.6)" >\
-    <animate id="c1Animation1" attributeName="r" attributeType="XML" begin="2s" dur="3000ms" from="5" to="15" repeatCount="indefinite" fill="gradient"></animate>\
-    <animate id="c1Animation1" attributeName="r" attributeType="XML" begin="4s" dur="3000ms" values="15;5;15" repeatCount="indefinite" fill="red"></animate>\
+    <circle id="c1" cx="35" cy="30" r="10" fill="rgba(60, 143, 255, 0.6)" >\
+    <animate id="c1Animation1" attributeName="r" attributeType="XML" begin="0s" dur="4000ms" from="10" to="20" repeatCount="indefinite" fill="gradient"></animate>\
+    <animate id="c1Animation1" attributeName="r" attributeType="XML" begin="2s" dur="4000ms" values="10;15;30" repeatCount="indefinite" fill="red"></animate>\
     </circle>\
         </svg>',
     strokeWeight: 0,

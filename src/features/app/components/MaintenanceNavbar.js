@@ -6,6 +6,7 @@ import KmLink from '../../../kumocom/KmLink'
 import AcbelLogo from '../../../assets/icons/Acbel_Logo'
 import { fsc } from "../../../helper/fontColorHelper"
 import Navbar from "./Navbar"
+import KmButton from '../../../kumocom/KmButton'
 
 const MaintenanceNavbar = props => {
     const { match, location, history, media } = props
@@ -20,6 +21,12 @@ const MaintenanceNavbar = props => {
                 <div style={{ color: "#2244aa", fontSize: fsc(media, 28) }}>Maintenance Schedule</div>
                 <div style={{ paddingLeft: fsc(media, 10) }}><KmLink text="List View" to={`/${route.maintenance}/${route.list}${location.search}`} currentLink={location.pathname + location.search} /></div>
                 <div style={{ paddingLeft: fsc(media, 10) }}><KmLink text="Calendar View" to={`/${route.maintenance}/${route.calendar}${location.search}`} currentLink={location.pathname + location.search} /></div>
+            </div>
+            <div className="pl-4 pr-2">
+                <KmButton 
+                noMinWidth
+                text="ADD NEW MAINTENANCE SCHEDULE"
+                />
             </div>
             <div style={{ flex: 1 }} />
         </Navbar>

@@ -35,11 +35,11 @@ const SearchPanel = props => {
             <div className="row pt-0" style={{ cursor: 'pointer' }}>
                 <div className="col-sm-6">
                     <div className="pb-2" style={{ fontSize: fsc(media, 14), color: '#999999' }}>FROM</div>
-                    <KmDatePicker />
+                    <KmDatePicker noWidth />
                 </div>
                 <div className="col-sm-6">
                     <div className="pb-2" style={{ fontSize: fsc(media, 14), color: '#999999' }}>TO</div>
-                    <KmDatePicker />
+                    <KmDatePicker noWidth/>
                 </div>
             </div>
             <div className="pl-1 pt-4 pb-2">

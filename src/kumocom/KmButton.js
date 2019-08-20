@@ -18,7 +18,7 @@ const KmButton = props => {
             <button
                 onClick={onClick}
                 type={type === undefined ? "button" : type}
-                className={`btn btn-block ${className} text-center`}
+                className={`btn btn-block ${className} text-center py-1 px-4`}
                 style={{ ...defaultStyle, ...userStyle }}>
                 {
                     iconPlace !== undefined || iconPlace ?

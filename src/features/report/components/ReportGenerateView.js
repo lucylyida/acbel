@@ -27,14 +27,14 @@ const ReportGeneratorView = props => {
                         optionLabel='label'
                     />
                 </div>
-                <div className="d-flex flex-nowrap">
-                    <div className="px-1 py-2">
+                <div className=" d-flex flex-wrap">
+                    <div className="px-1 py-2 flex-grow-1 flex-fill ">
                         <div style={{ fontSize: fsc(media, 13), color: '#999999' }}>FROM</div>
-                        <div><KmDatePicker style={{ width: 150 }} /></div>
+                        <div><KmDatePicker /></div>
                     </div>
-                    <div className="px-1 py-2">
+                    <div className="px-1 py-2 flex-grow-1">
                         <div style={{ fontSize: fsc(media, 13), color: '#999999' }}>TO</div>
-                        <div><KmDatePicker style={{ width: 150 }} /></div>
+                        <div><KmDatePicker  /></div>
                     </div>
                 </div>
                 <div className="flex-fill p-2">

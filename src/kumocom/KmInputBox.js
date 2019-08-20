@@ -5,11 +5,11 @@ import { fsc } from '../helper/fontColorHelper'
 const KmInputBox = props => {
     const {
         isSmall, style, onChange = () => null, type = 'text', value, placeholder, disabled = false, id,
-        required = true, icon = null, onClick = () => null, media
+        required = true, icon = null, onClick = () => null, media,className,minWidth
     } = props
-    const defaultStyle = { border: '1px solid #cccccc', borderRadius: '5px', cursor: 'pointer', fontSize: fsc(media, 14) }
+    const defaultStyle = { border: '1px solid #cccccc', borderRadius: '5px', cursor: 'pointer', fontSize: fsc(media, 14), }
     const userStyle = style === undefined ? {} : style
-    const inputbox = document.getElementById(id)
+   
     return (
         <div>
             <input
@@ -17,9 +17,9 @@ const KmInputBox = props => {
                 onChange={onChange}
                 type={type}
                 value={value}
-                className="form-control"
+                className={`form-control ${className} `}
                 placeholder={placeholder}
-                style={{ ...defaultStyle, ...userStyle, outline: 'none', boxShadow: 'none' }}
+                style={{ ...defaultStyle, ...userStyle, outline: 'none', boxShadow: 'none',minWidth:minWidth ? 300 : null , height: "calc(1.5em + 0.75rem + 2px)"}}
                 disabled={disabled}
                 required={required}
                 onFocus={e => document.getElementById(id).style.border = '2px solid #193D91'}

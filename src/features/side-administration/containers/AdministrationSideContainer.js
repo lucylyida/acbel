@@ -21,7 +21,7 @@ const AdministrationSideContainer = props => {
             <div className="d-flex flex-row flex-wrap flex-md-nowrap">
                 <div className="flex-grow-1">
                     <LeftSidebar
-                        online={218} offine={12} siteChoose={true} active={true} efficiency={100} capacity={170.00}
+                        online={218} offline={12} siteChoose={true} active={true} efficiency={100} capacity={170.00}
                     />
                 </div>
                 <div className="w-100 pb-2">

@@ -12,16 +12,16 @@ const HomefilterView = props => {
     return (
         <div className="container-fluid mt-3 py-3" style={{ backgroundColor: '#ffffff', borderRadius: 4 }}>
             <div className="py-2" style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"FILTER"}</div>
-            <div className="d-flex align-items-baseline flex-wrap" style={{ color: '#A3A3A3' }}>
+            <div className="row" style={{ color: '#A3A3A3' }}>
 
-                <div className="flex-column p-2 flex-fill">
+                <div className="p-2 col-lg-2 col-md-4 col-xl-2 col-sm-6">
                     <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>SEARCH</div>
-                    <div>
-                        <KmSearchbox placeholder="Search" />
+                    <div> 
+                        <KmSearchbox placeholder="Search"/>
                     </div>
                 </div>
 
-                <div className="flex-column p-2 flex-fill">
+                <div className="p-2 col-lg-2 col-md-4 col-xl-2 col-sm-6">
                     <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>VENDOR</div>
                     <div>
                         <KmSelector
@@ -38,7 +38,7 @@ const HomefilterView = props => {
                     </div>
                 </div>
 
-                <div className=" flex-column p-2 flex-fill">
+                <div className=" p-2 col-lg-2 col-md-4 col-xl-2 col-sm-6">
                     <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>COUNTRY</div>
                     <div>
                         <KmSelector
@@ -54,7 +54,7 @@ const HomefilterView = props => {
                         />
                     </div>
                 </div>
-                <div className=" flex-column p-2 flex-fill">
+                <div className=" p-2 col-lg-2 col-md-4 col-xl-2 col-sm-6">
                     <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>CITY</div>
                     <div>
                         <KmSelector
@@ -70,7 +70,7 @@ const HomefilterView = props => {
                         />
                     </div>
                 </div>
-                <div className=" flex-column p-2 flex-fill">
+                <div className="p-2 col-lg-2 col-md-4 col-xl-2 col-sm-6">
                     <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>SITE</div>
                     <div>
                         <KmSelector
@@ -86,9 +86,9 @@ const HomefilterView = props => {
                         />
                     </div>
                 </div>
-                <div className="flex-column p-2 flex-fill flex-grow-1 ">
+                <div className="p-2 col-lg-2 col-md-4 col-xl-2 col-sm-6">
                     <br />
-                    <div className="pt-1">
+                    <div>
                         <KmButton
                             text="FILTER"
                             className="px-3"

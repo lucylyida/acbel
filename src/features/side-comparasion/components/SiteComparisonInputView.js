@@ -11,10 +11,10 @@ const SiteComparisonView = props => {
     const { history, match, location, media } = props
     const search = location.search
     const cr = querystring.parse(search).cr
-    return (
-        <div className=" bg-white p-2 h-100 px-3" >
-            <div className="pt-2" style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>SELECT SITES</div>
-            <div className="d-flex flex-column justify-content-start " >
+    return (        
+        <div className="bg-white py-2 px-3 h-100 " style={{ borderRadius: 4 }}>
+            <div className="pt-2 " style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>SELECT SITES</div>
+            <div className="d-flex flex-column justify-content-start  " >
                 <div className="py-4 flex-fill" style={{ borderBottom: '1px solid #999999' }}>
                     <div style={{ fontSize: fsc(media, 14), color: '#999999' }}>SEARCH FOR A SITE</div>
                     <div>
@@ -112,26 +112,25 @@ const SiteComparisonView = props => {
                 <div style={{ fontSize: fsc(media, 14), color: '#999999' }}>{"RESET SELECTION"}</div>
             </div>
             <div>
-                <KmBadge text="FUNG-RUNG FARMERS ASSOCIATION(FRFA)" style={{fontSize:fsc(media,12),backgroundColor:'#114194'}} />
-                <KmBadge text="ORGANIC FARMERS ASSOCIATION" style={{fontSize:fsc(media,12),backgroundColor:'#114194'}} />
+                <KmBadge text="FUNG-RUNG FARMERS ASSOCIATION(FRFA)" style={{ fontSize: fsc(media, 12), backgroundColor: '#114194' }} />
+                <KmBadge text="ORGANIC FARMERS ASSOCIATION" style={{ fontSize: fsc(media, 12), backgroundColor: '#114194' }} />
             </div>
 
             <div className="py-4">
-                <KmButton text="START COMPARING"  onClick={() => history.push(`${match.url}${search}${cr ? "" : "&cr=1" }`) } style={{ width: 200 }} />
+                <KmButton text="START COMPARING" onClick={() => history.push(`${match.url}${search}${cr ? "" : "&cr=1"}`)} style={{ width: 200 }} />
             </div>
-            {/* <button className="btn btn-primary" onClick={() => history.push(`${match.url}${search}${cr ? "" : "&cr=1" }`) }>COMPARE</button> */}
         </div>
     )
 }
 
 export default withMedia(SiteComparisonView)
 
-const KmBadge = ({ text,style }) => {
+const KmBadge = ({ text, style }) => {
     return (
         <div className="px-2 py-1">
             <div className="badge badge-pill py-2 text-white" style={style}>
                 <span >{text} </span>
-                <span className="px-2" style={{cursor:'pointer'}}> <i className="fas fa-times"></i></span>
+                <span className="px-2" style={{ cursor: 'pointer' }}> <i className="fas fa-times"></i></span>
             </div>
         </div>
     )

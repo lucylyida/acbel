@@ -5,14 +5,13 @@ import DashStatusViewA from '../components/DashStatusViewA';
 import DashStatusViewB from '../components/DashStatusViewB';
 
 const DashboardContainer = props => {
-    // console.log({ props })
 
     return (
         <div className="container-fluid">
             <div className="row">
 
                 <div className="col-md-7 p-0 d-flex flex-column justify-content-between">
-                    <div className="p-1">
+                    <div className="px-1 pb-1">
                         <div className="bg-white h-100"><DashStatusViewA /></div>
                     </div>
 
@@ -21,12 +20,13 @@ const DashboardContainer = props => {
                     </div>
                 </div>
 
-                <div className="col-md-5 p-1">
+                <div className="col-md-5 px-1 pb-1">
                     <div className="bg-white " ><DashMap /></div>
                 </div>
 
                 <div className="col-md-6 p-1">
                     <div className="bg-white ">
+                        {/* Bar requires kes */}
                         <ChartContainer
                             headerText={'SITE OUTPUT TREND'}
                             chartType='bar'
@@ -35,7 +35,7 @@ const DashboardContainer = props => {
                             color={'#6FD1F6'}
                             axisLeftLegend="Power(kw)"
                             axisRightLegend="Power(kw)"
-                            
+
                         />
                     </div>
                 </div>
@@ -52,7 +52,7 @@ const DashboardContainer = props => {
                     </div>
                 </div>
 
-                <div className="col-md-6 p-1">
+                <div className="col-md-6 px-1 pt-1">
                     <div className="bg-white">
                         <ChartContainer
                             chartType='area'
@@ -65,7 +65,7 @@ const DashboardContainer = props => {
                     </div>
                 </div>
 
-                <div className="col-md-6 p-1">
+                <div className="col-md-6 px-1 pt-1">
                     <div className="bg-white">
                         <ChartContainer
                             chartType='area'

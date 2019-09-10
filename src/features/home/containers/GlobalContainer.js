@@ -26,7 +26,7 @@ const GlobalContainer = props => {
             <GlobalNavbar {...props} />
             <div className="d-flex flex-row flex-wrap flex-md-nowrap">
                 <div className="flex-grow-1">
-                    <LeftSidebar online={218} offine={12} siteChoose={true} active={true} efficiency={100} capacity={170.00} />
+                    <LeftSidebar online={218} offline={12} siteChoose={true} active={true} efficiency={100} capacity={170.00} />
                 </div>
                 <div className="w-100 pb-2">
                     <HomeStatusView />
@@ -45,7 +45,8 @@ export default withMedia(GlobalContainer)
 
 const GlobalPage = props => {
     const pageName = props.match.params.pageName
- 
+    console.log(pageName)
+
     switch (pageName) {
         case route.map:
             return <GlobalMapContainer {...props} />

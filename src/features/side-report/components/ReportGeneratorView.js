@@ -7,7 +7,7 @@ import { memoize } from 'react-data-table-component'
 import tableTheme from "../../home/containers/tableTheme"
 import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../../../helper/fontColorHelper'
-
+import '../../../index.css';
 import Acbel_Logo from '../../../assets/icons/Acbel_Logo'
 import SolarPanel_logo from '../../../assets/icons/solarpanel_icn'
 import Power_icon from '../../../assets/icons/Power_icon'
@@ -58,7 +58,7 @@ const ReportGeneratorView = props => {
                     </div>
                 </div>
             </div>
-  {/* =================================================================================================================================================== */}
+            {/* =================================================================================================================================================== */}
             <div className="py-4">
                 <div style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>HISTORY</div>
                 <div className="pt-2">
@@ -68,9 +68,9 @@ const ReportGeneratorView = props => {
                         keyField={"id"}
                         defaultSortField={"id"}
                         highlightOnHover={true}
-                        style={{ borderRadius: 6, whiteSpace: 'nowrap', }}
+                        style={{ borderRadius: 6, whiteSpace: 'nowrap' }}
                         customTheme={tableTheme(media)}
-                        pagination={true}
+                        pagination={false}
                         paginationDefaultPage={1}
                         paginationTotalRows={data.length}
                         paginationPerPage={4}
@@ -87,12 +87,12 @@ const ReportGeneratorView = props => {
 export default withMedia(ReportGeneratorView)
 
 const data = [
-    { id: 1, sites: 'Organic Farmers Association', siteicon: <Acbel_Logo />, from: '01/12/19', to: '06/12/19', created: "06/12/19", view: "VIEW", export: " EXPORT", remove: "REMOVE" },
-    { id: 2, sites: 'Rice Drying Field', siteicon: <SolarPanel_logo />, from: '01/12/19', to: '06/12/19', created: "06/12/19", view: "VIEW", export: " EXPORT", remove: "REMOVE" },
-    { id: 3, sites: 'Taoyuan Xiwu-Dayang', siteicon: <Power_icon />, from: '01/12/19', to: '06/12/19', created: "06/12/19", view: "VIEW", export: " EXPORT", remove: "REMOVE" },
-    { id: 4, sites: 'SMD Site', siteicon: <Money_Icon />, from: '01/12/19', to: '06/12/19', created: "06/12/19", view: "VIEW", export: " EXPORT", remove: "REMOVE" },
-
+    { id: 1, sites: 'Organic Farmers Association', siteicon: <Acbel_Logo />, typeofReport: 'Portfolio Report', from: '01/12/19', to: '06/12/19', created: "06/12/19", view: "VIEW", export: " EXPORT", remove: "REMOVE" },
+    { id: 2, sites: 'Rice Drying Field', siteicon: <SolarPanel_logo />, typeofReport: 'Performance Report', from: '01/12/19', to: '06/12/19', created: "06/12/19", view: "VIEW", export: " EXPORT", remove: "REMOVE" },
+    { id: 3, sites: 'Taoyuan Xiwu-Dayang', siteicon: <Power_icon />, typeofReport: 'Peak Sun Report', from: '01/12/19', to: '06/12/19', created: "06/12/19", view: "VIEW", export: " EXPORT", remove: "REMOVE" },
+    { id: 4, sites: 'SMD Site', siteicon: <Money_Icon />, typeofReport: 'Target VS Current Complete Construct Capacity', from: '01/12/19', to: '06/12/19', created: "06/12/19", view: "VIEW", export: " EXPORT", remove: "REMOVE" },
 ];
+
 
 
 const columns = memoize((media, handleClick) => [
@@ -105,6 +105,12 @@ const columns = memoize((media, handleClick) => [
             <div className=" p-2 text-center  bg-transparent ">{row.siteicon}</div>
             <div className="px-2 ">{row.sites} </div>
         </div>
+    },
+    {
+        name: 'TYPE OF REPORT',
+        selector: 'typeofReport',
+        sortable: true,
+        grow: 4,
     },
     {
         name: 'FROM',
@@ -123,20 +129,23 @@ const columns = memoize((media, handleClick) => [
     {
         name: '',
         selector: 'view',
-        sortable: true,
-        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i className="far fa-eye" /></span> {row.view}</div>
+
+        cell: row => <div style={{ fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1" ><i className="far fa-eye" /></span> {row.view}</div>
 
     },
     {
         name: '',
         selector: 'export',
-        sortable: true,
-        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i className="fas fa-external-link-alt" /></span> {row.export}</div>
+
+        cell: row => <div style={{ fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i className="fas fa-external-link-alt" /></span> {row.export}</div>
+
     },
     {
         name: '',
         selector: 'remove',
-        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#999999' }}><span className="px-1"><i className="fas fa-times" /></span> {row.remove}</div>
+
+        cell: row => <div style={{ fontSize: fsc(media, 13), color: '#999999' }}><span className="px-1"><i className="fas fa-times" /></span> {row.remove}</div>
+
 
     }
 ])

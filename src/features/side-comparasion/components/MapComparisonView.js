@@ -35,7 +35,7 @@ export class MapComprisonView extends Component {
         ];
         return (
 
-            <div style={{ height: '500px', position: 'relative', bottom: '0', paddingBottom: media.mobile ? "30%" : '58%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
+            <div style={{ height: '800px', position: 'relative', bottom: '0', paddingBottom: media.mobile ? "30%" : '58%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
 
                 <Map
                     onClick={this.infoWindowClose}

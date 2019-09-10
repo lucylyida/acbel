@@ -3,9 +3,10 @@ import DataTable, { memoize } from 'react-data-table-component';
 import { withMedia } from 'react-media-query-hoc'
 
 const KmTable = props => {
+   
     const {
         media, data, columns, keyField, defaultSortField, highlightOnHover, style,
-        customTheme, pagination = true, paginationDefaultPage, paginationTotalRows,
+        customTheme, pagination = true, paginationDefaultPage, paginationTotalRows,pointerOnHover,
         paginationPerPage, customPagination = true
     } = props
 
@@ -14,6 +15,7 @@ const KmTable = props => {
             columns={columns}
             data={data}
             keyField={keyField}
+            pointerOnHover={pointerOnHover}
             defaultSortField={defaultSortField}
             highlightOnHover={highlightOnHover}
             style={style}
@@ -31,6 +33,7 @@ const KmTable = props => {
 export default withMedia(KmTable);
 
 const CustomPagination = props => {
+    
     const { media, onChangePage, currentPage, rowCount, rowsPerPage, } = props
     const last = Math.ceil(rowCount / rowsPerPage);
     const left = currentPage > 1 ? currentPage - 1 : 0;

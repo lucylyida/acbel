@@ -1,22 +1,17 @@
-import React, { useState } from "react"
+import React from "react"
 import moment from 'moment'
 import { withMedia } from 'react-media-query-hoc'
 import { fsc, numberFormat } from '../../../helper/fontColorHelper'
 import KmDropdown from '../../../kumocom/KmDropdown'
 import KmButton from '../../../kumocom/KmButton'
-import MaintenanceItemCardView from './MaintenanceItemCardView'
 
 const MaintenanceInfoView = props => {
-    const { media, filter, setFilter, contentSize, setLeft, setRight } = props
+    const { media, filter, setFilter } = props
     const total_num = 6
-    const total_cost = 123905.60  
-      
-    // setLeft(contentSize < window.innerWidth)
-    // setRight(contentSize < window.innerWidth)
-
+    const total_cost = 123905.60
     return (
-        <div className="container-fluid p-1 pb-3 d-flex justify-content-between align-items-center flex-wrap">
-            <div>
+        <div className="container-fluid px-1 pb-3 d-flex justify-content-between align-items-center flex-wrap">
+            <div className="">
                 <div className="font-weight-bold" style={{ fontSize: fsc(media, 26) }}>{`Maintenance for ${moment().format("MMMM YYYY")}`}</div>
                 <div className="d-flex flex-wrap py-2">
                     <div>
@@ -29,7 +24,7 @@ const MaintenanceInfoView = props => {
                     </div>
                 </div>
             </div>
-            
+
             <div className="d-flex flex-row-reverse align-items-center pl-3">
                 <KmButton text={"ADD NEW"} noMinWidth style={{ width: 150 }} />
                 <KmDropdown
@@ -40,7 +35,8 @@ const MaintenanceInfoView = props => {
                     data={[
                         {
                             id: 1,
-                            icon: <span className="border rounded" style={{ paddingLeft: 1, paddingRight: 1 }}>
+                            icon: 
+                            <span className="border rounded" style={{ paddingLeft: 1, paddingRight: 1 }}>
                                 <i className="fa fa-square" style={{ color: filter.id === 1 ? '#ffffff' : '#ffffff00' }} />
                             </span>,
                             text: 'All types'

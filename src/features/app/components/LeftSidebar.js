@@ -9,6 +9,7 @@ import { fsc } from '../../../helper/fontColorHelper';
 import * as route from "../../../config/route.config"
 import { _hadleMenuClick } from "./Navbar"
 
+
 const LeftSidebar = props => {
     const { online, offline, active, siteName, efficiency, capacity, location, match, history } = props
     const queryParams = querystring.parse(location.search)
@@ -20,8 +21,10 @@ const LeftSidebar = props => {
     if (leftSidebarVisible === undefined || leftSidebarVisible === "false") return null
     else
         return (
-            <div className="pb-3 h-100 pr-2">
-                <div className="p-3 h-100" style={{ background: '#193D91', borderRadius: 4, minWidth: 300 }}>
+            <div className="h-100 px-1">
+
+                <div className="d-flex p-3 h-100 flex-column" style={{ background: '#193D91', borderRadius: 4, minWidth: 300 }}>
+
 
                     <div className="d-flex align-items-center justify-content-between">
                         <div style={{ color: 'white', fontWeight: 'bold' }}>{"Sites"}</div>
@@ -94,45 +97,64 @@ const LeftSidebar = props => {
                         <div style={{ fontWeight: 'bold' }}>{"Reports"}</div>
                         <div><i className="fa fa-caret-right" /></div>
                     </div>
-                    
-                    <MenuItem 
-                        text={"Administration"} 
-                        url={url} 
-                        pageName={pageName} 
-                        history={history} 
-                        pageUrl = {"/administration/:pageName"}
-                        subItems = {[ 
+
+                    <MenuItem
+                        text={"Administration"}
+                        url={url}
+                        pageName={pageName}
+                        history={history}
+                        pageUrl={"/administration/:pageName"}
+                        subItems={[
                             { text: "Profile Settings", clickRoute: `/${route.administration}/${route.profile}`, pageName: route.profile },
                             { text: "User Management", clickRoute: `/${route.administration}/${route.userManagement}`, pageName: route.userManagement }
                         ]}
                     />
 
+                    <SideNavbarProfile userName={"Chris Even"} userProfile={require('../../../user-profile-image/chris-evans.jpg')}
+                        Click={() => history.push(`/${route.administration}/${route.profile}`)} />
+
                 </div>
+
             </div>
         )
 }
 
 export default withRouter(withMedia(LeftSidebar));
-
-
 const MenuItem = props => {
-    const { text, history, url, pageName, subItems, pageUrl } = props 
+    const { text, history, url, pageName, subItems, pageUrl } = props
     const [collapse, setCollapse] = useState(url !== pageUrl)
     const subItemsView = subItems.map((v, k) => (
         <div key={k} className="pl-4 py-2"
             style={{ color: url === pageUrl && pageName === v.pageName ? "#ffffff" : "#ffffff55" }}
             onClick={() => history.push(v.clickRoute)}>
-            <b>{ v.text }</b>
+            <b>{v.text}</b>
         </div>
     ))
     return (
         <div className='' style={{ color: 'white', cursor: "pointer" }}  >
             <div className="d-flex justify-content-between py-2" onClick={() => setCollapse(url !== pageUrl && !collapse)}>
-                <div style={{ fontWeight: 'bold' }}>{ text }</div>
+                <div style={{ fontWeight: 'bold' }}>{text}</div>
                 <div><i className={`fa fa-caret-${collapse ? "right" : "down"}`} /></div>
             </div>
             <div className={`collapse ${(url === pageUrl || !collapse) && "show"}`}>
-                { subItemsView }
+                {subItemsView}
+
+            </div>
+        </div>
+    )
+}
+
+
+const SideNavbarProfile = (props) => {
+    const { userName, userProfile, Click } = props
+    return (
+        <div className='d-flex text-light mt-auto pt-4' style={{ position: 'relative', borderTop: '1px solid #B6B6B6', fontWeight: 'bold' }}>
+            <div>
+                <img style={{ width: 40, height: 40 }} src={userProfile} alt="UserProfile" />
+            </div>
+            <div className='pl-3 pt-2' onClick={Click} style={{ cursor: 'pointer' }}>
+                {userName}
+
             </div>
         </div>
     )

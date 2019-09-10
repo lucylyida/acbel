@@ -5,7 +5,8 @@ const Flag_Singapore = props => {
     const vw = width === undefined ? 35 : width
     const vh = height === undefined ? 35 : height
     return (
-    <svg x="0px" y="0px"
+	<svg x="0px" y="0px"
+			text={57}
             width={vw}
             height={vh}
             viewBox="0 0 512 512">

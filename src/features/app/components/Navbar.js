@@ -15,7 +15,7 @@ const Navbar = props => {
     const { match, location, history, media } = props
     
     return (
-        <div className="container-fluid px-0 py-3">
+        <div className="container-fluid px-1 py-3 ">
             <div className="d-flex align-items-center">
                 <div className="d-flex flex-column justify-content-center" onClick={() => _hadleMenuClick({ match, location, history })}>
                     <div 
@@ -54,6 +54,8 @@ const Navbar = props => {
 export default withMedia(Navbar)
 
 export const _hadleMenuClick = ({ history, match, location }) => {
+    // eslint-disable-next-line no-lone-blocks
+    {/*To Know */}
     const qp = { ...querystring.parse(location.search) }
     const queryParams = { ...qp, lsb: qp.lsb === "true" ? false : true }
     history.push({

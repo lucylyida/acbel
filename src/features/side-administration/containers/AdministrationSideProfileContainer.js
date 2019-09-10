@@ -11,7 +11,7 @@ const MaintenanceSideProfileContainer = props => {
     const edit = querystring.parse(location.search).e
     return (
         <div className="container-fluid p-0">
-            {edit === "1" ? <UserProfileView {...props} edit /> : <UserProfileView {...props} />}
+            <UserProfileView {...props} edit={edit} />
         </div>
     )
 }

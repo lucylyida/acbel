@@ -4,7 +4,7 @@ import {fsc} from '../helper/fontColorHelper'
 
 const KmSearchbox = props => {
     const { style, onChange, onClick,media ,placeholder,noMinwidth} = props
-    const defaultStyle = { cursor: 'pointer',minWidth: noMinwidth ? 500 : 200}
+    const defaultStyle = { cursor: 'pointer',}
     const userStyle = style === undefined ? {} : style
     
     return (
@@ -15,7 +15,7 @@ const KmSearchbox = props => {
                 aria-label="Search"
                 placeholder={placeholder}
                 id="search-input"
-                style={{ ...{ fontSize:fsc(media,15),}, ...userStyle,}}
+                style={{ ...{ fontSize:fsc(media,15),}, ...userStyle,minWidth: noMinwidth ? 500 : 300}}
                 onChange={onChange}
             />
             <span className="input-group-append">

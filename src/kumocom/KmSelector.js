@@ -2,13 +2,13 @@ import React from 'react'
 import Select, { components } from 'react-select'
 
 const KmSelector = (props) => {
-    const { style, optionLabel, options, placeholder, onChange, className, icon,isSearch } = props
+    const { style, optionLabel, options, placeholder, onChange, className, icon,isSearch ,noMinWidth} = props
     const userStyle = style === undefined ? {} : style
     const customStyles = {
         container: (base, state) => ({
             ...base,
             width: "100%", //userStyle.width === undefined ? 250 : userStyle.width,
-            minWidth: 200,
+            minWidth: noMinWidth ? null : 100,
         }),
         control: (base, state) => ({
             ...base,

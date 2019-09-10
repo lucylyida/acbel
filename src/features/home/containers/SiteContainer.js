@@ -1,5 +1,5 @@
 import React, { Suspense } from "react"
-import { Route, Link, Redirect, Switch } from "react-router-dom"
+import { Route, Redirect, Switch } from "react-router-dom"
 import { enc } from "../../../network-sec/cypher"
 import { withMedia } from "react-media-query-hoc"
 import { fsc } from "../../../helper/fontColorHelper"

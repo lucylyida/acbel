@@ -1,8 +1,8 @@
 import React from "react"
-import querystring from "query-string"
-import { withRouter } from "react-router-dom"
+import querystring from "query-string"//To Know
+import { withRouter } from "react-router-dom"//To Know
 import { withMedia } from "react-media-query-hoc"
-import * as route from "../../../config/route.config"
+import * as route from "../../../config/route.config" //To Know
 import KmLink from '../../../kumocom/KmLink'
 import AcbelLogo from '../../../assets/icons/Acbel_Logo'
 import { fsc } from "../../../helper/fontColorHelper"
@@ -11,14 +11,14 @@ import KmButton from "../../../kumocom/KmButton"
 
 const MaintenanceNavbar = props => {
     const { match, location, history, media } = props
-    const search = querystring.parse(location.search)
-    const edit = search.e
-    const pageName = match.params.pageName
+    const search = querystring.parse(location.search)//To Know
+    const edit = search.e//To Know
+    const pageName = match.params.pageName//To Know
     return (
         <Navbar {...props}>
             <div className={`d-flex flex-column justify-content-center ${media.mobile ? "pl-3 pr-1" : "px-4"}`} >
                 <a className="" style={{ borderRadius: 4, cursor: "pointer" }} href={`/${route.global}${location.search}`}>
-                    <AcbelLogo width={fsc(media, 40)} height={fsc(media, 40)} />
+                    <AcbelLogo width={fsc(media, 40)} height={fsc(media, 40)} />{/*To Know*/}
                 </a>
             </div>
             <div className="d-flex justify-content-center align-items-center pl-2">
@@ -42,7 +42,7 @@ const MaintenanceNavbar = props => {
 
 const _handleClickedProfileEdit = ({ match, history, search, }) => {
     search.e = "1"
-    return history.push(`${match.url}?${querystring.stringify(search)}`)
+    return history.push(`${match.url}?${querystring.stringify(search)}`)//To Know
 }
 
 export default withRouter(withMedia(MaintenanceNavbar))

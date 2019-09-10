@@ -9,6 +9,7 @@ import { fsc } from '../../../helper/fontColorHelper';
 import * as route from "../../../config/route.config"
 import { _hadleMenuClick } from "./Navbar"
 
+
 const LeftSidebar = props => {
     const { online, offline, active, siteName, efficiency, capacity, location, match, history } = props
     const queryParams = querystring.parse(location.search)
@@ -21,7 +22,9 @@ const LeftSidebar = props => {
     else
         return (
             <div className="h-100 px-1">
-                <div className="p-3 h-100 flex-column" style={{ background: '#193D91', borderRadius: 4, minWidth: 300 }}>
+
+                <div className="d-flex p-3 h-100 flex-column" style={{ background: '#193D91', borderRadius: 4, minWidth: 300 }}>
+
 
                     <div className="d-flex align-items-center justify-content-between">
                         <div style={{ color: 'white', fontWeight: 'bold' }}>{"Sites"}</div>
@@ -106,8 +109,12 @@ const LeftSidebar = props => {
                             { text: "User Management", clickRoute: `/${route.administration}/${route.userManagement}`, pageName: route.userManagement }
                         ]}
                     />
-                
+
+                    <SideNavbarProfile userName={"Chris Even"} userProfile={require('../../../user-profile-image/chris-evans.jpg')}
+                        Click={() => history.push(`/${route.administration}/${route.profile}`)} />
+
                 </div>
+
             </div>
         )
 }
@@ -131,6 +138,23 @@ const MenuItem = props => {
             </div>
             <div className={`collapse ${(url === pageUrl || !collapse) && "show"}`}>
                 {subItemsView}
+
+            </div>
+        </div>
+    )
+}
+
+
+const SideNavbarProfile = (props) => {
+    const { userName, userProfile, Click } = props
+    return (
+        <div className='d-flex text-light mt-auto pt-4' style={{ position: 'relative', borderTop: '1px solid #B6B6B6', fontWeight: 'bold' }}>
+            <div>
+                <img style={{ width: 40, height: 40 }} src={userProfile} alt="UserProfile" />
+            </div>
+            <div className='pl-3 pt-2' onClick={Click} style={{ cursor: 'pointer' }}>
+                {userName}
+
             </div>
         </div>
     )

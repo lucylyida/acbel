@@ -43,7 +43,7 @@ const SearchPanel = props => {
                 </div>
             </div>
             <div className="pl-1 pt-4 pb-2">
-                <KmButton text="SEARCH" style={{ width: 120 }} />
+                <KmButton text="SEARCH"  style={{ width: 120}} />
             </div>
         </div>
     )

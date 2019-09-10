@@ -66,7 +66,7 @@ const columns = memoize((media, handleClick) => [
         name: '',
         selector: 'view',
         sortable: true,
-        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i className="far fa-eye" /></span> {row.view}</div>
+        cell: row => <div style={{  fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i className="far fa-eye" /></span> {row.view}</div>
 
     },
     {

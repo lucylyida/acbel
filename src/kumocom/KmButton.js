@@ -14,7 +14,7 @@ const KmButton = props => {
 
     // style={{ minWidth: 200 }}
     return (
-        <div style={{ minWidth: noMinWidth ? null : 200 }}>
+        <div style={{ minWidth: noMinWidth ? null : 100 }}>
             <button
                 onClick={onClick}
                 type={type === undefined ? "button" : type}

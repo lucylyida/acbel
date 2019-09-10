@@ -7,7 +7,7 @@ import { memoize } from 'react-data-table-component'
 import tableTheme from "../../home/containers/tableTheme"
 import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../../../helper/fontColorHelper'
-
+import '../../../index.css';
 import Acbel_Logo from '../../../assets/icons/Acbel_Logo'
 import SolarPanel_logo from '../../../assets/icons/solarpanel_icn'
 import Power_icon from '../../../assets/icons/Power_icon'
@@ -58,7 +58,7 @@ const ReportGeneratorView = props => {
                     </div>
                 </div>
             </div>
-  {/* =================================================================================================================================================== */}
+            {/* =================================================================================================================================================== */}
             <div className="py-4">
                 <div style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>HISTORY</div>
                 <div className="pt-2">
@@ -95,6 +95,7 @@ const data = [
 ];
 
 
+
 const columns = memoize((media, handleClick) => [
     {
         name: "SITES",
@@ -124,19 +125,20 @@ const columns = memoize((media, handleClick) => [
         name: '',
         selector: 'view',
         sortable: true,
-        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i className="far fa-eye" /></span> {row.view}</div>
+        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}>{row.view}<span className="px-1"><i className="far fa-eye" /></span> </div>
 
     },
     {
         name: '',
         selector: 'export',
         sortable: true,
-        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i className="fas fa-external-link-alt" /></span> {row.export}</div>
+        cell: row => <div onClick={()=> alert("Hello !")}  style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}>{row.export}<span className="px-1"><i className=" fas fa-external-link-alt" /></span> </div>
     },
     {
         name: '',
         selector: 'remove',
-        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#999999' }}><span className="px-1"><i className="fas fa-times" /></span> {row.remove}</div>
+        cell: row => <div   style = {{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#999999' }}> { row.remove } < span  className = "px-1" > <i className="fas fa-times" /></span > </div >
+
 
     }
 ])

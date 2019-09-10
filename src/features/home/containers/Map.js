@@ -13,7 +13,7 @@ export class MapContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            zoom: 8.3,
+            zoom: 6,
             stores: [],
             isClientToShow: false,
             showingInfoWindow: false,
@@ -82,11 +82,12 @@ export class MapContainer extends Component {
 
     _ClientSites = (props, marker, e) => {
         const mmap = this.mapRef.current
-
-        marker.addListener('click', function () {
-            mmap.map.setZoom(9.5);
-            mmap.map.setCenter(marker.getPosition());
-        });
+        mmap.map.setZoom(9.5);
+        mmap.map.setCenter(marker.getPosition());
+        // marker.addListener('click', function () {
+        //     mmap.map.setZoom(9.5);
+        //     mmap.map.setCenter(marker.getPosition());
+        // });
     }
 
     infoWindowClose = () => {
@@ -102,6 +103,7 @@ export class MapContainer extends Component {
 
     render() {
         const { media } = this.props
+      
 
         return (
             <div style={{ borderRadius: 4, border: '0.7px solid #cccccc', height: '500px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
@@ -111,6 +113,7 @@ export class MapContainer extends Component {
                     // disableDoubleClickZoom={false}
                     zoom={this.state.zoom}
                     zoomControl={true}
+                    zoomControlOptions={{ position: this.props.google.maps.ControlPosition.RIGHT_TOP }}
                     // onReady={() => console.log("map ready")}
                     styles={MapStyle}
                     google={this.props.google}
@@ -188,8 +191,8 @@ const clientLists = [
             { name: "site 2", lat: 25.0546464, lng: 121.3233333 },
             { name: "site 3", lat: 25.06789273, lng: 121.5454544 },
             { name: "site 4", lat: 25.073676, lng: 121.23254454 },
-            { name: "site 5", lat: 25.12323, lng: 121.23254454 },
-            { name: "site 6", lat: 25.231313, lng: 121.23254454 }
+            { name: "site 5", lat: 25.02323, lng: 121.43254454 },
+            { name: "site 6", lat: 25.031313, lng: 121.33254454 }
         ]
     },
     {

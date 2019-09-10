@@ -73,7 +73,7 @@ const columns = memoize((media, handleClick) => [
         name: '',
         selector: 'export',
         sortable: true,
-        cell: row => <div style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}><span className="px-1"><i className="fas fa-external-link-alt" /></span> {row.export}</div>
+        cell: row => <div  style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#0B3D92' }}><span onClick={console.log("Hello")} className="px-1"><i className="fas fa-external-link-alt" /></span> {row.export}</div>
     },
     {
         name: '',

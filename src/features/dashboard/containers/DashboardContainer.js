@@ -5,7 +5,6 @@ import DashStatusViewA from '../components/DashStatusViewA';
 import DashStatusViewB from '../components/DashStatusViewB';
 
 const DashboardContainer = props => {
-    // console.log({ props })
 
     return (
         <div className="container-fluid">
@@ -27,6 +26,7 @@ const DashboardContainer = props => {
 
                 <div className="col-md-6 p-1">
                     <div className="bg-white ">
+                        {/* Bar requires kes */}
                         <ChartContainer
                             headerText={'SITE OUTPUT TREND'}
                             chartType='bar'
@@ -35,7 +35,7 @@ const DashboardContainer = props => {
                             color={'#6FD1F6'}
                             axisLeftLegend="Power(kw)"
                             axisRightLegend="Power(kw)"
-                            
+
                         />
                     </div>
                 </div>

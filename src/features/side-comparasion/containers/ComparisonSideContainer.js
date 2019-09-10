@@ -23,12 +23,12 @@ const ComparasionSideContainer = props => {
                     <LeftSidebar online={218} offine={12} siteChoose={true} active={true} efficiency={100} capacity={170.00} />
                 </div>
 
-                <div className="flex-grow-1 d-flex">
-                    <div className="px-1" style={{ minWidth: 520 }} >
+                <div className={`flex-grow-1 d-flex  ${media.tablet ? "d-flex" : "flex-column"} `}>
+                    <div className="px-1" style={{ minWidth: 400 }} >
                         <SiteComprisonInputView {...props} />
                     </div>
 
-                    <div className="px-1 flex-grow-1">
+                    <div className="px-1 flex-grow-1" >
                         <ComparionPage {...props} />
                     </div>
                 </div>
@@ -49,3 +49,24 @@ const ComparionPage = props => {
             return <MapComprisonView {...props} />
     }
 }
+
+
+{/* <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
+    <ComparasionNavbar {...props} />
+    <div className="d-flex flex-row flex-wrap flex-md-nowrap" style={{ overflow: "hidden" }}>
+
+        <div className="">
+            <LeftSidebar online={218} offine={12} siteChoose={true} active={true} efficiency={100} capacity={170.00} />
+        </div>
+
+        <div className="flex-grow-1 d-flex">
+            <div className="px-1" style={{ minWidth: 520 }} >
+                <SiteComprisonInputView {...props} />
+            </div>
+
+            <div className="px-1 flex-grow-1" >
+                <ComparionPage {...props} />
+            </div>
+        </div>
+    </div>
+</div> */}

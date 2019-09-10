@@ -45,7 +45,8 @@ export default withMedia(GlobalContainer)
 
 const GlobalPage = props => {
     const pageName = props.match.params.pageName
- 
+    console.log(pageName)
+
     switch (pageName) {
         case route.map:
             return <GlobalMapContainer {...props} />

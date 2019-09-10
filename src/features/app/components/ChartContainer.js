@@ -67,10 +67,10 @@ const ChartContainer = props => {
                         fontSize: fsc(media, 14)
 
                     }}>
-                        <i className="fas fa-external-link-alt" style={{ cursor: 'inherient' }}> </i> <span style={{ marginTop: -3, cursor: 'pointer' }}>Export</span>
+                        <i className="fas fa-external-link-alt" style={{ cursor: 'inherient' }}> </i> <span style={{ marginTop: -3, cursor: 'pointer',paddingLeft:5 }}>Export</span>
                     </div>
                 }
-                <div className="" style={{ width: "100%", height: media.tablet ? 350 : 250 }}>
+                <div className="" style={{ width: "90%", height: media.tablet ? 350 : 250 }}>
                     {chartType === "area" && <AreaChart
                         data={data}
                         color={color}

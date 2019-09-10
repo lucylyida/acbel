@@ -17,7 +17,7 @@ const ForecastStatusViewA = props => {
 
                 <div className="col-4 col-sm-3 px-4 py-2 text-truncate" style={{ fontSize: fsc(media, 14) }}>
                     <div>{date[0]}</div>
-                    <div>{date[1]} {date[2]}, {date[3]}</div>                    
+                    <div>{date[1]} {date[2]}, {date[3]}</div>
                     <div>{date[4]} {date[5]}</div>
                 </div>
 
@@ -41,7 +41,7 @@ const ForecastStatusViewA = props => {
                 </div>
 
             </div>
-            
+
         </div>
     )
 }

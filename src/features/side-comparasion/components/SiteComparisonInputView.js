@@ -12,9 +12,9 @@ const SiteComparisonView = props => {
     const search = location.search
     const cr = querystring.parse(search).cr
     return (        
-        <div className="bg-white py-2 px-3 h-100" style={{ borderRadius: 4 }}>
-            <div className="pt-2" style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>SELECT SITES</div>
-            <div className="d-flex flex-column justify-content-start " >
+        <div className="bg-white py-2 px-3 h-100 " style={{ borderRadius: 4 }}>
+            <div className="pt-2 " style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>SELECT SITES</div>
+            <div className="d-flex flex-column justify-content-start  " >
                 <div className="py-4 flex-fill" style={{ borderBottom: '1px solid #999999' }}>
                     <div style={{ fontSize: fsc(media, 14), color: '#999999' }}>SEARCH FOR A SITE</div>
                     <div>

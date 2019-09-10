@@ -15,7 +15,7 @@ const ReportContainer = props => {
             </div>
             <div className="pt-5">
                 <div className='' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}> {"HISTORY"} </div>
-                <ReportGenerateHistoryView />
+                {/* <ReportGenerateHistoryView /> */}
             </div>
         </div>
     )

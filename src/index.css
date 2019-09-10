@@ -39,3 +39,22 @@ code {
 .react-datepicker__input-container {
   display: block !important
 }
+
+/* 
+.rdt_TableCell {
+  cursor: pointer;
+} */
+
+.jltdJX {
+  position: relative !important;
+  width: 0% !important;
+}
+
+.gmnoprint {
+  position: relative !important;
+}
+
+.gm-style-cc {
+  background: none !important;
+  visibility: hidden;
+}

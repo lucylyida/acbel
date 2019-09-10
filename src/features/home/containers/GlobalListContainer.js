@@ -7,6 +7,7 @@ import tableTheme from "./tableTheme"
 import { withMedia } from 'react-media-query-hoc'
 import { fsc } from "../../../helper/fontColorHelper";
 import KmTable from '../../../kumocom/KmTable'
+import moment from "moment"
 
 const GlobalListContainer = props => {
     const { location, media } = props

@@ -8,6 +8,7 @@ import SiteNavbar from "../../app/components/SiteNavbar"
 import { withPageLoading } from "../../app/hoc/withLoading"
 import LeftSidebar from "../../app/components/LeftSidebar";
 
+const DashboardContainer = React.lazy(() => import("../../dashboard/containers/DashboardContainer"))
 const ForecastContainer = React.lazy(() => import("../../forecast/containers/ForecastContainer"))
 const MaintenanceContainer = React.lazy(() => import("../../maintenance/containers/MaintenanceContainer"))
 const ProfileContainer = React.lazy(() => import("../../profile/containers/ProfileContainer"))
@@ -15,6 +16,7 @@ const InverterContainer = React.lazy(() => import("../../inverter/containers/Inv
 const PanelContainer = React.lazy(() => import("../../panel/containers/PanelContainer"))
 const RevenueContainer = React.lazy(() => import("../../revenue/containers/RevenueContainer"))
 const ReportContainer = React.lazy(() => import("../../report/containers/ReportContainer"));
+
 
 const SiteContainer = props => {
     const { match, location, media } = props
@@ -50,7 +52,7 @@ export default withMedia(SiteContainer)
 
 const SitePage = props => {
     const pageName = props.match.params.pageName
-    const DashboardContainer = React.lazy(() => import("../../dashboard/containers/DashboardContainer"))
+
     switch (pageName) {
         case route.dashboard:
             return withPageLoading(DashboardContainer, props)

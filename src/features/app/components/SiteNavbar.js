@@ -33,7 +33,7 @@ const SiteNavbar = props => {
                             paddingTop: fsc(media, 6),
                             paddingBottom: fsc(media, 6)
                         }}>
-                        <i className="fas fa-bars text-primary" />
+                        <i className="fa fa-bars text-primary" />
                     </div>
                 </div>
                 <div className={`d-flex flex-column justify-content-center ${media.mobile ? "pl-2 pr-1" : "px-4"}`}>
@@ -43,9 +43,10 @@ const SiteNavbar = props => {
                 </div>
                 <div className="d-flex flex-column justify-content-center pl-2" style={{ lineHeight: '1.3' }}>
                     <div style={{ color: "#2244aa", fontSize: fsc(media, 28) }}>{"Organic Farmer's Association"}</div>
-                    <div style={{ paddingLeft: fsc(media, 10) }} style={{ color: "gray", fontSize: fsc(media, 16) }}>{"Hualien City, Taiwan"}</div>
+                    <div style={{ paddingLeft: fsc(media, 10),color: "gray" }} >{"Hualien City, Taiwan"}</div>
                 </div>
                 <div style={{ flex: 1 }} />
+
                 <div className="d-flex justify-content-center align-items-center pr-2" style={window.innerWidth <= 355 ? { position: 'absolute', right: 0, top: 35 } : {}}>
                     <KmDropdown
                         labelHide={media.mobile}
@@ -57,7 +58,7 @@ const SiteNavbar = props => {
                             { icon: <SgFlag width={24} height={24} />, text: 'Sg Singapore' },
                             { icon: <Flag width={24} height={24} />, text: 'UK English' }
                         ]}
-                        style={{ backgroundColor: ' #e5e5e5' }}
+                        style={{ backgroundColor: '#e5e5e5' }}
                     />
                 </div>
             </div>

@@ -54,6 +54,8 @@ const Navbar = props => {
 export default withMedia(Navbar)
 
 export const _hadleMenuClick = ({ history, match, location }) => {
+    // eslint-disable-next-line no-lone-blocks
+    {/*To Know */}
     const qp = { ...querystring.parse(location.search) }
     const queryParams = { ...qp, lsb: qp.lsb === "true" ? false : true }
     history.push({

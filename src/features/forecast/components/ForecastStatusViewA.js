@@ -7,7 +7,7 @@ import SunnyIcon from '../../../assets/icons/Sunny_Icon'
 
 const ForecastStatusViewA = props => {
     const { media } = props
-    const date = moment().format('dddd MMMM DD YYYY hh:mm A').split(" ")
+    const date = moment().format('dddd MMMM DD YYYY hh:mm A').split(" ")//Date Format
     return (
         <div className="container-fluid py-3" style={{ background: 'white', borderRadius: 4 }}>
 

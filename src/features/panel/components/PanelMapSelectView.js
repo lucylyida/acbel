@@ -5,6 +5,7 @@ import { fsc } from '../../../helper/fontColorHelper'
 const PanelMapSelectView = props => {
     const { media } = props
     const [panel, setPanel] = useState("Panel Map 1");
+    
     return (
         <div className="container-fluid p-0 d-flex py-4" style={{ overflowX: 'auto' }}>
             {

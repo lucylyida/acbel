@@ -22,8 +22,7 @@ const ReportSideContainer = props => {
                     />
                 </div>
                 <div className="w-100 pb-2">
-                 <ReportGeneratorView/>
-                
+                 <ReportGeneratorView/>                
                 </div>
             </div>
         </div>

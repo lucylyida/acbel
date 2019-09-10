@@ -5,7 +5,7 @@ import { withMedia } from 'react-media-query-hoc'
 const KmTable = props => {
     const {
         media, data, columns, keyField, defaultSortField, highlightOnHover, style,
-        customTheme, pagination = true, paginationDefaultPage, paginationTotalRows,
+        customTheme, pagination = true, paginationDefaultPage, paginationTotalRows,pointerOnHover,
         paginationPerPage, customPagination = true
     } = props
 
@@ -14,6 +14,7 @@ const KmTable = props => {
             columns={columns}
             data={data}
             keyField={keyField}
+            pointerOnHover={pointerOnHover}
             defaultSortField={defaultSortField}
             highlightOnHover={highlightOnHover}
             style={style}

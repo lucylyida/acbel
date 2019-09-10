@@ -35,7 +35,8 @@ const MaintenanceInfoView = props => {
                     data={[
                         {
                             id: 1,
-                            icon: <span className="border rounded" style={{ paddingLeft: 1, paddingRight: 1 }}>
+                            icon: 
+                            <span className="border rounded" style={{ paddingLeft: 1, paddingRight: 1 }}>
                                 <i className="fa fa-square" style={{ color: filter.id === 1 ? '#ffffff' : '#ffffff00' }} />
                             </span>,
                             text: 'All types'

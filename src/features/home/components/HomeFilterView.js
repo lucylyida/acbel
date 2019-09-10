@@ -14,14 +14,16 @@ const HomefilterView = props => {
             <div className="py-2" style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"FILTER"}</div>
             <div className="row" style={{ color: '#A3A3A3' }}>
 
-                <div className="p-2 col-lg-2 col-md-4 col-xl-2 col-sm-6">
+                <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6 py-1">
                     <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>SEARCH</div>
-                    <div> 
-                        <KmSearchbox placeholder="Search"/>
+                    <div>
+                        <KmSearchbox placeholder="Search"
+                            icon={<i className="fa fa-search" />}
+                        />
                     </div>
                 </div>
 
-                <div className="p-2 col-lg-2 col-md-4 col-xl-2 col-sm-6">
+                <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6 py-1">
                     <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>VENDOR</div>
                     <div>
                         <KmSelector
@@ -38,7 +40,7 @@ const HomefilterView = props => {
                     </div>
                 </div>
 
-                <div className=" p-2 col-lg-2 col-md-4 col-xl-2 col-sm-6">
+                <div className=" col-xl-2 col-lg-3 col-md-4 col-sm-6 py-1">
                     <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>COUNTRY</div>
                     <div>
                         <KmSelector
@@ -54,7 +56,7 @@ const HomefilterView = props => {
                         />
                     </div>
                 </div>
-                <div className=" p-2 col-lg-2 col-md-4 col-xl-2 col-sm-6">
+                <div className=" col-xl-2 col-lg-3 col-md-4 col-sm-6 py-1">
                     <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>CITY</div>
                     <div>
                         <KmSelector
@@ -70,7 +72,7 @@ const HomefilterView = props => {
                         />
                     </div>
                 </div>
-                <div className="p-2 col-lg-2 col-md-4 col-xl-2 col-sm-6">
+                <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6 py-1">
                     <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>SITE</div>
                     <div>
                         <KmSelector
@@ -86,7 +88,7 @@ const HomefilterView = props => {
                         />
                     </div>
                 </div>
-                <div className="p-2 col-lg-2 col-md-4 col-xl-2 col-sm-6">
+                <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6 py-1">
                     <br />
                     <div>
                         <KmButton

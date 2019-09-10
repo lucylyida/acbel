@@ -45,7 +45,7 @@ const HomeStatusView = props => {
                     <FourItemBox value={56} unit={"%"} desc={"SITES CONNECTIVITY"} icon={<ConnnectivityIcon />} />
                 </div>
 
-                <div className="col-6 col-sm-4 col-lg-3 py-2">
+                <div className="col-6 col-sm-4 col-lg-4 col-xl-3 py-2">
                     <FourItemBox value={456890.55} unit={"NT$"} desc={"TOTAL ACC. REVENUE"} icon={<MoneyIcon />} />
                 </div>
             </div>

@@ -8,6 +8,9 @@ import * as route from '../../../config/route.config'
 const Login = props => {
 
     const { media } = props
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [show, setShow] = useState(false)
     return (
         <div className="container-fluid" >
             {/* <div className="row pl-3">
@@ -30,9 +33,9 @@ const Login = props => {
                                 id={"loginEmail"}
                                 type="email"
                                 required
-                                onChange={() => null}
+                                onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Email"
-                                value={"admin@gmail.com"}
+                                value={email}
                             />
                         </div>
                         <div className="form-group">
@@ -40,15 +43,15 @@ const Login = props => {
                             <KmInputBox
                                 id={"loginPassword"}
                                 required
-                                type={false ? "text" : "password"}
-                                onChange={() => null}
+                                type={show ? "text" : "password"}
+                                onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Password"
-                                value={"admin@1234"}
+                                value={password}
                             />
                             <div className="position-relative float-right"
                                 style={{ top: -27, paddingRight: '20px', cursor: 'pointer', fontWeight: 'bold', color: '#000000', fontSize: 14 }}>
-                                <span onClick={() => null} style={{ color: "#666673" }}>
-                                    {false ? <i className="far fa-eye-slash"></i> : <i className="far fa-eye"></i>}
+                                <span onClick={() => setShow(!show)} style={{ color: "#666673" }}>
+                                    {show ? <i className="far fa-eye-slash"></i> : <i className="far fa-eye"></i>}
                                 </span>
                             </div>
                         </div>

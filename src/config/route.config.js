@@ -33,3 +33,5 @@ export const report = "report"
 export const had = "had"
 
 export const result = "result"
+
+export const login = "login"

@@ -8,6 +8,7 @@ import MaintenanceSideContainer from "./features/side-maintenance/containers/Mai
 import ReportSideContainer from "./features/side-report/containers/ReportSideContainer"
 import AdministrationSideContainer from "./features/side-administration/containers/AdministrationSideContainer"
 import ComprisonSideContainer from "./features/side-comparasion/containers/ComparisonSideContainer"
+import LoginContainer from "./features/login/containers/LoginContainer"
 
 import * as route from "./config/route.config"
 
@@ -21,7 +22,8 @@ const AppRoute = props => {
                 <Route path={`/${route.maintenance}/:pageName`} component={MaintenanceSideContainer} />
                 <Route path={`/${route.administration}/:pageName`} component={AdministrationSideContainer} />
                 <Route path={`/${route.site}/:siteId`} component={SiteContainer} />
-                <Redirect to={`/${route.global}`} />
+                <Route path={`/${route.login}`} component={LoginContainer} />
+                <Redirect to={`/${route.login}`} />
             </Switch>
         </BrowserRouter>
     )

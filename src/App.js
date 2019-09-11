@@ -15,7 +15,7 @@ const App = () => {
   return (
     <MediaQueryProvider queries={kmQuery}>
       <AppRoute />
-    </MediaQueryProvider>
+    </MediaQueryProvider>   
   )
 }
 

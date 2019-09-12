@@ -12,7 +12,7 @@ import LeftSidebar from "../../app/components/LeftSidebar";
 import HomefilterView from "../components/HomeFilterView";
 
 import { useSelector, useDispatch } from 'react-redux'
-import { getvendorfromapi, getSiteListFromApi } from '../../../action'
+import  * as Action from '../../../action'
 
 
 const GlobalContainer = props => {
@@ -29,14 +29,22 @@ const GlobalContainer = props => {
     const dispatch = useDispatch()
     
     if(state.isLoading) {
-        dispatch(getvendorfromapi())
-        dispatch(getSiteListFromApi())
+        dispatch(Action.getvendorfromapi())
+        dispatch(Action.getSiteListFromApi())
         // return null
     }
-    const vendorNameList = state.vendorNameList //!state.vendorNameList ?[] : state.vendorNameList.map(v => ({ value: v.vendor_name, label: v.vendor_name, id:v.id}))
-    const siteNameList = state.siteNameList
-    const countryNameList = state.countryNameList
-    const cityNameList = state.cityNameList
+ 
+    const {
+        vendorNameList,
+        siteNameList,
+        countryNameList,
+        cityNameList,
+        selectedVendor,
+        selectedCountry,
+        selectedCity,
+        selectedSite,
+
+    } = state
 
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
@@ -59,6 +67,14 @@ const GlobalContainer = props => {
                         siteNameList = { siteNameList }
                         countryNameList = { countryNameList }
                         cityNameList = { cityNameList }
+                        selectedVendor = { selectedVendor }
+                        selectedCountry = { selectedCountry }
+                        selectedCity = { selectedCity }
+                        selectedSite = { selectedSite}
+                        onVendorChange = { d => dispatch(Action.globalHandleSelectFilter({ selectedVendor: d })) }
+                        onCountryChange = { d => dispatch(Action.globalHandleSelectFilter({ selectedCountry: d })) }
+                        onCityChange = { d => dispatch(Action.globalHandleSelectFilter({ selectedCity: d })) }
+                        onSiteChange = { d => dispatch(Action.globalHandleSelectFilter({ selectedSite: d })) }
                     />
                     <Switch>
                         <Route path={`${match.path}/:pageName`} component={GlobalPage} />
@@ -74,7 +90,6 @@ export default withMedia(GlobalContainer)
 
 const GlobalPage = props => {
     const pageName = props.match.params.pageName
-    console.log(pageName)
 
     switch (pageName) {
         case route.map:

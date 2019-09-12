@@ -1,11 +1,12 @@
 import ActionType from '../action/action'
 import * as Action from "../action"
 import { call, put, takeEvery ,take} from 'redux-saga/effects'
+import * as api from "../network-sec/api"
 
 function* fetchVendor() {
     try {
         //get vendorlist api endpoint
-        const vendors = yield fetch("http://192.168.100.6:3333/vendors") 
+        const vendors = yield fetch(api.FETCH_VENDOR_LIST) 
             .then(response => response.json())
             .then(data => data.payload)
         yield put({ type: ActionType.GET_VENDOR_SUCCESS, payload: vendors })
@@ -17,7 +18,7 @@ function* fetchVendor() {
 function* fetchSiteList() {
     try {
         //get vendorlist api endpoint
-        const sites = yield fetch("http://192.168.100.6:3333/vendors/sites") 
+        const sites = yield fetch(api.FETCH_VENDOR_SITES) 
             .then(response => response.json())
             .then(data => data.payload)
         yield put(Action.getSiteListFromApiSuccess(sites))

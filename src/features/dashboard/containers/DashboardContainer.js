@@ -11,8 +11,6 @@ const DashboardContainer = props => {
     const weatherCountryList= useSelector(state=> state.weatherCountryReducer)
     const dispatch = useDispatch()
 
-    // console.log({ weatherCountryList })
-
     const temperature= weatherCountryList.weatherlist.temperature
     const humidity =weatherCountryList.weatherlist.humidity
     const wind = weatherCountryList.weatherlist.wind_speed

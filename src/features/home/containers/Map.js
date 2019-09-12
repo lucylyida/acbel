@@ -21,11 +21,13 @@ export class MapContainer extends Component {
             selectedPlace: {},
             isShowInfoWindow: false,
             initialCenter: { lat: 20.444, lng: 96.176 },
-            markerPosition: {}
+            markerPosition: {},
+            infoSiteData : {},
         }
         this.mapRef = React.createRef()
     }
     componentDidMount() {
+        const { clientLists } = this.props
         // console.log({ mapRef: this.mapRef.current })
         const mmap = this.mapRef.current
         // console.log(mmap.props.google.maps.Marker.Cb)
@@ -50,11 +52,8 @@ export class MapContainer extends Component {
         const { stores, isClientToShow } = this.state
         const mmap = this.mapRef.current
 
-
         return stores === undefined ? [] : stores.map((store, index) => {
             const icon = !isClientToShow ? SolarPanelIcon : Animatedicon(this.props)
-
-
             return < Marker
                 label={isClientToShow ? { text: `${store.sites.length}`, color: 'white' } : null}
                 // title={{ text: `${store.sites.length}`, color: 'red' }}
@@ -63,19 +62,22 @@ export class MapContainer extends Component {
                 id={index}
                 position={{
                     lat: store.lat,
-                    lng: store.lng
+                    lng: store.lng,
                 }}
-                onClick={!isClientToShow ? this._onMarkerClick : this._ClientSites}
+                onClick={(props, marker, e) => {
+                    return !isClientToShow ? this._onMarkerClick(props ,marker, e, store) : this._ClientSites(props, marker, e)
+                }}
             >
             </Marker>
         })
     }
-    _onMarkerClick = (props, marker, e) => {
-
+    _onMarkerClick = (props, marker, e, siteData) => {
+        console.log({ siteData })
         this.setState({
             selectedPlace: props,
             activeMarker: marker,
             showingInfoWindow: true,
+            infoSiteData : siteData 
 
         });
     };
@@ -103,7 +105,7 @@ export class MapContainer extends Component {
 
     render() {
         const { media } = this.props
-      
+
 
         return (
             <div style={{ borderRadius: 4, border: '0.7px solid #cccccc', height: '500px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
@@ -129,18 +131,18 @@ export class MapContainer extends Component {
                         initialCenter={this.state.position}
                     >
                         <div style={{ fontSize: fsc(media, 12), cursor: "pointer" }} onClick={this.showDetails.bind(this, this.state.selectedPlace)}>
-                            <div>{this.state.selectedPlace.name}</div>
-                            <div style={{ color: 'blue' }}>Organic Farmars' Organization </div>
+                            {/* <div>{this.state.selectedPlace.name}</div> */}
+                            <div style={{ color: 'blue' }}>{this.state.infoSiteData.site_name}</div>
                             <div className='py-1'>
                                 <i className="fa fa-circle" style={{ fontSize: 8, color: 'green' }} /> Online</div>
                             <div>Power Output : 147.45kW</div>
-                            <div className='py-0'>Capacity : 147.45kW</div>
+                            <div className='py-0'>Capacity : {this.state.infoSiteData.capacity_kw}kW</div>
                             {/* <button
-                                            type="button"
-                                            onClick={this.showDetails.bind(this, this.state.selectedPlace)}
-                                        >
-                                            Show details
-                                         </button> */}
+                                type="button"
+                                onClick={this.showDetails.bind(this, this.state.selectedPlace)}
+                            >
+                                Show details
+                                </button> */}
                         </div>
                     </InfoWindowEx>
                 </Map>
@@ -153,7 +155,7 @@ export default GoogleApiWrapper({
     apiKey: "AIzaSyAcWK8WHabUh0BMDZuIIPo0qfWXWarBzoo"
 })(withRouter(withMedia(MapContainer)));
 
-const clientLists = [
+const clientLists1 = [
     {
         name: "Taiwan",
         title: "Taiwan",

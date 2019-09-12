@@ -8,10 +8,25 @@ import KmSelector from '../../../kumocom/KmSelector'
 import { withMedia } from 'react-media-query-hoc';
 import { fsc } from '../../../helper/fontColorHelper';
 
-
+// use in from GlobalContainer
 const HomefilterView = props => {
-    const { media, vendorNameList, siteNameList, countryNameList, cityNameList } = props // just test @nayhtet
-   
+    const {
+        media,
+        vendorNameList,
+        siteNameList,
+        countryNameList,
+        cityNameList,
+        selectedVendor,
+        selectedCountry,
+        selectedCity,
+        selectedSite,
+        onVendorChange,
+        onCountryChange,
+        onCityChange,
+        onSiteChange,
+
+    } = props // @nayhtet
+
     return (
         <div className="container-fluid mt-3 py-3" style={{ backgroundColor: '#ffffff', borderRadius: 4 }}>
             <div className="py-2" style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"FILTER"}</div>
@@ -30,14 +45,10 @@ const HomefilterView = props => {
                     <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>VENDOR</div>
                     <div>
                         <KmSelector
+                            value={selectedVendor}
+                            onChange={onVendorChange}
                             placeholder="Select Vendor"
-                            options={ vendorNameList
-                                // [
-                                //     { value: 'chocolate_value', label: 'Vendor 1', type: '1' },
-                                //     { value: 'strawberry_value', label: 'Vendor 2', type: '2' },
-                                //     { value: 'vanilla_value', label: 'Vendor 3', type: '3' }
-                                // ]
-                            }
+                            options={vendorNameList} // [ { value: 'chocolate_value', label: 'Vendor 1', type: '1' } ]
                             optionLabel='vendor_name'
                         />
                     </div>
@@ -47,14 +58,10 @@ const HomefilterView = props => {
                     <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>COUNTRY</div>
                     <div>
                         <KmSelector
+                            value={selectedCountry}
+                            onChange={onCountryChange}
                             placeholder="Select Country"
-                            options={countryNameList
-                                // [
-                                //     { value: 'chocolate_value', label: 'Signapore', type: '1' },
-                                //     { value: 'strawberry_value', label: 'Taiwan', type: '2' },
-                                //     { value: 'vanilla_value', label: 'China', type: '3' }
-                                // ]
-                            }
+                            options={countryNameList} // [ { value: 'chocolate_value', label: 'Signapore', type: '1' },]
                             optionLabel={"name"}
                         />
                     </div>
@@ -63,14 +70,10 @@ const HomefilterView = props => {
                     <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>CITY</div>
                     <div>
                         <KmSelector
+                            value={selectedCity}
+                            onChange={onCityChange}
                             placeholder="Select City"
-                            options={ cityNameList
-                                // [
-                                //     { value: 'chocolate_value', label: 'Mandalay', type: '1' },
-                                //     { value: 'strawberry_value', label: 'City1', type: '2' },
-                                //     { value: 'vanilla_value', label: 'City2', type: '3' }
-                                // ]
-                            }
+                            options={cityNameList} // [ { value: 'chocolate_value', label: 'Mandalay', type: '1' }]
                             optionLabel='name'
                         />
                     </div>
@@ -79,14 +82,11 @@ const HomefilterView = props => {
                     <div className="pb-1" style={{ fontSize: fsc(media, 14) }}>SITE</div>
                     <div>
                         <KmSelector
+                            value={selectedSite}
+                            onChange={onSiteChange}
                             placeholder="Select Site"
-                            options={ siteNameList
-                                // [
-                                //     { value: 'chocolate_value', label: 'Site1', type: '1' },
-                                //     { value: 'strawberry_value', label: 'Site2', type: '2' },
-                                //     { value: 'vanilla_value', label: 'Site3', type: '3' }
-                                // ]
-                            }
+                            options={siteNameList} // [ { value: 'chocolate_value', label: 'Site1', type: '1' }]
+
                             optionLabel='site_name'
                         />
                     </div>

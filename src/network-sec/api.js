@@ -6,6 +6,8 @@ export const LOGIN = `${BASE_URL}/auth/login`
 
 export const FETCH_VENDOR_LIST = `${BASE_URL}/vendors`
 
+export const FETCH_VENDOR_SITES = `${BASE_URL}/vendors/sites`
+
 export const FETCH_VENDOR = (vendorId) => `${BASE_URL}/vendors/${vendorId}`
 
 export const FETCH_VENDOR_SITE_LIST = (vendorId) => `${BASE_URL}/vendors/${vendorId}/sites`

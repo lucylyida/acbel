@@ -47,3 +47,9 @@ export const getweathercountry=()=>{
     }
 }
 
+export const globalHandleSelectFilter = filterData => {
+    return {
+        type : Action.GLOBAL_HANDLE_SELECT_FILTER,
+        payload: filterData
+    }
+}

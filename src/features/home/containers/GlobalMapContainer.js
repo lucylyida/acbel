@@ -1,19 +1,19 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import * as route from "../../../config/route.config"
+import { enc } from "../../../network-sec/cypher"
+import MapView from './Map';
+
+import { useSelector, useDispatch } from 'react-redux'
+import { getvendorfromapi } from '../../../action'
 
 const GlobalMapContainer = props => {
-    const siteId = 1
+    const { location } = props
     return (
-        <div className="p-3">
-            <div className="p-3 border-bottom">Global Map Container</div>
-            <div className="p-3">
-                <Link to={`/${route.site}/${siteId}`}>
-                   Site A
-                </Link>
-            </div>
+        <div className="mt-3">
+            <MapView />
         </div>
     )
 }
 
-export default GlobalMapContainer
+export default GlobalMapContainer;

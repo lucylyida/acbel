@@ -8,18 +8,21 @@ import * as route from '../../../config/route.config'
 const Login = props => {
 
     const { media } = props
+    const [email, setEmail] = useState('admin@gmail.com')
+    const [password, setPassword] = useState('admin@1234')
+    const [show, setShow] = useState(false)
     return (
-        <div className="container-fluid" >
+        <div className="container-fluid pt-5" >
             {/* <div className="row pl-3">
                 <div className="col login-nav py-4" style={{ height: 80, fontSize: font.heading2, }}>
                     <img src={`logo.${theme}.png`} alt="logo" height={25} />
                 </div>
             </div> */}
-            <div className="row justify-content-center align-items-center pb-4" >
+            <div className="row justify-content-center align-items-center py-4" >
                 <div className="col-sm-12 col-md-10 col-lg-6 col-xl-4 py-4">
-                    {/* <div className="row justify-content-center" style={{ color: '#ffffff', fontSize: font.heading1 }}>
+                    <div className="row justify-content-center" style={{ color: '#cccccc', fontSize: 48 }}>
                         <i className="fas fa-lock"></i>
-                    </div> */}
+                    </div>
                     <div className="row justify-content-center align-items-center py-5"
                         style={{ fontSize: fsc(media, 26), color: '#000000', fontWeight: 600 }}>Login To Your Account</div>
                     {/* <LoadingView isLoading={isLoading} /> */}
@@ -30,9 +33,9 @@ const Login = props => {
                                 id={"loginEmail"}
                                 type="email"
                                 required
-                                onChange={() => null}
+                                onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Email"
-                                value={"admin@gmail.com"}
+                                value={email}
                             />
                         </div>
                         <div className="form-group">
@@ -40,15 +43,15 @@ const Login = props => {
                             <KmInputBox
                                 id={"loginPassword"}
                                 required
-                                type={false ? "text" : "password"}
-                                onChange={() => null}
+                                type={show ? "text" : "password"}
+                                onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Password"
-                                value={"admin@1234"}
+                                value={password}
                             />
                             <div className="position-relative float-right"
                                 style={{ top: -27, paddingRight: '20px', cursor: 'pointer', fontWeight: 'bold', color: '#000000', fontSize: 14 }}>
-                                <span onClick={() => null} style={{ color: "#666673" }}>
-                                    {false ? <i className="far fa-eye-slash"></i> : <i className="far fa-eye"></i>}
+                                <span onClick={() => setShow(!show)} style={{ color: "#666673" }}>
+                                    {show ? <i className="far fa-eye-slash"></i> : <i className="far fa-eye"></i>}
                                 </span>
                             </div>
                         </div>

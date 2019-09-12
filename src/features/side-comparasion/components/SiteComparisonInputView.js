@@ -8,7 +8,7 @@ import { withMedia } from 'react-media-query-hoc'
 import querystring from "query-string"
 
 const SiteComparisonView = props => {
-    const { history, match, location, media } = props
+    const { history, match, location, media ,vendorNameList} = props
     const search = location.search
     const cr = querystring.parse(search).cr
     return (        
@@ -19,7 +19,7 @@ const SiteComparisonView = props => {
                     <div style={{ fontSize: fsc(media, 14), color: '#999999' }}>SEARCH FOR A SITE</div>
                     <div>
                         <KmSelector
-                            icon={<i class="fas fa-search"></i>}
+                            icon={<i className="fas fa-search"></i>}
                             isSearch
                             placeholder="Search"
                             options={
@@ -38,9 +38,10 @@ const SiteComparisonView = props => {
                     <div style={{ fontSize: fsc(media, 14), color: '#999999' }}>VENDOR</div>
                     <div>
                         <KmSelector
-                            icon={<i class="fas fa-sort-down"></i>}
+                            icon={<i className="fas fa-sort-down"></i>}
                             placeholder="Select Vendor"
                             options={
+                                
                                 [
                                     { value: 'chocolate_value', label: 'Vendor 1', type: '1' },
                                     { value: 'strawberry_value', label: 'Vendor 2', type: '2' },
@@ -56,7 +57,7 @@ const SiteComparisonView = props => {
                     <div style={{ fontSize: fsc(media, 14), color: '#999999' }}>COUNTRY</div>
                     <div>
                         <KmSelector
-                            icon={<i class="fas fa-sort-down"></i>}
+                            icon={<i className="fas fa-sort-down"></i>}
                             placeholder="Select Country"
                             options={
                                 [
@@ -74,7 +75,7 @@ const SiteComparisonView = props => {
                     <div style={{ fontSize: fsc(media, 14), color: '#999999' }}>CITY</div>
                     <div>
                         <KmSelector
-                            icon={<i class="fas fa-sort-down"></i>}
+                            icon={<i className="fas fa-sort-down"></i>}
                             placeholder="Select City"
                             options={
                                 [
@@ -92,7 +93,7 @@ const SiteComparisonView = props => {
                     <div style={{ fontSize: fsc(media, 14), color: '#999999' }}>SITES</div>
                     <div>
                         <KmSelector
-                            icon={<i class="fas fa-sort-down"></i>}
+                            icon={<i className="fas fa-sort-down"></i>}
                             placeholder="Select Sites"
                             options={
                                 [

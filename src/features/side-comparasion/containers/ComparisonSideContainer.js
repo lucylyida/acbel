@@ -11,9 +11,13 @@ import ChartComparisonView from "../components/ChartComparisonView"
 import * as route from "../../../config/route.config"
 import querystring from "query-string"
 
+import {useSelector,useDispatch} from 'react-redux'
+import {getvendorfromapi} from '../../../action'
+
 const ComparasionSideContainer = props => {
     const { media, match } = props
 
+  
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
             <ComparasionNavbar {...props} />
@@ -25,7 +29,7 @@ const ComparasionSideContainer = props => {
 
                 <div className={`flex-grow-1 d-flex  ${media.tablet ? "d-flex" : "flex-column"} `}>
                     <div className="px-1" style={{ minWidth: 400 }} >
-                        <SiteComprisonInputView {...props} />
+                        <SiteComprisonInputView {...props}   />
                     </div>
 
                     <div className="px-1 flex-grow-1" >

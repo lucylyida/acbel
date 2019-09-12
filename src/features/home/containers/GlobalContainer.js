@@ -11,6 +11,10 @@ import HomeStatusView from "../components/HomeStatusView";
 import LeftSidebar from "../../app/components/LeftSidebar";
 import HomefilterView from "../components/HomeFilterView";
 
+import { useSelector, useDispatch } from 'react-redux'
+import { getvendorfromapi } from '../../../action'
+
+
 const GlobalContainer = props => {
     const { match, location, media } = props
     const queryData = {
@@ -21,6 +25,17 @@ const GlobalContainer = props => {
     }
     const queryDataEnc = enc(queryData)
 
+    const state = useSelector(state => state.vendorReducer)
+    const dispatch = useDispatch()
+    // console.log(dispatch(getvendorfromapi(),getVendorSuccess()) ) 
+    if(state.isLoading) {
+        dispatch(getvendorfromapi())
+        // return null
+    }
+    const vendorNameList = !state.vendorNameList ?
+     [] : state.vendorNameList.map(v => ({ value: v.vendor_name, label: v.vendor_name, id:v.id}))
+   
+
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
             <GlobalNavbar {...props} />
@@ -30,7 +45,7 @@ const GlobalContainer = props => {
                 </div>
                 <div className="w-100 pb-2">
                     <HomeStatusView />
-                    <HomefilterView />
+                    <HomefilterView vendorNameList ={vendorNameList} />
                     <Switch>
                         <Route path={`${match.path}/:pageName`} component={GlobalPage} />
                         <Redirect to={`${match.path}/${route.map}`} />

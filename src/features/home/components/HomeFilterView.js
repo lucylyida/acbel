@@ -1,4 +1,6 @@
 import React from 'react'
+
+
 import KmSearchbox from '../../../kumocom/KmSearchbox'
 import KmButton from '../../../kumocom/KmButton'
 import KmSelector from '../../../kumocom/KmSelector'
@@ -8,7 +10,8 @@ import { fsc } from '../../../helper/fontColorHelper';
 
 
 const HomefilterView = props => {
-    const { media } = props
+    const { media, vendorNameList } = props // just test @nayhtet
+   
     return (
         <div className="container-fluid mt-3 py-3" style={{ backgroundColor: '#ffffff', borderRadius: 4 }}>
             <div className="py-2" style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"FILTER"}</div>
@@ -28,12 +31,12 @@ const HomefilterView = props => {
                     <div>
                         <KmSelector
                             placeholder="Select Vendor"
-                            options={
-                                [
-                                    { value: 'chocolate_value', label: 'Vendor 1', type: '1' },
-                                    { value: 'strawberry_value', label: 'Vendor 2', type: '2' },
-                                    { value: 'vanilla_value', label: 'Vendor 3', type: '3' }
-                                ]
+                            options={ vendorNameList
+                                // [
+                                //     { value: 'chocolate_value', label: 'Vendor 1', type: '1' },
+                                //     { value: 'strawberry_value', label: 'Vendor 2', type: '2' },
+                                //     { value: 'vanilla_value', label: 'Vendor 3', type: '3' }
+                                // ]
                             }
                             optionLabel='label'
                         />

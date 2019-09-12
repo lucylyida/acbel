@@ -1,11 +1,25 @@
 import Action from '../action/action'
-import {call,put,takeEvery} from 'redux-saga/effects'
+import { call, put, takeEvery ,take} from 'redux-saga/effects'
 
- function* fetchVendor(){
-    const vendors = yield call("http://192.168.100.6:3333/vendors")
-    yield put({ type:'GET_VENDOR_SUCCESS', payload:vendors.data.payload })
+function* fetchVendor() {
+    try {
+        //get vendorlist api endpoint
+        const vendors = yield fetch("http://192.168.100.6:3333/vendors") 
+            .then(response => response.json())
+            .then(data => data.payload)
+        yield put({ type: Action.GET_VENDOR_SUCCESS, payload: vendors })
+    } catch (error) {
+        yield put({ type: 'FETCH_FAIL', error })
+    }
 }
- export function* fetchVendorWatcherSaga (){
-     console.log('isss fetcher watcher',2)
-    yield takeEvery(Action.GET_VENDOR_FROM_API,fetchVendor)
+
+
+export function* fetchVendorWatcherSaga() {
+    yield takeEvery(Action.GET_VENDOR_FROM_API, fetchVendor)
+  
+     
 }
+
+
+
+

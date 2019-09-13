@@ -3,6 +3,7 @@ import * as Action from "../action"
 import { call, put, takeEvery ,take} from 'redux-saga/effects'
 import * as api from "../network-sec/api"
 
+
 function* fetchVendor() {
     try {
         //get vendorlist api endpoint
@@ -28,9 +29,10 @@ function* fetchSiteList() {
 }
 
 
+
 export function* fetchVendorWatcherSaga() {
     yield takeEvery(ActionType.GET_VENDOR_FROM_API, fetchVendor)    
-    yield takeEvery(ActionType.GET_SITES_FROM_API, fetchSiteList)     
+    yield takeEvery(ActionType.GET_SITES_FROM_API, fetchSiteList)    
 }
 
 

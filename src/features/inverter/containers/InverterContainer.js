@@ -7,10 +7,42 @@ import InverterCollapseItem from "../components/InverterCollapseItem"
 import { withMedia } from 'react-media-query-hoc'
 import { fsc } from "../../../helper/fontColorHelper";
 
+import { useSelector, useDispatch } from 'react-redux'
+import * as Action from '../../../action'
+
+
 const InverterContainer = props => {
     const { media } = props
     const [compareMode, switchNormalMode] = useState(false)
     const selected = 'btn_3'
+
+    const dispatch = useDispatch()
+    const state = useSelector(state => state.inverterReducer)
+  
+    const vendorInverterNameList= state.vendorInverterNameList
+    // const vendorPanelNameList =state.vendorPanelNameList
+    
+
+    if(state.isLoading) {
+       dispatch(Action.getVendorInverterSites())
+    }
+    // if(state.isLoading) return "LOading.."
+    const inverterCompView = vendorInverterNameList.map((v,k) => {
+        return (
+            <InverterCollapseItem
+                key={k}
+                text={`Inverter${k+1}`}
+                codeno={`${v.inv_dint}`}
+                selected={compareMode}
+                data={[
+                    { name: 'Panels', value: v.panels.length },
+                    { name: 'Temp(C)', value: '45' },
+                    { name: 'Dc Input(kW)', value: '0.11' },
+                    { name: 'Efficiency', value: '0.11' }
+                ]} 
+                />
+        )
+    })
     return (
         <div className="container-fluid">
             <div className="row">
@@ -19,9 +51,10 @@ const InverterContainer = props => {
                     <div>
                         <KmSearchbox placeholder="Search Inverters" style={{ height: 48, backgroundColor: "white" }} />
                         <div className="py-2">
-                            <InverterCollapseItem
+                            {inverterCompView}
+                            {/* <InverterCollapseItem
                                 text="Inverter001"
-                                codeno={"002-001245b3a87f3d"}
+                                codeno={"dasdfjklsadjflkjd"}
                                 selected={compareMode}
                                 data={[
                                     { name: 'Panels', value: '65' },
@@ -80,7 +113,7 @@ const InverterContainer = props => {
                                     { name: 'Dc Input(kW)', value: '0.11' },
                                     { name: 'Efficiency', value: '0.11' }
                                 ]}
-                            />
+                            /> */}
                         </div>
                         <div className="py-2">
                             <KmButton text="View Selected Inverter Comparison" onClick={() => switchNormalMode(!compareMode)} />

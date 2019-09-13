@@ -47,6 +47,21 @@ export const getweathercountry=()=>{
     }
 }
 
+// @lucy
+export const getVendorInverterSites=()=>{
+    return{
+        type:Action.GET_VENDOR_INVERTER_SITES
+    }
+}
+export const getVendorInverterSitesSuccess=(data)=>{
+
+    return{
+        type:Action.GET_VENDOR_INVERTER_SITES_SUCCESS,
+        payload:data
+       
+    }
+}
+
 export const globalHandleSelectFilter = filterData => {
     return {
         type : Action.GLOBAL_HANDLE_SELECT_FILTER,

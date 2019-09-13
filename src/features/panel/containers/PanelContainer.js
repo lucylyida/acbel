@@ -7,9 +7,21 @@ import PanelInfo from '../components/PanelInfo'
 import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../../../helper/fontColorHelper'
 
+import { useSelector, useDispatch } from 'react-redux'
+import * as Action from '../../../action'
 
 const PanelContainer = props => {
     const { media } = props
+
+    const dispatch = useDispatch()
+    const state = useSelector(state => state.inverterReducer)
+    const vendorPanelInfoNameList = state.vendorPanelInfoNameList
+
+    if(state.isLoading) {
+        dispatch(Action.getVendorInverterSites())
+     }
+    const panelInfo = vendorPanelInfoNameList[0]
+    
     return (
         <div className="container-fluid p-0">
             <div className="bg-white p-4" style={{ borderRadius: 4 }}>
@@ -34,7 +46,7 @@ const PanelContainer = props => {
 
                     </div>
                     <div className="col-md-6">
-                        <PanelInfo />
+                        <PanelInfo panelInfo={panelInfo} />
                     </div>
                 </div>
             </div>

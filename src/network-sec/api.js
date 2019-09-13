@@ -14,6 +14,11 @@ export const FETCH_VENDOR_SITE_LIST = (vendorId) => `${BASE_URL}/vendors/${vendo
 
 export const FETCH_VENDOR_SITE = (vendorId, siteId) => `${BASE_URL}/vendors/${vendorId}/sites/${siteId}`
 
-const apiKey = 'access_key=ac450033bed7ef50c46c591214020163'
+// @lucy
+export const FETCH_VENDOR_INVERTER_SITES = `${BASE_URL}/vendors/2/sites/1/inverters`
+export const FETCH_VENDOR_PANEL_SITES = `${BASE_URL}/vendors/2/sites/1/panels`
+export const FETCH_PANEL_INFO = `${BASE_URL}/vendors/panelInfo/2/sites/1`
+
+const apiKey ='access_key=ac450033bed7ef50c46c591214020163'
 
 export const WEATHER_URL = `http://api.weatherstack.com/current?${apiKey}`

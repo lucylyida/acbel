@@ -7,6 +7,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
 
 const DashboardContainer = props => {
+    const vendorState = useSelector(state => state.vendorReducer)
+
+    const selectedSite = vendorState.siteNameList.filter(v=> props.match.params.siteId===v.hid)[0]
+    // console.log({ selectedSite1: selectedSite, d : props.match.params})
 
     const weatherCountryList= useSelector(state=> state.weatherCountryReducer)
     const dispatch = useDispatch()
@@ -35,7 +39,7 @@ const DashboardContainer = props => {
                 </div>
 
                 <div className="col-md-5 px-1 pb-1">
-                    <div className="bg-white " ><DashMap /></div>
+                    <div className="bg-white " ><DashMap selectedSite={selectedSite} /></div>
                 </div>
 
                 <div className="col-md-6 p-1">

@@ -61,14 +61,14 @@ export class MapContainer extends Component {
 
         const { stores, isClientToShow } = this.state
         const { clientLists } = this.props
-        console.log(clientLists)
+        // console.log(clientLists)
         const mmap = this.mapRef.current
         const icon = !isClientToShow ? SolarPanelIcon : Animatedicon(this.props)
 
         return stores === undefined ? [] : isClientToShow ?
 
             clientLists.map((store, index) => {
-                console.log("Client")
+                // console.log("Client")
 
                 return < Marker
                     label={isClientToShow ? { text: `${store.sites.length}`, color: 'white' } : null}

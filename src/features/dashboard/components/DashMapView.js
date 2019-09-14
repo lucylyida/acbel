@@ -7,8 +7,6 @@ import { withMedia } from 'react-media-query-hoc';
 import SolarPanelIcon from '../../../assets/images/solarPanel.png'
 
 export class MapContainer extends Component {
-
-
     constructor(props) {
         super(props);
         this.state = {
@@ -37,14 +35,15 @@ export class MapContainer extends Component {
     };
 
     render() {
-        const { media } = this.props
+        const { media, selectedSite } = this.props
+        console.log({ selectedSite })
         const stores = [
 
             {
                 name: "Taiwan",
                 title: "Taiwan",
-                lat: 23.667567,
-                lng: 120.87866,
+                lat: selectedSite ? selectedSite.latitude : 23.667567,
+                lng: selectedSite ? selectedSite.longitude : 120.87866,
                 id: 1
             }
         ];
@@ -60,8 +59,8 @@ export class MapContainer extends Component {
                     zoomControl={true}
                     zoom={15}
                     initialCenter={{
-                        lat: 23.667567,
-                        lng: 120.87866,
+                        lat: stores[0].lat,
+                        lng: stores[0].lng,
                     }}
                 >
                     {stores.map((place, i) => {

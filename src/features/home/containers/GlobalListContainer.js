@@ -11,7 +11,6 @@ import moment from "moment"
 
 import { useSelector, useDispatch } from 'react-redux'
 
-
 const GlobalListContainer = props => {
     const { location, media } = props
     // const queryData = dec(querystring.parse(location.search).had)

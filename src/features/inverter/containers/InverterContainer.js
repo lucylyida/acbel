@@ -5,10 +5,13 @@ import KmSearchbox from "../../../kumocom/KmSearchbox"
 import KmButton from "../../../kumocom/KmButton"
 import InverterCollapseItem from "../components/InverterCollapseItem"
 import { withMedia } from 'react-media-query-hoc'
-import { fsc } from "../../../helper/fontColorHelper";
+import { fsc, numberFormat } from "../../../helper/fontColorHelper";
 
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
+
+const InverterDigit = (no) => no < 10 ? '00' + no : no < 100 ? '0' + no : no
+
 
 
 const InverterContainer = props => {
@@ -17,30 +20,30 @@ const InverterContainer = props => {
     const selected = 'btn_3'
 
     const dispatch = useDispatch()
-    const state = useSelector(state => state.inverterReducer)
-  
-    const vendorInverterNameList= state.vendorInverterNameList
-    // const vendorPanelNameList =state.vendorPanelNameList
+    const inverterState = useSelector(state => state.inverterReducer)
+    if (inverterState.isLoading)  dispatch(Action.getVendorInverterSites())
     
+    const vendorInverterNameList = inverterState.vendorInverterNameList
+    const { selectedInverters } = inverterState
 
-    if(state.isLoading) {
-       dispatch(Action.getVendorInverterSites())
-    }
     // if(state.isLoading) return "LOading.."
-    const inverterCompView = vendorInverterNameList.map((v,k) => {
+
+    const inverterCompView = vendorInverterNameList.map((v, k) => {
+        const txt = InverterDigit(k + 1)
         return (
             <InverterCollapseItem
                 key={k}
-                text={`Inverter${k+1}`}
+                text={txt}
                 codeno={`${v.inv_dint}`}
-                selected={compareMode}
+                selected={selectedInverters.includes(txt)}
+                onClick={d => dispatch(Action.globalHandleSelectFilter({ selectedInverter: d }))}
                 data={[
                     { name: 'Panels', value: v.panels.length },
                     { name: 'Temp(C)', value: '45' },
                     { name: 'Dc Input(kW)', value: '0.11' },
                     { name: 'Efficiency', value: '0.11' }
-                ]} 
-                />
+                ]}
+            />
         )
     })
     return (
@@ -118,7 +121,7 @@ const InverterContainer = props => {
                         <div className="py-2">
                             <KmButton text="View Selected Inverter Comparison" onClick={() => switchNormalMode(!compareMode)} />
                             <div className="py-3 font-weight-bold text-uppercase" align="center"
-                                style={{ fontSize: 14, color: "#a2a2a2", cursor: 'pointer'}}
+                                style={{ fontSize: 14, color: "#a2a2a2", cursor: 'pointer' }}
                             >
                                 Reset Selection
                             </div>

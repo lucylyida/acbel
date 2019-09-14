@@ -54,7 +54,6 @@ export const getVendorInverterSites=()=>{
     }
 }
 export const getVendorInverterSitesSuccess=(data)=>{
-
     return{
         type:Action.GET_VENDOR_INVERTER_SITES_SUCCESS,
         payload:data

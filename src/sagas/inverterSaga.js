@@ -3,7 +3,6 @@ import * as Action from "../action"
 import { call, put, takeEvery, take, all, fork } from 'redux-saga/effects'
 import * as api from "../network-sec/api"
 
-
 function* fetchVendorInverterList() {
     const [inverter, panel,panelInfo] = yield all([
         call(fetch, api.FETCH_VENDOR_INVERTER_SITES),

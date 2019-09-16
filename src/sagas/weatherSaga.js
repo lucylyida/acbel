@@ -2,9 +2,9 @@ import Action from '../action/action'
 import { WEATHER_URL } from '../network-sec/api'
 import { call, put, takeEvery, take } from 'redux-saga/effects'
 
-function* fetchWeatherCountry() {
-
-    const country = yield fetch(WEATHER_URL + "&query=taiwan")
+function* fetchWeatherCountry(action) {
+    console.log(action.payload)
+    const country = yield fetch(WEATHER_URL + `&query=${action.payload}`)
         .then(response => response.json())
         .then(data => data.current)
 
@@ -13,12 +13,12 @@ function* fetchWeatherCountry() {
 }
 
 
-function* fetchWeatherCity() {
-    const city = yield fetch(WEATHER_URL + "&query=city")
-        .then(response => response.json())
-        .then(data => data)
-    yield (put({ type: Action.GET_WEATHER_CITY_SUCCESS, payload: city }))
-}
+// function* fetchWeatherCity() {
+//     const city = yield fetch(WEATHER_URL + "&query=city")
+//         .then(response => response.json())
+//         .then(data => data)
+//     yield (put({ type: Action.GET_WEATHER_CITY_SUCCESS, payload: city }))
+// }
 
 
 export function* fetchWeatherWatcherSaga() {

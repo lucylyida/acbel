@@ -21,7 +21,7 @@ const AppRoute = props => {
                 <Route path={`/${route.report}`} component={ReportSideContainer} />
                 <Route path={`/${route.maintenance}/:pageName`} component={MaintenanceSideContainer} />
                 <Route path={`/${route.administration}/:pageName`} component={AdministrationSideContainer} />
-                <Route path={`/${route.site}/:siteId`} component={SiteContainer} />
+                <Route path={`/${route.site}/:vendorId/:siteId`} component={SiteContainer} />
                 <Route path={`/${route.login}`} component={LoginContainer} />
                 <Redirect to={`/${route.login}`} />
             </Switch>

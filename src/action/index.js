@@ -40,29 +40,45 @@ export const getSiteListFromApiSuccess = (sites) => {
     }
 }
 
-export const getweathercountry=()=>{
-    return{
-        type:Action.GET_WEATHER_COUNTRY
+export const getweathercountry = (country) => {
+    return {
+        type: Action.GET_WEATHER_COUNTRY,
+        payload: country
     }
 }
 
 // @lucy
-export const getVendorInverterSites=()=>{
-    return{
-        type:Action.GET_VENDOR_INVERTER_SITES
+export const getVendorInverterSites = () => {
+    return {
+        type: Action.GET_VENDOR_INVERTER_SITES
     }
 }
-export const getVendorInverterSitesSuccess=(data)=>{
-    return{
-        type:Action.GET_VENDOR_INVERTER_SITES_SUCCESS,
-        payload:data
-       
+export const getVendorInverterSitesSuccess = (data) => {
+    return {
+        type: Action.GET_VENDOR_INVERTER_SITES_SUCCESS,
+        payload: data
+
     }
 }
 
 export const globalHandleSelectFilter = filterData => {
     return {
-        type : Action.GLOBAL_HANDLE_SELECT_FILTER,
+        type: Action.GLOBAL_HANDLE_SELECT_FILTER,
         payload: filterData
+    }
+}
+
+// @mmh
+export const getVendorSiteData = (data) => {
+    return {
+        type: Action.GET_VENDOR_SITE_DATA,
+        payload: data,
+    }
+}
+
+export const getVendorSiteDataSuccess = (data) => {
+    return {
+        type: Action.GET_VENDOR_SITE_DATA_SUCCESS,
+        payload: data,
     }
 }

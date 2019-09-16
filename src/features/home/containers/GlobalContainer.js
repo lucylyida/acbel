@@ -45,7 +45,7 @@ const GlobalContainer = props => {
         selectedSite,
 
     } = state
-
+            
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
             <GlobalNavbar {...props} />

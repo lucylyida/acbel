@@ -17,6 +17,8 @@ const initialState = {
     selectedCity: null,
     selectedSite: null,
 
+    vendorSiteData: []
+
 }
 
 //@nayhtet
@@ -102,6 +104,14 @@ const vendorReducer = (state = initialState, action) => {
                 siteNameList,
                 cityNameList,
                 countryNameList,
+            })
+        }
+        // @mmh
+        case Action.GET_VENDOR_SITE_DATA_SUCCESS: {
+            return ({
+                ...state,
+                vendorSiteData: action.payload,
+                isLoading: false
             })
         }
         default: return state

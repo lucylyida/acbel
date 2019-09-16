@@ -13,17 +13,19 @@ import { useSelector, useDispatch } from 'react-redux'
 
 const GlobalListContainer = props => {
     const { location, media } = props
-    // const queryData = dec(querystring.parse(location.search).had)
-    const handleClick = (row) => props.history.push(`/${route.site}/${row.siteid}${location.search}` )
-    
+    // const queryData = dec(querystring.parse(location.search).had)   
+    const handleClick = (row) => props.history.push(`/${route.site}/${row.vendor_id}/${row.siteid}${location.search}`)
+
     const state = useSelector(state => state.vendorReducer)
     const siteNameList = state.siteNameList
-    
+
     const data = siteNameList.map(v => ({
-        id: v.id, site: v.site_name, capacity: v.capacity_kw,siteid:v.hid,
+        id: v.id, vendor_id: v.vendor_id, site: v.site_name, capacity: v.capacity_kw, siteid: v.hid,
         currentOutput: "33.78", efficiency: "78", siteStatus: 'Online',
-        more:"MORE INFO"
-    })  )
+        more: "MORE INFO"
+    }))
+    // const sites = siteNameList.map(v => v.vendor_id)
+    // console.log({sites})
 
     return (
         <div className="py-2">

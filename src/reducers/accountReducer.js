@@ -1,4 +1,5 @@
 import ActionType from '../action/action'
+
 const initialState = {
     loginLoading: false,
     loginDataRaw: null,

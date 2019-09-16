@@ -9,26 +9,29 @@ import * as Action from '../../../action'
 const DashboardContainer = props => {
     const vendorState = useSelector(state => state.vendorReducer)
 
-    const selectedSite = vendorState.siteNameList.filter(v=> props.match.params.siteId===v.hid)[0]
-    // console.log({ selectedSite1: selectedSite, d : props.match.params})
-
-    const weatherCountryList= useSelector(state=> state.weatherCountryReducer)
+    const weatherCountryList = useSelector(state => state.weatherCountryReducer)
     const dispatch = useDispatch()
 
-    const temperature= weatherCountryList.weatherlist.temperature
-    const humidity =weatherCountryList.weatherlist.humidity
-    const wind = weatherCountryList.weatherlist.wind_speed
+    const vendorSiteData = vendorState.vendorSiteData
 
-    if (weatherCountryList.isLoading) {
-        dispatch(Action.getweathercountry())
+    const temperature = weatherCountryList.weatherlist === undefined ? 'Upgrading...' : weatherCountryList.weatherlist.temperature
+    const humidity = weatherCountryList.weatherlist === undefined ? 'Upgrading...' : weatherCountryList.weatherlist.humidity
+    const wind = weatherCountryList.weatherlist === undefined ? 'Upgrading...' : weatherCountryList.weatherlist.wind_speed
+
+    const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId }
+
+    if (weatherCountryList.isLoading || vendorState.isLoading) {
+        vendorSiteData.length > 0 && dispatch(Action.getweathercountry(vendorSiteData[0].country))
+        dispatch(Action.getVendorSiteData(bodyData))
     }
-    if(temperature === undefined) return null;
+
+    if (temperature === undefined || vendorSiteData.length === 0) return null;
 
     return (
         <div className="container-fluid">
             <div className="row">
 
-                <div className="col-md-7 p-0 d-flex flex-column justify-content-between">
+                <div className="col-md-7 p-0 pb-1 d-flex flex-column justify-content-between">
                     <div className="px-1 pb-1">
                         <div className="bg-white h-100"><DashStatusViewA temperature={temperature} humidity={humidity} wind={wind} /></div>
                     </div>
@@ -38,8 +41,8 @@ const DashboardContainer = props => {
                     </div>
                 </div>
 
-                <div className="col-md-5 px-1 pb-1">
-                    <div className="bg-white " ><DashMap selectedSite={selectedSite} /></div>
+                <div className="col-md-5 px-1">
+                    <div className="bg-white"><DashMap selectedSite={vendorSiteData[0]} /></div>
                 </div>
 
                 <div className="col-md-6 p-1">

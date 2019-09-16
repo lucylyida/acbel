@@ -12,9 +12,8 @@ const PanelInfo = props => {
     const time = moment().format('hh:mm:ss A')
 
     if(!panelInfo) return null
-    
+
     return (
-        // result.map(v=>v.panelNo)
         <div className="container-fluid px-0 pt-4">
             <FourItemBox value={panelInfo.device_id} desc={'PANEL NUMBER'} useNumberFormat={false} icon={<div style={{ width: 50, height: 50, backgroundColor: '#F9C209' }} />} />
 

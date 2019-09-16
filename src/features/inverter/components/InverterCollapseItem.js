@@ -34,13 +34,13 @@ const InverterCollapseItem = props => {
                             {codeno}
                         </div>
                     </div>
-                    <div data-toggle="collapse" id="inverter-collapse" className="px-2"
+                    {/* px-2,id ကိုဖ ်က္ရန္ */}
+                    <div data-toggle="collapse"  
                         style={{ cursor: 'pointer', fontSize: fsc(media, 18), color: '#dadadd ', }}
                         onClick={() => setExpand(!expand)}
                     >
-                        <span ><i className={`fas fa-sort-${expand ? 'up pt-2' : 'down pb-2'}`}></i></span>
+                     <span ><i className={`fas fa-sort-${expand ? 'up pt-2' : 'down pb-2'}`}></i></span>
                     </div>
-
                 </div>
                 <div className={`drop collapse ${expand ? `show` : `none`}`}
                     style={{ cursor: 'pointer' }}

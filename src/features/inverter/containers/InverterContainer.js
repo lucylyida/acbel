@@ -12,30 +12,27 @@ import * as Action from '../../../action'
 
 const InverterDigit = (no) => no < 10 ? '00' + no : no < 100 ? '0' + no : no
 
-
-
 const InverterContainer = props => {
     const { media } = props
     const [compareMode, switchNormalMode] = useState(false)
+    const [reset, setReset] = useState(false)
     const selected = 'btn_3'
 
     const dispatch = useDispatch()
     const inverterState = useSelector(state => state.inverterReducer)
-    if (inverterState.isLoading)  dispatch(Action.getVendorInverterSites())
-    
-    const vendorInverterNameList = inverterState.vendorInverterNameList
-    const { selectedInverters } = inverterState
+    if (inverterState.isLoading) dispatch(Action.getVendorInverterSites())
 
+    const { selectedInverters, vendorInverterNameList } = inverterState
     // if(state.isLoading) return "LOading.."
 
-    const inverterCompView = vendorInverterNameList.map((v, k) => {
+    const inverterCompView = (resetSelected) => vendorInverterNameList.map((v, k) => {
         const txt = InverterDigit(k + 1)
         return (
             <InverterCollapseItem
                 key={k}
                 text={txt}
                 codeno={`${v.inv_dint}`}
-                selected={selectedInverters.includes(txt)}
+                selected={resetSelected ? selectedInverters :  selectedInverters.includes(txt)}
                 onClick={d => dispatch(Action.globalHandleSelectFilter({ selectedInverter: d }))}
                 data={[
                     { name: 'Panels', value: v.panels.length },
@@ -46,6 +43,7 @@ const InverterContainer = props => {
             />
         )
     })
+    const resetSelected = reset
     return (
         <div className="container-fluid">
             <div className="row">
@@ -54,74 +52,13 @@ const InverterContainer = props => {
                     <div>
                         <KmSearchbox placeholder="Search Inverters" style={{ height: 48, backgroundColor: "white" }} />
                         <div className="py-2">
-                            {inverterCompView}
-                            {/* <InverterCollapseItem
-                                text="Inverter001"
-                                codeno={"dasdfjklsadjflkjd"}
-                                selected={compareMode}
-                                data={[
-                                    { name: 'Panels', value: '65' },
-                                    { name: 'Temp(C)', value: '45' },
-                                    { name: 'Dc Input(kW)', value: '0.11' },
-                                    { name: 'Efficiency', value: '0.11' }
-                                ]} />
-
-                            <InverterCollapseItem
-                                text="Inverter002"
-                                codeno={"002-00124abea87f3d"}
-                                data={[
-                                    { name: 'Panels', value: '65' },
-                                    { name: 'Temp(C)', value: '45' },
-                                    { name: 'Dc Input(kW)', value: '0.11' },
-                                    { name: 'Efficiency', value: '0.11' }
-                                ]}
-                            />
-                            <InverterCollapseItem
-                                text="Inverter003"
-                                codeno={"002-00124bbea87f3d"}
-                                selected={compareMode}
-                                data={[
-                                    { name: 'Panels', value: '65' },
-                                    { name: 'Temp(C)', value: '45' },
-                                    { name: 'Dc Input(kW)', value: '0.11' },
-                                    { name: 'Efficiency', value: '0.11' }
-                                ]}
-                            />
-                            <InverterCollapseItem
-                                text="Inverter004"
-                                codeno={"002-001a45bea87f3d"}
-                                data={[
-                                    { name: 'Panels', value: '65' },
-                                    { name: 'Temp(C)', value: '45' },
-                                    { name: 'Dc Input(kW)', value: '0.11' },
-                                    { name: 'Efficiency', value: '0.11' }
-                                ]}
-                            />
-                            <InverterCollapseItem
-                                text="Inverter005"
-                                codeno={"002-097a45bea17f3d"}
-                                data={[
-                                    { name: 'Panels', value: '65' },
-                                    { name: 'Temp(C)', value: '45' },
-                                    { name: 'Dc Input(kW)', value: '0.11' },
-                                    { name: 'Efficiency', value: '0.11' }
-                                ]}
-                            />
-                            <InverterCollapseItem
-                                text="Inverter006"
-                                codeno={"002-00aa45bba85f3d"}
-                                data={[
-                                    { name: 'Panels', value: '65' },
-                                    { name: 'Temp(C)', value: '45' },
-                                    { name: 'Dc Input(kW)', value: '0.11' },
-                                    { name: 'Efficiency', value: '0.11' }
-                                ]}
-                            /> */}
+                            {inverterCompView(resetSelected)}
                         </div>
                         <div className="py-2">
                             <KmButton text="View Selected Inverter Comparison" onClick={() => switchNormalMode(!compareMode)} />
                             <div className="py-3 font-weight-bold text-uppercase" align="center"
                                 style={{ fontSize: 14, color: "#a2a2a2", cursor: 'pointer' }}
+                                onClick={() => setReset(!reset)}
                             >
                                 Reset Selection
                             </div>

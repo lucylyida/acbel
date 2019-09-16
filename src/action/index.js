@@ -7,7 +7,6 @@ export const getvendorfromapi = () => {
 }
 
 export const getVendorSuccess = (data) => {
-    // console.log("vendor success action", data)
     return {
         type: Action.GET_VENDOR_SUCCESS,
         payload: data

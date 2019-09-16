@@ -14,10 +14,10 @@ const PanelContainer = props => {
     const { media } = props
 
     const dispatch = useDispatch()
-    const state = useSelector(state => state.inverterReducer)
-    const vendorPanelInfoNameList = state.vendorPanelInfoNameList
+    const panelState = useSelector(state => state.inverterReducer)
+    const {vendorPanelInfoNameList} = panelState
 
-    if(state.isLoading) {
+    if(panelState.isLoading) {
         dispatch(Action.getVendorInverterSites())
      }
     const panelInfo = vendorPanelInfoNameList[0]

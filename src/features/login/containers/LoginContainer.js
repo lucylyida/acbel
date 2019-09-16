@@ -16,7 +16,6 @@ const Login = props => {
 
     const state = useSelector(state => state.accountReducer)
     const dispatch = useDispatch()
-
     if (state.loginDataRaw !== null) {
         props.history.replace(`/${route.global}`)
     }

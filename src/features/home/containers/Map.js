@@ -59,7 +59,7 @@ export class MapContainer extends Component {
 
     UNSAFE_componentWillUpdate(nextProps, nextState) {
 
-        
+
         const mmap = this.mapRef.current
         const { siteNameList, google } = nextProps
         const { clientLists } = this.props
@@ -164,16 +164,13 @@ export class MapContainer extends Component {
         });
     }
 
-    showDetails = store => {
-
-        this.props.history.push(`/${route.site}/${1}${this.props.location.search}`)
-    };
+    showDetails = store => this.props.history.push(`/${route.site}/${store.vendor_id}/${store.hid}${this.props.location.search}`)
+    
 
     render() {
 
         const { media } = this.props
-        const { siteNameList } = this.props
-       
+        const { siteNameList } = this.props   
         return (
             <div style={{ borderRadius: 4, border: '0.7px solid #cccccc', height: '500px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map
@@ -194,7 +191,7 @@ export class MapContainer extends Component {
                         visible={this.state.showingInfoWindow}
                         initialCenter={this.state.position}
                     >
-                        <div style={{ fontSize: fsc(media, 12), cursor: "pointer" }} onClick={this.showDetails.bind(this, this.state.selectedPlace)}>
+                        <div style={{ fontSize: fsc(media, 12), cursor: "pointer" }} onClick={() => this.showDetails(this.state.infoSiteData)}>
                             <div style={{ color: 'blue' }}>{this.state.infoSiteData.site_name}</div>
                             <div className='py-1'>
                                 <i className="fa fa-circle" style={{ fontSize: 8, color: 'green' }} /> Online</div>

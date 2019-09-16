@@ -56,7 +56,7 @@ export class MapContainer extends Component {
                     google={this.props.google}
                     disableDefaultUI={true}
                     zoomControl={true}
-                    zoom={15}
+                    zoom={8}
                     initialCenter={{
                         lat: stores[0].lat,
                         lng: stores[0].lng,

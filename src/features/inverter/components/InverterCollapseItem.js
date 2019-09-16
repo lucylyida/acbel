@@ -7,8 +7,8 @@ const InverterCollapseItem = props => {
     const [expand, setExpand] = useState(false)
 
     return (
-        <div className="py-2"  >
-            <div className="py-1 px-4" style={{ border: `2px solid ${selected ? '#0B3D92dd' : '#0000'}`, borderRadius: 4, background: style === undefined ? 'white' : style.background }}>
+        <div className="py-1">
+            <div className="pr-3" style={{ border: `2px solid ${selected ? '#0B3D92dd' : '#0000'}`, borderRadius: 4, background: style === undefined ? 'white' : style.background }}>
                 {/* <div className="py-2 d-flex justify-content-between border-0 align-items-center" 
                 onClick={() => expand ? null : onClick(text)}>
                     <div style={{ color: "#343434", fontWeight: 600, fontSize: fsc(media, 16) }}>Inverter {text}</div>
@@ -25,21 +25,21 @@ const InverterCollapseItem = props => {
                         </div>
                     </div>
                 </div> */}
-                <div className="py-2 d-flex border-0 align-items-center">
-                    <div className=" d-flex justify-content-between" style={{ minWidth: '100%' }} onClick={() => expand ? null : onClick(text)}>
+                <div className="p-0 d-flex align-items-center">
+                    <div className=" d-flex justify-content-between pl-4 py-2" style={{ minWidth: '100%' }} onClick={() => expand ? null : onClick(text)}>
                         <div style={{ color: "#343434", fontWeight: 600, fontSize: fsc(media, 16) }}>Inverter {text}</div>
 
-                        <div className="px-2 mx-2 text-center d-flex align-items-center rounded"
+                        <div className="pl-4 pr-2 mx-2 text-center d-flex align-items-center rounded"
                             style={{ background: style === undefined ? '#e5eefa' : style.background, fontSize: fsc(media, 12) }}>
                             {codeno}
                         </div>
                     </div>
                     {/* px-2,id ကိုဖ ်က္ရန္ */}
-                    <div data-toggle="collapse"  
+                    <div data-toggle="collapse"
                         style={{ cursor: 'pointer', fontSize: fsc(media, 18), color: '#dadadd ', }}
                         onClick={() => setExpand(!expand)}
                     >
-                     <span ><i className={`fas fa-sort-${expand ? 'up pt-2' : 'down pb-2'}`}></i></span>
+                        <span ><i className={`fas fa-sort-${expand ? 'up pt-2' : 'down pb-2'}`}></i></span>
                     </div>
                 </div>
                 <div className={`drop collapse ${expand ? `show` : `none`}`}

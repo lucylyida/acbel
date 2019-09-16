@@ -46,6 +46,13 @@ export const getweathercountry = (country) => {
         payload: country
     }
 }
+export const getweathercountrySuccess = (data) => {
+    return {
+        type: Action.GET_WEATHER_COUNTRY_SUCCESS,
+        payload: data
+    }
+}
+
 
 // @lucy
 export const getVendorInverterSites = () => {
@@ -60,13 +67,18 @@ export const getVendorInverterSitesSuccess = (data) => {
 
     }
 }
-
-export const globalHandleSelectFilter = filterData => {
+export const getGlobalHomeStatusData = () => {
     return {
-        type: Action.GLOBAL_HANDLE_SELECT_FILTER,
-        payload: filterData
+        type:Action.GET_GLOBAL_HOME_STATUS_DATA
     }
 }
+export const getGlobalHomeStatusDataSuccess = (data) => {
+    return {
+        type:Action.GET_GLOBAL_HOME_STATUS_DATA_SUCCESS,
+        payload:data,
+    }
+}
+
 
 // @mmh
 export const getVendorSiteData = (data) => {
@@ -80,5 +92,12 @@ export const getVendorSiteDataSuccess = (data) => {
     return {
         type: Action.GET_VENDOR_SITE_DATA_SUCCESS,
         payload: data,
+    }
+}
+
+export const globalHandleSelectFilter = filterData => {
+    return {
+        type: Action.GLOBAL_HANDLE_SELECT_FILTER,
+        payload: filterData
     }
 }

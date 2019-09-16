@@ -3,12 +3,14 @@ import vendorReducer from './vendorReducer'
 import accountReducer from "./accountReducer"
 import { weatherCountryReducer } from "./weatherReducer"
 import inverterReducer from './inverterReducer'
+import globalReducer from './globalReducer'
 
 const allReducers = combineReducers({
     vendorReducer,
     accountReducer,
     weatherCountryReducer,
-    inverterReducer
+    inverterReducer,
+    globalReducer
 
 })
 

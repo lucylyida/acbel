@@ -39,8 +39,11 @@ const inverterReducer = (state = initialState, action) => {
         case ActionType.GLOBAL_HANDLE_SELECT_FILTER: {
             const { selectedInverter } = action.payload
             const { selectedInverters } = state
-            const tempArr = selectedInverters.length < 2 && selectedInverters.filter(c => c === selectedInverter).length === 0
-                ? [...selectedInverters, selectedInverter] : selectedInverters.filter(c => c !== selectedInverter)
+            const tempArr = selectedInverter === null
+                ? []
+                : selectedInverters.length < 2 && selectedInverters.filter(c => c === selectedInverter).length === 0
+                    ? [...selectedInverters, selectedInverter]
+                    : selectedInverters.filter(c => c !== selectedInverter)
             return ({
                 ...state,
                 selectedInverters: tempArr

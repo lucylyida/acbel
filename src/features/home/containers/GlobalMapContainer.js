@@ -13,7 +13,6 @@ const GlobalMapContainer = props => {
     const dispatch = useDispatch()
 
     const { vendorListRaw, siteNameList } = state
-    
     const clientLists = siteNameList.reduce((r, c) => {
         const index = r.reduce((r1, c1, i1) => c1.country === c.country && c1.city === c.city ? i1 : r1, -1)
         if (r.length === 0 || index === -1) {
@@ -36,15 +35,15 @@ const GlobalMapContainer = props => {
                 lng: lngList.length === 0 ? 0 : lngList[0], //: lngList[lngList.length/2] , //first get median and another mean,
                 sites
             })
-            
+
             return [...r, client]
         } else return r
     }, [])
 
-
+    if (siteNameList.length === 0) return null
     return (
         <div className="mt-3">
-            <MapView clientLists={clientLists} />
+            <MapView clientLists={clientLists} siteNameList={siteNameList} />
         </div>
     )
 }

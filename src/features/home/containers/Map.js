@@ -61,13 +61,13 @@ export class MapContainer extends Component {
 
 
         const mmap = this.mapRef.current
-        const { siteNameList, google } = nextProps
+        const { siteNameList, google, siteListRawLength } = nextProps
         const dd = siteNameList.map(v => ({ lat: v.latitude, lng: v.longitude }))
         const lat = siteNameList[0].latitude
         const lng = siteNameList[0].longitude
         // mmap.map.setCenter(new google.maps.LatLng(lat, lng))
         const all_sites = siteNameList.length
-        if (all_sites < 9) {
+        if (all_sites < siteListRawLength) {
             return mmap.map.setCenter(new google.maps.LatLng(lat, lng))
         }
         else {
@@ -94,12 +94,12 @@ export class MapContainer extends Component {
         // console.log(clientLists[2].sites[0])
 
         // ..........................................
-        // const mmap = this.mapRef.current
-        // mmap !== null &&
-        //     mmap.map.addListener("zoom_changed", () => {
-
-        //         this.setState({ showingInfoWindow: false, isClientToShow: mmap.map.zoom <= 9 })
-        //     })
+        const mmap = this.mapRef.current
+        mmap !== null &&
+            mmap.map.addListener("zoom_changed", () => {
+                this.setState({ showingInfoWindow: false, isClientToShow: mmap.map.zoom <= 11 })
+                console.log(mmap.map.zoom)
+            })
 
         const icon = !isClientToShow ? SolarPanelIcon : Animatedicon(this.props)
         return stores === undefined ? [] : isClientToShow ?
@@ -150,7 +150,7 @@ export class MapContainer extends Component {
 
     _ClientSites = (props, marker, e) => {
         const mmap = this.mapRef.current
-        mmap.map.setZoom(12);
+        mmap.map.setZoom(11);
         mmap.map.setCenter(marker.getPosition());
         // marker.addListener('click', function () {
         //     mmap.map.setZoom(9.5);
@@ -171,6 +171,8 @@ export class MapContainer extends Component {
 
         const { media } = this.props
         const { siteNameList } = this.props
+        const { infoSiteData } = this.state
+        const online = infoSiteData.isOnline
         return (
             <div style={{ borderRadius: 4, border: '0.7px solid #cccccc', height: '500px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map
@@ -194,7 +196,7 @@ export class MapContainer extends Component {
                         <div style={{ fontSize: fsc(media, 12), cursor: "pointer" }} onClick={() => this.showDetails(this.state.infoSiteData)}>
                             <div style={{ color: 'blue' }}>{this.state.infoSiteData.site_name}</div>
                             <div className='py-1'>
-                                <i className="fa fa-circle" style={{ fontSize: 8, color: 'green' }} /> Online</div>
+                                <i className="fa fa-circle" style={{ fontSize: 8, color: online ? 'green' : 'red' }} /> {online ? "Online" : "Offline"}</div>
                             <div>Power Output : 147.45kW</div>
                             <div className='py-0'>Capacity : {this.state.infoSiteData.capacity_kw}kW</div>
                         </div>

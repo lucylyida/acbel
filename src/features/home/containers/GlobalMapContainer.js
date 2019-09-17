@@ -13,6 +13,7 @@ const GlobalMapContainer = props => {
     const dispatch = useDispatch()
 
     const { vendorListRaw, siteNameList } = state
+    console.log(siteNameList)
     const clientLists = siteNameList.reduce((r, c) => {
         const index = r.reduce((r1, c1, i1) => c1.country === c.country && c1.city === c.city ? i1 : r1, -1)
         if (r.length === 0 || index === -1) {

@@ -3,10 +3,13 @@ import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../../../helper/fontColorHelper'
 import FourItemBox from '../../app/components/FourItemBox'
 
-const SitePicArray = [ '/s1.jpg','/s2.jpg','/s3.jpg','/s4.jpg','/s5.jpg','/s6.jpg','/s7.jpg','/s8.jpg']
+import moment from 'moment'
+const SitePicArray = ['/s1.jpg', '/s2.jpg', '/s3.jpg', '/s4.jpg']
+// const SitePicArray = ['/s1.jpg', '/s2.jpg', '/s3.jpg', '/s4.jpg', '/s5.jpg', '/s6.jpg', '/s7.jpg', '/s8.jpg']
 
 const ProfileSiteProfileView = props => {
-    const { media } = props
+    const { media, startDate, priceSetup, capacity } = props
+
     return (
         <div className="p-4 h-100" style={{ backgroundColor: '#FFFFFF', borderRadius: 4 }}>
 
@@ -14,13 +17,15 @@ const ProfileSiteProfileView = props => {
 
             <div className="d-flex pt-2 pb-4 flex-wrap">
                 <div className="py-2">
-                    <FourItemBox value={"Apr 25, 2017"} desc={"START DATE"} useNumberFormat={false} />
+                    <FourItemBox value={startDate} desc={"START DATE"} useNumberFormat={false} />
+                    {/* "Apr 25, 2017" */}
+                    {/* moment(d.dt_txt).format('YYYY-MM-DD') */}
                 </div>
                 <div className={`px-${media.mobile ? '3' : '5'} py-2`}>
-                    <FourItemBox value={"540"} unit={'NT$'} desc={"PRICE SET-UP"} />
+                    <FourItemBox value={priceSetup} unit={'NT$'} desc={"PRICE SET-UP"} />
                 </div>
                 <div className="py-2">
-                    <FourItemBox value={"32.91"} unit={"kW"} desc={"CAPACITY"} />
+                    <FourItemBox value={capacity} unit={"kW"} desc={"CAPACITY"} />
                 </div>
             </div>
 

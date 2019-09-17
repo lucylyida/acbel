@@ -42,10 +42,10 @@ export const getSiteListFromApiSuccess = (sites) => {
     }
 }
 
-export const getweathercountry = (country) => {
+export const getweathercountry = (data) => {
     return {
         type: Action.GET_WEATHER_COUNTRY,
-        payload: country
+        payload: data
     }
 }
 export const getweathercountrySuccess = (data) => {
@@ -54,8 +54,6 @@ export const getweathercountrySuccess = (data) => {
         payload: data
     }
 }
-
-
 // @lucy
 export const getVendorInverterSites = () => {
     return {
@@ -71,14 +69,25 @@ export const getVendorInverterSitesSuccess = (data) => {
 }
 export const getGlobalHomeStatusData = (data) => {
     return {
-        type: Action.GET_GLOBAL_HOME_STATUS_DATA,
-        payload: data
+        type:Action.GET_GLOBAL_HOME_STATUS_DATA,
+        payload:data
     }
 }
 export const getGlobalHomeStatusDataSuccess = (data) => {
     return {
         type: Action.GET_GLOBAL_HOME_STATUS_DATA_SUCCESS,
         payload: data,
+    }
+}
+export const getSiteProfileData =()=>{
+    return{
+        type:Action.GET_SITE_PROFILE_DATA,
+    }
+}
+export const getSiteProfileDataSuccess=(data)=>{
+    return{
+        type:Action.GET_SITE_PROFILE_DATA_SUCCESS,
+         payload:data,
     }
 }
 

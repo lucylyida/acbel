@@ -10,7 +10,8 @@ function* fetchVendor(action) {
         const vendors = yield fetch(action.payload === null ? api.FETCH_VENDOR_LIST : api.FETCH_VENDOR(action.payload))
             .then(response => response.json())
             .then(data => data.payload)
-        yield put({ type: ActionType.GET_VENDOR_SUCCESS, payload: vendors })
+        const vendorArray = Array.isArray(vendors) ? vendors : [vendors]
+        yield put({ type: ActionType.GET_VENDOR_SUCCESS, payload: vendorArray })
     } catch (error) {
         yield put({ type: 'FETCH_FAIL', error })
     }

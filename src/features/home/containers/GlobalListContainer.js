@@ -20,7 +20,7 @@ const GlobalListContainer = props => {
     const siteNameList = state.siteNameList
     const data = siteNameList.map(v => ({
         id: v.id, vendor_id: v.vendor_id, site: v.site_name, capacity: v.capacity_kw, siteid: v.hid,
-        currentOutput: "33.78", efficiency: "78", siteStatus: v.isOnline === true ? "Online" : "Offline",
+        currentOutput: "33.78", efficiency:v.efficiencyRa, siteStatus: v.isOnline === true ? "Online" : "Offline",
         more: "MORE INFO"
     }))
     // const sites = siteNameList.map(v => v.vendor_id)
@@ -96,7 +96,7 @@ const columns = memoize((media, handleClick) => [
         minWidth: '170px'
     },
     {
-        name: 'EFFICIENCY(%)',
+        name: 'EFFICIENCY (%)',
         selector: 'efficiency',
         sortable: true,
         right: true,

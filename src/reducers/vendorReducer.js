@@ -1,4 +1,5 @@
 import Action from '../action/action'
+import equal from "deep-equal"
 //@nayhtet
 const initialState = {
     vendorListRaw: [],
@@ -17,7 +18,8 @@ const initialState = {
     selectedCity: null,
     selectedSite: null,
 
-    vendorSiteData: []
+    vendorSiteData: [],
+
 
 }
 
@@ -33,6 +35,7 @@ const vendorReducer = (state = initialState, action) => {
             })
         }
         case Action.GET_SITES_FROM_API_SUCCESS: {
+            
             const countryListRaw = action.payload
                 .map(v => ({ name: v.country }))
                 .filter((it, i, ar) => ar.reduce((r1, c1, i1) => c1.name === it.name ? i1 : r1, -1) === i)
@@ -42,7 +45,6 @@ const vendorReducer = (state = initialState, action) => {
                 .map(v => ({ name: v.city, country: v.country }))
                 .filter((it, i, ar) => ar.reduce((r1, c1, i1) => c1.name === it.name ? i1 : r1, -1) === i)
             const cityNameList = [...cityListRaw]
-
             return ({
                 ...state,
                 siteListRaw: action.payload,
@@ -61,6 +63,7 @@ const vendorReducer = (state = initialState, action) => {
                 selectedCity = state.selectedCity,
                 selectedSite = state.selectedSite
             } = action.payload
+            //  if(action.payload === null){ return initialState }
 
             const countryNameList = state.siteListRaw
                 .filter(v => selectedVendor ? v.vendor_id === selectedVendor.id : true) //filter vendor

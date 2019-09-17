@@ -42,26 +42,39 @@ const GlobalContainer = props => {
         selectedSite,
     } = vendorState
 
-    const vendor_id = selectedVendor !== null ? selectedVendor.id : cookies.user === undefined ? undefined : cookies.user.vendor_id
+    
+    const vendor_id = selectedVendor !== null ?  selectedVendor.id : cookies.user === undefined ? undefined : cookies.user.vendor_id
+    const site_id = selectedSite !== null ? selectedSite.hid : null
+   
     vendor_id === undefined && props.history.replace(`/${route.login}`)
     const dispatch = useDispatch()
 
-    if (selectedVendor === null) {
+    // if (selectedVendor === null) {
         if (vendorState.isLoading/* || globalHomeStatusDataState.isLoading*/) {
+            dispatch(Action.getvendorfromapi(vendor_id))
+            dispatch(Action.getSiteListFromApi(vendor_id))
+            dispatch(Action.getGlobalHomeStatusData({vendor_id, site_id}))
+            // return null
+        }
+    // }
+
+    /*
+    if (selectedVendor === null) {
+        if (vendorState.isLoading || globalHomeStatusDataState.isLoading) {
             dispatch(Action.getvendorfromapi(vendor_id))
             dispatch(Action.getSiteListFromApi(vendor_id))
             dispatch(Action.getGlobalHomeStatusData(vendor_id))
             // return null
         }
     } else {
-        // console.log(vendor_id)
-        if (vendorState.isLoading/* || globalHomeStatusDataState.isLoading*/) {
+        if (vendorState.isLoading || globalHomeStatusDataState.isLoading) {
             dispatch(Action.getvendorfromapi(vendor_id))
             dispatch(Action.getSiteListFromApi(vendor_id))
-            dispatch(Action.getGlobalHomeStatusData(vendor_id))
+            dispatch(Action.getGlobalHomeStatusData(bodyData))
             // return null
         }
-    }
+    }*/
+
 
     if (globalHomeStatusDataState.globalHomeStatusData.length === 0) return null
 

@@ -4,7 +4,8 @@ const initialState = {
 
     isLoading: true,
     
-    globalHomeStatusData:[]
+    globalHomeStatusData:[],
+    globalHomeStatusDataWithId:[],
 
 
 }
@@ -15,6 +16,7 @@ const globalReducer = (state=initialState,action)=>{
             return({
                 ...state,
                 globalHomeStatusData:action.payload,
+                globalHomeStatusDataWithId:action.payload,
                 isLoading:false,
             })
         }

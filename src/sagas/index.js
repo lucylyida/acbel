@@ -4,6 +4,7 @@ import { fetchLoginWatcherSaga } from "./loginSaga"
 import { fetchWeatherWatcherSaga } from "./weatherSaga"
 import {fetchInverterWatcherSaga} from './inverterSaga'
 import {fetchGlobalHomeStatusDataWatcherSaga} from './globalSaga'
+import {fetchSiteProfileDataWatcherSaga} from './siteProfileSaga'
 
 export function* rootSaga() {
     yield all([
@@ -12,6 +13,7 @@ export function* rootSaga() {
         fetchWeatherWatcherSaga(),
         fetchInverterWatcherSaga(),
         fetchGlobalHomeStatusDataWatcherSaga(),
+        fetchSiteProfileDataWatcherSaga(),
         // fetchVendorWatcher(),
     ])
     console.log('hello is sagass')

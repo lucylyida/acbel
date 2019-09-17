@@ -95,7 +95,7 @@ const vendorReducer = (state = initialState, action) => {
                 action.payload.selectedCountry ||
                 action.payload.selectedCity ||
                 action.payload.selectedSite) // check all null or not, this mean this is not select action (just remove) if all selected values are null
-
+                
             return ({
                 ...state,
                 selectedVendor: !allNull && vendorNameList.length === 1 ? vendorNameList[0] : selectedVendor,

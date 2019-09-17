@@ -15,7 +15,6 @@ export class MapContainer extends Component {
         const siteNameList = this.props
         this.state = {
             position: { lat: siteNameList.latitude, lng: siteNameList.longitude },
-
             zoom: 5,
             stores: [],
             isClientToShow: false,
@@ -30,12 +29,11 @@ export class MapContainer extends Component {
         this.mapRef = React.createRef()
     }
     componentDidMount() {
-        const { clientLists, siteNameList } = this.props
+        const { clientLists } = this.props
         const mmap = this.mapRef.current
         mmap.map.addListener("zoom_changed", () => {
             this.setState({ showingInfoWindow: false })
         })
-
         mmap.map.addListener("bounds_changed", () => {
             const mapBound = mmap.map.getBounds()
             const clientLocs = clientLists.filter(v => mapBound.contains({ lat: v.lat, lng: v.lng }))
@@ -44,69 +42,40 @@ export class MapContainer extends Component {
                 const sitesLocs = c.sites.map(v => v)
                 return [...r, ...sitesLocs]
             }, [])
-            this.setState({ stores: listToShow, isClientToShow: clientLocs.length > 1, isShowInfoWindow: clientLocs.lenght >= 1 })
+            this.setState({ stores: listToShow, isClientToShow: clientLocs.length > 2, isShowInfoWindow: clientLocs.lenght >= 1 })
         })
     }
-
     shouldComponentUpdate(nextProps, nextState) {
-        if (!equal(this.props, nextProps) || !equal(this.state, nextState)) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        if (!equal(this.props, nextProps) || !equal(this.state, nextState)) { return true; } else { return false; }
     }
 
     UNSAFE_componentWillUpdate(nextProps, nextState) {
-
-
         const mmap = this.mapRef.current
-        const { siteNameList, google } = nextProps
-        const { clientLists } = this.props
-
-        // clientLists[2].lat = 25.0622
-        // clientLists[2].lng = 121.4570
-        // clientLists[3].lat = 22.6158
-        // clientLists[3].lng = 120.7120
-        // clientLists[4].lat = 25.0330
-        // clientLists[4].lng = 121.4570
-        // clientLists[1].sites[2].lat = 23.72767
-        // clientLists[1].sites[2].lng = 121.417342
-        // clientLists[2].sites[0].lat = 25.0632
-        // clientLists[2].sites[0].lng = 121.457
-        // clientLists[3].sites[0].lat = 22.6149
-        // clientLists[3].sites[0].lng = 120.733
-        // clientLists[4].sites[0].lat = 25.033
-        // clientLists[4].sites[0].lng = 121.477
-        // clientLists[4].sites[1].lat = 25.033
-        // clientLists[4].sites[1].lng = 121.467
-        // console.log(clientLists[4].lat, clientLists[4].lng)
-        // console.log(clientLists[4].sites[0].lat, clientLists[4].sites[0].lng)
-        // console.log(clientLists[4].sites[1].lat, clientLists[4].sites[1].lng)
+        const { siteNameList, google, siteListRawLength } = nextProps
         const dd = siteNameList.map(v => ({ lat: v.latitude, lng: v.longitude }))
-        // console.log(dd)
         const lat = siteNameList[0].latitude
         const lng = siteNameList[0].longitude
         // mmap.map.setCenter(new google.maps.LatLng(lat, lng))
         const all_sites = siteNameList.length
-        if (all_sites < 10) {
-            return mmap.map.setCenter(new google.maps.LatLng(lat, lng))
-        }
-        else {
-            return null
-        }
-
+        if (all_sites < siteListRawLength) { return mmap.map.setCenter(new google.maps.LatLng(lat, lng)) } else { return null }
     }
 
     _markerDisplay = () => {
         const { stores, isClientToShow } = this.state
         const { clientLists } = this.props
+        const mmap = this.mapRef.current
+        // mmap !== null &&
+        //     mmap.map.addListener("zoom_changed", () => {
+        //         this.setState({ showingInfoWindow: false, isClientToShow: mmap.map.zoom <= 11 })
+        //         console.log(mmap.map.zoom)
+        //     })
+
         const icon = !isClientToShow ? SolarPanelIcon : Animatedicon(this.props)
         return stores === undefined ? [] : isClientToShow ?
             clientLists.map((store, index) => {
                 return < Marker
                     label={isClientToShow ? { text: `${store.sites.length}`, color: 'white' } : null}
-                    // title={{ text: `${store.sites.length}`, color: 'red' }}
+                    title={store.city}
                     icon={icon}
                     key={index}
                     id={index}
@@ -123,20 +92,15 @@ export class MapContainer extends Component {
             stores.map((store, index) => {
                 return < Marker
                     icon={icon}
+                    title={store.name}
                     key={index}
                     id={index}
                     position={{
                         lat: store.lat,
                         lng: store.lng,
                     }}
-                    onClick={(props, marker, e) => {
-                        return this._onMarkerClick(props, marker, e, store)
-                    }}
-                >
-                </Marker>
-            }
-
-            )
+                    onClick={(props, marker, e) => { return this._onMarkerClick(props, marker, e, store) }} />
+            })
     }
     _onMarkerClick = (props, marker, e, siteData) => {
         this.setState({
@@ -144,37 +108,28 @@ export class MapContainer extends Component {
             activeMarker: marker,
             showingInfoWindow: true,
             infoSiteData: siteData
-
         });
     };
-
     _ClientSites = (props, marker, e) => {
         const mmap = this.mapRef.current
-        mmap.map.setZoom(12);
+        mmap.map.setZoom(11);
         mmap.map.setCenter(marker.getPosition());
-        // marker.addListener('click', function () {
-        //     mmap.map.setZoom(9.5);
-        //     mmap.map.setCenter(marker.getPosition());
-        // });
     }
-
     infoWindowClose = () => {
         this.setState({
             showingInfoWindow: false
         });
     }
-
     showDetails = store => this.props.history.push(`/${route.site}/${store.vendor_id}/${store.hid}${this.props.location.search}`)
-    
-
     render() {
-
         const { media } = this.props
-        const { siteNameList } = this.props   
+        const { siteNameList } = this.props
+        const { infoSiteData } = this.state
+        const online = infoSiteData.isOnline
+        console.log(infoSiteData)
         return (
             <div style={{ borderRadius: 4, border: '0.7px solid #cccccc', height: '500px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map
-
                     disableDefaultUI={true}
                     zoom={this.state.zoom}
                     zoomControl={true}
@@ -191,12 +146,12 @@ export class MapContainer extends Component {
                         visible={this.state.showingInfoWindow}
                         initialCenter={this.state.position}
                     >
-                        <div style={{ fontSize: fsc(media, 12), cursor: "pointer" }} onClick={() => this.showDetails(this.state.infoSiteData)}>
-                            <div style={{ color: 'blue' }}>{this.state.infoSiteData.site_name}</div>
+                        <div style={{ fontSize: fsc(media, 13), cursor: "pointer" }} onClick={() => this.showDetails(this.state.infoSiteData)}>
+                            <div style={{ color: 'blue' }}>{infoSiteData.site_name}</div>
                             <div className='py-1'>
-                                <i className="fa fa-circle" style={{ fontSize: 8, color: 'green' }} /> Online</div>
-                            <div>Power Output : 147.45kW</div>
-                            <div className='py-0'>Capacity : {this.state.infoSiteData.capacity_kw}kW</div>
+                                <i className="fa fa-circle" style={{ fontSize: 10, color: online ? 'green' : 'red' }} /> {online ? "Online" : "Offline"}</div>
+                            <div>Power Output : {infoSiteData.powerOutput}</div>
+                            <div className='pt-0'>Capacity : {infoSiteData.capacity_kw}kW</div>
                         </div>
                     </InfoWindowEx>
                 </Map>

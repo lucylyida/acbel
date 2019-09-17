@@ -16,7 +16,7 @@ export class MapContainer extends Component {
         this.state = {
             position: { lat: siteNameList.latitude, lng: siteNameList.longitude },
 
-            zoom: 5,
+            zoom: 6,
             stores: [],
             isClientToShow: false,
             showingInfoWindow: false,
@@ -150,7 +150,7 @@ export class MapContainer extends Component {
 
     _ClientSites = (props, marker, e) => {
         const mmap = this.mapRef.current
-        mmap.map.setZoom(12);
+        mmap.map.setZoom(11);
         mmap.map.setCenter(marker.getPosition());
         // marker.addListener('click', function () {
         //     mmap.map.setZoom(9.5);

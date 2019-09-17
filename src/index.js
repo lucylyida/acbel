@@ -4,19 +4,22 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import allReducers from './reducers'
-import {rootSaga} from './sagas'
+import { rootSaga } from './sagas'
 
-import { createStore,applyMiddleware } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import createSagaMiddleware from 'redux-saga'
+import { CookiesProvider } from 'react-cookie'
 
 const sagaMiddleware = createSagaMiddleware()
-const store = createStore(allReducers,applyMiddleware(sagaMiddleware))
+const store = createStore(allReducers, applyMiddleware(sagaMiddleware))
 sagaMiddleware.run(rootSaga)
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <CookiesProvider>
+            <App />
+        </CookiesProvider>
     </Provider>
     , document.getElementById('root'));
 

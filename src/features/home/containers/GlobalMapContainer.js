@@ -10,10 +10,8 @@ import * as Action from '../../../action'
 
 const GlobalMapContainer = props => {
     const state = useSelector(state => state.vendorReducer)
-    const dispatch = useDispatch()
 
-    const { vendorListRaw, siteNameList } = state
-    console.log(siteNameList)
+    const { siteNameList } = state
     const clientLists = siteNameList.reduce((r, c) => {
         const index = r.reduce((r1, c1, i1) => c1.country === c.country && c1.city === c.city ? i1 : r1, -1)
         if (r.length === 0 || index === -1) {

@@ -14,9 +14,11 @@ import HomefilterView from "../components/HomeFilterView";
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
 
+import { useCookies } from 'react-cookie';
 
 const GlobalContainer = props => {
     const { match, location, media } = props
+    const [cookies, setCookie] = useCookies(['user']);
     const queryData = {
         siteId: 1,
         siteName: "Organic Farmer's Association",
@@ -25,8 +27,13 @@ const GlobalContainer = props => {
     }
     const queryDataEnc = enc(queryData)
 
+    cookies.user === undefined && props.history.replace(`/${route.login}`)
+
+    console.log(cookies.user)
     const vendorState = useSelector(state => state.vendorReducer)
-    const globalHomeStatusDataState = useSelector(state => state.globalReducer)   
+    const globalHomeStatusDataState = useSelector(state => state.globalReducer)
+    const loginUserDataState = useSelector(state => state.accountReducer)
+
     const dispatch = useDispatch()
 
     if (vendorState.isLoading || globalHomeStatusDataState.isLoading) {

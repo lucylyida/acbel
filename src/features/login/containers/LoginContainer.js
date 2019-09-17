@@ -16,18 +16,21 @@ const Login = props => {
 
     const state = useSelector(state => state.accountReducer)
     const dispatch = useDispatch()
-    if (state.loginDataRaw !== null) {
-        props.history.replace(`/${route.global}`)
-    }
+
+    if (state.loginDataRaw !== null) props.history.replace(`/${route.global}`)
+    console.log(state.loginDataRaw)
 
     const handleLogin = (e) => {
         e.preventDefault()
         if (username.length > 0 && password.length > 0) {
             dispatch(getLoginFromApi({ username, password }))
+            // state.loginDataRaw.vendor_id !== null ?           
         } else {
 
         }
     }
+
+    // if(state.loginDataRaw.length > 0)return null
 
     return (
         <div className="container-fluid pt-5" >

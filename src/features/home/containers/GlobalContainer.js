@@ -26,7 +26,7 @@ const GlobalContainer = props => {
     const queryDataEnc = enc(queryData)
 
     const vendorState = useSelector(state => state.vendorReducer)
-    const globalHomeStatusDataState = useSelector(state => state.globalReducer)
+    const globalHomeStatusDataState = useSelector(state => state.globalReducer)   
     const dispatch = useDispatch()
 
     if (vendorState.isLoading || globalHomeStatusDataState.isLoading) {
@@ -48,7 +48,7 @@ const GlobalContainer = props => {
 
     } = vendorState
     if (globalHomeStatusDataState.globalHomeStatusData.length === 0) return null
-    
+
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
             <GlobalNavbar {...props} />
@@ -64,7 +64,7 @@ const GlobalContainer = props => {
                     />
                 </div>
                 <div className="w-100 pb-2">
-                    <HomeStatusView data={globalHomeStatusDataState.globalHomeStatusData}/>
+                    <HomeStatusView data={globalHomeStatusDataState.globalHomeStatusData} />
                     <HomefilterView
                         vendorNameList={vendorNameList}
                         siteNameList={siteNameList}

@@ -38,9 +38,9 @@ const PanelInfo = props => {
                     }
                     />
                 </div>
-                <div className="col-4 p-2">
+                {/* <div className="col-4 p-2">
                     <FourItemBox value={42} desc={'TEMPERATURE'} unit={<span>&#8451;</span>} />
-                </div>
+                </div> */}
             </div>
 
             <div className="pt-4">

@@ -16,13 +16,13 @@ const Login = props => {
 
     const state = useSelector(state => state.accountReducer)
     const dispatch = useDispatch()
-
-    if(state.loginDataRaw!==null) {
+    if (state.loginDataRaw !== null) {
         props.history.replace(`/${route.global}`)
     }
 
-    const handleLogin = () => {
-        if(username.length>0 && password.length>0) {
+    const handleLogin = (e) => {
+        e.preventDefault()
+        if (username.length > 0 && password.length > 0) {
             dispatch(getLoginFromApi({ username, password }))
         } else {
 
@@ -46,7 +46,7 @@ const Login = props => {
                     <div className="row justify-content-center align-items-center py-5"
                         style={{ fontSize: fsc(media, 26), color: '#000000', fontWeight: 600 }}>Login To Your Account</div>
                     {/* <LoadingView isLoading={isLoading} /> */}
-                    <div>
+                    <form onSubmit={handleLogin}>
                         {/* <div className="text-danger text-center">{}</div> */}
                         <div className="form-group">
                             <label style={{ fontSize: 13, color: '#000000' }}>Username</label>
@@ -77,9 +77,9 @@ const Login = props => {
                             </div>
                         </div>
                         <div className="form-group py-3 ">
-                            <KmButton id={"login"} type="submit" text="Login" onClick={handleLogin} />
+                            <KmButton id={"login"} type="submit" text="Login" />
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
 

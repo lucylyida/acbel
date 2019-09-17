@@ -45,8 +45,6 @@ const MaintenanceContainer = props => {
         </div>
     )
 
-    window.onresize = () => setWidth(window.innerWidth)
-
     return (
         <div className="container-fluid p-0">
 

@@ -13,17 +13,18 @@ import { useSelector, useDispatch } from 'react-redux'
 
 const GlobalListContainer = props => {
     const { location, media } = props
-    // const queryData = dec(querystring.parse(location.search).had)
-    const handleClick = (row) => props.history.push(`/${route.site}/${row.siteid}${location.search}` )
-    
+    // const queryData = dec(querystring.parse(location.search).had)   
+    const handleClick = (row) => props.history.push(`/${route.site}/${row.vendor_id}/${row.siteid}${location.search}`)
+
     const state = useSelector(state => state.vendorReducer)
     const siteNameList = state.siteNameList
-    
     const data = siteNameList.map(v => ({
-        id: v.id, site: v.site_name, capacity: v.capacity_kw,siteid:v.hid,
-        currentOutput: "33.78", efficiency: "78", siteStatus: 'Online',
-        more:"MORE INFO"
-    })  )
+        id: v.id, vendor_id: v.vendor_id, site: v.site_name, capacity: v.capacity_kw, siteid: v.hid,
+        currentOutput: "33.78", efficiency: "78", siteStatus: v.isOnline === true ? "Online" : "Offline",
+        more: "MORE INFO"
+    }))
+    // const sites = siteNameList.map(v => v.vendor_id)
+    // console.log({sites})
 
     return (
         <div className="py-2">
@@ -77,48 +78,48 @@ const columns = memoize((media, handleClick) => [
         name: 'SITE',
         selector: 'site',
         sortable: true,
-        grow: 2,
-        cell: row => <div style={{ color: '#153784', fontWeight: 700 }}>{row.site}</div>
+        // grow: 2,
+        cell: row => <div style={{ color: '#153784', fontWeight: 700, textAlign: 'center' }}>{row.site}</div>
     },
     {
         name: 'CAPACITY(kW)',
         selector: 'capacity',
         sortable: true,
         right: true,
-        minWidth: '120px',
+        // minWidth: '120px',
     },
     {
         name: 'CURRENT OUTPUT(kW)',
         selector: 'currentOutput',
         sortable: true,
         right: true,
-        minWidth: '170px'
+        // minWidth: '170px'
     },
     {
         name: 'EFFICIENCY(%)',
         selector: 'efficiency',
         sortable: true,
         right: true,
-        minWidth: '130px'
+        // minWidth: '130px'
     },
     {
         name: 'SITE STATUS',
         selector: 'siteStatus',
         sortable: true,
         right: true,
-        minWidth: '110px'
+        // minWidth: '110px'
     },
     {
         name: '',
         selector: 'more',
         right: true,
-        minWidth: '130px',
+        minWidth: '200px',
         ignoreRowClick: true,
         allowOverflow: true,
         button: true,
         cell: row => {
             return (
-                <div onClick={() => handleClick(row)} style={{ cursor: 'pointer', fontSize: fsc(media, 13), color: '#a3a3a2' }}>{row.more}<span className="pl-2"><i className="fa fa-caret-right" /></span></div>
+                <div onClick={() => handleClick(row)} style={{ textAlign: 'right', paddingRight: 5, cursor: 'pointer', fontSize: fsc(media, 13), color: '#a3a3a2' }}>{row.more}<span className="pl-2"><i className="fa fa-caret-right" /></span></div>
             )
         }
     },

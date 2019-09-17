@@ -19,7 +19,7 @@ const ReportContainer = React.lazy(() => import("../../report/containers/ReportC
 
 
 const SiteContainer = props => {
-    const { match, location, media } = props
+    const { match, location, media } = props   
     const queryData = {
         siteId: 1,
         siteName: "Organic Farmer's Association",

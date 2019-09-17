@@ -1,4 +1,5 @@
 import ActionType from '../action/action'
+
 const initialState = {
     loginLoading: false,
     loginDataRaw: null,
@@ -8,12 +9,15 @@ const initialState = {
 const accountReducer = (state = initialState, action) => {
     switch (action.type) {
         case ActionType.GET_LOGIN_API_SUCCESS:
-            return ({ ...state, 
-                loginDataRaw: action.payload, 
+            if (action.payload === null) return ({ ...state, loginLoading: false })
+            else return ({
+                ...state,
+                loginDataRaw: action.payload,
                 loginLoading: false,
             })
         case ActionType.GET_LOGIN_API:
-            return ({ ...state, 
+            return ({
+                ...state,
                 loginLoading: true,
             })
         default: return state

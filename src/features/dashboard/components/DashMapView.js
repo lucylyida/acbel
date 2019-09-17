@@ -35,8 +35,7 @@ export class MapContainer extends Component {
     };
 
     render() {
-        const { media, selectedSite } = this.props
-        console.log({ selectedSite })
+        const { media, selectedSite } = this.props      
         const stores = [
 
             {
@@ -49,7 +48,7 @@ export class MapContainer extends Component {
         ];
         return (
 
-            <div style={{ height: '385px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
+            <div style={{ height: 385, position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
 
                 <Map
                     onClick={this.infoWindowClose}
@@ -57,7 +56,7 @@ export class MapContainer extends Component {
                     google={this.props.google}
                     disableDefaultUI={true}
                     zoomControl={true}
-                    zoom={15}
+                    zoom={8}
                     initialCenter={{
                         lat: stores[0].lat,
                         lng: stores[0].lng,

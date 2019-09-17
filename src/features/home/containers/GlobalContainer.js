@@ -12,7 +12,7 @@ import LeftSidebar from "../../app/components/LeftSidebar";
 import HomefilterView from "../components/HomeFilterView";
 
 import { useSelector, useDispatch } from 'react-redux'
-import  * as Action from '../../../action'
+import * as Action from '../../../action'
 
 
 const GlobalContainer = props => {
@@ -25,15 +25,17 @@ const GlobalContainer = props => {
     }
     const queryDataEnc = enc(queryData)
 
-    const state = useSelector(state => state.vendorReducer)
+    const vendorState = useSelector(state => state.vendorReducer)
+    const globalHomeStatusDataState = useSelector(state => state.globalReducer)
     const dispatch = useDispatch()
-    
-    if(state.isLoading) {
+
+    if (vendorState.isLoading || globalHomeStatusDataState.isLoading) {
         dispatch(Action.getvendorfromapi())
         dispatch(Action.getSiteListFromApi())
+        dispatch(Action.getGlobalHomeStatusData())
         // return null
     }
- 
+
     const {
         vendorNameList,
         siteNameList,
@@ -44,37 +46,38 @@ const GlobalContainer = props => {
         selectedCity,
         selectedSite,
 
-    } = state
-
+    } = vendorState
+    if (globalHomeStatusDataState.globalHomeStatusData.length === 0) return null
+    
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
             <GlobalNavbar {...props} />
             <div className="d-flex flex-row flex-wrap flex-md-nowrap">
                 <div className="flex-grow-1">
-                    <LeftSidebar 
-                        online={218} 
-                        offline={12} 
-                        siteChoose={true} 
-                        active={true} 
-                        efficiency={100} 
-                        capacity={170.00} 
+                    <LeftSidebar
+                        online={218}
+                        offline={12}
+                        siteChoose={true}
+                        active={true}
+                        efficiency={100}
+                        capacity={170.00}
                     />
                 </div>
                 <div className="w-100 pb-2">
-                    <HomeStatusView />
-                    <HomefilterView 
-                        vendorNameList ={ vendorNameList} 
-                        siteNameList = { siteNameList }
-                        countryNameList = { countryNameList }
-                        cityNameList = { cityNameList }
-                        selectedVendor = { selectedVendor }
-                        selectedCountry = { selectedCountry }
-                        selectedCity = { selectedCity }
-                        selectedSite = { selectedSite}
-                        onVendorChange = { d => dispatch(Action.globalHandleSelectFilter({ selectedVendor: d })) }
-                        onCountryChange = { d => dispatch(Action.globalHandleSelectFilter({ selectedCountry: d })) }
-                        onCityChange = { d => dispatch(Action.globalHandleSelectFilter({ selectedCity: d })) }
-                        onSiteChange = { d => dispatch(Action.globalHandleSelectFilter({ selectedSite: d })) }
+                    <HomeStatusView data={globalHomeStatusDataState.globalHomeStatusData}/>
+                    <HomefilterView
+                        vendorNameList={vendorNameList}
+                        siteNameList={siteNameList}
+                        countryNameList={countryNameList}
+                        cityNameList={cityNameList}
+                        selectedVendor={selectedVendor}
+                        selectedCountry={selectedCountry}
+                        selectedCity={selectedCity}
+                        selectedSite={selectedSite}
+                        onVendorChange={d => dispatch(Action.globalHandleSelectFilter({ selectedVendor: d }))}
+                        onCountryChange={d => dispatch(Action.globalHandleSelectFilter({ selectedCountry: d }))}
+                        onCityChange={d => dispatch(Action.globalHandleSelectFilter({ selectedCity: d }))}
+                        onSiteChange={d => dispatch(Action.globalHandleSelectFilter({ selectedSite: d }))}
                     />
                     <Switch>
                         <Route path={`${match.path}/:pageName`} component={GlobalPage} />

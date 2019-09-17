@@ -15,7 +15,7 @@ const InverterDigit = (no) => no < 10 ? '00' + no : no < 100 ? '0' + no : no
 const InverterContainer = props => {
     const { media } = props
     const [compareMode, switchNormalMode] = useState(false)
-    const [reset, setReset] = useState(false)
+
     const selected = 'btn_3'
 
     const dispatch = useDispatch()
@@ -25,14 +25,14 @@ const InverterContainer = props => {
     const { selectedInverters, vendorInverterNameList } = inverterState
     // if(state.isLoading) return "LOading.."
 
-    const inverterCompView = (resetSelected) => vendorInverterNameList.map((v, k) => {
+    const inverterCompView =  vendorInverterNameList.map((v, k) => {
         const txt = InverterDigit(k + 1)
         return (
             <InverterCollapseItem
                 key={k}
                 text={txt}
                 codeno={`${v.inv_dint}`}
-                selected={resetSelected ? selectedInverters :  selectedInverters.includes(txt)}
+                selected={selectedInverters.includes(txt)}
                 onClick={d => dispatch(Action.globalHandleSelectFilter({ selectedInverter: d }))}
                 data={[
                     { name: 'Panels', value: v.panels.length },
@@ -43,7 +43,7 @@ const InverterContainer = props => {
             />
         )
     })
-    const resetSelected = reset
+  
     return (
         <div className="container-fluid">
             <div className="row">
@@ -52,13 +52,13 @@ const InverterContainer = props => {
                     <div>
                         <KmSearchbox placeholder="Search Inverters" style={{ height: 48, backgroundColor: "white" }} />
                         <div className="py-2">
-                            {inverterCompView(resetSelected)}
+                            {inverterCompView}
                         </div>
                         <div className="py-2">
                             <KmButton text="View Selected Inverter Comparison" onClick={() => switchNormalMode(!compareMode)} />
                             <div className="py-3 font-weight-bold text-uppercase" align="center"
                                 style={{ fontSize: 14, color: "#a2a2a2", cursor: 'pointer' }}
-                                onClick={() => setReset(!reset)}
+                                onClick={() => dispatch(Action.globalHandleSelectFilter({ selectedInverter: null }))}
                             >
                                 Reset Selection
                             </div>

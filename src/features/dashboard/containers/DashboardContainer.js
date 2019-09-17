@@ -5,30 +5,45 @@ import DashStatusViewA from '../components/DashStatusViewA';
 import DashStatusViewB from '../components/DashStatusViewB';
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
+import moment from 'moment'
 
 const DashboardContainer = props => {
     const vendorState = useSelector(state => state.vendorReducer)
 
-    const selectedSite = vendorState.siteNameList.filter(v=> props.match.params.siteId===v.hid)[0]
-    // console.log({ selectedSite1: selectedSite, d : props.match.params})
-
-    const weatherCountryList= useSelector(state=> state.weatherCountryReducer)
+    const weatherCurrentCityList = useSelector(state => state.weatherCountryReducer)
     const dispatch = useDispatch()
 
-    const temperature= weatherCountryList.weatherlist.temperature
-    const humidity =weatherCountryList.weatherlist.humidity
-    const wind = weatherCountryList.weatherlist.wind_speed
+    const vendorSiteData = vendorState.vendorSiteData
 
-    if (weatherCountryList.isLoading) {
-        dispatch(Action.getweathercountry())
+    const wCurrentdata = weatherCurrentCityList.weatherCurrentList
+    // const wForecastdata = weatherCurrentCityList.weatherForecastList.length === 0 ? [] : weatherCurrentCityList.weatherForecastList[0].list
+
+    // const tomorrow = wForecastdata.filter(d => moment(d.dt_txt).format('YYYY-MM-DD') === moment().add(1, 'days').format("YYYY-MM-DD"))
+    // console.log({ tomorrow })
+
+    const temperature = wCurrentdata.length > 0 ? wCurrentdata[0].main.temp.toFixed(1) * 1 : 0
+    const humidity = wCurrentdata.length > 0 ? wCurrentdata[0].main.humidity.toFixed(1) * 1 : 0
+    const wind = wCurrentdata.length > 0 ? wCurrentdata[0].wind.speed.toFixed(1) * 1 : 0
+
+    const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId }
+
+    if (weatherCurrentCityList.isLoading || vendorState.isLoading) {
+        if (vendorSiteData.length > 0) {
+            const rawCity = vendorSiteData[0].city
+            const regex = /(-|')/gi
+            const city = rawCity.replace(regex, '')
+            dispatch(Action.getweathercountry(city))
+        }
+        dispatch(Action.getVendorSiteData(bodyData))
     }
-    if(temperature === undefined) return null;
+
+    if (vendorSiteData.length === 0) return null;
 
     return (
         <div className="container-fluid">
             <div className="row">
 
-                <div className="col-md-7 p-0 d-flex flex-column justify-content-between">
+                <div className="col-md-7 p-0 pb-1 d-flex flex-column justify-content-between">
                     <div className="px-1 pb-1">
                         <div className="bg-white h-100"><DashStatusViewA temperature={temperature} humidity={humidity} wind={wind} /></div>
                     </div>
@@ -38,8 +53,8 @@ const DashboardContainer = props => {
                     </div>
                 </div>
 
-                <div className="col-md-5 px-1 pb-1">
-                    <div className="bg-white " ><DashMap selectedSite={selectedSite} /></div>
+                <div className="col-md-5 px-1">
+                    <div className="bg-white"><DashMap selectedSite={vendorSiteData[0]} /></div>
                 </div>
 
                 <div className="col-md-6 p-1">

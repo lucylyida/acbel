@@ -67,7 +67,7 @@ export class MapContainer extends Component {
         const lng = siteNameList[0].longitude
         // mmap.map.setCenter(new google.maps.LatLng(lat, lng))
         const all_sites = siteNameList.length
-        if (siteNameList.length < 9) {
+        if (all_sites < 9) {
             return mmap.map.setCenter(new google.maps.LatLng(lat, lng))
         }
         else {

@@ -89,7 +89,7 @@ const columns = memoize((media, handleClick) => [
         minWidth: '120px',
     },
     {
-        name: 'CURRENT OUTPUT(kW)',
+        name: 'POWER OUTPUT(kW)',
         selector: 'currentOutput',
         sortable: true,
         right: true,

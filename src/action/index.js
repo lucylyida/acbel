@@ -1,8 +1,9 @@
 import Action from './action'
 
-export const getvendorfromapi = () => {
+export const getvendorfromapi = (data) => {
     return {
-        type: Action.GET_VENDOR_FROM_API
+        type: Action.GET_VENDOR_FROM_API,
+        payload: data
     }
 }
 
@@ -27,9 +28,10 @@ export const getLoginFromApiSuccess = (loginData) => {
     }
 }
 
-export const getSiteListFromApi = () => {
+export const getSiteListFromApi = (data) => {
     return {
         type: Action.GET_SITES_FROM_API,
+        payload: data
     }
 }
 
@@ -67,15 +69,16 @@ export const getVendorInverterSitesSuccess = (data) => {
 
     }
 }
-export const getGlobalHomeStatusData = () => {
+export const getGlobalHomeStatusData = (data) => {
     return {
-        type:Action.GET_GLOBAL_HOME_STATUS_DATA
+        type: Action.GET_GLOBAL_HOME_STATUS_DATA,
+        payload: data
     }
 }
 export const getGlobalHomeStatusDataSuccess = (data) => {
     return {
-        type:Action.GET_GLOBAL_HOME_STATUS_DATA_SUCCESS,
-        payload:data,
+        type: Action.GET_GLOBAL_HOME_STATUS_DATA_SUCCESS,
+        payload: data,
     }
 }
 

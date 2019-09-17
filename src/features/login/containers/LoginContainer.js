@@ -18,15 +18,15 @@ const Login = props => {
     const state = useSelector(state => state.accountReducer)
     const dispatch = useDispatch()
 
-    if (state.loginDataRaw !== null) {
+    if (state.loginDataRaw !== null && username !== '' && password !== '') {
         cookies.user === undefined && setCookie('user', state.loginDataRaw)
     }
-
-    if (cookies.user !== undefined && cookies.user !== null) props.history.replace(`/${route.global}`)
+    // if (cookies.user !== undefined && cookies.user !== null) props.history.replace(`/${route.global}`)
+      if (cookies.user !== undefined && cookies.user !== null) props.history.replace(`/${route.global}`)
 
     const handleLogin = (e) => {
         e.preventDefault()
-        removeCookie(cookies.user)
+        removeCookie('user')
         if (username.length > 0 && password.length > 0) {
             dispatch(getLoginFromApi({ username, password }))
         } else {

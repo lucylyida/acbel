@@ -32,8 +32,7 @@ const KmTable = props => {
 
 export default withMedia(KmTable);
 
-const CustomPagination = props => {
-    console.log(window.innerWidth)
+const CustomPagination = props => {   
     const { media, onChangePage, currentPage, rowCount, rowsPerPage, } = props
     const last = Math.ceil(rowCount / rowsPerPage);
     const left = currentPage > 1 ? currentPage - 1 : 0;
@@ -61,7 +60,7 @@ const CustomPagination = props => {
     })
 
     return (
-        <div className={`d-flex align-items-center border flex-fill`} style={{}}>
+        <div className={`d-flex align-items-center flex-fill`} style={{}}>
             {/* ${media.mobile ? 'justify-content-start' : 'justify-content-center'} */}
             {pageView}
         </div>

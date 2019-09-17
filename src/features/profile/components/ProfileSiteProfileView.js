@@ -2,6 +2,9 @@ import React from 'react'
 import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../../../helper/fontColorHelper'
 import FourItemBox from '../../app/components/FourItemBox'
+
+const SitePicArray = [ '/s1.jpg','/s2.jpg','/s3.jpg','/s4.jpg','/s5.jpg','/s6.jpg','/s7.jpg','/s8.jpg']
+
 const ProfileSiteProfileView = props => {
     const { media } = props
     return (
@@ -22,15 +25,15 @@ const ProfileSiteProfileView = props => {
             </div>
 
             <div className="d-flex">
-                <img src={require('./panelpic1.jpg')} alt="panel" className="img rounded w-100" style={{ height: media.mobile ? 300 : 400 }} />
+                <img src={require('./panelpic1.jpg')} alt="panel" className="img rounded img-fluid w-100" />
             </div>
 
             <div className="container-fluid p-1">
                 <div className="row px-2">
                     {
-                        new Array(8).fill(null).map((v, k) =>
-                            <div key={k} className="col-6 col-sm-3 p-1">
-                                <img src={require('./panelpic1.jpg')} alt="panel" className="img rounded" width={'100%'} height={160} />
+                        SitePicArray.map((v, k) =>
+                            <div key={k} className="col-3 col-lg-3 col-md-6 p-1">
+                                <img src={`${v}`} alt="panel" className="img rounded img-fluid" width={'100%'} height={160} />
                             </div>)
                     }
                 </div>

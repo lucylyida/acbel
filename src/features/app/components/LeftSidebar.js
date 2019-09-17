@@ -8,16 +8,16 @@ import { withMedia } from 'react-media-query-hoc';
 import { fsc } from '../../../helper/fontColorHelper';
 import * as route from "../../../config/route.config"
 import { _hadleMenuClick } from "./Navbar"
-
+import { useCookies } from 'react-cookie'
 
 const LeftSidebar = props => {
     const { online, offline, active, siteName, efficiency, capacity, location, match, history } = props
     const queryParams = querystring.parse(location.search)
     const leftSidebarVisible = queryParams.lsb
-
+    const [cookies, setCookie, removeCookie] = useCookies(['user']);
     const url = match.path
+    
     const pageName = match.params.pageName
-
     if (leftSidebarVisible === undefined || leftSidebarVisible === "false") return null
     else
         return (
@@ -110,8 +110,12 @@ const LeftSidebar = props => {
                         ]}
                     />
 
-                    <SideNavbarProfile userName={"Chris Even"} userProfile={require('../../../user-profile-image/chris-evans.jpg')}
-                        Click={() => history.push(`/${route.administration}/${route.profile}`)} />
+                    <SidebarProfile
+                        userName={"Chris Even"}
+                        userProfile={require('../../../user-profile-image/chris-evans.jpg')}
+                        Click={() => history.push(`/${route.administration}/${route.profile}`)}
+                        removeCookie={() => removeCookie('user') }
+                    />
 
                 </div>
 
@@ -145,16 +149,19 @@ const MenuItem = props => {
 }
 
 
-const SideNavbarProfile = (props) => {
-    const { userName, userProfile, Click } = props
+const SidebarProfile = (props) => {
+    const { userName, userProfile, Click, removeCookie } = props
     return (
-        <div className='d-flex text-light mt-auto pt-4' style={{ position: 'relative', borderTop: '1px solid #B6B6B6', fontWeight: 'bold' }}>
-            <div>
-                <img style={{ width: 40, height: 40 }} src={userProfile} alt="UserProfile" />
-            </div>
-            <div className='pl-3 pt-2' onClick={Click} style={{ cursor: 'pointer' }}>
+        <div className='d-flex text-light mt-auto pt-3 justify-content-between' style={{ borderTop: '1px solid #00000033', fontWeight: 'bold' }}>
+            <div style={{ cursor: 'pointer' }} onClick={Click}>
+                <img style={{ width: 45, height: 45, marginRight: 10 }} src={userProfile} alt="UserProfile" />
                 {userName}
-
+            </div>
+            <div style={{ cursor: 'pointer', color: '#B6B6B6', paddingTop: '4px' }}
+                onClick={removeCookie}
+            >
+                <span className='font-weight-light'>Log Out</span>
+                <i className="fa fa-sign-out-alt fa-1x p-2"></i>
             </div>
         </div>
     )

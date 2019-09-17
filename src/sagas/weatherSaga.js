@@ -13,8 +13,8 @@ import * as api from '../network-sec/api'
 
 function* fetchWeather(action) {
     const [cWeather, fWeather] = yield all([
-        call(fetch, api.WEATHER_URL(action.payload)),
-        call(fetch, api.WEATHER_FORECAST_URL(action.payload))
+        call(fetch, api.WEATHER_URL(action.payload.lat,action.payload.lng)),
+        call(fetch, api.WEATHER_FORECAST_URL(action.payload.lat,action.payload.lng))
     ])
 
     const currentWeather = yield cWeather.json().then(data => data)

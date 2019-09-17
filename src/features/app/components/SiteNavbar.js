@@ -70,7 +70,7 @@ const SiteNavbar = props => {
                     <div className="pr-3" style={{ opacity: 0.3 }}><KmLink text="Revenue" currentLink={location.pathname + location.search} /></div>
                     <div className="pr-3" style={{ opacity: 0.3 }}><KmLink text="Maintenance" currentLink={location.pathname + location.search} /></div>
                     <div className="pr-3" ><KmLink text="Profile" to={`${match.url}/${route.profile}${location.search}`} currentLink={location.pathname + location.search} /></div>
-                    <div className="pr-3"><KmLink text="Inverters" to={`${match.url}/${route.inverter}${location.search}`} currentLink={location.pathname + location.search} /></div>
+                    <div className="pr-3" style={{ opacity: 0.3 }}><KmLink text="Inverters"  currentLink={location.pathname + location.search} /></div>
                     <div className="pr-3" style={{ opacity: 0.3 }}><KmLink text="Panels" currentLink={location.pathname + location.search} /></div>
                     <div className="pr-3"><KmLink text="Report" to={`${match.url}/${route.report}${location.search}`} currentLink={location.pathname + location.search} /></div>
                 </div>

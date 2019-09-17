@@ -4,7 +4,7 @@ import { fsc } from '../helper/fontColorHelper'
 
 const KmDropdown = props => {
     const { className, onClick, style, data, media, selectedItem, labelHide = false, hideDropdownToggle = false, } = props
-    const className1 = className === undefined ? '' : className    
+    const className1 = className === undefined ? '' : className
     return (
         <div className={`dropdown ${className1}`}
             style={{ cursor: 'pointer', background: style ? style.background : null, fontSize: fsc(media, 14), whiteSpace: 'nowrap' }}>
@@ -18,8 +18,9 @@ const KmDropdown = props => {
                 style={{ backgroundColor: style ? style.backgroundColor : null, }}>
                 {
                     data.map((v, k) =>
-                        <div key={k} className="dropdown-item py-2" onClick={() => onClick(v)} style={{ fontSize: fsc(media, 14) }}
-                            onMouseOver={e => e.target.style.backgroundColor = '#00000000'}
+                        <div key={k} className="dropdown-item py-2" style={{ fontSize: fsc(media, 14), opacity: 0.5 }}
+                        // onClick={() => onClick(v)}
+                        // onMouseOver={e => e.target.style.backgroundColor = '#00000000'}
                         // onMouseOut={e => e.target.style.backgroundColor = style.background}
                         >
                             <span className="pr-2" >{v.icon}</span><span style={{ color: style ? style.color : null }}>{v.text}</span>

@@ -17,7 +17,8 @@ const initialState = {
     selectedCity: null,
     selectedSite: null,
 
-    vendorSiteData: []
+    vendorSiteData: [],
+
 
 }
 
@@ -60,6 +61,7 @@ const vendorReducer = (state = initialState, action) => {
                 selectedCountry = state.selectedCountry,
                 selectedCity = state.selectedCity,
                 selectedSite = state.selectedSite
+
             } = action.payload
 
             const countryNameList = state.siteListRaw

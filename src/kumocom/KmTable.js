@@ -61,7 +61,8 @@ const CustomPagination = props => {
     })
 
     return (
-        <div className={`w-100 d-flex align-items-center ${media.mobile ? 'justify-content-start' : 'justify-content-center'}`} style={{}}>
+        <div className={`w-100 d-flex align-items-center ${media.mobile ? 'justify-content-start' : 
+        'justify-content-center'}`} style={{}}>
             {pageView}
         </div>
     )

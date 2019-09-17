@@ -29,7 +29,7 @@ const HomefilterView = props => {
 
     return (
         <div className="container-fluid mt-3 py-3" style={{ backgroundColor: '#ffffff', borderRadius: 4 }}>
-            <div className="py-2" style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"FILTER"}</div>
+            {/* <div className="py-2" style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"FILTER"}</div> */}
             <div className="row" style={{ color: '#A3A3A3' }}>
 
                 <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6 py-1">

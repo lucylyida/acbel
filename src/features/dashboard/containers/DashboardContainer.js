@@ -3,6 +3,7 @@ import ChartContainer from "../../app/components/ChartContainer"
 import DashMap from '../components/DashMapView';
 import DashStatusViewA from '../components/DashStatusViewA';
 import DashStatusViewB from '../components/DashStatusViewB';
+
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
 import moment from 'moment'
@@ -16,23 +17,27 @@ const DashboardContainer = props => {
     const vendorSiteData = vendorState.vendorSiteData
 
     const wCurrentdata = weatherCurrentCityList.weatherCurrentList
-    // const wForecastdata = weatherCurrentCityList.weatherForecastList.length === 0 ? [] : weatherCurrentCityList.weatherForecastList[0].list
+    const wForecastdata = weatherCurrentCityList.weatherForecastList.length === 0 ? [] : weatherCurrentCityList.weatherForecastList[0].list
 
-    // const tomorrow = wForecastdata.filter(d => moment(d.dt_txt).format('YYYY-MM-DD') === moment().add(1, 'days').format("YYYY-MM-DD"))
-    // console.log({ tomorrow })
+    const tomorrow = wForecastdata.filter(d => moment(d.dt_txt).format('HH:mm:ss A') > 24 ?
+    console.log("hiii")
+        :
+        moment(d.dt_txt).format('YYYY-MM-DD') === moment().add(1, 'days').format("YYYY-MM-DD") &&
+        moment(d.dt_txt).format("HH:mm:ss A")
 
+    )
+    // console.log({tomorrow})
     const temperature = wCurrentdata.length > 0 ? wCurrentdata[0].main.temp.toFixed(1) * 1 : 0
     const humidity = wCurrentdata.length > 0 ? wCurrentdata[0].main.humidity.toFixed(1) * 1 : 0
     const wind = wCurrentdata.length > 0 ? wCurrentdata[0].wind.speed.toFixed(1) * 1 : 0
 
     const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId }
 
+
     if (weatherCurrentCityList.isLoading || vendorState.isLoading) {
         if (vendorSiteData.length > 0) {
-            const rawCity = vendorSiteData[0].city
-            const regex = /(-|')/gi
-            const city = rawCity.replace(regex, '')
-            dispatch(Action.getweathercountry(city))
+            const latlngData = { lat: vendorSiteData[0].latitude, lng: vendorSiteData[0].longitude }
+            dispatch(Action.getweathercountry(latlngData))
         }
         dispatch(Action.getVendorSiteData(bodyData))
     }

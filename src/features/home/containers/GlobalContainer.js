@@ -47,6 +47,13 @@ const GlobalContainer = props => {
         selectedSite,
 
     } = vendorState
+
+    if(selectedVendor){
+      const selectedGlobalHomeStatusData = globalHomeStatusDataState.globalHomeStatusData
+      
+    }
+    
+
     if (globalHomeStatusDataState.globalHomeStatusData.length === 0) return null
     
     return (
@@ -64,7 +71,9 @@ const GlobalContainer = props => {
                     />
                 </div>
                 <div className="w-100 pb-2">
-                    <HomeStatusView data={globalHomeStatusDataState.globalHomeStatusData}/>
+                    <HomeStatusView 
+                    data={ globalHomeStatusDataState.globalHomeStatusData  }
+                    />
                     <HomefilterView
                         vendorNameList={vendorNameList}
                         siteNameList={siteNameList}

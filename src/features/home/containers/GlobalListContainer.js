@@ -78,7 +78,7 @@ const columns = memoize((media, handleClick) => [
         name: 'SITE',
         selector: 'site',
         sortable: true,
-        // grow: 2,
+        minWidth: '300px',
         cell: row => <div style={{ color: '#153784', fontWeight: 700, textAlign: 'center' }}>{row.site}</div>
     },
     {
@@ -86,34 +86,34 @@ const columns = memoize((media, handleClick) => [
         selector: 'capacity',
         sortable: true,
         right: true,
-        // minWidth: '120px',
+        minWidth: '120px',
     },
     {
         name: 'CURRENT OUTPUT(kW)',
         selector: 'currentOutput',
         sortable: true,
         right: true,
-        // minWidth: '170px'
+        minWidth: '170px'
     },
     {
         name: 'EFFICIENCY(%)',
         selector: 'efficiency',
         sortable: true,
         right: true,
-        // minWidth: '130px'
+        minWidth: '130px'
     },
     {
         name: 'SITE STATUS',
         selector: 'siteStatus',
         sortable: true,
         right: true,
-        // minWidth: '110px'
+        minWidth: '110px'
     },
     {
         name: '',
         selector: 'more',
         right: true,
-        minWidth: '200px',
+        minWidth: '110px',
         ignoreRowClick: true,
         allowOverflow: true,
         button: true,

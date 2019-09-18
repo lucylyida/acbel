@@ -2,7 +2,7 @@ import React from 'react'
 import Select, { components } from 'react-select'
 
 const KmSelector = (props) => {
-    const { style, optionLabel, options, placeholder, onChange, className, icon,isSearch ,noMinWidth, value=null} = props
+    const { style, optionLabel, options, placeholder, onChange, className, icon,isSearch ,noMinWidth, value=null,isclear=true} = props
     const userStyle = style === undefined ? {} : style
     const customStyles = {
         container: (base, state) => ({
@@ -51,7 +51,7 @@ const KmSelector = (props) => {
                 getOptionLabel={option => option[optionLabel]}
                 placeholder={placeholder}
                 onChange={onChange}
-                isClearable
+                isClearable={isclear}
                 className={className}
                 classNamePrefix="name-select"
                 styles={customStyles}

@@ -33,11 +33,12 @@ const Navbar = props => {
                 </div>
                 {props.children}
                 <div className="d-flex justify-content-between align-items-center pr-2">
-                    {/* <div style={{cursor:'pointer'}}> 
+                    
+                    <div style={{cursor:'pointer'}}> 
                         <Flag width={24} height={24} />
                         <span className="px-3 font-weight-bold">UK English</span>
-                     </div> */}
-                    <KmDropdown
+                     </div>
+                    {/* <KmDropdown
                         labelHide = {media.mobile}
                         onClick={() => console.log('click')}
                         selectedItem={{ icon: <Flag width={24} height={24} />, text: 'UK English' }}
@@ -48,7 +49,7 @@ const Navbar = props => {
                             { icon: <Flag width={24} height={24} />, text: 'UK English' }
                         ]}
                         style={{ backgroundColor: ' #e5e5e5'}}
-                    />
+                    /> */}
                 </div>
             </div>
         </div>

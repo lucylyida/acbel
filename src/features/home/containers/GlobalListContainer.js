@@ -9,7 +9,7 @@ import { fsc } from "../../../helper/fontColorHelper";
 import KmTable from '../../../kumocom/KmTable'
 import moment from "moment"
 
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const GlobalListContainer = props => {
     const { location, media } = props

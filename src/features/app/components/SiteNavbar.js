@@ -48,7 +48,11 @@ const SiteNavbar = props => {
                 <div style={{ flex: 1 }} />
 
                 <div className="d-flex justify-content-center align-items-center pr-2" style={window.innerWidth <= 355 ? { position: 'absolute', right: 0, top: 35 } : {}}>
-                    <KmDropdown
+                <div style={{cursor:'pointer'}}> 
+                        <Flag width={24} height={24} />
+                        <span className="px-3 font-weight-bold">UK English</span>
+                     </div>
+                    {/* <KmDropdown
                         labelHide={media.mobile}
                         onClick={() => console.log('click')}
                         selectedItem={{ icon: <Flag width={24} height={24} />, text: 'UK English' }}
@@ -59,7 +63,7 @@ const SiteNavbar = props => {
                             { icon: <Flag width={24} height={24} />, text: 'UK English' }
                         ]}
                         style={{ backgroundColor: '#e5e5e5' }}
-                    />
+                    /> */}
                 </div>
             </div>
 

@@ -17,7 +17,7 @@ export class MapContainer extends Component {
             position: { lat: siteNameList.latitude, lng: siteNameList.longitude },
             zoom: 5,
             stores: [],
-            isClientToShow: true,
+            isClientToShow: false,
             showingInfoWindow: false,
             activeMarker: {},
             selectedPlace: {},
@@ -25,46 +25,41 @@ export class MapContainer extends Component {
             initialCenter: { lat: 20.444, lng: 96.176 },
             markerPosition: {},
             infoSiteData: {},
+            vendor_id: -1
         }
         this.mapRef = React.createRef()
     }
     componentDidMount() {
-
-        console.log("DidMount")
         const { clientLists } = this.props
+        const { vendor_id } = this.state
         const mmap = this.mapRef.current
         mmap.map.addListener("zoom_changed", () => {
             this.setState({ showingInfoWindow: false })
         })
         mmap.map.addListener("bounds_changed", () => {
             const mapBound = mmap.map.getBounds()
+            // console.log(mapBound)
             const clientLocs = clientLists.filter(v => mapBound.contains({ lat: v.lat, lng: v.lng }))
             const clientLocs2 = clientLocs.length >= 1 ? clientLocs : clientLists
             const listToShow = clientLocs.length > 1 ? clientLocs : clientLocs2.reduce((r, c) => {
                 const sitesLocs = c.sites.map(v => v)
                 return [...r, ...sitesLocs]
             }, [])
-            this.setState({ stores: listToShow, isClientToShow: clientLocs.length > 2, isShowInfoWindow: clientLocs.lenght >= 1 })
+            this.setState({ stores: listToShow, isClientToShow: mmap.map.zoom<=8 && (vendor_id>-1 || clientLocs.length > 0), isShowInfoWindow: clientLocs.lenght >= 1 })
         })
     }
     shouldComponentUpdate(nextProps, nextState) {
         if (!equal(this.props, nextProps) || !equal(this.state, nextState)) { return true; } else { return false; }
     }
+    
 
     UNSAFE_componentWillUpdate(nextProps, nextState) {
-        console.log("willUpdate")
         const mmap = this.mapRef.current
         const { siteNameList, google, siteListRawLength } = nextProps
-        const { isClientToShow } = this.state
         const dd = siteNameList.map(v => ({ lat: v.latitude, lng: v.longitude }))
         const lat = siteNameList[0].latitude
         const lng = siteNameList[0].longitude
-        const sitesLength = siteNameList.length
         // mmap.map.setCenter(new google.maps.LatLng(lat, lng))
-
-        if (sitesLength <= 2) this.setState({ isClientToShow: false })
-        // console.log(sitesLength)
-        // console.log(isClientToShow)
         const all_sites = siteNameList.length
         if (all_sites < siteListRawLength) { return mmap.map.setCenter(new google.maps.LatLng(lat, lng)) } else { return null }
     }
@@ -78,9 +73,13 @@ export class MapContainer extends Component {
         //         this.setState({ showingInfoWindow: false, isClientToShow: mmap.map.zoom <= 11 })
         //         console.log(mmap.map.zoom)
         //     })
-        console.log("markerDisplay")
-        const icon = !isClientToShow ? SolarPanelIcon : Animatedicon(this.props)
+        // console.log(isClientToShow)
+
+        
+        const icon = (isClientToShow) ? Animatedicon(this.props) : SolarPanelIcon
+
         return stores === undefined ? [] : isClientToShow ?
+
             clientLists.map((store, index) => {
                 return < Marker
                     label={isClientToShow ? { text: `${store.sites.length}`, color: 'white' } : null}

@@ -6,6 +6,7 @@ import { fsc } from '../../../helper/fontColorHelper'
 import * as route from '../../../config/route.config'
 import { useSelector, useDispatch } from 'react-redux'
 import { getLoginFromApi } from '../../../action'
+import { useCookies } from 'react-cookie';
 
 const Login = props => {
 
@@ -13,15 +14,19 @@ const Login = props => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [show, setShow] = useState(false)
-
+    const [cookies, setCookie, removeCookie] = useCookies(['user']);
     const state = useSelector(state => state.accountReducer)
     const dispatch = useDispatch()
-    if (state.loginDataRaw !== null) {
-        props.history.replace(`/${route.global}`)
+
+    if (state.loginDataRaw !== null && username !== '' && password !== '') {
+        cookies.user === undefined && setCookie('user', state.loginDataRaw)
     }
+    // if (cookies.user !== undefined && cookies.user !== null) props.history.replace(`/${route.global}`)
+      if (cookies.user !== undefined && cookies.user !== null) props.history.replace(`/${route.global}`)
 
     const handleLogin = (e) => {
         e.preventDefault()
+        removeCookie('user')
         if (username.length > 0 && password.length > 0) {
             dispatch(getLoginFromApi({ username, password }))
         } else {

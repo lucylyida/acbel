@@ -9,13 +9,16 @@ import MoneyIcon from '../../../assets/icons/Money_Icon';
 import { withMedia } from 'react-media-query-hoc';
 import { fsc } from '../../../helper/fontColorHelper';
 
+import { useSelector, useDispatch } from 'react-redux'
+import * as Action from '../../../action'
+
 const HomeStatusView = props => {
-    const { media ,data} = props
+    const { media, data } = props
     return (
         <div className="container-fluid" style={{ background: 'white', borderRadius: 4 }}>
 
             <div className='row py-3'>
-                <div className='col-12 py-2' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"TODAY"}</div>
+                {/* <div className='col-12 py-2' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"TODAY"}</div> */}
 
                 <div className="col-6 col-lg-4 col-xl-3 py-2">
                     <FourItemBox value={data.total_number_sites} desc={"TOTAL NO. OF SITES"} icon={<SolarPanelIcon />} />

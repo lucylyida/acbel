@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Route, Link, Switch, Redirect } from "react-router-dom"
 import * as route from "../../../config/route.config"
 import { withMedia } from "react-media-query-hoc"
@@ -14,27 +14,23 @@ import HomefilterView from "../components/HomeFilterView";
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
 
+import { useCookies } from 'react-cookie';
 
 const GlobalContainer = props => {
+    
     const { match, location, media } = props
+    const [cookies] = useCookies(['user']);
     const queryData = {
         siteId: 1,
         siteName: "Organic Farmer's Association",
         city: "Hualien City",
         country: "Taiwan"
     }
+
     const queryDataEnc = enc(queryData)
 
     const vendorState = useSelector(state => state.vendorReducer)
     const globalHomeStatusDataState = useSelector(state => state.globalReducer)
-    const dispatch = useDispatch()
-
-    if (vendorState.isLoading || globalHomeStatusDataState.isLoading) {
-        dispatch(Action.getvendorfromapi())
-        dispatch(Action.getSiteListFromApi())
-        dispatch(Action.getGlobalHomeStatusData())
-        // return null
-    }
 
     const {
         vendorNameList,
@@ -45,10 +41,44 @@ const GlobalContainer = props => {
         selectedCountry,
         selectedCity,
         selectedSite,
-
     } = vendorState
+
+
+    const vendor_id = selectedVendor !== null ? selectedVendor.id : cookies.user === undefined ? undefined : cookies.user.vendor_id
+    const site_id = selectedSite !== null ? selectedSite.hid : null
+
+    vendor_id === undefined && props.history.replace(`/${route.login}`)
+    const dispatch = useDispatch()
+
+    // if (selectedVendor === null) {
+    if (vendorState.isLoading/* || globalHomeStatusDataState.isLoading*/) {
+        dispatch(Action.getvendorfromapi(vendor_id))
+        dispatch(Action.getSiteListFromApi(vendor_id))
+        dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id }))
+        // return null
+    }
+    // }
+
+    /*
+    if (selectedVendor === null) {
+        if (vendorState.isLoading || globalHomeStatusDataState.isLoading) {
+            dispatch(Action.getvendorfromapi(vendor_id))
+            dispatch(Action.getSiteListFromApi(vendor_id))
+            dispatch(Action.getGlobalHomeStatusData(vendor_id))
+            // return null
+        }
+    } else {
+        if (vendorState.isLoading || globalHomeStatusDataState.isLoading) {
+            dispatch(Action.getvendorfromapi(vendor_id))
+            dispatch(Action.getSiteListFromApi(vendor_id))
+            dispatch(Action.getGlobalHomeStatusData(bodyData))
+            // return null
+        }
+    }*/
+
+
     if (globalHomeStatusDataState.globalHomeStatusData.length === 0) return null
-    
+
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
             <GlobalNavbar {...props} />
@@ -64,7 +94,7 @@ const GlobalContainer = props => {
                     />
                 </div>
                 <div className="w-100 pb-2">
-                    <HomeStatusView data={globalHomeStatusDataState.globalHomeStatusData}/>
+                    <HomeStatusView data={globalHomeStatusDataState.globalHomeStatusData} />
                     <HomefilterView
                         vendorNameList={vendorNameList}
                         siteNameList={siteNameList}
@@ -92,6 +122,7 @@ const GlobalContainer = props => {
 export default withMedia(GlobalContainer)
 
 const GlobalPage = props => {
+    
     const pageName = props.match.params.pageName
 
     switch (pageName) {

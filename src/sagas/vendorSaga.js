@@ -4,22 +4,23 @@ import { call, put, takeEvery, take } from 'redux-saga/effects'
 import * as api from "../network-sec/api"
 
 
-function* fetchVendor() {
+function* fetchVendor(action) {
     try {
         //get vendorlist api endpoint
-        const vendors = yield fetch(api.FETCH_VENDOR_LIST)
+        const vendors = yield fetch(action.payload === null ? api.FETCH_VENDOR_LIST : api.FETCH_VENDOR(action.payload))
             .then(response => response.json())
             .then(data => data.payload)
-        yield put({ type: ActionType.GET_VENDOR_SUCCESS, payload: vendors })
+        const vendorArray = Array.isArray(vendors) ? vendors : [vendors]
+        yield put({ type: ActionType.GET_VENDOR_SUCCESS, payload: vendorArray })
     } catch (error) {
         yield put({ type: 'FETCH_FAIL', error })
     }
 }
 
-function* fetchSiteList() {
+function* fetchSiteList(action) {
     try {
         //get vendorlist api endpoint
-        const sites = yield fetch(api.FETCH_VENDOR_SITES)
+        const sites = yield fetch(action.payload === null ? api.FETCH_VENDOR_SITES : api.FETCH_VENDOR_SITE_LIST(action.payload))
             .then(response => response.json())
             .then(data => data.payload)
         yield put(Action.getSiteListFromApiSuccess(sites))

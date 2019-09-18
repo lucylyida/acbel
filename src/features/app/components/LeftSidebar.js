@@ -8,16 +8,16 @@ import { withMedia } from 'react-media-query-hoc';
 import { fsc } from '../../../helper/fontColorHelper';
 import * as route from "../../../config/route.config"
 import { _hadleMenuClick } from "./Navbar"
-
+import { useCookies } from 'react-cookie'
 
 const LeftSidebar = props => {
     const { online, offline, active, siteName, efficiency, capacity, location, match, history } = props
     const queryParams = querystring.parse(location.search)
     const leftSidebarVisible = queryParams.lsb
-
+    const [cookies, setCookie, removeCookie] = useCookies(['user']);
     const url = match.path
+    
     const pageName = match.params.pageName
-
     if (leftSidebarVisible === undefined || leftSidebarVisible === "false") return null
     else
         return (
@@ -114,7 +114,7 @@ const LeftSidebar = props => {
                         userName={"Chris Even"}
                         userProfile={require('../../../user-profile-image/chris-evans.jpg')}
                         Click={() => history.push(`/${route.administration}/${route.profile}`)}
-                        history={props.history}
+                        removeCookie={() => removeCookie('user') }
                     />
 
                 </div>
@@ -150,16 +150,18 @@ const MenuItem = props => {
 
 
 const SidebarProfile = (props) => {
-    const { userName, userProfile, Click, history } = props
+    const { userName, userProfile, Click, removeCookie } = props
     return (
         <div className='d-flex text-light mt-auto pt-3 justify-content-between' style={{ borderTop: '1px solid #00000033', fontWeight: 'bold' }}>
             <div style={{ cursor: 'pointer' }} onClick={Click}>
                 <img style={{ width: 45, height: 45, marginRight: 10 }} src={userProfile} alt="UserProfile" />
                 {userName}
             </div>
-            <div style={{ cursor: 'pointer', color: '#B6B6B6', paddingTop: '4px' }} onClick={() => history.push(`/${route.login}`)}>
+            <div style={{ cursor: 'pointer', color: '#B6B6B6', paddingTop: '4px' }}
+                onClick={removeCookie}
+            >
                 <span className='font-weight-light'>Log Out</span>
-                <i class="fa fa-sign-out-alt fa-1x p-2"></i>
+                <i className="fa fa-sign-out-alt fa-1x p-2"></i>
             </div>
         </div>
     )

@@ -11,14 +11,13 @@ code {
 
 .gm-style-iw {
   width: 200px;
-  height: 100px;
+  height: 110px;
   top: 0 !important;
   left: 0 !important;
   background-color: #fff;
   padding: 0%;
   border-radius: 2px 2px 0 0;
   /* border: 1px solid rgba(72, 181, 233, 0.6); */
-  
 }
 
 .gm-ui-hover-effect {

@@ -24,7 +24,6 @@ const DashboardContainer = props => {
         :
         moment(d.dt_txt).format('YYYY-MM-DD') === moment().add(1, 'days').format("YYYY-MM-DD") &&
         moment(d.dt_txt).format("HH:mm:ss A")
-
     )
     // console.log({tomorrow})
     const temperature = wCurrentdata.length > 0 ? wCurrentdata[0].main.temp.toFixed(1) * 1 : 0
@@ -34,14 +33,20 @@ const DashboardContainer = props => {
     const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId }
 
 
-    if (weatherCurrentCityList.isLoading || vendorState.isLoading) {
-        if (vendorSiteData.length > 0) {
-            const latlngData = { lat: vendorSiteData[0].latitude, lng: vendorSiteData[0].longitude }
-            dispatch(Action.getweathercountry(latlngData))
+    if (weatherCurrentCityList.isLoading ) {
+       
+        //  if (vendorSiteData.length > 0) {
+            // console.log(vendorSiteData.latitude,"hello greater")
+            const latlngData = { lat: vendorSiteData.latitude, lng: vendorSiteData.longitude }
+           
+            // dispatch(Action.getweathercountry(latlngData))
+           
+        //  }
+        if(vendorState.isLoading){
+            dispatch(Action.getVendorSiteData(bodyData))
         }
-        dispatch(Action.getVendorSiteData(bodyData))
     }
-
+   
     if (vendorSiteData.length === 0) return null;
 
     return (

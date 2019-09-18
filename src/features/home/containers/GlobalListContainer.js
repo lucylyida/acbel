@@ -9,7 +9,7 @@ import { fsc } from "../../../helper/fontColorHelper";
 import KmTable from '../../../kumocom/KmTable'
 import moment from "moment"
 
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const GlobalListContainer = props => {
     const { location, media } = props
@@ -18,11 +18,11 @@ const GlobalListContainer = props => {
 
     const state = useSelector(state => state.vendorReducer)
     const siteNameList = state.siteNameList
-    const data = siteNameList.map(v => ({
+    const data = siteNameList.map(v =>  ({
         id: v.id, vendor_id: v.vendor_id, site: v.site_name, capacity: v.capacity_kw, siteid: v.hid,
-        currentOutput: "33.78", efficiency:v.efficiencyRa, siteStatus: v.isOnline === true ? "Online" : "Offline",
+        currentOutput: v.powerOutput, efficiency:v.efficiencyRa, siteStatus: v.isOnline === true ? "Online" : "Offline",
         more: "MORE INFO"
-    }))
+    }) )
     // const sites = siteNameList.map(v => v.vendor_id)
     // console.log({sites})
 

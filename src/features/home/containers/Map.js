@@ -17,7 +17,7 @@ export class MapContainer extends Component {
             position: { lat: siteNameList.latitude, lng: siteNameList.longitude },
             zoom: 5,
             stores: [],
-            isClientToShow: false,
+            isClientToShow: true,
             showingInfoWindow: false,
             activeMarker: {},
             selectedPlace: {},
@@ -29,6 +29,8 @@ export class MapContainer extends Component {
         this.mapRef = React.createRef()
     }
     componentDidMount() {
+
+        console.log("DidMount")
         const { clientLists } = this.props
         const mmap = this.mapRef.current
         mmap.map.addListener("zoom_changed", () => {
@@ -50,12 +52,19 @@ export class MapContainer extends Component {
     }
 
     UNSAFE_componentWillUpdate(nextProps, nextState) {
+        console.log("willUpdate")
         const mmap = this.mapRef.current
         const { siteNameList, google, siteListRawLength } = nextProps
+        const { isClientToShow } = this.state
         const dd = siteNameList.map(v => ({ lat: v.latitude, lng: v.longitude }))
         const lat = siteNameList[0].latitude
         const lng = siteNameList[0].longitude
+        const sitesLength = siteNameList.length
         // mmap.map.setCenter(new google.maps.LatLng(lat, lng))
+
+        if (sitesLength <= 2) this.setState({ isClientToShow: false })
+        // console.log(sitesLength)
+        // console.log(isClientToShow)
         const all_sites = siteNameList.length
         if (all_sites < siteListRawLength) { return mmap.map.setCenter(new google.maps.LatLng(lat, lng)) } else { return null }
     }
@@ -69,7 +78,7 @@ export class MapContainer extends Component {
         //         this.setState({ showingInfoWindow: false, isClientToShow: mmap.map.zoom <= 11 })
         //         console.log(mmap.map.zoom)
         //     })
-
+        console.log("markerDisplay")
         const icon = !isClientToShow ? SolarPanelIcon : Animatedicon(this.props)
         return stores === undefined ? [] : isClientToShow ?
             clientLists.map((store, index) => {
@@ -126,7 +135,6 @@ export class MapContainer extends Component {
         const { siteNameList } = this.props
         const { infoSiteData } = this.state
         const online = infoSiteData.isOnline
-        console.log(infoSiteData)
         return (
             <div style={{ borderRadius: 4, border: '0.7px solid #cccccc', height: '500px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map

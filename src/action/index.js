@@ -93,11 +93,11 @@ export const getSiteProfileDataSuccess = (data) => {
 }
 export const getSiteReportData =()=>{
     return{
-        type:Action.GET_SITE_REPORT_DATA
+        type:Action.GET_SITE_REPORT_DATA,
+   
     }
 }
 export const getSiteReportDataSuccess =(data)=>{
-    console.log("DDD,", data)
     return{
         type:Action.GET_SITE_REPORT_DATA_SUCCESS,
         payload:data

@@ -1,10 +1,9 @@
 
 // export const   BASE_URL = "http://192.168.100.6:3333"
 
-export const BASE_URL = "http://202.73.49.62:823"
+// export const BASE_URL = "http://202.73.49.62:823"
 
-//  export const BASE_URL = "http://192.168.100.30:3333"
-
+export const BASE_URL = "http://192.168.100.30:3333"
 
 export const LOGIN = `${BASE_URL}/auth/login`
 
@@ -31,7 +30,11 @@ export const FETCH_GLOBAL_HOME_STATUS_DATA = (vendorId, siteId) => vendorId === 
   ? `${BASE_URL}/global`
   : `${BASE_URL}/global?vendorId=${vendorId}${siteId !== null && `&siteId=${siteId}`}`
 
-export const FETCH_SITE_REPORT = `${BASE_URL}/reports/vendors/2/sites/2/type/inverter/2019-09-18/path`
+ export const FETCH_SITE_REPORT = `${BASE_URL}/reports/vendors/2/sites/2/type/inverter/2019-09-18/path`
+
+// export const FETCH_SITE_REPORT =(vendorId,siteId) => vendorId === null
+// ? `${BASE_URL}/reports/vendors/2/sites/2/type/inverter/2019-09-18/path`
+// :`${BASE_URL}/reports/vendors/${vendorId}/sites/${siteId}/type/inverter/2019-09-18/path`
 
 // const apiKey ='access_key=ac450033bed7ef50c46c591214020163'
 // export const WEATHER_URL = `http://api.weatherstack.com/current?${apiKey}`

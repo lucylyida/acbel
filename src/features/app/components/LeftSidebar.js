@@ -27,7 +27,6 @@ const LeftSidebar = props => {
 
                 <div className="d-flex p-3 h-100 flex-column" style={{ background: '#193D91', borderRadius: 4, minWidth: 300 }}>
 
-
                     <div className="d-flex align-items-center justify-content-between">
                         <div style={{ color: 'white', fontWeight: 'bold' }}>{"Sites"}</div>
                         <div style={{ color: 'lightgray', fontSize: 30, cursor: "pointer" }} onClick={() => _hadleMenuClick({ history, match, location })}>&times;</div>
@@ -114,7 +113,7 @@ const LeftSidebar = props => {
 
                     <SidebarProfile
                         userName={cookies.user.username}
-                        userProfile={require('../../../user-profile-image/chris-evans.jpg')}
+                        userProfile={require('../../../user-profile-image/profileAccount.png')}
                         Click={() => history.push(`/${route.administration}/${route.profile}`)}
                         removeCookie={() => {
                             removeCookie('user');
@@ -161,7 +160,7 @@ const SidebarProfile = (props) => {
     return (
         <div className='d-flex text-light mt-auto pt-3 justify-content-between' style={{ borderTop: '1px solid #00000033', fontWeight: 'bold' }}>
             <div style={{ cursor: 'pointer' }} onClick={Click}>
-                <img style={{ width: 45, height: 45, marginRight: 10 }} src={userProfile} alt="UserProfile" />
+                <img style={{ width: 45, height: 45, marginRight: 10 }} className="rounded-circle" src={userProfile} alt="UserProfile" />
                 {userName}
             </div>
             <div style={{ cursor: 'pointer', color: '#B6B6B6', paddingTop: '4px' }}

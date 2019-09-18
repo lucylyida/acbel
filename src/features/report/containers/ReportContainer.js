@@ -13,7 +13,7 @@ const ReportContainer = props => {
     const { media } = props
     const reportOfVendorState = useSelector(state => state.vendorReducer)
     const siteReportState = useSelector(state => state.siteReportReducer)
-
+    console.log("report ",reportOfVendorState)
     const {
         vendorNameList,
         siteNameList,
@@ -23,6 +23,7 @@ const ReportContainer = props => {
 
     const vendor_id = selectedVendor !== null ? selectedVendor.id : null
     const site_id = selectedSite !== null ? selectedSite.hid : null
+  
 
     const dispatch = useDispatch()
 

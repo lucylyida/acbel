@@ -17,7 +17,7 @@ import * as Action from '../../../action'
 import { useCookies } from 'react-cookie';
 
 const GlobalContainer = props => {
-    
+
     const { match, location, media } = props
     const [cookies] = useCookies(['user']);
     const queryData = {
@@ -43,7 +43,6 @@ const GlobalContainer = props => {
         selectedSite,
     } = vendorState
 
-
     const vendor_id = selectedVendor !== null ? selectedVendor.id : cookies.user === undefined ? undefined : cookies.user.vendor_id
     const site_id = selectedSite !== null ? selectedSite.hid : null
 
@@ -51,14 +50,12 @@ const GlobalContainer = props => {
     const dispatch = useDispatch()
 
     // if (selectedVendor === null) {
-
-        if (vendorState.isLoading  /* || globalHomeStatusDataState.isLoading */  ) {
-            dispatch(Action.getvendorfromapi(vendor_id))
-            dispatch(Action.getSiteListFromApi(vendor_id))
-            dispatch(Action.getGlobalHomeStatusData({vendor_id, site_id}))
-            // return null
-        }
-
+    if (vendorState.isLoading  /* || globalHomeStatusDataState.isLoading */) {
+        dispatch(Action.getvendorfromapi(vendor_id))
+        dispatch(Action.getSiteListFromApi(vendor_id))
+        dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id }))
+        // return null
+    }
     // }
 
     /*
@@ -123,7 +120,7 @@ const GlobalContainer = props => {
 export default withMedia(GlobalContainer)
 
 const GlobalPage = props => {
-    
+
     const pageName = props.match.params.pageName
 
     switch (pageName) {

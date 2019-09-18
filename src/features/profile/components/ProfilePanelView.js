@@ -7,7 +7,9 @@ import FourItemBox from '../../app/components/FourItemBox';
 const ProfilePanelView = props => {
     const { media, totalPanel, panelDetailList } = props
 
-    const tblInfo = panelDetailList.reduce((r, c, i) => [...r, { id: i + 1, brand: c.model, spec: c.spec }], [])
+    const tblInfo = panelDetailList.reduce((r, c, i) =>
+        [...r, { id: i + 1, brand: c.brand, model: c.model, spec: c.spec, amount: c.amount }]
+        , [])
 
     const firstTblInfo = tblInfo.length < 8 ?
         tblInfo :
@@ -34,20 +36,8 @@ const ProfilePanelView = props => {
                 <div className="flex-grow-1">
                     <div className="table-responsive ">
                         < Table
-                            columns={["BRANDS", "SPEC"]}
-                            tblInfo={
-                                firstTblInfo
-                                //         [
-                                //         { id: 1, brand: 'ABB', spec: 'Trio' },
-                                //         { id: 2, brand: 'ABB', spec: 'PRO' },
-                                //         { id: 3, brand: 'ABB', spec: 'PVS' },
-                                //         { id: 4, brand: 'Fronius', spec: 'Primo' },
-                                //         { id: 5, brand: 'Fronius', spec: 'Galvo' },
-                                //         { id: 6, brand: 'Fronius', spec: 'Symo' },
-                                //         { id: 7, brand: 'Fronius', spec: 'Eco' },
-                                //         { id: 8, brand: 'SolarEdge', spec: 'SE Wave' },
-                                //     ]
-                            }
+                            columns={["BRANDS", "MODEL", "SPEC", "AMOUNT"]}
+                            tblInfo={firstTblInfo}
                             render={{}}
                             style={{
                                 fontSize: fsc(media, 15),
@@ -59,7 +49,7 @@ const ProfilePanelView = props => {
 
                 </div>
 
-                <div className="flex-grow-1">
+                {/* <div className="flex-grow-1">
                     <div className="table-responsive">
                         {
                             secondTblInfo.length > 0 &&
@@ -75,7 +65,7 @@ const ProfilePanelView = props => {
                             />
                         }
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )

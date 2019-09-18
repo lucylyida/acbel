@@ -12,12 +12,28 @@ import AcbelLogo from '../../../assets/icons/Acbel_Logo'
 import { withMedia } from "react-media-query-hoc"
 import { fsc } from "../../../helper/fontColorHelper"
 import { _hadleMenuClick } from "./Navbar"
+import { useSelector, useDispatch } from 'react-redux'
+import * as Action from '../../../action'
 
 const SiteNavbar = props => {
     const { match, location, history, media } = props
     const warning = 0
     const good = 14
     const bad = 35
+    const vendorState = useSelector(state => state.vendorReducer)
+    const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId }
+
+    const selectSite = vendorState.siteNameList.reduce((r, c) =>
+        c.vendor_id === parseInt(bodyData.vendor_id) && c.hid === bodyData.site_id ? c : r
+        , null)
+
+    const dispatch = useDispatch()
+
+    if (vendorState.isLoading) {
+        dispatch(Action.getSiteListFromApi(bodyData.vendor_id))
+    }
+
+    if (selectSite === null) return null
 
     return (
         <div className="container-fluid px-0 py-3">
@@ -42,16 +58,18 @@ const SiteNavbar = props => {
                     </a>
                 </div>
                 <div className="d-flex flex-column justify-content-center pl-2" style={{ lineHeight: '1.3' }}>
-                    <div style={{ color: "#2244aa", fontSize: fsc(media, 28) }}>{"Organic Farmer's Association"}</div>
-                    <div style={{ paddingLeft: fsc(media, 10), color: "gray" }} >{"Hualien City, Taiwan"}</div>
+                    <div style={{ color: "#2244aa", fontSize: fsc(media, 28) }}>{selectSite.site_name}</div>
+                    <div style={{ color: "gray" }} >
+                        {`${selectSite.location} City, ${selectSite.country}`}
+                    </div>
                 </div>
                 <div style={{ flex: 1 }} />
 
                 <div className="d-flex justify-content-center align-items-center pr-2" style={window.innerWidth <= 355 ? { position: 'absolute', right: 0, top: 35 } : {}}>
-                <div style={{cursor:'pointer'}}> 
+                    <div style={{ cursor: 'pointer' }}>
                         <Flag width={24} height={24} />
                         <span className="px-3 font-weight-bold">UK English</span>
-                     </div>
+                    </div>
                     {/* <KmDropdown
                         labelHide={media.mobile}
                         onClick={() => console.log('click')}
@@ -69,12 +87,12 @@ const SiteNavbar = props => {
 
             <div className="d-flex flex-row flex-wrap align-items-baseline py-3 px-1">
                 <div className="py-1 d-flex flex-direction-row" style={{ overflowX: 'auto' }}>
-                    <div className="pr-3"><KmLink text="Dashboard" to={`${match.url}/${route.dashboard}${location.search}`} currentLink={location.pathname + location.search} /></div>
+                    <div className="pr-3" style={{ opacity: 0.3 }}><KmLink text="Dashboard" currentLink={location.pathname + location.search} /></div>
                     <div className="pr-3" style={{ opacity: 0.3 }}><KmLink text="Forecast" currentLink={location.pathname + location.search} /></div>
                     <div className="pr-3" style={{ opacity: 0.3 }}><KmLink text="Revenue" currentLink={location.pathname + location.search} /></div>
                     <div className="pr-3" style={{ opacity: 0.3 }}><KmLink text="Maintenance" currentLink={location.pathname + location.search} /></div>
                     <div className="pr-3" ><KmLink text="Profile" to={`${match.url}/${route.profile}${location.search}`} currentLink={location.pathname + location.search} /></div>
-                    <div className="pr-3" style={{ opacity: 0.3 }}><KmLink text="Inverters"  currentLink={location.pathname + location.search} /></div>
+                    <div className="pr-3" style={{ opacity: 0.3 }}><KmLink text="Inverters" currentLink={location.pathname + location.search} /></div>
                     <div className="pr-3" style={{ opacity: 0.3 }}><KmLink text="Panels" currentLink={location.pathname + location.search} /></div>
                     <div className="pr-3"><KmLink text="Report" to={`${match.url}/${route.report}${location.search}`} currentLink={location.pathname + location.search} /></div>
                 </div>
@@ -100,7 +118,7 @@ const SiteNavbar = props => {
                     style={{ backgroundColor: ' #2244aa', color: '#ffffff' }}
                 />
             </div>
-        </div>
+        </div >
     )
 }
 

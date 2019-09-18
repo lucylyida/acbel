@@ -22,7 +22,9 @@ const ProfileContainer = props => {
     }
     if (siteProfileDataState.siteProfileDataRaw.length === 0) return null
 
-    const siteProfileData = siteProfileDataState.siteProfileDataRaw[0]  
+    const siteProfileData = siteProfileDataState.siteProfileDataRaw[0]
+
+    if (siteProfileData === undefined) return null
     
     return (
         <div className="container-fluid p-0">

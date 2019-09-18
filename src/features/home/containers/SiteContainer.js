@@ -19,7 +19,7 @@ const ReportContainer = React.lazy(() => import("../../report/containers/ReportC
 
 
 const SiteContainer = props => {
-    const { match, location, media } = props   
+    const { match, location, media } = props
     const queryData = {
         siteId: 1,
         siteName: "Organic Farmer's Association",
@@ -27,6 +27,7 @@ const SiteContainer = props => {
         country: "Taiwan"
     }
     // const queryDataEnc = enc(queryData)
+
     return (
         <div className={`container-fluid ${media.mobile ? "px-0" : "px-4"}`}>
             <SiteNavbar {...props} />

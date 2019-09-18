@@ -9,6 +9,8 @@ import { fsc } from '../../../helper/fontColorHelper';
 import * as route from "../../../config/route.config"
 import { _hadleMenuClick } from "./Navbar"
 import { useCookies } from 'react-cookie'
+import { useDispatch } from 'react-redux'
+import ActionType from '../../../action/action'
 
 const LeftSidebar = props => {
     const { online, offline, active, siteName, efficiency, capacity, location, match, history } = props
@@ -16,7 +18,7 @@ const LeftSidebar = props => {
     const leftSidebarVisible = queryParams.lsb
     const [cookies, setCookie, removeCookie] = useCookies(['user']);
     const url = match.path
-    
+    const dispatch = useDispatch()
     const pageName = match.params.pageName
     if (leftSidebarVisible === undefined || leftSidebarVisible === "false") return null
     else
@@ -114,7 +116,11 @@ const LeftSidebar = props => {
                         userName={"Chris Even"}
                         userProfile={require('../../../user-profile-image/chris-evans.jpg')}
                         Click={() => history.push(`/${route.administration}/${route.profile}`)}
-                        removeCookie={() => removeCookie('user') }
+                        removeCookie={() => {
+                            removeCookie('user');
+                            dispatch({ type: ActionType.GET_LOGOUT });
+                            history.replace(`/${route.login}`);
+                        }}
                     />
 
                 </div>
@@ -124,6 +130,7 @@ const LeftSidebar = props => {
 }
 
 export default withRouter(withMedia(LeftSidebar));
+
 const MenuItem = props => {
     const { text, history, url, pageName, subItems, pageUrl } = props
     const [collapse, setCollapse] = useState(url !== pageUrl)

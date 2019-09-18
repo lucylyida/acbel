@@ -69,8 +69,8 @@ export const getVendorInverterSitesSuccess = (data) => {
 }
 export const getGlobalHomeStatusData = (data) => {
     return {
-        type:Action.GET_GLOBAL_HOME_STATUS_DATA,
-        payload:data
+        type: Action.GET_GLOBAL_HOME_STATUS_DATA,
+        payload: data
     }
 }
 export const getGlobalHomeStatusDataSuccess = (data) => {
@@ -79,15 +79,16 @@ export const getGlobalHomeStatusDataSuccess = (data) => {
         payload: data,
     }
 }
-export const getSiteProfileData =()=>{
-    return{
-        type:Action.GET_SITE_PROFILE_DATA,
+export const getSiteProfileData = (data) => {
+    return {
+        type: Action.GET_SITE_PROFILE_DATA,
+        payload: data,
     }
 }
-export const getSiteProfileDataSuccess=(data)=>{
-    return{
-        type:Action.GET_SITE_PROFILE_DATA_SUCCESS,
-         payload:data,
+export const getSiteProfileDataSuccess = (data) => {
+    return {
+        type: Action.GET_SITE_PROFILE_DATA_SUCCESS,
+        payload: data,
     }
 }
 

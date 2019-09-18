@@ -3,7 +3,6 @@
 
  export const BASE_URL = "http://202.73.49.62:823"
 
-
 export const LOGIN = `${BASE_URL}/auth/login`
 
 export const FETCH_VENDOR_LIST = `${BASE_URL}/vendors`

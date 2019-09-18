@@ -41,7 +41,7 @@ const SiteContainer = props => {
                 <div className="w-100 pb-3" style={{ overflow: 'hidden' }}>
                     <Switch>
                         <Route path={`${match.path}/:pageName`} component={SitePage} />
-                        <Redirect to={`${match.path}/${route.dashboard}`} />
+                        <Redirect to={`${match.path}/${route.profile}`} />
                     </Switch>
                 </div>
             </div>

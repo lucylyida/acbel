@@ -26,6 +26,8 @@ const ProfileContainer = props => {
 
     const siteProfileData = siteProfileDataState.siteProfileDataRaw[0]
 
+    // console.log(siteProfileData)
+
     return (
         <div className="container-fluid p-0">
             <div className="row m-0">

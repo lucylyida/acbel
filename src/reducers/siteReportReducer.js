@@ -1,4 +1,5 @@
 import Action from '../action/action'
+import * as api from "../network-sec/api"
 
 const initialState = {
 
@@ -22,6 +23,7 @@ const siteReportReducer = (state=initialState,action)=>{
    
     switch(action.type){
         case Action.GET_SITE_REPORT_DATA_SUCCESS : {
+            window.location.href = `${api.BASE_URL}${action.payload.file}` 
             return({
                 ...state,
                 // SiteReportDataRaw:action.payload,

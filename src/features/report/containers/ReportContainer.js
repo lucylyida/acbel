@@ -8,6 +8,7 @@ import ReportGenerateHistoryView from '../components/ReportGenerateHistoryView'
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
 import * as api from "../../../network-sec/api"
+import action from "../../../action/action";
 
 const ReportContainer = props => {
     const { media } = props
@@ -21,12 +22,15 @@ const ReportContainer = props => {
 
     const dispatch = useDispatch()
 
-    if (reportState && reportState.SiteReportData !== null) {
-        window.location.href = `${api.BASE_URL}${reportState.SiteReportData}`
+    // if (reportState && reportState.SiteReportData !== null) {
+
+        //   window.location.href = `${api.BASE_URL}${reportState.SiteReportData}` 
         // dispatch(Action.globalHandleSelectFilter({ SiteReportData: null }))
         //  console.log(`${api.BASE_URL}${siteReportState.SiteReportData}`  )
         //  console.log("hello")
-    }
+        // dispatch(Action.getSiteReportData(null))
+        
+    // }
 
 
 

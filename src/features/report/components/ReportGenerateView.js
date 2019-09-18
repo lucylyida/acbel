@@ -103,7 +103,7 @@ const ReportGeneratorView = props => {
                 </div>
                 <div className="flex-fill p-2 col-4 ">
                     <div style={{ fontSize: fsc(media, 13), color: '#999999' }}>EXPORT REPORT AS</div>
-                    <KmButtom text="EXPORT"
+                    <KmButtom text="CSV"
                         onClick={ondownloadReport}
                         style={{ width: 80 }}
                     />

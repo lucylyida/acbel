@@ -15,7 +15,5 @@ function* fetchSiteProfileData(action) {
 }
 
 export function* fetchSiteProfileDataWatcherSaga() {
-    yield all([
-        takeEvery(ActionType.GET_SITE_PROFILE_DATA, fetchSiteProfileData),
-    ])
+    yield takeEvery(ActionType.GET_SITE_PROFILE_DATA, fetchSiteProfileData)
 }

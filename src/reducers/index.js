@@ -5,7 +5,6 @@ import { weatherCountryReducer } from "./weatherReducer"
 import inverterReducer from './inverterReducer'
 import globalReducer from './globalReducer'
 import siteProfileDataReducer from './siteProfileReducer'
-import siteReportReducer from './siteReportReducer'
 
 const allReducers = combineReducers({
     vendorReducer,
@@ -14,8 +13,6 @@ const allReducers = combineReducers({
     inverterReducer,
     globalReducer,
     siteProfileDataReducer,
-    siteReportReducer
-
 })
 
 export default allReducers

@@ -22,15 +22,17 @@ const ProfileContainer = props => {
     }
     if (siteProfileDataState.siteProfileDataRaw.length === 0) return null
 
-    const siteProfileData = siteProfileDataState.siteProfileDataRaw[0]  
-    
+    const siteProfileData = siteProfileDataState.siteProfileDataRaw[0]
+
+    // if(siteProfileData===null || siteProfileData===undefined) return null;
+    if (siteProfileData === undefined) return null
     return (
         <div className="container-fluid p-0">
             <div className="row m-0">
 
                 <div className="col-md-5 px-1">
                     <ProfileSiteProfielView
-                        startDate={siteProfileData.startDate}
+                        startDate={siteProfileData.startDate ? siteProfileData.startDate : ""}
                         priceSetup={siteProfileData.priceSetup}
                         capacity={siteProfileData.siteCapacity}
                     />

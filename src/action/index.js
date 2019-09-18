@@ -97,6 +97,7 @@ export const getSiteReportData =()=>{
     }
 }
 export const getSiteReportDataSuccess =(data)=>{
+    console.log("DDD,", data)
     return{
         type:Action.GET_SITE_REPORT_DATA_SUCCESS,
         payload:data

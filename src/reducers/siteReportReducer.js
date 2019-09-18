@@ -4,7 +4,17 @@ const initialState = {
 
     isLoading: true,
 
-    SiteReportData:null
+    SiteReportData:null,
+
+    selectedVendor: null,
+
+    selectedSite: null,
+
+    selectedDate: new Date(),
+
+    selectedDeviceType: null,
+
+    selectedReportType: null,
     
 }
 
@@ -17,6 +27,13 @@ const siteReportReducer = (state=initialState,action)=>{
                 // SiteReportDataRaw:action.payload,
                 SiteReportData:action.payload.file,
                 isLoading:false,
+            })
+        }
+        case Action.REPORT_HANDLE_CHANGED : {
+            // console.log("notedd>> ", action.payload)
+            return({
+                ...state,
+                ...action.payload
             })
         }
         default: return state

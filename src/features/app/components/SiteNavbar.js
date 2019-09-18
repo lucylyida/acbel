@@ -64,22 +64,22 @@ const SiteNavbar = props => {
                 <div style={{ flex: 1 }} />
 
                 <div className="d-flex justify-content-center align-items-center pr-2" style={window.innerWidth <= 355 ? { position: 'absolute', right: 0, top: 35 } : {}}>
-                    <div style={{ cursor: 'pointer' }}>
+                    {/* <div style={{ cursor: 'pointer' }}>
                         <Flag width={24} height={24} />
                         <span className="px-3 font-weight-bold">UK English</span>
-                    </div>
-                    {/* <KmDropdown
+                    </div> */}
+                    <KmDropdown
                         labelHide={media.mobile}
                         onClick={() => console.log('click')}
                         selectedItem={{ icon: <Flag width={24} height={24} />, text: 'UK English' }}
                         data={[
-                            { icon: <ThaiwanFlag width={24} height={24} />, text: 'TW ThaiWan' },
-                            { icon: <ThaiFlag width={24} height={24} />, text: 'TH Thailand' },
-                            { icon: <SgFlag width={24} height={24} />, text: 'Sg Singapore' },
+                            // { icon: <ThaiwanFlag width={24} height={24} />, text: 'TW ThaiWan' },
+                            // { icon: <ThaiFlag width={24} height={24} />, text: 'TH Thailand' },
+                            // { icon: <SgFlag width={24} height={24} />, text: 'Sg Singapore' },
                             { icon: <Flag width={24} height={24} />, text: 'UK English' }
                         ]}
                         style={{ backgroundColor: '#e5e5e5' }}
-                    /> */}
+                    />
                 </div>
             </div>
 

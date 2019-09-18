@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../../../helper/fontColorHelper'
 
@@ -11,39 +11,62 @@ import * as api from "../../../network-sec/api"
 
 const ReportContainer = props => {
     const { media } = props
-    const reportOfVendorState = useSelector(state => state.vendorReducer)
-    const siteReportState = useSelector(state => state.siteReportReducer)
-  
-    const {
-        vendorNameList,
-        siteNameList,
-        selectedVendor,
-        selectedSite,
-    } = reportOfVendorState
+    // const [onchangedata, setonchangedata] = useState("")
 
-    const vendor_id = selectedVendor !== null ? selectedVendor.id : null
-    const site_id = selectedSite !== null ? selectedSite.hid : null
-  
+    const vendorState = useSelector(state => state.vendorReducer)
+    const reportState = useSelector(state => state.siteReportReducer)
+
+    // const vendor_id = selectedVendor !== null ? selectedVendor.id : null
+    // const site_id = selectedSite !== null ? selectedSite.hid : null
+
     const dispatch = useDispatch()
-   
-    if(siteReportState && siteReportState.SiteReportData!==null) {
-        window.location.href = `${api.BASE_URL}${siteReportState.SiteReportData}`  
+
+    if (reportState && reportState.SiteReportData !== null) {
+        window.location.href = `${api.BASE_URL}${reportState.SiteReportData}`
         // dispatch(Action.globalHandleSelectFilter({ SiteReportData: null }))
-        // console.log(`${api.BASE_URL}${siteReportState.SiteReportData}`  )
+        //  console.log(`${api.BASE_URL}${siteReportState.SiteReportData}`  )
+        //  console.log("hello")
     }
+
+
 
     return (
         <div className="container-fluid px-1">
             <div className="bg-white p-2" style={{ borderRadius: 4 }}>
                 <ReportGeneratorView
-                    vendorNameList={vendorNameList}
-                    siteNameList={siteNameList}
-                    selectedVendor={selectedVendor ? selectedVendor : null}
-                    selectedSite={selectedSite}
-                    onVendorChange={d => dispatch(Action.globalHandleSelectFilter({ selectedVendor: d }))}
-                    onSiteChange={d => dispatch(Action.globalHandleSelectFilter({ selectedSite: d }))}
-                    ondownloadReport ={()=> dispatch(Action.getSiteReportData()) }
-                   
+                    vendorNameList={vendorState.vendorNameList}
+                    siteNameList={vendorState.siteNameList}
+                    
+                    selectedVendor={reportState.selectedVendor}
+                    selectedSite={reportState.selectedSite}
+                    selectedReportType={reportState.selectedReportType}
+                    selectedDeviceType={reportState.selectedDeviceType}
+                    selectedDate= {reportState.selectedDate}
+
+                    onVendorChanged={d => dispatch(Action.reportHandleChanged({ selectedVendor: d }))}
+                    onSiteChanged={d => dispatch(Action.reportHandleChanged({ selectedSite: d }))}
+                    onDeviceTypeChanged={(d) => dispatch(Action.reportHandleChanged({ selectedDeviceType: d }))}
+                    onDateChanged={d => dispatch(Action.reportHandleChanged({ selectedDate: d }))}
+                    onReportTypeChanged={d => dispatch(Action.reportHandleChanged({ selectedReportType: d }))}
+
+                    // onchangedata={onchangedata}
+                    ondownloadReport={() => {
+                        // console.log({ 
+                        //     selectedVendor: reportState.selectedVendor, 
+                        //     selectedSite: reportState.selectedSite, 
+                        //     selectedReportType: reportState.selectedReportType, 
+                        //     selectedDeviceType: reportState.selectedDeviceType, 
+                        //     selectedDate: reportState.selectedDate })
+                        const { 
+                            selectedVendor,
+                            selectedSite,
+                            selectedReportType,
+                            selectedDeviceType,
+                            selectedDate,
+                        } = reportState
+                        dispatch(Action.getSiteReportData(reportState))
+                    }}
+
                 />
             </div>
             <div className="pt-5">

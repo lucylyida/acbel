@@ -39,7 +39,7 @@ const GlobalListContainer = props => {
                         highlightOnHover={true}
                         style={{ borderRadius: 6, whiteSpace: 'nowrap', }}
                         customTheme={tableTheme(media)}
-                        pagination={true}
+                        pagination={false}
                         paginationDefaultPage={1}
                         paginationTotalRows={data.length}
                         paginationPerPage={2}

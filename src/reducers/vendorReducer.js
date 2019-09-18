@@ -20,7 +20,6 @@ const initialState = {
 
     vendorSiteData: [],
 
-
 }
 
 //@nayhtet

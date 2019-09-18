@@ -136,7 +136,7 @@ export class MapContainer extends Component {
         const { siteNameList } = this.props
         const { infoSiteData } = this.state
         const online = infoSiteData.isOnline
-        console.log(infoSiteData)
+     
         return (
             <div style={{ borderRadius: 4, border: '0.7px solid #cccccc', height: '500px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map

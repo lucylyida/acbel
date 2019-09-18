@@ -12,7 +12,7 @@ const GlobalMapContainer = props => {
     const state = useSelector(state => state.vendorReducer)
     const { vendorListRaw, siteNameList, siteListRaw, selectedSite } = state
     const selectedSiteList = selectedSite === null ? siteNameList : siteNameList.filter(d => d.id === selectedSite.id)
-    console.log(selectedSiteList)
+   
     const clientLists = selectedSiteList.reduce((r, c) => {
         const index = r.reduce((r1, c1, i1) => c1.country === c.country && c1.city === c.city ? i1 : r1, -1)
         if (r.length === 0 || index === -1) {

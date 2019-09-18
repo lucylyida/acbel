@@ -15,7 +15,7 @@ export class MapContainer extends Component {
         const siteNameList = this.props
         this.state = {
             position: { lat: siteNameList.latitude, lng: siteNameList.longitude },
-            zoom: 6,
+            zoom: 5,
             stores: [],
             isClientToShow: false,
             showingInfoWindow: false,
@@ -25,29 +25,33 @@ export class MapContainer extends Component {
             initialCenter: { lat: 20.444, lng: 96.176 },
             markerPosition: {},
             infoSiteData: {},
+            vendor_id: -1
         }
         this.mapRef = React.createRef()
     }
     componentDidMount() {
         const { clientLists } = this.props
+        const { vendor_id } = this.state
         const mmap = this.mapRef.current
         mmap.map.addListener("zoom_changed", () => {
             this.setState({ showingInfoWindow: false })
         })
         mmap.map.addListener("bounds_changed", () => {
             const mapBound = mmap.map.getBounds()
+            // console.log(mapBound)
             const clientLocs = clientLists.filter(v => mapBound.contains({ lat: v.lat, lng: v.lng }))
             const clientLocs2 = clientLocs.length >= 1 ? clientLocs : clientLists
             const listToShow = clientLocs.length > 1 ? clientLocs : clientLocs2.reduce((r, c) => {
                 const sitesLocs = c.sites.map(v => v)
                 return [...r, ...sitesLocs]
             }, [])
-            this.setState({ stores: listToShow, isClientToShow: clientLocs.length > 2, isShowInfoWindow: clientLocs.lenght >= 1 })
+            this.setState({ stores: listToShow, isClientToShow: mmap.map.zoom <= 8 && (vendor_id > -1 || clientLocs.length > 0), isShowInfoWindow: clientLocs.lenght >= 1 })
         })
     }
     shouldComponentUpdate(nextProps, nextState) {
         if (!equal(this.props, nextProps) || !equal(this.state, nextState)) { return true; } else { return false; }
     }
+
 
     UNSAFE_componentWillUpdate(nextProps, nextState) {
         const mmap = this.mapRef.current
@@ -62,16 +66,22 @@ export class MapContainer extends Component {
 
     _markerDisplay = () => {
         const { stores, isClientToShow } = this.state
-        const { clientLists } = this.props
+        const { clientLists, siteNameList } = this.props
+        const siteNameListLength = siteNameList.length
         const mmap = this.mapRef.current
         // mmap !== null &&
         //     mmap.map.addListener("zoom_changed", () => {
         //         this.setState({ showingInfoWindow: false, isClientToShow: mmap.map.zoom <= 11 })
         //         console.log(mmap.map.zoom)
         //     })
+        // console.log(clientLists)
+        // console.log(siteNameList)
 
-        const icon = !isClientToShow ? SolarPanelIcon : Animatedicon(this.props)
+
+        const icon = (isClientToShow) && (siteNameListLength !== 1) ? Animatedicon(this.props) : SolarPanelIcon
+
         return stores === undefined ? [] : isClientToShow ?
+
             clientLists.map((store, index) => {
                 return < Marker
                     label={isClientToShow ? { text: `${store.sites.length}`, color: 'white' } : null}
@@ -112,7 +122,7 @@ export class MapContainer extends Component {
     };
     _ClientSites = (props, marker, e) => {
         const mmap = this.mapRef.current
-        mmap.map.setZoom(11);
+        mmap.map.setZoom(13);
         mmap.map.setCenter(marker.getPosition());
     }
     infoWindowClose = () => {
@@ -126,7 +136,7 @@ export class MapContainer extends Component {
         const { siteNameList } = this.props
         const { infoSiteData } = this.state
         const online = infoSiteData.isOnline
-       
+     
         return (
             <div style={{ borderRadius: 4, border: '0.7px solid #cccccc', height: '500px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map

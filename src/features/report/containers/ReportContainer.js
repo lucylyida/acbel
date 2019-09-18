@@ -25,20 +25,11 @@ const ReportContainer = props => {
     const site_id = selectedSite !== null ? selectedSite.hid : null
 
     const dispatch = useDispatch()
-    // if (reportOfVendorState.isLoading || siteReportState.isLoading) {
-    //     dispatch(Action.getvendorfromapi(vendor_id))
-    //     dispatch(Action.getSiteListFromApi(vendor_id))
-    // }
-    // if(siteReportState.isLoading){
-    //     dispatch(Action.getSiteReportData()
-    // }
 
-    // console.log( siteReportState )
-    console.log(siteReportState)
-    // if(siteReportState && siteReportState.SiteReportData!==null) {
-    //     window.location.href = `${api.BASE_URL}${siteReportState.SiteReportData}`  
-    //     // dispatch(Action.globalHandleSelectFilter({ SiteReportData: null }))
-    // }
+    if(siteReportState && siteReportState.SiteReportData!==null) {
+        window.location.href = `${api.BASE_URL}${siteReportState.SiteReportData}`  
+        // dispatch(Action.globalHandleSelectFilter({ SiteReportData: null }))
+    }
 
     return (
         <div className="container-fluid px-1">
@@ -48,9 +39,9 @@ const ReportContainer = props => {
                     siteNameList={siteNameList}
                     selectedVendor={selectedVendor}
                     selectedSite={selectedSite}
-                    //onVendorChange={d => dispatch(Action.globalHandleSelectFilter({ selectedVendor: d }))}
-                    //onSiteChange={d => dispatch(Action.globalHandleSelectFilter({ selectedSite: d }))}
-                    //ondownloadReport ={ () => dispatch(Action.getSiteReportData()) }
+                    onVendorChange={d => dispatch(Action.globalHandleSelectFilter({ selectedVendor: d }))}
+                    onSiteChange={d => dispatch(Action.globalHandleSelectFilter({ selectedSite: d }))}
+                    ondownloadReport ={ () => dispatch(Action.getSiteReportData()) }
                 />
             </div>
             <div className="pt-5">

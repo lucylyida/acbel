@@ -6,9 +6,11 @@ import FourItemBox from '../../app/components/FourItemBox';
 
 
 const ProfileInverterView = props => {
-    const { media, totalInverter, inverterDetailList } = props
+    const { media, totalInverter, inverterDetailList } = props   
 
-    const tblInfo = inverterDetailList.reduce((r, c, i) => [...r, { id: i + 1, brand: c.model, spec: c.spec }], [])
+    const tblInfo = inverterDetailList.reduce((r, c, i) =>
+        [...r, { id: i + 1, brand: c.brand, model: c.model, spec: c.spec, amount: c.amount }]
+        , [])
 
     const firstTblInfo = tblInfo.length < 8 ?
         tblInfo :
@@ -34,7 +36,7 @@ const ProfileInverterView = props => {
                 <div className="flex-grow-1">
                     <div className="table-responsive">
                         <Table
-                            columns={["BRANDS", "SPEC"]}
+                            columns={["BRANDS", "MODEL", "SPEC", "AMOUNT"]}
                             tblInfo={firstTblInfo}
                             render={{
 
@@ -51,7 +53,7 @@ const ProfileInverterView = props => {
                 </div>
 
 
-                <div className="flex-grow-1 ">
+                {/* <div className="flex-grow-1 ">
                     <div className="table-responsive">
                         {
                             secondTblInfo.length > 0 &&
@@ -68,7 +70,7 @@ const ProfileInverterView = props => {
                             />
                         }
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )

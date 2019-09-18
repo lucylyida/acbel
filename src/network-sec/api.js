@@ -1,8 +1,13 @@
 
 // export const   BASE_URL = "http://192.168.100.6:3333"
+<<<<<<< HEAD
+// export const BASE_URL = "http://202.73.49.62:823"
+  export const BASE_URL = "http://192.168.100.29:3333"
+=======
 
 export const BASE_URL = "http://202.73.49.62:823"
 //  export const BASE_URL = "http://192.168.100.22:3333"
+>>>>>>> 51e1ca2f3029168ba87f90f1cd0a75b6fc916004
 
 
 export const LOGIN = `${BASE_URL}/auth/login`

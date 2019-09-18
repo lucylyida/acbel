@@ -91,6 +91,17 @@ export const getSiteProfileDataSuccess = (data) => {
         payload: data,
     }
 }
+export const getSiteReportData =()=>{
+    return{
+        type:Action.GET_SITE_REPORT_DATA
+    }
+}
+export const getSiteReportDataSuccess =(data)=>{
+    return{
+        type:Action.GET_SITE_REPORT_DATA_SUCCESS,
+        payload:data
+    }
+}
 
 
 // @mmh

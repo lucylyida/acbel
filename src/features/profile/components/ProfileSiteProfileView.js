@@ -3,13 +3,23 @@ import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../../../helper/fontColorHelper'
 import FourItemBox from '../../app/components/FourItemBox'
 
-import moment from 'moment'
-const SitePicArray = ['/s1.jpg', '/s2.jpg', '/s3.jpg', '/s4.jpg']
+
+const SitePicArray = [
+    { id: 1, profile: '/Siteprofilepic/profile_1_2014.png' },
+    { id: 2, profile: '/Siteprofilepic/profile_1_2077.png' },
+    { id: 3, profile: '/Siteprofilepic/profile_1_2084.png' },
+    { id: 4, profile: '/Siteprofilepic/profile_1_2091.png' },
+    { id: 5, profile: '/Siteprofilepic/profile_2_1.png' },
+    { id: 6, profile: '/Siteprofilepic/profile_2_2.png' },
+    { id: 7, profile: '/Siteprofilepic/profile_32_1.png' },
+    { id: 8, profile: '/Siteprofilepic/profile_32_2.png' },
+]
+// const SitePicArray = ['/s1.jpg', '/s2.jpg', '/s3.jpg', '/s4.jpg']
 // const SitePicArray = ['/s1.jpg', '/s2.jpg', '/s3.jpg', '/s4.jpg', '/s5.jpg', '/s6.jpg', '/s7.jpg', '/s8.jpg']
 
 const ProfileSiteProfileView = props => {
-    const { media, startDate, priceSetup, capacity } = props
-
+    const { media, startDate, priceSetup, capacity, vendorId, siteId } = props
+    
     return (
         <div className="p-4 h-100" style={{ backgroundColor: '#FFFFFF', borderRadius: 4 }}>
 
@@ -37,19 +47,26 @@ const ProfileSiteProfileView = props => {
             </div>
 
             <div className="d-flex">
-                <img src={require('./panelpic1.jpg')} alt="panel" className="img rounded img-fluid w-100" />
+                <img src={`/Siteprofilepic/profile_${vendorId}_${siteId}.png`}
+                    alt="panel"
+                    className="img rounded img-fluid w-100"
+                />
+
             </div>
 
-            <div className="container-fluid p-1">
+            {/* <div className="container-fluid p-1">
                 <div className="row px-2">
                     {
                         SitePicArray.map((v, k) =>
                             <div key={k} className="col-3 col-lg-3 col-md-6 p-1">
-                                <img src={`${v}`} alt="panel" className="img rounded img-fluid" width={'100%'} height={160} />
+                                <img src={`${v.profile}`} alt="panel" 
+                                className="img rounded img-fluid"
+                                 width={'100%'} height={160} 
+                                 />
                             </div>)
                     }
                 </div>
-            </div>
+            </div> */}
 
         </div>
     )

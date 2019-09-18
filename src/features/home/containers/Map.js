@@ -15,7 +15,7 @@ export class MapContainer extends Component {
         const siteNameList = this.props
         this.state = {
             position: { lat: siteNameList.latitude, lng: siteNameList.longitude },
-            zoom: 5,
+            zoom: 7,
             stores: [],
             isClientToShow: false,
             showingInfoWindow: false,
@@ -45,6 +45,8 @@ export class MapContainer extends Component {
                 const sitesLocs = c.sites.map(v => v)
                 return [...r, ...sitesLocs]
             }, [])
+
+          
             this.setState({ stores: listToShow, isClientToShow: mmap.map.zoom <= 10 && (vendor_id > -1 || clientLocs.length > 0), isShowInfoWindow: clientLocs.lenght >= 1 })
         })
     }
@@ -100,7 +102,7 @@ export class MapContainer extends Component {
                 >
                 </Marker>
             }) :
-            stores.map((store, index) => {
+            stores.map((store, index) => {      
                 return < Marker
                     icon={icon}
                     title={store.name}

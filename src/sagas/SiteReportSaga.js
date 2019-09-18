@@ -4,6 +4,7 @@ import { call, put, takeEvery, take, all } from 'redux-saga/effects'
 import * as api from "../network-sec/api"
 
 function* fetchSiteReportData() {
+    // const body = action.payload
     try {
         const SiteReportData = yield fetch(api.FETCH_SITE_REPORT)
             .then(response => response.json())

@@ -11,6 +11,7 @@ import * as route from '../../../config/route.config'
 const ProfileContainer = props => {
 
     const siteProfileDataState = useSelector(state => state.siteProfileDataReducer)
+    
     const dispatch = useDispatch()
     const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId }
 
@@ -34,6 +35,8 @@ const ProfileContainer = props => {
                         startDate={siteProfileData.startDate}
                         priceSetup={siteProfileData.priceSetup}
                         capacity={siteProfileData.siteCapacity}
+                        vendorId={siteProfileData.vendorId}
+                        siteId={siteProfileData.siteId}
                     />
                 </div>
 

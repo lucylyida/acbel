@@ -16,17 +16,24 @@ const ProfileSiteProfileView = props => {
             <div className='py-2' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"SITE PROFILE"}</div>
 
             <div className="d-flex pt-2 pb-4 flex-wrap">
-                <div className="py-2">
-                    <FourItemBox value={startDate} desc={"START DATE"} useNumberFormat={false} />
-                    {/* "Apr 25, 2017" */}
-                    {/* moment(d.dt_txt).format('YYYY-MM-DD') */}
-                </div>
-                <div className={`px-${media.mobile ? '3' : '5'} py-2`}>
-                    <FourItemBox value={priceSetup} unit={'NT$'} desc={"PRICE SET-UP"} />
-                </div>
-                <div className="py-2">
-                    <FourItemBox value={capacity} unit={"kW"} desc={"CAPACITY"} />
-                </div>
+                {
+                    startDate !== null &&
+                    <div className="py-2">
+                        <FourItemBox value={startDate} desc={"START DATE"} useNumberFormat={false} />
+                    </div>
+                }
+                {
+                    priceSetup !== null &&
+                    <div className={`px-${media.mobile ? '3' : '5'} py-2`}>
+                        <FourItemBox value={priceSetup} unit={'NT$'} desc={"PRICE SET-UP"} />
+                    </div>
+                }
+                {
+                    capacity !== null &&
+                    <div className="py-2">
+                        <FourItemBox value={capacity} unit={"kW"} desc={"CAPACITY"} />
+                    </div>
+                }
             </div>
 
             <div className="d-flex">

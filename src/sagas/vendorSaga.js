@@ -17,10 +17,15 @@ function* fetchVendor(action) {
     }
 }
 
-function* fetchSiteList(action) {
+function* fetchSiteList(action) {   
     try {
         //get vendorlist api endpoint
-        const sites = yield fetch(action.payload === null ? api.FETCH_VENDOR_SITES : api.FETCH_VENDOR_SITE_LIST(action.payload))
+        const sites = yield fetch(
+            action.payload.site_id !== null
+                ? api.FETCH_VENDOR_SITE(action.payload.vendor_id, action.payload.site_id)
+                : action.payload.vendor_id === null
+                    ? api.FETCH_VENDOR_SITES
+                    : api.FETCH_VENDOR_SITE_LIST(action.payload.vendor_id))
             .then(response => response.json())
             .then(data => data.payload)
         yield put(Action.getSiteListFromApiSuccess(sites))
@@ -33,10 +38,10 @@ function* fetchVendorSiteData(action) {
     const body = action.payload
     try {
         const vendorSiteData = yield fetch(api.FETCH_VENDOR_SITE(body.vendor_id, body.site_id))
-        .then(response => response.json())
-        .then(data => data.payload )
-        yield put(Action.getVendorSiteDataSuccess(vendorSiteData))  
-    }catch (error) {
+            .then(response => response.json())
+            .then(data => data.payload)
+        yield put(Action.getVendorSiteDataSuccess(vendorSiteData))
+    } catch (error) {
         yield put({ type: 'FETCH_FAIL', error })
     }
 }

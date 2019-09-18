@@ -7,33 +7,38 @@ import * as route from '../../../config/route.config'
 import { useSelector, useDispatch } from 'react-redux'
 import { getLoginFromApi } from '../../../action'
 import { useCookies } from 'react-cookie';
+import ActionType from '../../../action/action'
 
 const Login = props => {
 
     const { media } = props
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [show, setShow] = useState(false)  
+    const [show, setShow] = useState(false)
     const [cookies, setCookie, removeCookie] = useCookies(['user']);
     const state = useSelector(state => state.accountReducer)
     const dispatch = useDispatch()
 
-
     if (state.loginDataRaw !== null) {
         if (cookies.user === undefined) {
-            setCookie('user', state.loginDataRaw)
+            setCookie('user', state.loginDataRaw, { path: '/' })
         }
     }
-   
-    state.loginDataRaw !== null && props.history.replace(`/${route.global}`) 
+
+    if (state.loginDataRaw === null) {
+        if (cookies.user !== undefined) {
+            removeCookie('user', { path: '/' })
+        }
+    }
 
     const handleLogin = (e) => {
         e.preventDefault()
-        removeCookie('user')
         if (username.length > 0 && password.length > 0) {
             dispatch(getLoginFromApi({ username, password }))
         }
     }
+
+    state.loginDataRaw !== null && props.history.replace(`/${route.global}`)
 
     return (
         <div className="container-fluid pt-5" >

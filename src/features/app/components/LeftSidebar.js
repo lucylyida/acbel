@@ -19,7 +19,8 @@ const LeftSidebar = props => {
     const [cookies, setCookie, removeCookie] = useCookies(['user']);
     const url = match.path
     const dispatch = useDispatch()
-    const pageName = match.params.pageName   
+    const pageName = match.params.pageName
+
     if (leftSidebarVisible === undefined || leftSidebarVisible === "false") return null
     else
         return (
@@ -117,7 +118,7 @@ const LeftSidebar = props => {
                         userProfile={require('../../../user-profile-image/chris-evans.jpg')}
                         Click={() => history.push(`/${route.administration}/${route.profile}`)}
                         removeCookie={() => {
-                            removeCookie('user');
+                            removeCookie('user', { path: '/' })
                             dispatch({ type: ActionType.GET_LOGOUT });
                             history.replace(`/${route.login}`);
                         }}

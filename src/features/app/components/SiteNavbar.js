@@ -30,10 +30,8 @@ const SiteNavbar = props => {
     const dispatch = useDispatch()
 
     if (vendorState.isLoading) {
-        dispatch(Action.getSiteListFromApi(bodyData.vendor_id))
+        dispatch(Action.getSiteListFromApi({ vendor_id: bodyData.vendor_id, site_id: null }))
     }
-
-    if (selectSite === null) return null
 
     return (
         <div className="container-fluid px-0 py-3">
@@ -58,9 +56,9 @@ const SiteNavbar = props => {
                     </a>
                 </div>
                 <div className="d-flex flex-column justify-content-center pl-2" style={{ lineHeight: '1.3' }}>
-                    <div style={{ color: "#2244aa", fontSize: fsc(media, 28) }}>{selectSite.site_name}</div>
+                    <div style={{ color: "#2244aa", fontSize: fsc(media, 28) }}>{selectSite !== null && selectSite.site_name}</div>
                     <div style={{ color: "gray" }} >
-                        {`${selectSite.location} City, ${selectSite.country}`}
+                        {selectSite !== null && `${selectSite.location} City, ${selectSite.country}`}
                     </div>
                 </div>
                 <div style={{ flex: 1 }} />

@@ -23,6 +23,7 @@ const GlobalListContainer = props => {
         currentOutput: v.powerOutput, efficiency: v.efficiencyRa, siteStatus: v.isOnline === true ? "Online" : "Offline",
         more: "MORE INFO"
     }))
+
     // const sites = siteNameList.map(v => v.vendor_id)
     // console.log({sites})
 
@@ -41,7 +42,7 @@ const GlobalListContainer = props => {
                         pagination={true}
                         paginationDefaultPage={1}
                         paginationTotalRows={data.length}
-                        paginationPerPage={6}
+                        paginationPerPage={2}
                         customPagination={true}
                     />
                 </div>

@@ -8,6 +8,7 @@ import tableTheme from "../../home/containers/tableTheme"
 import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../../../helper/fontColorHelper'
 import '../../../index.css';
+
 import Acbel_Logo from '../../../assets/icons/Acbel_Logo'
 import SolarPanel_logo from '../../../assets/icons/solarpanel_icn'
 import Power_icon from '../../../assets/icons/Power_icon'
@@ -61,6 +62,7 @@ const ReportGeneratorView = props => {
             {/* =================================================================================================================================================== */}
             <div className="py-4">
                 <div style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>HISTORY</div>
+                
                 <div className="pt-2">
                     <KmTable
                         columns={columns(media)}

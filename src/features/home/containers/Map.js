@@ -45,13 +45,13 @@ export class MapContainer extends Component {
                 const sitesLocs = c.sites.map(v => v)
                 return [...r, ...sitesLocs]
             }, [])
-            this.setState({ stores: listToShow, isClientToShow: mmap.map.zoom<=8 && (vendor_id>-1 || clientLocs.length > 0), isShowInfoWindow: clientLocs.lenght >= 1 })
+            this.setState({ stores: listToShow, isClientToShow: mmap.map.zoom <= 8 && (vendor_id > -1 || clientLocs.length > 0), isShowInfoWindow: clientLocs.lenght >= 1 })
         })
     }
     shouldComponentUpdate(nextProps, nextState) {
         if (!equal(this.props, nextProps) || !equal(this.state, nextState)) { return true; } else { return false; }
     }
-    
+
 
     UNSAFE_componentWillUpdate(nextProps, nextState) {
         const mmap = this.mapRef.current
@@ -66,17 +66,19 @@ export class MapContainer extends Component {
 
     _markerDisplay = () => {
         const { stores, isClientToShow } = this.state
-        const { clientLists } = this.props
+        const { clientLists, siteNameList } = this.props
+        const siteNameListLength = siteNameList.length
         const mmap = this.mapRef.current
         // mmap !== null &&
         //     mmap.map.addListener("zoom_changed", () => {
         //         this.setState({ showingInfoWindow: false, isClientToShow: mmap.map.zoom <= 11 })
         //         console.log(mmap.map.zoom)
         //     })
-        // console.log(isClientToShow)
+        // console.log(clientLists)
+        // console.log(siteNameList)
 
-        
-        const icon = (isClientToShow) ? Animatedicon(this.props) : SolarPanelIcon
+
+        const icon = (isClientToShow) && (siteNameListLength !== 1) ? Animatedicon(this.props) : SolarPanelIcon
 
         return stores === undefined ? [] : isClientToShow ?
 
@@ -120,7 +122,7 @@ export class MapContainer extends Component {
     };
     _ClientSites = (props, marker, e) => {
         const mmap = this.mapRef.current
-        mmap.map.setZoom(11);
+        mmap.map.setZoom(13);
         mmap.map.setCenter(marker.getPosition());
     }
     infoWindowClose = () => {
@@ -134,6 +136,7 @@ export class MapContainer extends Component {
         const { siteNameList } = this.props
         const { infoSiteData } = this.state
         const online = infoSiteData.isOnline
+        console.log(infoSiteData)
         return (
             <div style={{ borderRadius: 4, border: '0.7px solid #cccccc', height: '500px', position: 'relative', bottom: '0', paddingBottom: '40%', paddingRight: '10', paddingLeft: '0%', overflow: 'hidden', margin: '0px' }}>
                 <Map

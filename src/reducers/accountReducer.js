@@ -9,21 +9,22 @@ const initialState = {
 const accountReducer = (state = initialState, action) => {
     switch (action.type) {
         case ActionType.GET_LOGIN_API_SUCCESS:
-            if (action.payload === null) {        
+            if (action.payload === null) {
                 return ({ ...state, loginLoading: false })
             }
-            else {                     
+            else {
                 return ({
-                ...state,
-                loginDataRaw: action.payload,
-                loginLoading: false,
-            })
-        }
+                    ...state,
+                    loginDataRaw: action.payload,
+                    loginLoading: false,
+                })
+            }
         case ActionType.GET_LOGIN_API:
             return ({
                 ...state,
                 loginLoading: true,
             })
+        case ActionType.GET_LOGOUT: return initialState;
         default: return state
     }
 }

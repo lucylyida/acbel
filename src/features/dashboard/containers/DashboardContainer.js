@@ -7,6 +7,9 @@ import DashStatusViewB from '../components/DashStatusViewB';
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
 import moment from 'moment'
+import { isArray } from "util";
+import { useCookies } from 'react-cookie'
+import * as route from '../../../config/route.config'
 
 const DashboardContainer = props => {
     const vendorState = useSelector(state => state.vendorReducer)
@@ -14,18 +17,20 @@ const DashboardContainer = props => {
     const weatherCurrentCityList = useSelector(state => state.weatherCountryReducer)
     const dispatch = useDispatch()
 
-    const vendorSiteData = vendorState.vendorSiteData
+    const [cookies] = useCookies(['user']);
+    cookies.user === undefined && props.history.replace(`/${route.login}`)
+    
+    const vendorSiteData = isArray(vendorState.vendorSiteData) ? vendorState.vendorSiteData : [vendorState.vendorSiteData]
 
     const wCurrentdata = weatherCurrentCityList.weatherCurrentList
     const wForecastdata = weatherCurrentCityList.weatherForecastList.length === 0 ? [] : weatherCurrentCityList.weatherForecastList[0].list
 
-    const tomorrow = wForecastdata.filter(d => moment(d.dt_txt).format('HH:mm:ss A') > 24 ?
-    console.log("hiii")
-        :
-        moment(d.dt_txt).format('YYYY-MM-DD') === moment().add(1, 'days').format("YYYY-MM-DD") &&
-        moment(d.dt_txt).format("HH:mm:ss A")
-
-    )
+    // const tomorrow = wForecastdata.filter(d => moment(d.dt_txt).format('HH:mm:ss A') > 24 ?
+    //     console.log("hiii")
+    //     :
+    //     moment(d.dt_txt).format('YYYY-MM-DD') === moment().add(1, 'days').format("YYYY-MM-DD") &&
+    //     moment(d.dt_txt).format("HH:mm:ss A")
+    // )
     // console.log({tomorrow})
     const temperature = wCurrentdata.length > 0 ? wCurrentdata[0].main.temp.toFixed(1) * 1 : 0
     const humidity = wCurrentdata.length > 0 ? wCurrentdata[0].main.humidity.toFixed(1) * 1 : 0

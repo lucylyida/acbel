@@ -7,51 +7,84 @@ import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../../../helper/fontColorHelper'
 
 const ReportGeneratorView = props => {
-    const { media } = props
+    const {
+        media,
+        vendorNameList,
+        siteNameList,
+        selectedVendor,
+        selectedSite,
+        onVendorChange,
+        onSiteChange,
+    } = props
+
     return (
-        <div className="p-2">
+        <div className="p-2 ">
             <div className="py-2" style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>REPORT GENERATION</div>
+
             <div className="d-flex flex-lg-nowrap flex-wrap">
-                <div className=" px-1 py-2 flex-fill ">
+                <div className=" px-1 py-2 flex-fill col-lg-4 col-xs-6">
                     <div style={{ fontSize: fsc(media, 13), color: '#999999' }}>TYPE OF REPORT</div>
                     <KmSelector
                         style={{ indicator: 'none' }}
                         placeholder="Select Type"
                         options={
                             [
-                                { label: 'Report1', type: '1' },
-                                { label: 'Report2', type: '2' },
-                                { label: 'Report3', type: '3' }
+                                { label: 'Report Raw', type: '1' },
                             ]
                         }
                         optionLabel='label'
                     />
                 </div>
-                <div className=" d-flex flex-wrap">
-                    <div className="px-1 py-2 flex-grow-1 flex-fill ">
-                        <div style={{ fontSize: fsc(media, 13), color: '#999999' }}>FROM</div>
-                        <div><KmDatePicker /></div>
-                    </div>
-                    <div className="px-1 py-2 flex-grow-1">
-                        <div style={{ fontSize: fsc(media, 13), color: '#999999' }}>TO</div>
-                        <div><KmDatePicker  /></div>
-                    </div>
+
+                <div className=" px-1 py-2 flex-fill col-lg-4 col-xs-6 ">
+                    <div style={{ fontSize: fsc(media, 13), color: '#999999' }}>Vendor</div>
+                    <KmSelector
+                       style={{ indicator: 'none' }}
+                         value={selectedVendor}
+                         onChange={onVendorChange}
+                         placeholder="Select Vendor"
+                         options={vendorNameList} // [ { value: 'chocolate_value', label: 'Vendor 1', type: '1' } ]
+                         optionLabel='vendor_name'
+                    />
                 </div>
-                <div className="flex-fill p-2">
+                <div className=" px-1 py-2 flex-fill col-lg-4 col-xs-6  ">
+                    <div style={{ fontSize: fsc(media, 13), color: '#999999' }}>Site</div>
+                    <KmSelector
+                        style={{ indicator: 'none' }}
+                        value={selectedSite}
+                        onChange={onSiteChange}
+                        placeholder="Select Site"
+                        options={siteNameList} // [ { value: 'chocolate_value', label: 'Site1', type: '1' }]
+
+                        optionLabel='site_name'
+                    />
+                </div>
+                <div className=" px-1 py-2 flex-fill col-lg-4 col-xs-6">
+                    <div style={{ fontSize: fsc(media, 13), color: '#999999' }}>DEVICE TYPE</div>
+                    <KmSelector
+                        style={{ indicator: 'none' }}
+                        placeholder="Select Type"
+                        options={
+                            [
+                                { label: 'Device 1', type: '1' },
+                            ]
+                        }
+                        optionLabel='label'
+                    />
+                </div>
+                <div className="px-1 py-2 flex-fill col-lg-4 col-xs-6">
+                    <div style={{ fontSize: fsc(media, 13), color: '#999999' }}> DATE</div>
+                    <div><KmDatePicker noWidth /></div>
+                </div>
+                <div className="flex-fill p-2 col-4 ">
                     <div style={{ fontSize: fsc(media, 13), color: '#999999' }}>EXPORT REPORT AS</div>
-                    <div className="d-flex">
-                        <div>
-                            <KmButtom text="PDF" noMinWidth style={{ width: 80 }} />
-                        </div>
-                        <div className="px-2">
-                            <KmButtom text="PRINT" noMinWidth style={{ width: 80 }} />
-                        </div>
-                    </div>
+                    <KmButtom text="EXPORT"
+                        onClick={() => console.log("export click")}
+                        style={{ width: 80 }}
+                    />
                 </div>
-
             </div>
-
-        </div>
+        </div >
     )
 }
 export default withMedia(ReportGeneratorView)

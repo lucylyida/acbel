@@ -24,12 +24,13 @@ export const FETCH_VENDOR_PANEL_SITES = `${BASE_URL}/vendors/2/sites/1/panels`
 
 export const FETCH_PANEL_INFO = `${BASE_URL}/vendors/panelInfo/2/sites/1`
 
-export const FETCH_SITE_PROFILE_DATA = `${BASE_URL}/vendors/1/sites/2091/profiles`
-
+export const FETCH_SITE_PROFILE_DATA = (vendorId,siteId) => `${BASE_URL}/vendors/${vendorId}/sites/${siteId}/profiles`
 
 export const FETCH_GLOBAL_HOME_STATUS_DATA = (vendorId, siteId) => vendorId === null
-    ? `${BASE_URL}/global`
-    : `${BASE_URL}/global?vendorId=${vendorId}${siteId !== null && `&siteId=${siteId}`}`
+
+  ? `${BASE_URL}/global`
+  : `${BASE_URL}/global?vendorId=${vendorId}${siteId !== null && `&siteId=${siteId}`}`
+
 
 // const apiKey ='access_key=ac450033bed7ef50c46c591214020163'
 // export const WEATHER_URL = `http://api.weatherstack.com/current?${apiKey}`

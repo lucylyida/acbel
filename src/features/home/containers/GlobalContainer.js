@@ -51,12 +51,14 @@ const GlobalContainer = props => {
     const dispatch = useDispatch()
 
     // if (selectedVendor === null) {
-    if (vendorState.isLoading/* || globalHomeStatusDataState.isLoading*/) {
-        dispatch(Action.getvendorfromapi(vendor_id))
-        dispatch(Action.getSiteListFromApi(vendor_id))
-        dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id }))
-        // return null
-    }
+
+        if (vendorState.isLoading  /* || globalHomeStatusDataState.isLoading */  ) {
+            dispatch(Action.getvendorfromapi(vendor_id))
+            dispatch(Action.getSiteListFromApi(vendor_id))
+            dispatch(Action.getGlobalHomeStatusData({vendor_id, site_id}))
+            // return null
+        }
+
     // }
 
     /*
@@ -75,7 +77,6 @@ const GlobalContainer = props => {
             // return null
         }
     }*/
-
 
     if (globalHomeStatusDataState.globalHomeStatusData.length === 0) return null
 

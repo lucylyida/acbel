@@ -19,6 +19,7 @@ function* fetchLogin(action) {
         if (loginData === null) 
             alert("username and password mismatch!")
         yield put(Action.getLoginFromApiSuccess(loginData))
+        
     } catch (error) {
         console.log({ error })
         // yield put({ type: 'FETCH_FAIL', error })

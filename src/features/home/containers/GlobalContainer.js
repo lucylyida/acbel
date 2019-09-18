@@ -17,6 +17,7 @@ import * as Action from '../../../action'
 import { useCookies } from 'react-cookie';
 
 const GlobalContainer = props => {
+
     const { match, location, media } = props
     const [cookies] = useCookies(['user']);
     const queryData = {
@@ -119,6 +120,7 @@ const GlobalContainer = props => {
 export default withMedia(GlobalContainer)
 
 const GlobalPage = props => {
+
     const pageName = props.match.params.pageName
 
     switch (pageName) {

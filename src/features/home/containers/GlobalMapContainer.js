@@ -10,12 +10,13 @@ import * as Action from '../../../action'
 
 const GlobalMapContainer = props => {
     const state = useSelector(state => state.vendorReducer)
-    const { vendorListRaw, siteNameList, siteListRaw } = state
-
-    const clientLists = siteNameList.reduce((r, c) => {
+    const { vendorListRaw, siteNameList, siteListRaw, selectedSite } = state
+    const selectedSiteList = selectedSite === null ? siteNameList : siteNameList.filter(d => d.id === selectedSite.id)
+   
+    const clientLists = selectedSiteList.reduce((r, c) => {
         const index = r.reduce((r1, c1, i1) => c1.country === c.country && c1.city === c.city ? i1 : r1, -1)
         if (r.length === 0 || index === -1) {
-            const sites = siteNameList.filter(site => site.country === c.country && site.city === c.city)
+            const sites = selectedSiteList.filter(site => site.country === c.country && site.city === c.city)
                 .map(site => ({
                     ...site,
                     name: site.site_name,
@@ -30,8 +31,8 @@ const GlobalMapContainer = props => {
             const client = ({
                 country: c.country,
                 city: c.city,
-                lat: latList.length === 0 ? 0 : latList[0], //: latList[latList.length/2], //first get median and another mean
-                lng: lngList.length === 0 ? 0 : lngList[0], //: lngList[lngList.length/2] , //first get median and another mean,
+                lat: latList[latList.length / 2] === 0 ? 0 : latList[0], //: latList[latList.length/2], //first get median and another mean
+                lng: latList[latList.length / 2] === 0 ? 0 : lngList[0], //: lngList[lngList.length/2] , //first get median and another mean,
                 sites
             })
 
@@ -39,10 +40,10 @@ const GlobalMapContainer = props => {
         } else return r
     }, [])
 
-    if (siteNameList.length === 0) return null
+    if (selectedSiteList.length === 0) return null
     return (
         <div className="mt-3">
-            <MapView clientLists={clientLists} siteNameList={siteNameList} siteListRawLength={siteListRaw.length} />
+            <MapView clientLists={clientLists} siteNameList={selectedSiteList} siteListRawLength={siteListRaw.length} />
         </div>
     )
 }

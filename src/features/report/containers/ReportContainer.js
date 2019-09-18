@@ -7,37 +7,50 @@ import ReportGenerateHistoryView from '../components/ReportGenerateHistoryView'
 
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
-
+import * as api from "../../../network-sec/api"
 
 const ReportContainer = props => {
     const { media } = props
-    const reportState = useSelector(state => state.vendorReducer)
+    const reportOfVendorState = useSelector(state => state.vendorReducer)
+    const siteReportState = useSelector(state => state.siteReportReducer)
 
     const {
         vendorNameList,
         siteNameList,
         selectedVendor,
         selectedSite,
-    } = reportState
-    const vendor_id = selectedVendor !== null ?  selectedVendor.id : null
+    } = reportOfVendorState
+
+    const vendor_id = selectedVendor !== null ? selectedVendor.id : null
     const site_id = selectedSite !== null ? selectedSite.hid : null
 
     const dispatch = useDispatch()
-    if (reportState.isLoading ) {
-        dispatch(Action.getvendorfromapi(vendor_id))
-        dispatch(Action.getSiteListFromApi(vendor_id))
+    // if (reportOfVendorState.isLoading || siteReportState.isLoading) {
+    //     dispatch(Action.getvendorfromapi(vendor_id))
+    //     dispatch(Action.getSiteListFromApi(vendor_id))
+    // }
+    // if(siteReportState.isLoading){
+    //     dispatch(Action.getSiteReportData()
+    // }
+
+    // console.log( siteReportState )
+    console.log(siteReportState)
+    if(siteReportState && siteReportState.SiteReportData!==null) {
+        window.location.href = `${api.BASE_URL}${siteReportState.SiteReportData}`  
+        // dispatch(Action.globalHandleSelectFilter({ SiteReportData: null }))
     }
 
     return (
         <div className="container-fluid px-1">
             <div className="bg-white p-2" style={{ borderRadius: 4 }}>
-                <ReportGeneratorView 
-                 vendorNameList={vendorNameList}
-                 siteNameList={siteNameList}
-                 selectedVendor={selectedVendor}
-                 selectedSite={selectedSite}
-                 onVendorChange={d => dispatch(Action.globalHandleSelectFilter({ selectedVendor: d }))}
-                 onSiteChange={d => dispatch(Action.globalHandleSelectFilter({ selectedSite: d }))}
+                <ReportGeneratorView
+                    vendorNameList={vendorNameList}
+                    siteNameList={siteNameList}
+                    selectedVendor={selectedVendor}
+                    selectedSite={selectedSite}
+                    onVendorChange={d => dispatch(Action.globalHandleSelectFilter({ selectedVendor: d }))}
+                    onSiteChange={d => dispatch(Action.globalHandleSelectFilter({ selectedSite: d }))}
+                    ondownloadReport ={ () => dispatch(Action.getSiteReportData()) }
                 />
             </div>
             <div className="pt-5">

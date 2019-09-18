@@ -15,6 +15,7 @@ const ReportGeneratorView = props => {
         selectedSite,
         onVendorChange,
         onSiteChange,
+        ondownloadReport,
     } = props
 
     return (
@@ -79,7 +80,7 @@ const ReportGeneratorView = props => {
                 <div className="flex-fill p-2 col-4 ">
                     <div style={{ fontSize: fsc(media, 13), color: '#999999' }}>EXPORT REPORT AS</div>
                     <KmButtom text="EXPORT"
-                        onClick={() => console.log("export click")}
+                        onClick={ondownloadReport}
                         style={{ width: 80 }}
                     />
                 </div>

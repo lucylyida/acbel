@@ -41,7 +41,7 @@ const ReportGeneratorView = props => {
                     <div style={{ fontSize: fsc(media, 13), color: '#999999' }}>Vendor</div>
                     <KmSelector
                        style={{ indicator: 'none' }}
-                         value={selectedVendor}
+                         value={selectedVendor } 
                          onChange={onVendorChange}
                          placeholder="Select Vendor"
                          options={vendorNameList} // [ { value: 'chocolate_value', label: 'Vendor 1', type: '1' } ]

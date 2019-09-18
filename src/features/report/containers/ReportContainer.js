@@ -13,7 +13,7 @@ const ReportContainer = props => {
     const { media } = props
     const reportOfVendorState = useSelector(state => state.vendorReducer)
     const siteReportState = useSelector(state => state.siteReportReducer)
-    console.log("report ",reportOfVendorState)
+  
     const {
         vendorNameList,
         siteNameList,
@@ -24,12 +24,12 @@ const ReportContainer = props => {
     const vendor_id = selectedVendor !== null ? selectedVendor.id : null
     const site_id = selectedSite !== null ? selectedSite.hid : null
   
-
     const dispatch = useDispatch()
-
+   
     if(siteReportState && siteReportState.SiteReportData!==null) {
         window.location.href = `${api.BASE_URL}${siteReportState.SiteReportData}`  
         // dispatch(Action.globalHandleSelectFilter({ SiteReportData: null }))
+        // console.log(`${api.BASE_URL}${siteReportState.SiteReportData}`  )
     }
 
     return (
@@ -38,11 +38,12 @@ const ReportContainer = props => {
                 <ReportGeneratorView
                     vendorNameList={vendorNameList}
                     siteNameList={siteNameList}
-                    selectedVendor={selectedVendor}
+                    selectedVendor={selectedVendor ? selectedVendor : null}
                     selectedSite={selectedSite}
                     onVendorChange={d => dispatch(Action.globalHandleSelectFilter({ selectedVendor: d }))}
                     onSiteChange={d => dispatch(Action.globalHandleSelectFilter({ selectedSite: d }))}
-                    ondownloadReport ={ () => dispatch(Action.getSiteReportData()) }
+                    ondownloadReport ={()=> dispatch(Action.getSiteReportData()) }
+                   
                 />
             </div>
             <div className="pt-5">

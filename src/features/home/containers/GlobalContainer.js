@@ -42,20 +42,19 @@ const GlobalContainer = props => {
         selectedSite,
     } = vendorState
 
-    
-    const vendor_id = selectedVendor !== null ?  selectedVendor.id : cookies.user === undefined ? undefined : cookies.user.vendor_id
+    const vendor_id = selectedVendor !== null ? selectedVendor.id : cookies.user === undefined ? undefined : cookies.user.vendor_id
     const site_id = selectedSite !== null ? selectedSite.hid : null
-   
+
     vendor_id === undefined && props.history.replace(`/${route.login}`)
     const dispatch = useDispatch()
 
     // if (selectedVendor === null) {
-        if (vendorState.isLoading  /* || globalHomeStatusDataState.isLoading */  ) {
-            dispatch(Action.getvendorfromapi(vendor_id))
-            dispatch(Action.getSiteListFromApi(vendor_id))
-            dispatch(Action.getGlobalHomeStatusData({vendor_id, site_id}))
-            // return null
-        }
+    if (vendorState.isLoading  /* || globalHomeStatusDataState.isLoading */) {
+        dispatch(Action.getvendorfromapi(vendor_id))
+        dispatch(Action.getSiteListFromApi(vendor_id))
+        dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id }))
+        // return null
+    }
     // }
 
     /*

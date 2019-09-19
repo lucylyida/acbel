@@ -11,6 +11,7 @@ function* fetchVendor(action) {
             .then(response => response.json())
             .then(data => data.payload)
         const vendorArray = Array.isArray(vendors) ? vendors : [vendors]
+        // console.log(vendorArray)
         yield put({ type: ActionType.GET_VENDOR_SUCCESS, payload: vendorArray })
     } catch (error) {
         yield put({ type: 'FETCH_FAIL', error })

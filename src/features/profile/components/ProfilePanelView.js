@@ -26,9 +26,12 @@ const ProfilePanelView = props => {
     return (
         <div className="p-4 h-100" style={{ backgroundColor: '#FFFFFF', borderRadius: 4 }}>
             <div className='p-2' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"PANELS"}</div>
-            <div className="flex-fill py-2">
-                <FourItemBox value={totalPanel} desc={"NO. OF PANELS"} unit={'Panels'} />
-            </div>
+            {
+                totalPanel !== null &&
+                <div className="flex-fill py-2">
+                    <FourItemBox value={totalPanel} desc={"NO. OF PANELS"} unit={'Panels'} />
+                </div>
+            }
 
             <div className='p-2' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"PANELS SPEC/BRAND MODEL"}</div>
 

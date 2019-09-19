@@ -28,7 +28,7 @@ const ReportGeneratorView = props => {
         ondownloadReport,
 
     } = props
-    // console.log(selectedDate)
+    
     return (
         <div className="p-2 ">
             <div className="py-2" style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>REPORT GENERATION</div>
@@ -68,8 +68,11 @@ const ReportGeneratorView = props => {
                         value={selectedSite}
                         onChange={onSiteChanged}
                         placeholder="Select Site"
-                        options={siteNameList} // [ { value: 'chocolate_value', label: 'Site1', type: '1' }]
-
+                        // options={siteNameList.reduce((acc,cv,i)=> console.log(cv.vendor_id ? cv.site_name: "hello"),0  )} // [ { value: 'chocolate_value', label: 'Site1', type: '1' }]
+                        options={selectedVendor ? 
+                            siteNameList.filter(c => c.vendor_id === selectedVendor.id)
+                              : 
+                            siteNameList} 
                         optionLabel='site_name'
                     />
                 </div>

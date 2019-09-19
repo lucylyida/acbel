@@ -16,22 +16,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
 
 const SiteNavbar = props => {
-    const { match, location, history, media } = props
-    const warning = 0
-    const good = 14
-    const bad = 35
-    const vendorState = useSelector(state => state.vendorReducer)
-    const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId }
-
-    const selectSite = vendorState.siteNameList.reduce((r, c) =>
-        c.vendor_id === parseInt(bodyData.vendor_id) && c.hid === bodyData.site_id ? c : r
-        , null)
-
-    const dispatch = useDispatch()
-
-    if (vendorState.isLoading) {
-        dispatch(Action.getSiteListFromApi({ vendor_id: bodyData.vendor_id, site_id: null }))
-    }
+    const { match, location, history, media, selectSite } = props    
+    // const warning = 0
+    // const good = 14
+    // const bad = 35
 
     return (
         <div className="container-fluid px-0 py-3">

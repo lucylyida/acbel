@@ -6,9 +6,10 @@ import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../helper/fontColorHelper'
 
 const KmDatePicker = props => {
-    const { place = "auto-end", media, noMinWidth = true, style = {}, noWidth,noIcon } = props
-    const [startDate, setStartDate] = useState(new Date())
-    const [value, setValue] = useState(startDate)
+    const { place = "auto-end", media, noMinWidth = true, style = {}, noWidth,noIcon, onChange,value } = props
+    // console.log(value)
+    // const [startDate, setStartDate] = useState(new Date())
+    // const [value, setValue] = useState(startDate)
     return (
         <DatePicker
             className=""
@@ -19,8 +20,8 @@ const KmDatePicker = props => {
             placeholderText="calendar"
             customInput={<InputField media={media} noMinWidth={noMinWidth} style={style} noWidth={noWidth} noIcon={noIcon} />}
             value={value}
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
+            selected={value}
+            onChange={onChange}
         />
     )
 }

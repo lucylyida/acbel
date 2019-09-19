@@ -23,6 +23,7 @@ const GlobalListContainer = props => {
         currentOutput: v.powerOutput, efficiency: v.efficiencyRa, siteStatus: v.isOnline === true ? "Online" : "Offline",
         more: "MORE INFO"
     }))
+
     // const sites = siteNameList.map(v => v.vendor_id)
     // console.log({sites})
 
@@ -38,10 +39,10 @@ const GlobalListContainer = props => {
                         highlightOnHover={true}
                         style={{ borderRadius: 6, whiteSpace: 'nowrap', }}
                         customTheme={tableTheme(media)}
-                        pagination={true}
+                        pagination={false}
                         paginationDefaultPage={1}
                         paginationTotalRows={data.length}
-                        paginationPerPage={6}
+                        paginationPerPage={2}
                         customPagination={true}
                     />
                 </div>

@@ -91,13 +91,13 @@ export const getSiteProfileDataSuccess = (data) => {
         payload: data,
     }
 }
-export const getSiteReportData =()=>{
+export const getSiteReportData =(data)=>{
     return{
-        type:Action.GET_SITE_REPORT_DATA
+        type:Action.GET_SITE_REPORT_DATA,
+        payload: data
     }
 }
 export const getSiteReportDataSuccess =(data)=>{
-    console.log("DDD,", data)
     return{
         type:Action.GET_SITE_REPORT_DATA_SUCCESS,
         payload:data
@@ -124,5 +124,12 @@ export const globalHandleSelectFilter = filterData => {
     return {
         type: Action.GLOBAL_HANDLE_SELECT_FILTER,
         payload: filterData
+    }
+}
+
+export const reportHandleChanged = data => {
+    return {
+        type: Action.REPORT_HANDLE_CHANGED,
+        payload: data
     }
 }

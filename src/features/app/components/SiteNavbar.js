@@ -30,10 +30,8 @@ const SiteNavbar = props => {
     const dispatch = useDispatch()
 
     if (vendorState.isLoading) {
-        dispatch(Action.getSiteListFromApi(bodyData.vendor_id))
+        dispatch(Action.getSiteListFromApi({ vendor_id: bodyData.vendor_id, site_id: null }))
     }
-
-    if (selectSite === null) return null
 
     return (
         <div className="container-fluid px-0 py-3">
@@ -58,36 +56,36 @@ const SiteNavbar = props => {
                     </a>
                 </div>
                 <div className="d-flex flex-column justify-content-center pl-2" style={{ lineHeight: '1.3' }}>
-                    <div style={{ color: "#2244aa", fontSize: fsc(media, 28) }}>{selectSite.site_name}</div>
+                    <div style={{ color: "#2244aa", fontSize: fsc(media, 28) }}>{selectSite !== null && selectSite.site_name}</div>
                     <div style={{ color: "gray" }} >
-                        {`${selectSite.location} City, ${selectSite.country}`}
+                        {selectSite !== null && `${selectSite.location} City, ${selectSite.country}`}
                     </div>
                 </div>
                 <div style={{ flex: 1 }} />
 
                 <div className="d-flex justify-content-center align-items-center pr-2" style={window.innerWidth <= 355 ? { position: 'absolute', right: 0, top: 35 } : {}}>
-                    <div style={{ cursor: 'pointer' }}>
+                    {/* <div style={{ cursor: 'pointer' }}>
                         <Flag width={24} height={24} />
                         <span className="px-3 font-weight-bold">UK English</span>
-                    </div>
-                    {/* <KmDropdown
+                    </div> */}
+                    <KmDropdown
                         labelHide={media.mobile}
                         onClick={() => console.log('click')}
                         selectedItem={{ icon: <Flag width={24} height={24} />, text: 'UK English' }}
                         data={[
-                            { icon: <ThaiwanFlag width={24} height={24} />, text: 'TW ThaiWan' },
-                            { icon: <ThaiFlag width={24} height={24} />, text: 'TH Thailand' },
-                            { icon: <SgFlag width={24} height={24} />, text: 'Sg Singapore' },
+                            // { icon: <ThaiwanFlag width={24} height={24} />, text: 'TW ThaiWan' },
+                            // { icon: <ThaiFlag width={24} height={24} />, text: 'TH Thailand' },
+                            // { icon: <SgFlag width={24} height={24} />, text: 'Sg Singapore' },
                             { icon: <Flag width={24} height={24} />, text: 'UK English' }
                         ]}
                         style={{ backgroundColor: '#e5e5e5' }}
-                    /> */}
+                    />
                 </div>
             </div>
 
             <div className="d-flex flex-row flex-wrap align-items-baseline py-3 px-1">
                 <div className="py-1 d-flex flex-direction-row" style={{ overflowX: 'auto' }}>
-                    <div className="pr-3" style={{ opacity: 0.3 }}><KmLink text="Dashboard" currentLink={location.pathname + location.search} /></div>
+                    <div className="pr-3" ><KmLink text="Dashboard" to={`${match.url}/${route.dashboard}${location.search}`} currentLink={location.pathname + location.search} /></div>
                     <div className="pr-3" style={{ opacity: 0.3 }}><KmLink text="Forecast" currentLink={location.pathname + location.search} /></div>
                     <div className="pr-3" style={{ opacity: 0.3 }}><KmLink text="Revenue" currentLink={location.pathname + location.search} /></div>
                     <div className="pr-3" style={{ opacity: 0.3 }}><KmLink text="Maintenance" currentLink={location.pathname + location.search} /></div>
@@ -107,7 +105,7 @@ const SiteNavbar = props => {
                     <div className="pr-3"><KmLink text="Report" to={`${match.url}/${route.report}${location.search}`} currentLink={location.pathname + location.search} /></div>
                 </div> */}
                 <div style={{ flex: 1 }} />
-                <KmDropdown
+                {/* <KmDropdown
                     labelHide={true}
                     onClick={() => console.log('click')}
                     selectedItem={{ icon: <AlertsNavbar warning={warning} bad={bad} good={good} /> }}
@@ -116,7 +114,7 @@ const SiteNavbar = props => {
                         { text: 'Rule Setup and Management' },
                     ]}
                     style={{ backgroundColor: ' #2244aa', color: '#ffffff' }}
-                />
+                /> */}
             </div>
         </div >
     )
@@ -124,15 +122,15 @@ const SiteNavbar = props => {
 
 export default withRouter(withMedia(SiteNavbar))
 
-const AlertsNavbar = props => {
-    const { warning, bad, good } = props
-    return (
-        <div className="d-flex align-items-center pr-2 pt-2">
-            <div className="d-flex pl-3" style={{ fontSize: 16, color: 'gray' }}>{"Alerts"}</div>&nbsp;
-            <div className="d-flex align-items-center py-1 px-3" style={{ backgroundColor: '#FDEDB2', borderRadius: 40, fontSize: 12 }}><i className="fa fa-circle pr-1" style={{ color: 'orange', fontSize: 10 }} />{warning}</div>&nbsp;
-            <div className="d-flex align-items-center py-1 px-3" style={{ backgroundColor: '#FBD2B3', borderRadius: 40, fontSize: 12 }}><i className="fa fa-circle pr-1" style={{ color: 'red', fontSize: 10 }} />{bad}</div>&nbsp;
-            <div className="d-flex align-items-center py-1 px-3" style={{ backgroundColor: '#DCEF93', borderRadius: 40, fontSize: 12 }}><i className="fa fa-circle pr-1" style={{ color: 'green', fontSize: 10 }} />{good}</div>
-            <i className="fa fa-caret-down pl-2" style={{ fontSize: 18, color: 'gray' }} />
-        </div>
-    )
-} 
+// const AlertsNavbar = props => {
+//     const { warning, bad, good } = props
+//     return (
+//         <div className="d-flex align-items-center pr-2 pt-2">
+//             <div className="d-flex pl-3" style={{ fontSize: 16, color: 'gray' }}>{"Alerts"}</div>&nbsp;
+//             <div className="d-flex align-items-center py-1 px-3" style={{ backgroundColor: '#FDEDB2', borderRadius: 40, fontSize: 12 }}><i className="fa fa-circle pr-1" style={{ color: 'orange', fontSize: 10 }} />{warning}</div>&nbsp;
+//             <div className="d-flex align-items-center py-1 px-3" style={{ backgroundColor: '#FBD2B3', borderRadius: 40, fontSize: 12 }}><i className="fa fa-circle pr-1" style={{ color: 'red', fontSize: 10 }} />{bad}</div>&nbsp;
+//             <div className="d-flex align-items-center py-1 px-3" style={{ backgroundColor: '#DCEF93', borderRadius: 40, fontSize: 12 }}><i className="fa fa-circle pr-1" style={{ color: 'green', fontSize: 10 }} />{good}</div>
+//             <i className="fa fa-caret-down pl-2" style={{ fontSize: 18, color: 'gray' }} />
+//         </div>
+//     )
+// } 

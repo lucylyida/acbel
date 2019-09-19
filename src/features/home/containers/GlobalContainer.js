@@ -52,7 +52,7 @@ const GlobalContainer = props => {
     // if (selectedVendor === null) {
     if (vendorState.isLoading  /* || globalHomeStatusDataState.isLoading */) {
         dispatch(Action.getvendorfromapi(vendor_id))
-        dispatch(Action.getSiteListFromApi(vendor_id))
+        dispatch(Action.getSiteListFromApi({ vendor_id, site_id }))
         dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id }))
         // return null
     }

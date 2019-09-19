@@ -18,7 +18,7 @@ const KmDropdown = props => {
                 style={{ backgroundColor: style ? style.backgroundColor : null, }}>
                 {
                     data.map((v, k) =>
-                        <div key={k} className="dropdown-item py-2" style={{ fontSize: fsc(media, 14), opacity: 0.5 }}
+                        <div key={k} className="dropdown-item py-2" style={{ fontSize: fsc(media, 14) }}
                         // onClick={() => onClick(v)}
                         // onMouseOver={e => e.target.style.backgroundColor = '#00000000'}
                         // onMouseOut={e => e.target.style.backgroundColor = style.background}

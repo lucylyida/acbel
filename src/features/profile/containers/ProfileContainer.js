@@ -11,6 +11,7 @@ import * as route from '../../../config/route.config'
 const ProfileContainer = props => {
 
     const siteProfileDataState = useSelector(state => state.siteProfileDataReducer)
+    
     const dispatch = useDispatch()
     const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId }
 
@@ -20,12 +21,13 @@ const ProfileContainer = props => {
     if (siteProfileDataState.isLoading) {
         dispatch(Action.getSiteProfileData(bodyData))
     }
+
     if (siteProfileDataState.siteProfileDataRaw.length === 0) return null
 
     const siteProfileData = siteProfileDataState.siteProfileDataRaw[0]
 
-    if (siteProfileData === undefined) return null
-    
+    // console.log(siteProfileData)
+
     return (
         <div className="container-fluid p-0">
             <div className="row m-0">
@@ -35,6 +37,8 @@ const ProfileContainer = props => {
                         startDate={siteProfileData.startDate}
                         priceSetup={siteProfileData.priceSetup}
                         capacity={siteProfileData.siteCapacity}
+                        vendorId={siteProfileData.vendorId}
+                        siteId={siteProfileData.siteId}
                     />
                 </div>
 

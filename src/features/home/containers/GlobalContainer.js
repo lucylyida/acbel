@@ -15,6 +15,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
 
 import { useCookies } from 'react-cookie';
+import { tsConstructSignatureDeclaration } from "@babel/types";
 
 const GlobalContainer = props => {
 
@@ -43,14 +44,22 @@ const GlobalContainer = props => {
         selectedSite,
     } = vendorState
 
-    const vendor_id = selectedVendor !== null ? selectedVendor.id : cookies.user === undefined ? undefined : cookies.user.vendor_id
-    const site_id = selectedSite !== null ? selectedSite.hid : null
+    cookies.user === undefined && props.history.replace(`/${route.login}`)
 
-    vendor_id === undefined && props.history.replace(`/${route.login}`)
+    const vendor_id = selectedSite !== null
+        ? selectedSite.vendor_id
+        : selectedVendor !== null
+            ? selectedVendor.id
+            : cookies.user.vendor_id
+
+    const site_id = selectedSite !== null ? parseInt(selectedSite.hid) : null
+
     const dispatch = useDispatch()
 
     // if (selectedVendor === null) {
     if (vendorState.isLoading  /* || globalHomeStatusDataState.isLoading */) {
+        // console.log(vendor_id, site_id)
+        // console.log({ selectedVendor, selectedSite })
         dispatch(Action.getvendorfromapi(vendor_id))
         dispatch(Action.getSiteListFromApi({ vendor_id, site_id }))
         dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id }))
@@ -77,22 +86,24 @@ const GlobalContainer = props => {
 
     if (globalHomeStatusDataState.globalHomeStatusData.length === 0) return null
 
+    const homeStatusData = globalHomeStatusDataState.globalHomeStatusData
+    console.log({homeStatusData})
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
             <GlobalNavbar {...props} />
             <div className="d-flex flex-row flex-wrap flex-md-nowrap">
                 <div className="flex-grow-1">
                     <LeftSidebar
-                        online={218}
-                        offline={12}
+                        online={homeStatusData.total_online_sites}
+                        offline={homeStatusData.total_offline_sites}
                         siteChoose={true}
-                        active={true}
+                        // active={true}
                         efficiency={100}
-                        capacity={170.00}
+                        capacity={homeStatusData.total_capacity_kw}
                     />
                 </div>
                 <div className="w-100 pb-2">
-                    <HomeStatusView data={globalHomeStatusDataState.globalHomeStatusData} />
+                    <HomeStatusView data={homeStatusData} />
                     <HomefilterView
                         vendorNameList={vendorNameList}
                         siteNameList={siteNameList}

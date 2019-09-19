@@ -11,7 +11,7 @@ import * as route from '../../../config/route.config'
 const ProfileContainer = props => {
 
     const siteProfileDataState = useSelector(state => state.siteProfileDataReducer)
-    
+
     const dispatch = useDispatch()
     const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId }
 
@@ -22,9 +22,13 @@ const ProfileContainer = props => {
         dispatch(Action.getSiteProfileData(bodyData))
     }
 
-    if (siteProfileDataState.siteProfileDataRaw.length === 0) return null
-
-    const siteProfileData = siteProfileDataState.siteProfileDataRaw[0]
+    const siteProfileData = siteProfileDataState.siteProfileDataRaw.length === 0 ?
+        {
+            vendorId: null, siteId: null, siteName: null,
+            startDate: null, siteCapacity: null, priceSetup: null,
+            inverters: [], panels: [], amtInverter: null, amtPanel: null
+        } :
+        siteProfileDataState.siteProfileDataRaw[0]
 
     // console.log(siteProfileData)
 
@@ -37,8 +41,8 @@ const ProfileContainer = props => {
                         startDate={siteProfileData.startDate}
                         priceSetup={siteProfileData.priceSetup}
                         capacity={siteProfileData.siteCapacity}
-                        vendorId={siteProfileData.vendorId}
-                        siteId={siteProfileData.siteId}
+                        vendorId={bodyData.vendor_id}
+                        siteId={bodyData.site_id}
                     />
                 </div>
 
@@ -47,7 +51,6 @@ const ProfileContainer = props => {
                         <ProfileInverterView
                             totalInverter={siteProfileData.amtInverter}
                             inverterDetailList={siteProfileData.inverters}
-
                         />
                     </div>
                     <div className="px-1 pt-1">

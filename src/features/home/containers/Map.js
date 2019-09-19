@@ -29,6 +29,7 @@ export class MapContainer extends Component {
         }
         this.mapRef = React.createRef()
     }
+   
     componentDidMount() {
         const { clientLists } = this.props
         const { vendor_id } = this.state
@@ -38,7 +39,7 @@ export class MapContainer extends Component {
         })
         mmap.map.addListener("bounds_changed", () => {
             const mapBound = mmap.map.getBounds()
-            // console.log(mapBound)
+          
             const clientLocs = clientLists.filter(v => mapBound.contains({ lat: v.lat, lng: v.lng }))
             const clientLocs2 = clientLocs.length >= 1 ? clientLocs : clientLists
             const listToShow = (clientLocs.length > 1 && mmap.map.zoom <= 10) ? clientLocs : clientLocs2.reduce((r, c) => {
@@ -46,26 +47,26 @@ export class MapContainer extends Component {
                 return [...r, ...sitesLocs]
             }, [])
 
-          
+
             this.setState({ stores: listToShow, isClientToShow: mmap.map.zoom <= 10 && (vendor_id > -1 || clientLocs.length > 0), isShowInfoWindow: clientLocs.lenght >= 1 })
         })
     }
-    shouldComponentUpdate(nextProps, nextState) {
-        if (!equal(this.props, nextProps) || !equal(this.state, nextState)) { return true; } else { return false; }
-    }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     if (!equal(this.props, nextProps) || !equal(this.state, nextState)) { return true; } else { return false; }
+    // }
 
 
-    UNSAFE_componentWillUpdate(nextProps, nextState) {
-        // console.log("willUpdate")
-        // const mmap = this.mapRef.current
-        // const { siteNameList, google, siteListRawLength } = nextProps
-        // const dd = siteNameList.map(v => ({ lat: v.latitude, lng: v.longitude }))
-        // const lat = siteNameList[0].latitude
-        // const lng = siteNameList[0].longitude
-        // // mmap.map.setCenter(new google.maps.LatLng(lat, lng))
-        // const all_sites = siteNameList.length
-        // if (all_sites < siteListRawLength) { return mmap.map.setCenter(new google.maps.LatLng(lat, lng)) } else { return null }
-    }
+    // UNSAFE_componentWillUpdate(nextProps, nextState) {
+    //     console.log("willUpdate")
+    //     const mmap = this.mapRef.current
+    //     const { siteNameList, google, siteListRawLength } = nextProps
+    //     const dd = siteNameList.map(v => ({ lat: v.latitude, lng: v.longitude }))
+    //     const lat = siteNameList[0].latitude
+    //     const lng = siteNameList[0].longitude
+    //     // mmap.map.setCenter(new google.maps.LatLng(lat, lng))
+    //     const all_sites = siteNameList.length
+    //     if (all_sites < siteListRawLength) { return mmap.map.setCenter(new google.maps.LatLng(lat, lng)) } else { return null }
+    // }
 
     _markerDisplay = () => {
         const { stores, isClientToShow } = this.state
@@ -102,7 +103,7 @@ export class MapContainer extends Component {
                 >
                 </Marker>
             }) :
-            stores.map((store, index) => {      
+            stores.map((store, index) => {
                 return < Marker
                     icon={icon}
                     title={store.name}

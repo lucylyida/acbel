@@ -87,7 +87,6 @@ const GlobalContainer = props => {
     if (globalHomeStatusDataState.globalHomeStatusData.length === 0) return null
 
     const homeStatusData = globalHomeStatusDataState.globalHomeStatusData
-    console.log({homeStatusData})
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
             <GlobalNavbar {...props} />

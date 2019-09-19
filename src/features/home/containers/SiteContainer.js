@@ -8,18 +8,31 @@ import SiteNavbar from "../../app/components/SiteNavbar"
 import { withPageLoading } from "../../app/hoc/withLoading"
 import LeftSidebar from "../../app/components/LeftSidebar";
 
-const DashboardContainer = React.lazy(() => import("../../dashboard/containers/DashboardContainer"))
-const ForecastContainer = React.lazy(() => import("../../forecast/containers/ForecastContainer"))
-const MaintenanceContainer = React.lazy(() => import("../../maintenance/containers/MaintenanceContainer"))
-const ProfileContainer = React.lazy(() => import("../../profile/containers/ProfileContainer"))
-const InverterContainer = React.lazy(() => import("../../inverter/containers/InverterContainer"))
-const PanelContainer = React.lazy(() => import("../../panel/containers/PanelContainer"))
-const RevenueContainer = React.lazy(() => import("../../revenue/containers/RevenueContainer"))
-const ReportContainer = React.lazy(() => import("../../report/containers/ReportContainer"));
+// const DashboardContainer = React.lazy(() => import("../../dashboard/containers/DashboardContainer"))
+// const ForecastContainer = React.lazy(() => import("../../forecast/containers/ForecastContainer"))
+// const MaintenanceContainer = React.lazy(() => import("../../maintenance/containers/MaintenanceContainer"))
+// const ProfileContainer = React.lazy(() => import("../../profile/containers/ProfileContainer"))
+// const InverterContainer = React.lazy(() => import("../../inverter/containers/InverterContainer"))
+// const PanelContainer = React.lazy(() => import("../../panel/containers/PanelContainer"))
+// const RevenueContainer = React.lazy(() => import("../../revenue/containers/RevenueContainer"))
+// const ReportContainer = React.lazy(() => import("../../report/containers/ReportContainer"));
 
+import DashboardContainer from "../../dashboard/containers/DashboardContainer"
+import ForecastContainer from "../../forecast/containers/ForecastContainer"
+import MaintenanceContainer from "../../maintenance/containers/MaintenanceContainer"
+import ProfileContainer from "../../profile/containers/ProfileContainer"
+import InverterContainer from "../../inverter/containers/InverterContainer"
+import PanelContainer from "../../panel/containers/PanelContainer"
+import RevenueContainer from "../../revenue/containers/RevenueContainer"
+import ReportContainer from "../../report/containers/ReportContainer"
+
+import { useSelector, useDispatch } from 'react-redux'
+import * as Action from '../../../action'
+import { useCookies } from 'react-cookie';
 
 const SiteContainer = props => {
     const { match, location, media } = props
+    const [cookies] = useCookies(['user']);
     const queryData = {
         siteId: 1,
         siteName: "Organic Farmer's Association",
@@ -27,15 +40,44 @@ const SiteContainer = props => {
         country: "Taiwan"
     }
     // const queryDataEnc = enc(queryData)
+    const vendorState = useSelector(state => state.vendorReducer)
+    const {
+        vendorNameList,
+        siteNameList,
+        selectedVendor,
+        selectedSite,
+    } = vendorState
+
+    cookies.user === undefined && props.history.replace(`/${route.login}`)
+
+    const vendor_id = selectedSite !== null
+        ? selectedSite.vendor_id
+        : selectedVendor !== null
+            ? selectedVendor.id
+            : cookies.user.vendor_id
+
+    const site_id = selectedSite !== null ? selectedSite.hid : null
+    const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId }
+
+    const selectSite = vendorState.siteNameList.reduce((r, c) =>
+        c.vendor_id === parseInt(bodyData.vendor_id) && c.hid === bodyData.site_id ? c : r
+        , null)
+
+    const dispatch = useDispatch()
+
+    if (vendorState.isLoading) {
+        dispatch(Action.getvendorfromapi(vendor_id))
+        dispatch(Action.getSiteListFromApi({ vendor_id: bodyData.vendor_id, site_id: site_id }))
+    }
 
     return (
         <div className={`container-fluid ${media.mobile ? "px-0" : "px-4"}`}>
-            <SiteNavbar {...props} />
+            <SiteNavbar {...props} selectSite={selectSite} />
             <div className="d-flex flex-row flex-wrap flex-md-nowrap">
                 <div className="flex-grow-1">
                     <LeftSidebar
-                        online={218} offine={12} siteChoose={true} active={true} efficiency={100} capacity={170.00}
-                        siteName={"Organic Farmer's Association"}
+                        online={218} offline={12} siteChoose={true} active={selectSite === null ? false : selectSite.isOnline} efficiency={100} capacity={170.00}
+                        siteName={selectSite === null ? null : selectSite.site_name}
                     />
                 </div>
                 <div className="w-100 pb-3" style={{ overflow: 'hidden' }}>

@@ -5,6 +5,7 @@ import * as api from "../network-sec/api"
 
 function* fetchGlobalHomeStatusData(action){
     const body = action.payload
+    console.log(body.site_id)
     try {
         const globalhomestatusdata = yield fetch(api.FETCH_GLOBAL_HOME_STATUS_DATA(body.vendor_id, body.site_id))
             .then(response => response.json())

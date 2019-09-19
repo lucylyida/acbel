@@ -17,6 +17,8 @@ const ReportContainer = props => {
     const vendorState = useSelector(state => state.vendorReducer)
     const reportState = useSelector(state => state.siteReportReducer)
 
+    // console.log(vendorState)
+
     // const vendor_id = selectedVendor !== null ? selectedVendor.id : null
     // const site_id = selectedSite !== null ? selectedSite.hid : null
 
@@ -24,12 +26,12 @@ const ReportContainer = props => {
 
     // if (reportState && reportState.SiteReportData !== null) {
 
-        //   window.location.href = `${api.BASE_URL}${reportState.SiteReportData}` 
-        // dispatch(Action.globalHandleSelectFilter({ SiteReportData: null }))
-        //  console.log(`${api.BASE_URL}${siteReportState.SiteReportData}`  )
-        //  console.log("hello")
-        // dispatch(Action.getSiteReportData(null))
-        
+    //   window.location.href = `${api.BASE_URL}${reportState.SiteReportData}` 
+    // dispatch(Action.globalHandleSelectFilter({ SiteReportData: null }))
+    //  console.log(`${api.BASE_URL}${siteReportState.SiteReportData}`  )
+    //  console.log("hello")
+    // dispatch(Action.getSiteReportData(null))
+
     // }
 
 
@@ -40,12 +42,12 @@ const ReportContainer = props => {
                 <ReportGeneratorView
                     vendorNameList={vendorState.vendorNameList}
                     siteNameList={vendorState.siteNameList}
-                    
+
                     selectedVendor={reportState.selectedVendor}
                     selectedSite={reportState.selectedSite}
                     selectedReportType={reportState.selectedReportType}
                     selectedDeviceType={reportState.selectedDeviceType}
-                    selectedDate= {reportState.selectedDate}
+                    selectedDate={reportState.selectedDate}
 
                     onVendorChanged={d => dispatch(Action.reportHandleChanged({ selectedVendor: d }))}
                     onSiteChanged={d => dispatch(Action.reportHandleChanged({ selectedSite: d }))}
@@ -61,7 +63,7 @@ const ReportContainer = props => {
                         //     selectedReportType: reportState.selectedReportType, 
                         //     selectedDeviceType: reportState.selectedDeviceType, 
                         //     selectedDate: reportState.selectedDate })
-                        const { 
+                        const {
                             selectedVendor,
                             selectedSite,
                             selectedReportType,

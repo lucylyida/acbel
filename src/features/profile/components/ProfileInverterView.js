@@ -6,7 +6,7 @@ import FourItemBox from '../../app/components/FourItemBox';
 
 
 const ProfileInverterView = props => {
-    const { media, totalInverter, inverterDetailList } = props   
+    const { media, totalInverter, inverterDetailList } = props
 
     const tblInfo = inverterDetailList.reduce((r, c, i) =>
         [...r, { id: i + 1, brand: c.brand, model: c.model, spec: c.spec, amount: c.amount }]
@@ -27,9 +27,12 @@ const ProfileInverterView = props => {
     return (
         <div className="p-4" style={{ backgroundColor: '#FFFFFF', borderRadius: 4 }}>
             <div className='p-2' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"INVERTERS"}</div>
-            <div className="flex-fill py-2">
-                <FourItemBox value={totalInverter} desc={"NO. OF INVERTERS"} unit={'Inverters'} />
-            </div>
+            {
+                totalInverter !== null && 
+                <div className="flex-fill py-2">
+                    <FourItemBox value={totalInverter} desc={"NO. OF INVERTERS"} unit={'Inverters'} />
+                </div>
+            }
 
             <div className='p-2' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"INVERTERS SPEC/BRAND MODEL"}</div>
             <div className=" d-flex flex-wrap pt-0">

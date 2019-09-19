@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Route, Link, Switch, Redirect } from "react-router-dom"
 import * as route from "../../../config/route.config"
 import { withMedia } from "react-media-query-hoc"
@@ -33,7 +33,8 @@ const GlobalContainer = props => {
     const globalHomeStatusDataState = useSelector(state => state.globalReducer)
     const dispatch = useDispatch()
 
-    if (cookies.user === undefined) props.history.push(`/${route.login}`)
+    cookies.user === undefined && props.history.push(`/${route.login}`)
+
 
     const {
         vendorNameList,

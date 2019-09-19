@@ -26,7 +26,6 @@ const Login = props => {
     }
 
     if (state.loginDataRaw === null) {
-        props.history.block()
         if (cookies.user !== undefined) {
             removeCookie('user', { path: '/' })
         }

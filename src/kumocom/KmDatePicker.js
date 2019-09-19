@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import DatePicker from 'react-datepicker'
-import "react-datepicker/dist/react-datepicker.css";
+ import "react-datepicker/dist/react-datepicker.css";
 
 import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../helper/fontColorHelper'
@@ -13,7 +13,7 @@ const KmDatePicker = props => {
     return (
         <DatePicker
             className=""
-            calendarClassName=""
+            calendarClassName=" "
             popperClassName=""
             popperPlacement={place}
             tabIndex={1}

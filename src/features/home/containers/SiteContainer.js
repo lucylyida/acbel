@@ -43,7 +43,7 @@ const SiteContainer = props => {
     const vendorState = useSelector(state => state.vendorReducer)
     const dispatch = useDispatch()
 
-    cookies.user === undefined && props.history.push(`/${route.login}`)
+    
 
     const {
         vendorNameList,
@@ -68,7 +68,12 @@ const SiteContainer = props => {
         , null)
 
     
-    const token = cookies.user.token
+    const token = cookies.user=== undefined ? undefined : cookies.user.token
+
+    if(token === undefined){
+        props.history.replace(`/${route.login}`)
+        return null
+    }
  
     if (vendorState.isLoading) {
         dispatch(Action.getvendorfromapi({ vendor_id, token }))

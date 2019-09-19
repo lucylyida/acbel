@@ -33,7 +33,7 @@ const GlobalContainer = props => {
     const globalHomeStatusDataState = useSelector(state => state.globalReducer)
     const dispatch = useDispatch()
 
-    // cookies.hasOwnProperty('user') && props.history.push(`/${route.login}`)
+    // cookies.hasOwnProperty('user') === false  && props.history.replace(`/${route.login}`)
 
     const {
         vendorNameList,
@@ -53,13 +53,13 @@ const GlobalContainer = props => {
             ? selectedVendor.id
             : cookies.user !== undefined ? cookies.user.vendor_id : undefined
 
-    const token = cookies.user.token
+    const token = cookies.user === undefined ? undefined : cookies.user.token
 
+    if(token === undefined) {
+        props.history.replace(`/${route.login}`)
+        return null
+    }
     const site_id = selectedSite !== null ? parseInt(selectedSite.hid) : null
-
-
-
-
 
 
     // if (selectedVendor === null) {

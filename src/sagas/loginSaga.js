@@ -15,12 +15,15 @@ function* fetchLogin(action) {
         })
             .then(response => response.json())
             .then(data => data.payload)
-            
-        if (loginData === null) 
+
+        if (loginData === null)
             alert("username and password mismatch!")
+
         yield put(Action.getLoginFromApiSuccess(loginData))
-        
+
     } catch (error) {
+        alert("network connection failed...")
+        yield put(Action.getLoginFromApiSuccess('error'))
         console.log({ error })
         // yield put({ type: 'FETCH_FAIL', error })
     }

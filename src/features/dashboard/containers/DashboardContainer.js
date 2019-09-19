@@ -19,7 +19,8 @@ const DashboardContainer = props => {
 
     const [cookies] = useCookies(['user']);
     cookies.user === undefined && props.history.replace(`/${route.login}`)
-    
+    const token = cookies.user.token
+
     const vendorSiteData = isArray(vendorState.vendorSiteData) ? vendorState.vendorSiteData : [vendorState.vendorSiteData]
 
     const wCurrentdata = weatherCurrentCityList.weatherCurrentList
@@ -36,7 +37,7 @@ const DashboardContainer = props => {
     const humidity = wCurrentdata.length > 0 ? wCurrentdata[0].main.humidity.toFixed(1) * 1 : 0
     const wind = wCurrentdata.length > 0 ? wCurrentdata[0].wind.speed.toFixed(1) * 1 : 0
 
-    const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId }
+    const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId, token }
 
 
     if (weatherCurrentCityList.isLoading || vendorState.isLoading) {

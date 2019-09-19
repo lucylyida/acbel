@@ -1,4 +1,5 @@
-import Action from '../action/action'
+// import Action from '../action/action'
+import  Action from '../action/action'
 import equal from "deep-equal"
 //@nayhtet
 const initialState = {
@@ -81,9 +82,9 @@ const vendorReducer = (state = initialState, action) => {
                 .filter((it, i, ar) => ar.reduce((r1, c1, i1) => c1.name === it.name ? i1 : r1, -1) === i)
             const siteNameList = state.siteListRaw
                 .filter(v => selectedVendor ? v.vendor_id === selectedVendor.id : true) //filter vendor
-                .filter(v => selectedSite ? v.hid === selectedSite.hid : true) // filter site
+                .filter(v => selectedSite ? (v.hid === selectedSite.hid && selectedSite.vendor_id === v.vendor_id) : true) // filter site
             // .filter(v => selectedCountry ? v.country === selectedCountry.name : true) // filter country
-            // .filter(v => selectedCity ? v.city === selectedCity.name : true) // filter country
+            // .filter(v => selectedCity ? v.city === selectedCity.name : true) // filter country          
             const vendorNameList = state.siteListRaw
                 .filter(v => selectedVendor ? v.vendor_id === selectedVendor.id : true) //filter vendor
                 .filter(v => selectedSite ? v.hid === selectedSite.hid : true) // filter site
@@ -121,6 +122,7 @@ const vendorReducer = (state = initialState, action) => {
                 countryNameList,
                 isLoading: true,
             })
+
         }
         // @mmh
         case Action.GET_VENDOR_SITE_DATA_SUCCESS: {
@@ -130,6 +132,10 @@ const vendorReducer = (state = initialState, action) => {
                 isLoading: false
             })
         }
+
+        case Action.CLEAR_STATE:
+                return initialState
+                
         default: return state
     }
 }

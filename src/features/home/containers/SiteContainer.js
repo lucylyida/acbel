@@ -41,6 +41,10 @@ const SiteContainer = props => {
     }
     // const queryDataEnc = enc(queryData)
     const vendorState = useSelector(state => state.vendorReducer)
+    const dispatch = useDispatch()
+
+    cookies.user === undefined && props.history.push(`/${route.login}`)
+
     const {
         vendorNameList,
         siteNameList,
@@ -48,13 +52,13 @@ const SiteContainer = props => {
         selectedSite,
     } = vendorState
 
-    cookies.user === undefined && props.history.replace(`/${route.login}`)
+    
 
     const vendor_id = selectedSite !== null
         ? selectedSite.vendor_id
         : selectedVendor !== null
             ? selectedVendor.id
-            : cookies.user.vendor_id
+            : cookies.user === undefined ? undefined : cookies.user.vendor_id
 
     const site_id = selectedSite !== null ? selectedSite.hid : null
     const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId }
@@ -63,11 +67,12 @@ const SiteContainer = props => {
         c.vendor_id === parseInt(bodyData.vendor_id) && c.hid === bodyData.site_id ? c : r
         , null)
 
-    const dispatch = useDispatch()
-
+    
+    const token = cookies.user.token
+ 
     if (vendorState.isLoading) {
-        dispatch(Action.getvendorfromapi(vendor_id))
-        dispatch(Action.getSiteListFromApi({ vendor_id: bodyData.vendor_id, site_id: site_id }))
+        dispatch(Action.getvendorfromapi({ vendor_id, token }))
+        dispatch(Action.getSiteListFromApi({ vendor_id: bodyData.vendor_id, site_id, token }))
     }
 
     return (

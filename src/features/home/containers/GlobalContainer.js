@@ -15,7 +15,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
 
 import { useCookies } from 'react-cookie';
-import { tsConstructSignatureDeclaration } from "@babel/types";
 
 const GlobalContainer = props => {
 
@@ -32,6 +31,9 @@ const GlobalContainer = props => {
 
     const vendorState = useSelector(state => state.vendorReducer)
     const globalHomeStatusDataState = useSelector(state => state.globalReducer)
+    const dispatch = useDispatch()
+
+    if (cookies.user === undefined) props.history.push(`/${route.login}`)
 
     const {
         vendorNameList,
@@ -44,25 +46,32 @@ const GlobalContainer = props => {
         selectedSite,
     } = vendorState
 
-    cookies.user === undefined && props.history.replace(`/${route.login}`)
+
+    console.log(cookies.user)
+
 
     const vendor_id = selectedSite !== null
         ? selectedSite.vendor_id
         : selectedVendor !== null
             ? selectedVendor.id
-            : cookies.user.vendor_id
+            : cookies.user !== undefined ? cookies.user.vendor_id : undefined
+
+    const token = cookies.user.token
 
     const site_id = selectedSite !== null ? parseInt(selectedSite.hid) : null
 
-    const dispatch = useDispatch()
+
+
+
+
 
     // if (selectedVendor === null) {
     if (vendorState.isLoading  /* || globalHomeStatusDataState.isLoading */) {
         // console.log(vendor_id, site_id)
         // console.log({ selectedVendor, selectedSite })
-        dispatch(Action.getvendorfromapi(vendor_id))
-        dispatch(Action.getSiteListFromApi({ vendor_id, site_id }))
-        dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id }))
+        dispatch(Action.getvendorfromapi({ vendor_id, token }))
+        dispatch(Action.getSiteListFromApi({ vendor_id, site_id, token }))
+        dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id, token }))
         // return null
     }
     // }
@@ -87,7 +96,7 @@ const GlobalContainer = props => {
     if (globalHomeStatusDataState.globalHomeStatusData.length === 0) return null
 
     const homeStatusData = globalHomeStatusDataState.globalHomeStatusData
-    console.log({homeStatusData})
+
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
             <GlobalNavbar {...props} />

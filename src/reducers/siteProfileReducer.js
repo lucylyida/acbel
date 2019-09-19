@@ -17,6 +17,9 @@ const siteProfileDataReducer = (state = initialState, action) => {
                 isLoading: false,
             })
         }
+        case Action.CLEAR_STATE:
+        return {...initialState}
+        
         default: return state
     }
 }

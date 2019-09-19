@@ -7,7 +7,9 @@ import globalReducer from './globalReducer'
 import siteProfileDataReducer from './siteProfileReducer'
 import siteReportReducer from './siteReportReducer'
 
-const allReducers = combineReducers({
+import ActionType from '../action/action'
+
+const rootReducer = combineReducers({
     vendorReducer,
     accountReducer,
     weatherCountryReducer,
@@ -16,5 +18,27 @@ const allReducers = combineReducers({
     siteProfileDataReducer,
     siteReportReducer
 })
+// const rootReducer = (state, action) => {
+//     if (action.type === ActionType.GET_LOGOUT) {
+//         const { allReducers } = state;
+//         state = { allReducers }
 
-export default allReducers
+//     }else{
+
+//     }
+//     return allReducers(state, action)
+// }
+
+export default rootReducer
+
+// const allReducers = combineReducers({
+//     vendorReducer,
+//     accountReducer,
+//     weatherCountryReducer,
+//     inverterReducer,
+//     globalReducer,
+//     siteProfileDataReducer,
+//     siteReportReducer
+// })
+
+// export default allReducers

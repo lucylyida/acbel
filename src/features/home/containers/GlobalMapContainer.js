@@ -11,7 +11,7 @@ import * as Action from '../../../action'
 const GlobalMapContainer = props => {
     const state = useSelector(state => state.vendorReducer)
     const { vendorListRaw, siteNameList, siteListRaw, selectedSite } = state
-    
+
     const selectedSiteList = selectedSite === null
         ? siteNameList.map(v => v.id === 32 ? { ...v, latitude: "24.2522784", longitude: "120.5190892" } : v)
         : siteNameList           

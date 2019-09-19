@@ -13,14 +13,17 @@ const ProfileContainer = props => {
     const siteProfileDataState = useSelector(state => state.siteProfileDataReducer)
 
     const dispatch = useDispatch()
-    const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId }
+
 
     const [cookies] = useCookies(['user']);
     cookies.user === undefined && props.history.replace(`/${route.login}`)
+    const token = cookies.user.token
+
+    const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId, token }
 
     if (siteProfileDataState.isLoading) {
         dispatch(Action.getSiteProfileData(bodyData))
-    }
+    }   
 
     const siteProfileData = siteProfileDataState.siteProfileDataRaw.length === 0 ?
         {
@@ -31,6 +34,8 @@ const ProfileContainer = props => {
         siteProfileDataState.siteProfileDataRaw[0]
 
     // console.log(siteProfileData)
+
+    // if(!Array.isArray(siteProfileData)) return null
 
     return (
         <div className="container-fluid p-0">

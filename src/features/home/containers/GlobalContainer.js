@@ -33,8 +33,7 @@ const GlobalContainer = props => {
     const globalHomeStatusDataState = useSelector(state => state.globalReducer)
     const dispatch = useDispatch()
 
-    cookies.user === undefined && props.history.push(`/${route.login}`)
-
+    // cookies.hasOwnProperty('user') && props.history.push(`/${route.login}`)
 
     const {
         vendorNameList,
@@ -46,9 +45,6 @@ const GlobalContainer = props => {
         selectedCity,
         selectedSite,
     } = vendorState
-
-
-    console.log(cookies.user)
 
 
     const vendor_id = selectedSite !== null

@@ -38,8 +38,6 @@ const Login = props => {
         }
     }
 
-    console.log(state.loginDataRaw)
-
     state.loginDataRaw !== null && props.history.replace(`/${route.global}`)
 
     return (

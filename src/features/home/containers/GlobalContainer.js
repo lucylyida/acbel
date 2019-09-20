@@ -15,7 +15,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
 
 import { useCookies } from 'react-cookie';
-import { tsConstructSignatureDeclaration } from "@babel/types";
+
 
 const GlobalContainer = props => {
 
@@ -85,9 +85,9 @@ const GlobalContainer = props => {
     }*/
 
     if (globalHomeStatusDataState.globalHomeStatusData.length === 0) return null
-
+    console.log("global", globalHomeStatusDataState.globalHomeStatusData)
     const homeStatusData = globalHomeStatusDataState.globalHomeStatusData
-    console.log({homeStatusData})
+    // console.log({homeStatusData})
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
             <GlobalNavbar {...props} />

@@ -55,6 +55,7 @@ export const getweathercountrySuccess = (data) => {
     }
 }
 // @lucy
+
 export const getVendorInverterSites = () => {
     return {
         type: Action.GET_VENDOR_INVERTER_SITES
@@ -91,16 +92,16 @@ export const getSiteProfileDataSuccess = (data) => {
         payload: data,
     }
 }
-export const getSiteReportData =(data)=>{
-    return{
-        type:Action.GET_SITE_REPORT_DATA,
+export const getSiteReportData = (data) => {
+    return {
+        type: Action.GET_SITE_REPORT_DATA,
         payload: data
     }
 }
-export const getSiteReportDataSuccess =(data)=>{
-    return{
-        type:Action.GET_SITE_REPORT_DATA_SUCCESS,
-        payload:data
+export const getSiteReportDataSuccess = (data) => {
+    return {
+        type: Action.GET_SITE_REPORT_DATA_SUCCESS,
+        payload: data
     }
 }
 

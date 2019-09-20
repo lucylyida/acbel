@@ -11,12 +11,13 @@ import * as Action from '../../../action'
 const GlobalMapContainer = props => {
     const state = useSelector(state => state.vendorReducer)
     const { vendorListRaw, siteNameList, siteListRaw, selectedSite } = state
-    
+
     const selectedSiteList = selectedSite === null
         ? siteNameList.map(v => v.id === 32 ? { ...v, latitude: "24.2522784", longitude: "120.5190892" } : v)
-        : siteNameList           
+        : siteNameList
             .filter(d => d.id === selectedSite.id)
             .map(v => v.id === 32 ? { ...v, latitude: "24.2522784", longitude: "120.5190892" } : v)
+
 
     const clientLists = selectedSiteList.reduce((r, c) => {
         const index = r.reduce((r1, c1, i1) => c1.country === c.country && c1.city === c.city ? i1 : r1, -1)
@@ -44,10 +45,10 @@ const GlobalMapContainer = props => {
             return [...r, client]
         } else return r
     }, [])
-
+  
     if (selectedSiteList.length === 0) return null
-
     return (
+
         <div className="mt-3">
             <MapView clientLists={clientLists} siteNameList={selectedSiteList} siteListRawLength={siteListRaw.length} />
         </div>

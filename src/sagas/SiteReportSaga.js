@@ -6,17 +6,20 @@ import moment from "moment"
 
 function* fetchSiteReportData(action) {
     const data = action.payload
-    const paramData = { 
+    const paramData = {
         vendorId: data.selectedVendor.id,
         siteId: data.selectedSite.hid,
         deviceType: data.selectedDeviceType.value,
-        date: moment(data.selectedDate).format("YYYY-MM-DD")
+        date: moment(data.selectedDate).format("YYYY-MM-DD"),
     }
     // console.log(paramData)
     try {
-        const SiteReportData = yield fetch(api.FETCH_SITE_REPORT(paramData))
+        const SiteReportData = yield fetch(api.FETCH_SITE_REPORT(paramData),
+            { headers: { 'Authorization': 'Bearer ' + data.token }, }
+        )
             .then(response => response.json())
-            .then(data => data.payload)
+            .then(data => data)
+
         yield put(Action.getSiteReportDataSuccess(SiteReportData))
     } catch (error) {
         yield put({ type: 'FETCH_FAIL', error })

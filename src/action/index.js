@@ -1,5 +1,11 @@
 import Action from './action'
 
+export const clearState = () => {
+    return {
+        type: Action.CLEAR_STATE
+    }
+}
+
 export const getvendorfromapi = (data) => {
     return {
         type: Action.GET_VENDOR_FROM_API,
@@ -91,16 +97,16 @@ export const getSiteProfileDataSuccess = (data) => {
         payload: data,
     }
 }
-export const getSiteReportData =(data)=>{
-    return{
-        type:Action.GET_SITE_REPORT_DATA,
+export const getSiteReportData = (data) => {
+    return {
+        type: Action.GET_SITE_REPORT_DATA,
         payload: data
     }
 }
-export const getSiteReportDataSuccess =(data)=>{
-    return{
-        type:Action.GET_SITE_REPORT_DATA_SUCCESS,
-        payload:data
+export const getSiteReportDataSuccess = (data) => {
+    return {
+        type: Action.GET_SITE_REPORT_DATA_SUCCESS,
+        payload: data
     }
 }
 

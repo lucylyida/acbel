@@ -11,7 +11,7 @@ const ReportGeneratorView = props => {
         media,
         vendorNameList,
         siteNameList,
-        
+
         selectedVendor,
         selectedSite,
         selectedDate,
@@ -24,11 +24,17 @@ const ReportGeneratorView = props => {
         onDateChanged,
         onReportTypeChanged,
         // onchangedata,
-        
+
         ondownloadReport,
 
     } = props
-    
+
+    const cond = selectedVendor !== null &&
+        selectedSite !== null &&
+        selectedDate !== null &&
+        selectedReportType !== null &&
+        selectedDeviceType !== null
+
     return (
         <div className="p-2 ">
             <div className="py-2" style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>REPORT GENERATION</div>
@@ -69,10 +75,10 @@ const ReportGeneratorView = props => {
                         onChange={onSiteChanged}
                         placeholder="Select Site"
                         // options={siteNameList.reduce((acc,cv,i)=> console.log(cv.vendor_id ? cv.site_name: "hello"),0  )} // [ { value: 'chocolate_value', label: 'Site1', type: '1' }]
-                        options={selectedVendor ? 
+                        options={selectedVendor ?
                             siteNameList.filter(c => c.vendor_id === selectedVendor.id)
-                              : 
-                            siteNameList} 
+                            :
+                            siteNameList}
                         optionLabel='site_name'
                     />
                 </div>
@@ -85,7 +91,7 @@ const ReportGeneratorView = props => {
                         value={selectedDeviceType}
                         options={
                             [
-                                { label: 'Inverter', type: '1', value:"inverter" },
+                                { label: 'Inverter', type: '1', value: "inverter" },
                                 { label: 'Panel', type: '1', value: "panel" },
                                 { label: 'Radiator', type: '1', value: "radiator" },
                                 { label: 'Thermometer', type: '1', value: "thermometer" },
@@ -97,17 +103,18 @@ const ReportGeneratorView = props => {
                 <div className="px-1 py-2 flex-fill col-lg-4 col-xs-6">
                     <div style={{ fontSize: fsc(media, 13), color: '#999999' }}> DATE</div>
                     <div>
-                        <KmDatePicker 
+                        <KmDatePicker
                             noWidth
                             value={selectedDate}
-                            onChange={onDateChanged}    
+                            onChange={onDateChanged}
                         />
                     </div>
                 </div>
                 <div className="flex-fill p-2 col-4 ">
                     <div style={{ fontSize: fsc(media, 13), color: '#999999' }}>EXPORT REPORT AS</div>
-                    <KmButtom text="CSV"
-                        onClick={ondownloadReport}
+                    <KmButtom
+                        text="CSV"
+                        onClick={cond ? ondownloadReport : null}
                         style={{ width: 80 }}
                     />
                 </div>

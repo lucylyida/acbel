@@ -3,11 +3,12 @@ import * as Action from "../action"
 import { call, put, takeEvery, take } from 'redux-saga/effects'
 import * as api from "../network-sec/api"
 
-
 function* fetchVendor(action) {
     try {
         //get vendorlist api endpoint
-        const vendors = yield fetch(action.payload === null ? api.FETCH_VENDOR_LIST : api.FETCH_VENDOR(action.payload))
+        const vendors = yield fetch(action.payload.vendor_id === null ? api.FETCH_VENDOR_LIST : api.FETCH_VENDOR(action.payload.vendor_id),
+            { headers: { 'Authorization': 'Bearer ' + action.payload.token }, }
+        )
             .then(response => response.json())
             .then(data => data.payload)
         const vendorArray = Array.isArray(vendors) ? vendors : [vendors]
@@ -18,7 +19,7 @@ function* fetchVendor(action) {
     }
 }
 
-function* fetchSiteList(action) {   
+function* fetchSiteList(action) {
     try {
         //get vendorlist api endpoint
         const sites = yield fetch(
@@ -26,7 +27,9 @@ function* fetchSiteList(action) {
                 ? api.FETCH_VENDOR_SITE(action.payload.vendor_id, action.payload.site_id)
                 : action.payload.vendor_id === null
                     ? api.FETCH_VENDOR_SITES
-                    : api.FETCH_VENDOR_SITE_LIST(action.payload.vendor_id))
+                    : api.FETCH_VENDOR_SITE_LIST(action.payload.vendor_id),
+            { headers: { 'Authorization': 'Bearer ' + action.payload.token }, }
+        )
             .then(response => response.json())
             .then(data => data.payload)
         yield put(Action.getSiteListFromApiSuccess(sites))
@@ -38,7 +41,9 @@ function* fetchSiteList(action) {
 function* fetchVendorSiteData(action) {
     const body = action.payload
     try {
-        const vendorSiteData = yield fetch(api.FETCH_VENDOR_SITE(body.vendor_id, body.site_id))
+        const vendorSiteData = yield fetch(api.FETCH_VENDOR_SITE(body.vendor_id, body.site_id),
+            { headers: { 'Authorization': 'Bearer ' + body.token }, }
+        )
             .then(response => response.json())
             .then(data => data.payload)
         yield put(Action.getVendorSiteDataSuccess(vendorSiteData))

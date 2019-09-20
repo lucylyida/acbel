@@ -12,9 +12,9 @@ import equal from "deep-equal";
 export class MapContainer extends Component {
     constructor(props) {
         super(props);
-        const siteNameList = this.props
+
         this.state = {
-            position: { lat: siteNameList.latitude, lng: siteNameList.longitude },
+
             zoom: 7,
             stores: [],
             isClientToShow: false,
@@ -25,13 +25,14 @@ export class MapContainer extends Component {
             initialCenter: { lat: 20.444, lng: 96.176 },
             markerPosition: {},
             infoSiteData: {},
-            vendor_id: -1
+            vendor_id: -1,
+            mapController: 0
         }
         this.mapRef = React.createRef()
     }
-   
+
     componentDidMount() {
-        const { clientLists } = this.props
+        const { clientLists, siteNameList } = this.props
         const { vendor_id } = this.state
         const mmap = this.mapRef.current
         mmap.map.addListener("zoom_changed", () => {
@@ -39,49 +40,45 @@ export class MapContainer extends Component {
         })
         mmap.map.addListener("bounds_changed", () => {
             const mapBound = mmap.map.getBounds()
-          
-            const clientLocs = clientLists.filter(v => mapBound.contains({ lat: v.lat, lng: v.lng }))
-            const clientLocs2 = clientLocs.length >= 1 ? clientLocs : clientLists
+            const clientLocs = this.props.clientLists
+            const clientLocs2 = clientLocs.length >= 1 ? clientLocs : siteNameList
+            // console.log(clientLocs.length, mmap.map.zoom)
             const listToShow = (clientLocs.length > 1 && mmap.map.zoom <= 10) ? clientLocs : clientLocs2.reduce((r, c) => {
                 const sitesLocs = c.sites.map(v => v)
                 return [...r, ...sitesLocs]
             }, [])
 
-
             this.setState({ stores: listToShow, isClientToShow: mmap.map.zoom <= 10 && (vendor_id > -1 || clientLocs.length > 0), isShowInfoWindow: clientLocs.lenght >= 1 })
         })
     }
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     if (!equal(this.props, nextProps) || !equal(this.state, nextState)) { return true; } else { return false; }
-    // }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if (!equal(this.props, nextProps) || !equal(this.state, nextState)) { return true; } else { return false; }
+    }
 
 
-    // UNSAFE_componentWillUpdate(nextProps, nextState) {
-    //     console.log("willUpdate")
-    //     const mmap = this.mapRef.current
-    //     const { siteNameList, google, siteListRawLength } = nextProps
-    //     const dd = siteNameList.map(v => ({ lat: v.latitude, lng: v.longitude }))
-    //     const lat = siteNameList[0].latitude
-    //     const lng = siteNameList[0].longitude
-    //     // mmap.map.setCenter(new google.maps.LatLng(lat, lng))
-    //     const all_sites = siteNameList.length
-    //     if (all_sites < siteListRawLength) { return mmap.map.setCenter(new google.maps.LatLng(lat, lng)) } else { return null }
-    // }
+    UNSAFE_componentWillUpdate(nextProps, nextState) {
+
+
+        const mmap = this.mapRef.current
+        const { stores } = this.state
+        const { siteNameList, google, siteListRawLength } = nextProps
+        const dd = siteNameList.map(v => ({ lat: v.latitude, lng: v.longitude }))
+        const lat = siteNameList[0].latitude
+        const lng = siteNameList[0].longitude
+        this.setState({ asdasd: 2 })
+        // mmap.map.setCenter(new google.maps.LatLng(lat, lng))
+
+        const all_sites = siteNameList.length
+        if (all_sites < siteListRawLength) { return mmap.map.setCenter(new google.maps.LatLng(lat, lng)) } else { return null }
+    }
 
     _markerDisplay = () => {
         const { stores, isClientToShow } = this.state
         const { clientLists, siteNameList } = this.props
+
         const siteNameListLength = siteNameList.length
         const mmap = this.mapRef.current
-        // mmap !== null &&
-        //     mmap.map.addListener("zoom_changed", () => {
-        //         this.setState({ showingInfoWindow: false, isClientToShow: mmap.map.zoom <= 11 })
-        //         console.log(mmap.map.zoom)
-        //     })
-        // console.log(clientLists)
-        // console.log(siteNameList)
-
-
         const icon = (isClientToShow) && (siteNameListLength !== 1) ? Animatedicon(this.props) : SolarPanelIcon
 
         return stores === undefined ? [] : isClientToShow ?
@@ -125,6 +122,7 @@ export class MapContainer extends Component {
         });
     };
     _ClientSites = (props, marker, e) => {
+        console.log(props)
         const mmap = this.mapRef.current
         mmap.map.setZoom(11);
         mmap.map.setCenter(marker.getPosition());

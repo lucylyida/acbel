@@ -1,10 +1,10 @@
 
 export const BASE_URL = "http://192.168.100.29:3333"
 
-
 // export const BASE_URL = "http://202.73.49.62:823"
 
 //  export const BASE_URL = "http://192.168.100.30:3333"
+
 
 
 // export const BASE_URL = "http://202.73.49.62:823"

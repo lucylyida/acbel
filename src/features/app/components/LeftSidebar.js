@@ -118,7 +118,8 @@ const LeftSidebar = props => {
                         Click={() => history.push(`/${route.administration}/${route.profile}`)}
                         removeCookie={() => {
                             removeCookie('user', { path: '/' })
-                            dispatch({ type: ActionType.GET_LOGOUT });
+                            dispatch({ type: ActionType.CLEAR_STATE });
+                            
                             history.replace(`/${route.login}`);
                         }}
                     />

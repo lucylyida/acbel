@@ -8,11 +8,12 @@ import ReportGenerateHistoryView from '../components/ReportGenerateHistoryView'
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
 import action from "../../../action/action";
+import { useCookies } from 'react-cookie'
 
 const ReportContainer = props => {
     const { media } = props
     // const [onchangedata, setonchangedata] = useState("")
-
+    const [cookies] = useCookies(['user'])
     const vendorState = useSelector(state => state.vendorReducer)
     const reportState = useSelector(state => state.siteReportReducer)
 
@@ -22,7 +23,8 @@ const ReportContainer = props => {
     // const site_id = selectedSite !== null ? selectedSite.hid : null
 
     const dispatch = useDispatch()
-  
+    const token = cookies.user.token
+
     return (
         <div className="container-fluid px-1">
             <div className="bg-white p-2" style={{ borderRadius: 4 }}>
@@ -56,7 +58,8 @@ const ReportContainer = props => {
                             selectedDeviceType,
                             selectedDate,
                         } = reportState
-                        dispatch(Action.getSiteReportData(reportState))
+                       
+                        dispatch(Action.getSiteReportData({ ...reportState, token }))
                     }}
 
                 />

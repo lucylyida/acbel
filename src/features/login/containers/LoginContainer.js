@@ -26,6 +26,7 @@ const Login = props => {
     }
 
     if (state.loginDataRaw === null) {
+        // props.history.block()
         if (cookies.user !== undefined) {
             removeCookie('user', { path: '/' })
         }
@@ -37,6 +38,8 @@ const Login = props => {
             dispatch(getLoginFromApi({ username, password }))
         }
     }
+
+    console.log(state.loginDataRaw)
 
     state.loginDataRaw !== null && props.history.replace(`/${route.global}`)
 

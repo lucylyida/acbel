@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import allReducers from './reducers'
+import rootReducer from './reducers'
 import { rootSaga } from './sagas'
 
 import { createStore, applyMiddleware } from 'redux'
@@ -12,7 +12,7 @@ import createSagaMiddleware from 'redux-saga'
 import { CookiesProvider } from 'react-cookie'
 
 const sagaMiddleware = createSagaMiddleware()
-const store = createStore(allReducers, applyMiddleware(sagaMiddleware))
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
 sagaMiddleware.run(rootSaga)
 
 ReactDOM.render(

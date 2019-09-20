@@ -50,6 +50,9 @@ const inverterReducer = (state = initialState, action) => {
             })
 
         }
+        case ActionType.CLEAR_STATE:
+                return {...initialState}
+
         default: return state
     }
 }

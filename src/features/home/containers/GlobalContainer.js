@@ -59,6 +59,7 @@ const GlobalContainer = props => {
         props.history.replace(`/${route.login}`)
         return null
     }
+    
     const site_id = selectedSite !== null ? parseInt(selectedSite.hid) : null
 
 

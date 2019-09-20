@@ -16,7 +16,7 @@ const ProfileContainer = props => {
 
 
     const [cookies] = useCookies(['user']);
-    cookies.user === undefined && props.history.replace(`/${route.login}`)
+  
     const token = cookies.user.token
 
     const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId, token }

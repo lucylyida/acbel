@@ -1,6 +1,13 @@
 import Action from './action'
 
+export const clearState = () => {
+    return {
+        type: Action.CLEAR_STATE
+    }
+}
+
 export const getvendorfromapi = (data) => {
+    console.log("get vendor api")
     return {
         type: Action.GET_VENDOR_FROM_API,
         payload: data

@@ -12,6 +12,9 @@ const accountReducer = (state = initialState, action) => {
             if (action.payload === null) {
                 return ({ ...state, loginLoading: false })
             }
+            else if (action.payload === 'error') {
+                return  initialState;
+            }
             else {
                 return ({
                     ...state,
@@ -24,7 +27,9 @@ const accountReducer = (state = initialState, action) => {
                 ...state,
                 loginLoading: true,
             })
-        case ActionType.GET_LOGOUT: return initialState;
+        case ActionType.CLEAR_STATE:
+            return {...initialState}
+        // case ActionType.GET_LOGOUT: return initialState;
         default: return state
     }
 }

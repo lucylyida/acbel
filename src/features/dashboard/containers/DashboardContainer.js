@@ -17,11 +17,6 @@ const DashboardContainer = props => {
     const weatherCurrentCityList = useSelector(state => state.weatherCountryReducer)
     const dispatch = useDispatch()
 
-    const [cookies] = useCookies(['user']);
-    cookies.user === undefined && props.history.replace(`/${route.login}`)
-    
-    const vendorSiteData = isArray(vendorState.vendorSiteData) ? vendorState.vendorSiteData : [vendorState.vendorSiteData]
-
     const wCurrentdata = weatherCurrentCityList.weatherCurrentList
     const wForecastdata = weatherCurrentCityList.weatherForecastList.length === 0 ? [] : weatherCurrentCityList.weatherForecastList[0].list
 
@@ -32,39 +27,46 @@ const DashboardContainer = props => {
     //     moment(d.dt_txt).format("HH:mm:ss A")
     // )
     // console.log({tomorrow})
+
     const temperature = wCurrentdata.length > 0 ? wCurrentdata[0].main.temp.toFixed(1) * 1 : 0
     const humidity = wCurrentdata.length > 0 ? wCurrentdata[0].main.humidity.toFixed(1) * 1 : 0
     const wind = wCurrentdata.length > 0 ? wCurrentdata[0].wind.speed.toFixed(1) * 1 : 0
 
     const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId }
 
+    const selectSiteDataFromSiteList = vendorState.siteNameList.filter(d => d.vendor_id === parseInt(bodyData.vendor_id) && d.hid === bodyData.site_id)
 
-    if (weatherCurrentCityList.isLoading || vendorState.isLoading) {
-        if (vendorSiteData.length > 0) {
-            const latlngData = { lat: vendorSiteData[0].latitude, lng: vendorSiteData[0].longitude }
+    if (weatherCurrentCityList.isLoading) {
+        if (selectSiteDataFromSiteList.length > 0) {
+            const latlngData = { lat: selectSiteDataFromSiteList[0].latitude, lng: selectSiteDataFromSiteList[0].longitude }
             dispatch(Action.getweathercountry(latlngData))
         }
-        dispatch(Action.getVendorSiteData(bodyData))
     }
 
-    if (vendorSiteData.length === 0) return null;
+    if (selectSiteDataFromSiteList.length === 0) return <div className="text-center" style={{ position: "fixed", left: 0, top: "45%", right: 0, bottom: "45%", zIndex: 1 }}>
+        <span className="h3 font-weight-bold text-secondary">Loading...</span>
+    </div>;
 
     return (
         <div className="container-fluid">
-            <div className="row">
 
+            <div className="row">
                 <div className="col-md-7 p-0 pb-1 d-flex flex-column justify-content-between">
                     <div className="px-1 pb-1">
-                        <div className="bg-white h-100"><DashStatusViewA temperature={temperature} humidity={humidity} wind={wind} /></div>
+                        <div className="bg-white h-100">
+                            <DashStatusViewA temperature={temperature} humidity={humidity} wind={wind}
+                                selectedSite={selectSiteDataFromSiteList[0]}
+                            />
+                        </div>
                     </div>
 
                     <div className="p-1">
-                        <div className="bg-white h-100"><DashStatusViewB /></div>
+                        <div className="bg-white h-100"><DashStatusViewB selectedSite={selectSiteDataFromSiteList[0]} /></div>
                     </div>
                 </div>
 
                 <div className="col-md-5 px-1">
-                    <div className="bg-white"><DashMap selectedSite={vendorSiteData[0]} /></div>
+                    <div className="bg-white"><DashMap selectedSite={selectSiteDataFromSiteList[0]} /></div>
                 </div>
 
                 <div className="col-md-6 p-1">

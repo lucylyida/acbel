@@ -4,14 +4,16 @@ import { call, put, takeEvery, take, all, fork } from 'redux-saga/effects'
 import * as api from "../network-sec/api"
 
 function* fetchSiteProfileData(action) {
-    try{
-        const siteProfileData = yield fetch(api.FETCH_SITE_PROFILE_DATA(action.payload.vendor_id,action.payload.site_id))
-        .then(response => response.json())
-        .then(data => data.payload)
+    try {
+        const siteProfileData = yield fetch(api.FETCH_SITE_PROFILE_DATA(action.payload.vendor_id, action.payload.site_id),
+            { headers: { 'Authorization': 'Bearer ' + action.payload.token }, }
+        )
+            .then(response => response.json())
+            .then(data => data)
         yield put(Action.getSiteProfileDataSuccess(siteProfileData))
-    }catch(error){
+    } catch (error) {
         yield put({ type: 'FETCH_FAIL', error })
-    }  
+    }
 }
 
 export function* fetchSiteProfileDataWatcherSaga() {

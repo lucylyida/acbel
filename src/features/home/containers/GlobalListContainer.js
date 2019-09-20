@@ -17,16 +17,18 @@ const GlobalListContainer = props => {
     const handleClick = (row) => props.history.push(`/${route.site}/${row.vendor_id}/${row.siteid}${location.search}`)
 
     const state = useSelector(state => state.vendorReducer)
-    const siteNameList = state.siteNameList
-    const data = siteNameList.map(v => ({
-        id: v.id, vendor_id: v.vendor_id, site: v.site_name, capacity: v.capacity_kw, siteid: v.hid,
-        currentOutput: v.powerOutput, efficiency: v.efficiencyRa, siteStatus: v.isOnline === true ? "Online" : "Offline",
-        more: "MORE INFO"
-    }))
+    const siteNameList = state.siteNameList  
+    const data = siteNameList
+        // .filter(d => d.hid === state.selectedSite.hid)
+        .map(v => ({
+            id: v.id, vendor_id: v.vendor_id, site: v.site_name, capacity: v.capacity_kw, siteid: v.hid,
+            currentOutput: v.powerOutput, efficiency: v.efficiencyRa, siteStatus: v.isOnline === true ? "Online" : "Offline",
+            more: "MORE INFO"
+        }))
 
     // const sites = siteNameList.map(v => v.vendor_id)
     // console.log({sites})
-// console.log({aa:state.siteNameList})
+    // console.log({aa:state.siteNameList})
     return (
         <div className="py-2">
             <div className="">

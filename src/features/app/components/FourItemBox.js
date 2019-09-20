@@ -20,12 +20,12 @@ const FourItemBox = props => {
                 <div className="d-flex align-items-baseline">
                     <div style={{
                         fontSize: fsc(media, 26), fontWeight: 'bold',
-                        color: data === 'Normal' ? 'green' : '#153784',
+                        color: data === 'Online' ? 'green' : '#153784',
                     }}
                     >
-                        {unit === 'NT$' ? media.mobile ? unit + ' ' + data : unit + data : data}
+                        {unit === 'NT$' || unit === 'THB' ? media.mobile ? unit + ' ' + data : unit + data : data}
                     </div>
-                    <div className="pl-1" style={{ fontSize: fsc(media, 14), fontWeight: 100, color: '#000000' }}>{unit === 'NT$' ? null : unit}</div>
+                    <div className="pl-1" style={{ fontSize: fsc(media, 14), fontWeight: 100, color: '#000000' }}>{unit === 'NT$'||unit==="THB" ? null : unit}</div>
                 </div>
                 <div style={{ fontSize: fsc(media, 13), color: '#aaaaaa' }}>{desc}</div>
             </div>

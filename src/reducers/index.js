@@ -9,7 +9,7 @@ import siteReportReducer from './siteReportReducer'
 
 import ActionType from '../action/action'
 
-const allReducers = combineReducers({
+const rootReducer = combineReducers({
     vendorReducer,
     accountReducer,
     weatherCountryReducer,
@@ -18,13 +18,17 @@ const allReducers = combineReducers({
     siteProfileDataReducer,
     siteReportReducer
 })
-const rootReducer = (state, action) => {
-    if (action.type === ActionType.GET_LOGOUT) {
-       const {allReducers} = state;
-        state = {allReducers}
-    //    console.log({state})
-    }
-    return allReducers(state, action)
-}
+
+// const rootReducer = (state, action) => {
+//     if (action.type === ActionType.GET_LOGOUT) {
+//        const {allReducers} = state;
+//         state = {allReducers}
+//     //    console.log({state})
+//     }
+//     return allReducers(state, action)
+// }
 
 export default rootReducer
+
+
+

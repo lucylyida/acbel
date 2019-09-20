@@ -1,14 +1,18 @@
 import React from 'react'
-import moment from 'moment'
+import moment from 'moment-timezone'
 
 import FourItemBox from '../../app/components/FourItemBox'
 import SunnyIcon from '../../../assets/icons/Sunny_Icon'
 
 import { withMedia } from 'react-media-query-hoc';
 import { fsc } from '../../../helper/fontColorHelper';
+import {useCookies} from 'react-cookie'
 
 const DashStatusViewA = props => {
-    const { media, temperature, humidity, wind } = props
+    const { media, temperature, humidity, wind,selectedSite } = props
+    const [cookies] = useCookies(['user'])
+    const money_unit = cookies.user.money
+    const timezone = selectedSite.time_zone
     return (
         <div className="container-fluid" style={{ background: 'white', borderRadius: 4 }}>
 
@@ -17,8 +21,8 @@ const DashStatusViewA = props => {
                 <div className="col-12 pt-3 pb-2 d-flex" style={{ whiteSpace: 'nowrap', fontSize: fsc(media, 14) }}>
                     <div style={{ color: '#FF8902' }}>{"TODAY"}</div>
                     <div className={media.mobile ? "pl-3" : "pl-5"}>
-                        {/* {moment().format('dddd D MMMM YYYY h:mm A')} */}
-                        Wednesday 22 September 2019 22:22 PM
+                        {moment().tz(timezone).format('dddd D MMMM YYYY h:mm A')}
+                        {/* Wednesday 22 September 2019 22:22 PM */}
                     </div>
                 </div>
 
@@ -39,7 +43,7 @@ const DashStatusViewA = props => {
                 </div>
 
                 <div className="col-6 col-sm-4 py-2 ">
-                    <FourItemBox value={384} unit={"NT$"} desc={"TOTAL ACC REVENUE"} />
+                    <FourItemBox value={384} unit={money_unit} desc={"TOTAL ACC REVENUE"} />
                 </div>
 
                 <div className="col-6 col-sm-4 py-2">

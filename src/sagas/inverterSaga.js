@@ -10,9 +10,9 @@ function* fetchVendorInverterList() {
             call(fetch, api.FETCH_VENDOR_PANEL_SITES),
             call(fetch, api.FETCH_PANEL_INFO)
         ])
-        const inverters = yield inverter.json().then(data => data.payload)
-        const panels = yield panel.json().then(data => data.payload)
-        const panelInfos = yield panelInfo.json().then(data => data.payload)
+        const inverters = yield inverter.json().then(data => data)
+        const panels = yield panel.json().then(data => data)
+        const panelInfos = yield panelInfo.json().then(data => data)
         yield put(Action.getVendorInverterSitesSuccess({ inverters, panels, panelInfos }))
     }catch(error){
         yield put({ type: 'FETCH_FAIL', error })

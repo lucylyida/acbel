@@ -55,16 +55,15 @@ export class MapContainer extends Component {
     }
 
 
-    UNSAFE_componentWillUpdate(nextProps, nextState) {
-        // console.log("willUpdate")
-        // const mmap = this.mapRef.current
-        // const { siteNameList, google, siteListRawLength } = nextProps
-        // const dd = siteNameList.map(v => ({ lat: v.latitude, lng: v.longitude }))
-        // const lat = siteNameList[0].latitude
-        // const lng = siteNameList[0].longitude
-        // // mmap.map.setCenter(new google.maps.LatLng(lat, lng))
-        // const all_sites = siteNameList.length
-        // if (all_sites < siteListRawLength) { return mmap.map.setCenter(new google.maps.LatLng(lat, lng)) } else { return null }
+    UNSAFE_componentWillUpdate(nextProps, nextState) {        
+        const mmap = this.mapRef.current
+        const { siteNameList, google, siteListRawLength } = nextProps
+        const dd = siteNameList.map(v => ({ lat: v.latitude, lng: v.longitude }))
+        const lat = siteNameList[0].latitude
+        const lng = siteNameList[0].longitude
+        // mmap.map.setCenter(new google.maps.LatLng(lat, lng))
+        const all_sites = siteNameList.length
+        if (all_sites < siteListRawLength) { return mmap.map.setCenter(new google.maps.LatLng(lat, lng)) } else { return null }
     }
 
     _markerDisplay = () => {

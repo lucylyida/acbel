@@ -1,11 +1,10 @@
 import Action from '../action/action'
-import * as api from "../network-sec/api"
 
 const initialState = {
 
     isLoading: true,
 
-    SiteReportData:null,
+    // SiteReportData: null,
 
     selectedVendor: null,
 
@@ -16,28 +15,33 @@ const initialState = {
     selectedDeviceType: null,
 
     selectedReportType: null,
-    
+
 }
 
-const siteReportReducer = (state=initialState,action)=>{
-   
-    switch(action.type){
-        case Action.GET_SITE_REPORT_DATA_SUCCESS : {
-            window.location.href = `${api.BASE_URL}${action.payload.file}` 
-            return({
+const siteReportReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case Action.GET_SITE_REPORT_DATA_SUCCESS: {         
+
+            action.payload.success ?
+                window.location.href = `${action.payload.payload}`
+                : alert(action.payload.message)
+
+            return ({
                 ...state,
-                // SiteReportDataRaw:action.payload,
-                SiteReportData:action.payload.file,
-                isLoading:false,
+                // SiteReportData: action.payload.payload,
+                isLoading: false,
             })
         }
-        case Action.REPORT_HANDLE_CHANGED : {
+        case Action.REPORT_HANDLE_CHANGED: {
             // console.log("notedd>> ", action.payload)
-            return({
+            return ({
                 ...state,
                 ...action.payload
             })
         }
+        case Action.CLEAR_STATE:
+            return { ...initialState }
+
         default: return state
 
     }

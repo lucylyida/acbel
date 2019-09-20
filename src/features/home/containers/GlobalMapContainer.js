@@ -11,7 +11,7 @@ import * as Action from '../../../action'
 const GlobalMapContainer = props => {
     const state = useSelector(state => state.vendorReducer)
     const { vendorListRaw, siteNameList, siteListRaw, selectedSite } = state
-    
+
     const selectedSiteList = selectedSite === null
         ? siteNameList.map(v => v.id === 32 ? { ...v, latitude: "24.2522784", longitude: "120.5190892" } : v)
         : siteNameList           
@@ -45,10 +45,13 @@ const GlobalMapContainer = props => {
         } else return r
     }, [])
 
-    if (selectedSiteList.length === 0) return null
+    if (selectedSiteList.length === 0) return  <div className="text-center" style={{ position: "fixed", left: 0, top: "45%", right: 0, bottom: "45%", zIndex: 1 }}>
+    <span className="h3 font-weight-bold text-secondary">Loading...</span>
+</div>
 
     return (
         <div className="mt-3">
+         
             <MapView clientLists={clientLists} siteNameList={selectedSiteList} siteListRawLength={siteListRaw.length} />
         </div>
     )

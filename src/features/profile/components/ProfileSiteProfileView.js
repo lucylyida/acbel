@@ -18,8 +18,8 @@ const SitePicArray = [
 // const SitePicArray = ['/s1.jpg', '/s2.jpg', '/s3.jpg', '/s4.jpg', '/s5.jpg', '/s6.jpg', '/s7.jpg', '/s8.jpg']
 
 const ProfileSiteProfileView = props => {
-    const { media, startDate, priceSetup, capacity, vendorId, siteId } = props
-    
+    const { media, startDate, priceSetup, capacity, vendorId, siteId, money_unit } = props
+
     return (
         <div className="p-4 h-100" style={{ backgroundColor: '#FFFFFF', borderRadius: 4 }}>
 
@@ -35,7 +35,7 @@ const ProfileSiteProfileView = props => {
                 {
                     priceSetup !== null &&
                     <div className={`px-${media.mobile ? '3' : '5'} py-2`}>
-                        <FourItemBox value={priceSetup} unit={'NT$'} desc={"PRICE SET-UP"} />
+                        <FourItemBox value={priceSetup} unit={money_unit} desc={"PRICE SET-UP"} />
                     </div>
                 }
                 {

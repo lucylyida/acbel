@@ -43,7 +43,7 @@ const DashStatusViewA = props => {
                 </div>
 
                 <div className="col-6 col-sm-4 py-2 ">
-                    <FourItemBox value={384} unit={money_unit} desc={"TOTAL ACC REVENUE"} />
+                    <FourItemBox value={384} unit={money_unit} desc={"TOTAL ACC. REVENUE"} />
                 </div>
 
                 <div className="col-6 col-sm-4 py-2">

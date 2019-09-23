@@ -35,7 +35,7 @@ const LeftSidebar = props => {
                     <div className="py-3">
                         <div className="p-2" style={{ background: '#00000033', borderRadius: 4 }}>
                             <div className="d-flex p-1">
-                                <HomeIcon />
+                                <div className="pt-1"><HomeIcon /></div>
                                 <div className="pl-2">
                                     <div style={{ color: 'white', fontSize: 13, fontWeight: "bold" }}>{"Global"}</div>
                                     <div className='d-flex' style={{ fontSize: 13 }}>

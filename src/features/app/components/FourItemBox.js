@@ -6,6 +6,10 @@ const FourItemBox = props => {
     const { value, unit, desc, active, icon, media, useNumberFormat } = props
     const temp = typeof value === "number" ? value.toFixed(2) * 1 : value
     const data = useNumberFormat === undefined || useNumberFormat === true ? numberFormat(temp) : temp;
+
+    const moneyCategory = ["TOTAL ACC. REVENUE", "PRICE SET-UP"]
+    const isMoney = moneyCategory.includes(desc)
+    
     return (
         <div className="d-flex align-items-center">
             <div className="d-flex">
@@ -24,11 +28,11 @@ const FourItemBox = props => {
                         color: data === 'Online' ? 'green' : '#153784',
                     }}
                     >
-                        {unit === 'NT$' || unit === 'THB' ? media.mobile ? unit + ' ' + data : unit + data : data}
+                        {isMoney ? media.mobile ? unit + ' ' + data : unit + data : data}
                     </div>
-                    <div className="pl-1" style={{ fontSize: fsc(media, 14), fontWeight: 100, color: '#000000' }}>{unit === 'NT$'||unit==="THB" ? null : unit}</div>
+                    <div className="pl-1" style={{ fontSize: fsc(media, 14), fontWeight: 100, color: '#000000' }}>{isMoney ? null : unit}</div>
                 </div>
-                <div style={{ fontSize: fsc(media, 13), color: '#aaaaaa' }}>{desc}</div>
+                <div className="text-truncate" style={{ fontSize: fsc(media, 13), color: '#aaaaaa' }}>{desc}</div>
             </div>
         </div >
     )

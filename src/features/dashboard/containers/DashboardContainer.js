@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import ChartContainer from "../../app/components/ChartContainer"
 import DashMap from '../components/DashMapView';
 import DashStatusViewA from '../components/DashStatusViewA';
@@ -36,12 +36,20 @@ const DashboardContainer = props => {
 
     const selectSiteDataFromSiteList = vendorState.siteNameList.filter(d => d.vendor_id === parseInt(bodyData.vendor_id) && d.hid === bodyData.site_id)
 
-    if (weatherCurrentCityList.isLoading) {
-        if (selectSiteDataFromSiteList.length > 0) {
+    // if (weatherCurrentCityList.isLoading) {
+    //     if (selectSiteDataFromSiteList.length > 0) {
+    //         const latlngData = { lat: selectSiteDataFromSiteList[0].latitude, lng: selectSiteDataFromSiteList[0].longitude }
+    //         dispatch(Action.getweathercountry(latlngData))
+    //     }
+    // }
+    
+    useEffect(() => {          
+        if (selectSiteDataFromSiteList.length > 0) { 
+            // console.log('dashboard container calling...')          
             const latlngData = { lat: selectSiteDataFromSiteList[0].latitude, lng: selectSiteDataFromSiteList[0].longitude }
             dispatch(Action.getweathercountry(latlngData))
         }
-    }
+    }, [vendorState.siteNameList])
 
     if (selectSiteDataFromSiteList.length === 0) return <div className="text-center" style={{ position: "fixed", left: 0, top: "45%", right: 0, bottom: "45%", zIndex: 1 }}>
         <span className="h3 font-weight-bold text-secondary">Loading...</span>
@@ -51,7 +59,7 @@ const DashboardContainer = props => {
         <div className="container-fluid">
 
             <div className="row">
-                <div className="col-md-7 p-0 pb-1 d-flex flex-column justify-content-between">
+                <div className="col-lg-7 p-0 pb-1 d-flex flex-column justify-content-between">
                     <div className="px-1 pb-1">
                         <div className="bg-white h-100">
                             <DashStatusViewA temperature={temperature} humidity={humidity} wind={wind}
@@ -65,11 +73,11 @@ const DashboardContainer = props => {
                     </div>
                 </div>
 
-                <div className="col-md-5 px-1">
+                <div className="col-lg-5 px-1">
                     <div className="bg-white"><DashMap selectedSite={selectSiteDataFromSiteList[0]} /></div>
                 </div>
 
-                <div className="col-md-6 p-1">
+                <div className="col-lg-6 p-1">
                     <div className="bg-white ">
                         {/* Bar requires kes */}
                         <ChartContainer
@@ -85,7 +93,7 @@ const DashboardContainer = props => {
                     </div>
                 </div>
 
-                <div className="col-md-6 p-1">
+                <div className="col-lg-6 p-1">
                     <div className="bg-white">
                         <ChartContainer
                             headerText={'SITE EFFICIENCY TREND'}
@@ -97,7 +105,7 @@ const DashboardContainer = props => {
                     </div>
                 </div>
 
-                <div className="col-md-6 px-1 pt-1">
+                <div className="col-lg-6 px-1 pt-1">
                     <div className="bg-white">
                         <ChartContainer
                             chartType='area'
@@ -110,7 +118,7 @@ const DashboardContainer = props => {
                     </div>
                 </div>
 
-                <div className="col-md-6 px-1 pt-1">
+                <div className="col-lg-6 px-1 pt-1">
                     <div className="bg-white">
                         <ChartContainer
                             chartType='area'

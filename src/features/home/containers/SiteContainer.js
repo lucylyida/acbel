@@ -40,7 +40,7 @@ const SiteContainer = props => {
     }
     // const queryDataEnc = enc(queryData)
     const vendorState = useSelector(state => state.vendorReducer)
-    const dispatch = useDispatch()
+     const dispatch = useDispatch()
 
     const {
         vendorNameList,
@@ -48,7 +48,7 @@ const SiteContainer = props => {
         selectedVendor,
         selectedSite,
     } = vendorState
-    
+
     const vendor_id = selectedSite !== null
         ? selectedSite.vendor_id
         : selectedVendor !== null
@@ -56,25 +56,27 @@ const SiteContainer = props => {
             : cookies.user === undefined ? undefined : cookies.user.vendor_id
 
     const site_id = selectedSite !== null ? selectedSite.hid : null
+
     const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId }
 
-    const selectSite = vendorState.siteNameList.reduce((r, c) =>
+    const selectSite = siteNameList.reduce((r, c) =>
         c.vendor_id === parseInt(bodyData.vendor_id) && c.hid === bodyData.site_id ? c : r
         , null)
 
-    
-    const token = cookies.user=== undefined ? undefined : cookies.user.token
 
-    if(token === undefined){
+    const token = cookies.user === undefined ? undefined : cookies.user.token
+
+    if (token === undefined) {
         props.history.replace(`/${route.login}`)
         return null
     }
- 
+
     if (vendorState.isLoading) {
-        dispatch(Action.getvendorfromapi({ vendor_id, token }))
+        console.log("site container api fetchingggggggggggg")
+        // dispatch(Action.getvendorfromapi({ vendor_id, token }))
         dispatch(Action.getSiteListFromApi({ vendor_id: bodyData.vendor_id, site_id, token }))
     }
-
+    // dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id, token }))
     return (
         <div className={`container-fluid ${media.mobile ? "px-0" : "px-4"}`}>
             <SiteNavbar {...props} selectSite={selectSite} />

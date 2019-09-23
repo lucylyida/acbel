@@ -3,8 +3,8 @@ import  Action from '../action/action'
 import equal from "deep-equal"
 //@nayhtet
 const initialState = {
-    vendorListRaw: [],
-    siteListRaw: [],
+     vendorListRaw: [],
+     siteListRaw: [],
 
     vendorNameList: [],
     siteNameList: [],
@@ -27,28 +27,35 @@ const initialState = {
 const vendorReducer = (state = initialState, action) => {
     switch (action.type) {
         case Action.GET_VENDOR_SUCCESS: {
+            // console.log("abcd, ",Array.isArray(action.payload))
+            const vv = Array.isArray(action.payload) ? action.payload : [action.payload]
+            // console.log("++++++++++++++++++++VEndor,", vv)
             return ({
                 ...state,
-                vendorListRaw: action.payload,
-                vendorNameList: action.payload,
+                vendorListRaw: vv ,
+                vendorNameList: vv,
                 isLoading: false
             })
         }
         case Action.GET_SITES_FROM_API_SUCCESS: {
-
-            const countryListRaw = action.payload
+            // console.log("------------------SIte")
+            // console.log("payload, ", action.payload)
+            const vv = Array.isArray(action.payload) ? action.payload : [action.payload]
+            const countryListRaw = vv
                 .map(v => ({ name: v.country }))
                 .filter((it, i, ar) => ar.reduce((r1, c1, i1) => c1.name === it.name ? i1 : r1, -1) === i)
             const countryNameList = [...countryListRaw]
-
-            const cityListRaw = action.payload
+            // console.log("-----------------------------SIte")
+            const cityListRaw = vv
                 .map(v => ({ name: v.city, country: v.country }))
                 .filter((it, i, ar) => ar.reduce((r1, c1, i1) => c1.name === it.name ? i1 : r1, -1) === i)
             const cityNameList = [...cityListRaw]
+            // console.log("---------------------------------------------->>SIte")
+           
             return ({
                 ...state,
-                siteListRaw: action.payload,
-                siteNameList: action.payload,
+                siteListRaw: vv,
+                siteNameList: vv,
                 countryListRaw: countryListRaw,
                 countryNameList: countryNameList,
                 cityListRaw,
@@ -56,7 +63,9 @@ const vendorReducer = (state = initialState, action) => {
                 isLoading: false
             })
         }
+
         case Action.GLOBAL_HANDLE_SELECT_FILTER: {
+            // console.log("@@@@@@@@@@@@@@@@@@@@@@ 222")
             const {
                 selectedVendor = state.selectedVendor,
                 selectedCountry = state.selectedCountry,
@@ -84,7 +93,8 @@ const vendorReducer = (state = initialState, action) => {
                 .filter(v => selectedVendor ? v.vendor_id === selectedVendor.id : true) //filter vendor
                 .filter(v => selectedSite ? (v.hid === selectedSite.hid && selectedSite.vendor_id === v.vendor_id) : true) // filter site
             // .filter(v => selectedCountry ? v.country === selectedCountry.name : true) // filter country
-            // .filter(v => selectedCity ? v.city === selectedCity.name : true) // filter country          
+            // .filter(v => selectedCity ? v.city === selectedCity.name : true) // filter country  
+            // console.log("12,", state.vendorListRaw)        
             const vendorNameList = state.siteListRaw
                 .filter(v => selectedVendor ? v.vendor_id === selectedVendor.id : true) //filter vendor
                 .filter(v => selectedSite ? v.hid === selectedSite.hid : true) // filter site
@@ -103,10 +113,9 @@ const vendorReducer = (state = initialState, action) => {
             //     : !allNull && vendorNameList.length === 1
             //         ? vendorNameList[0]
             //         : selectedVendor)
-
+            // console.log("state, ", )
             return ({
                 ...state,
-
                 selectedVendor: selectedSite !== null
                     ? vendorNameList.filter(dd => dd.id === selectedSite.vendor_id)[0]
                     : !allNull && vendorNameList.length === 1
@@ -120,7 +129,7 @@ const vendorReducer = (state = initialState, action) => {
                 siteNameList,
                 cityNameList,
                 countryNameList,
-                isLoading: true,
+                isLoading: true //action.payload.selectedVendor!==null ? true : false,
             })
 
         }

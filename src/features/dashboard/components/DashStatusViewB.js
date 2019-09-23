@@ -4,7 +4,7 @@ import { fsc } from '../../../helper/fontColorHelper';
 import FourItemBox from '../../app/components/FourItemBox'
 
 const DashStatusViewB = props => {
-    const { media } = props
+    const { media, selectedSite } = props
     return (
         <div className="container-fluid" style={{ background: 'white', borderRadius: 4 }}>
 
@@ -22,7 +22,7 @@ const DashStatusViewB = props => {
                 </div>
 
                 <div className="col-4 col-sm-4 py-2 ">
-                    <FourItemBox value={'Normal'} desc={"SITE STATUS"} />
+                    <FourItemBox value={selectedSite.isOnline ? 'Online' : 'Offline'} desc={"SITE STATUS"} />
                 </div>
 
                 <div className="col-2 col-sm-4 py-2 ">

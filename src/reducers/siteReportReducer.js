@@ -4,7 +4,7 @@ const initialState = {
 
     isLoading: true,
 
-    SiteReportData: null,
+    // SiteReportData: null,
 
     selectedVendor: null,
 
@@ -28,8 +28,7 @@ const siteReportReducer = (state = initialState, action) => {
 
             return ({
                 ...state,
-                // SiteReportDataRaw:action.payload,
-                SiteReportData: action.payload,
+                // SiteReportData: action.payload.payload,
                 isLoading: false,
             })
         }

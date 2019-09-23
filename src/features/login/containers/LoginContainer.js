@@ -24,7 +24,7 @@ const Login = props => {
             setCookie('user', state.loginDataRaw, { path: '/' })
         }
     }
-
+    // console.log(state.loginDataRaw)
     if (state.loginDataRaw === null) {
 
         if (cookies.user !== undefined) {

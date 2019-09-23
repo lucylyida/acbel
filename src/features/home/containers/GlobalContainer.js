@@ -17,7 +17,6 @@ import * as Action from '../../../action'
 import { useCookies } from 'react-cookie';
 
 const GlobalContainer = props => {
-
     const { match, location, media } = props
     const [cookies] = useCookies(['user']);
     const queryData = {
@@ -48,6 +47,7 @@ const GlobalContainer = props => {
         selectedSite,
     } = vendorState
 
+    // console.log("globallllllllllllllllllllllllllllll")
 
     const vendor_id = selectedSite !== null
         ? selectedSite.vendor_id
@@ -56,21 +56,21 @@ const GlobalContainer = props => {
             : cookies.user !== undefined ? cookies.user.vendor_id : undefined
 
     const token = cookies.user === undefined ? undefined : cookies.user.token
-
-    if(token === undefined) {
+   
+    if (token === undefined) {
         props.history.replace(`/${route.login}`)
         return null
     }
-    
+
     const site_id = selectedSite !== null ? parseInt(selectedSite.hid) : null
 
-
+    // console.log("!!!!!!!!!!!!!! >>>> ", vendorState.isLoading)
     // if (selectedVendor === null) {
     if (vendorState.isLoading  /* || globalHomeStatusDataState.isLoading */) {
         // console.log(vendor_id, site_id)
-        // console.log({ selectedVendor, selectedSite })
-        dispatch(Action.getvendorfromapi({ vendor_id, token }))
-        dispatch(Action.getSiteListFromApi({ vendor_id, site_id, token }))
+        // console.log({ selectedVendor, selectedSite })      
+        // dispatch(Action.getvendorfromapi({ vendor_id, token }))
+        // dispatch(Action.getSiteListFromApi({ vendor_id, site_id, token }))
         dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id, token }))
         // return null
     }
@@ -93,7 +93,7 @@ const GlobalContainer = props => {
         }
     }*/
 
-    if (globalHomeStatusDataState.globalHomeStatusData.length === 0) return null
+    // if (globalHomeStatusDataState.globalHomeStatusData.length === 0) return null
 
     const homeStatusData = globalHomeStatusDataState.globalHomeStatusData
 
@@ -101,6 +101,13 @@ const GlobalContainer = props => {
 
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
+            {/* {
+                vendorState.isLoading && (
+                    <div className="text-center" style={{ position: "fixed", left: 0, top: "45%", right: 0, bottom: "45%", zIndex: 1 }}>
+                        <span className="h3 font-weight-bold text-secondary">Loading...</span>
+                    </div>
+                )
+            } */}
             <GlobalNavbar {...props} />
             <div className="d-flex flex-row flex-wrap flex-md-nowrap">
                 <div className="flex-grow-1">

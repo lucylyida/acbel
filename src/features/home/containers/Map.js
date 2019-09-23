@@ -43,17 +43,18 @@ export class MapContainer extends Component {
             // console.log('didmount')
             const mapBound = mmap.map.getBounds()
             const clientLocs2 = this.props.clientLists
+
             const listToShow = (this.props.clientLists.length > 1 && mmap.map.zoom <= 10) ? this.props.clientLists : clientLocs2.reduce((r, c) => {
                 const sitesLocs = c.sites.map(v => v)
                 return [...r, ...sitesLocs]
             }, [])
 
-            this.setState({ stores: listToShow, isClientToShow: mmap.map.zoom <= 10 && (vendor_id > -1 || this.props.clientLists.length > 1), isShowInfoWindow: this.props.clientLists.lenght >= 1 })
+            this.setState({ stores: listToShow, isClientToShow: mmap.map.zoom <= 10 && (vendor_id > -1 || this.props.clientLists.length > 1), isShowInfoWindow: this.props.clientLists.length >= 1 })
         })
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.selectedSite !== this.props.selectedSite) {
+        if (prevProps.clientLists !== this.props.clientLists) {
             const { vendor_id } = this.state
             const mmap = this.mapRef.current
             const mapBound = mmap.map.getBounds()
@@ -62,7 +63,6 @@ export class MapContainer extends Component {
                 const sitesLocs = c.sites.map(v => v)
                 return [...r, ...sitesLocs]
             }, [])
-
             this.setState({ showingInfoWindow: false, stores: listToShow, isClientToShow: mmap.map.zoom <= 10 && (vendor_id > -1 || this.props.clientLists.length > 1), isShowInfoWindow: this.props.clientLists.lenght >= 1 })
         }
     }
@@ -78,10 +78,7 @@ export class MapContainer extends Component {
 
     UNSAFE_componentWillUpdate(nextProps, nextState) {
         const mmap = this.mapRef.current
-        // console.log("hello")
-
         const { siteNameList, google, siteListRawLength } = nextProps
-        // const dd = siteNameList.map(v => ({ lat: v.latitude, lng: v.longitude }))
         const lat = siteNameList[0].latitude
         const lng = siteNameList[0].longitude
 

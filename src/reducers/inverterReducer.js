@@ -2,13 +2,13 @@ import ActionType from '../action/action'
 //@lucy
 const initialState = {
 
-    vendorInverterSiteRaw: [],
+    // vendorInverterSiteRaw: [],
     vendorInverterNameList: [],
 
-    vendorPanelSiteRaw: [],
+    // vendorPanelSiteRaw: [],
     vendorPanelNameList: [],
 
-    vendorPanelInfoRaw: [],
+    // vendorPanelInfoRaw: [],
     vendorPanelInfoNameList: [],
 
     isLoading: true,
@@ -20,18 +20,20 @@ const initialState = {
 const inverterReducer = (state = initialState, action) => {
     switch (action.type) {
         case ActionType.GET_VENDOR_INVERTER_SITES_SUCCESS: {
-
-            const panelInfoList = action.payload.panelInfos.filter(v => v.vendor_id === 2 && v.site_id === "1")
-            const panelList = action.payload.panels.filter(v => v.vendor_id === 2 && v.site_id === "1")
-            const inverterList = action.payload.inverters.filter(v => v.vendor_id === 2 && v.site_id === "1")
+            
+            // !action.payload.success && alert(action.payload.message) 
+            
+            const panelInfoList = action.payload.payload.panelInfos.filter(v => v.vendor_id === 2 && v.site_id === "1")
+            const panelList = action.payload.payload.panels.filter(v => v.vendor_id === 2 && v.site_id === "1")
+            const inverterList = action.payload.payload.inverters.filter(v => v.vendor_id === 2 && v.site_id === "1")
                 .map(v => ({ ...v, panels: panelList.filter(c => v.inv_dint === c.inverter_id) }))
             return ({
                 ...state,
-                vendorInverterSiteRaw: inverterList,
+                // vendorInverterSiteRaw: inverterList,
                 vendorInverterNameList: inverterList,
-                vendorPanelSiteRaw: panelList,
+                // vendorPanelSiteRaw: panelList,
                 vendorPanelNameList: panelList,
-                vendorPanelInfoRaw: panelInfoList,
+                // vendorPanelInfoRaw: panelInfoList,
                 vendorPanelInfoNameList: panelInfoList,
                 isLoading: false,
             })

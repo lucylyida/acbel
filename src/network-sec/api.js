@@ -1,13 +1,10 @@
 
-export const BASE_URL = "http://192.168.100.24:3333"
 
-// export const BASE_URL = "http://202.73.49.62:823"
+// export const BASE_URL = "http://192.168.100.24:3333"
+
+export const BASE_URL = "http://202.73.49.62:823"
 
 //  export const BASE_URL = "http://192.168.100.30:3333"
-
-
-
-// export const BASE_URL = "http://202.73.49.62:823"
 
 export const LOGIN = `${BASE_URL}/auth/login`
 
@@ -30,8 +27,8 @@ export const FETCH_PANEL_INFO = `${BASE_URL}/vendors/panelInfo/2/sites/1`
 export const FETCH_SITE_PROFILE_DATA = (vendorId, siteId) => `${BASE_URL}/vendors/${vendorId}/sites/${siteId}/profiles`
 
 export const FETCH_GLOBAL_HOME_STATUS_DATA = (vendorId, siteId) => vendorId === null
-    ? `${BASE_URL}/global`
-    : `${BASE_URL}/global?vendorId=${vendorId}${siteId !== null && `&siteId=${siteId}`}`
+  ? `${BASE_URL}/global`
+  : `${BASE_URL}/global?vendorId=${vendorId}${siteId !== null ? `&siteId=${siteId}` : ''}`
 
 export const FETCH_SITE_REPORT = ({ vendorId, siteId, deviceType, date }) => `${BASE_URL}/reports/vendors/${vendorId}/sites/${siteId}/type/${deviceType}/${date}/path`
 

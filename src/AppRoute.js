@@ -11,17 +11,21 @@ import ComprisonSideContainer from "./features/side-comparasion/containers/Compa
 import LoginContainer from "./features/login/containers/LoginContainer"
 
 import * as route from "./config/route.config"
+import { withPageLoading } from "./features/app/hoc/withLoading"
+
+// const GlobalContainer = React.lazy(() => import("./features/home/containers/GlobalContainer"))
+// const SiteContainer = React.lazy(() => import("./features/home/containers/SiteContainer"))
 
 const AppRoute = props => {
     return (
-        <BrowserRouter>
+        <BrowserRouter forceRefresh={false}>
             <Switch>
-                <Route path={`/${route.global}`} component={GlobalContainer} />
+                <Route path={`/${route.global}`} component={GlobalContainer} /*render={(props) => withPageLoading(GlobalContainer, props)}*/ />
                 <Route path={`/${route.comparison}`} component={ComprisonSideContainer} />
                 <Route path={`/${route.report}`} component={ReportSideContainer} />
                 <Route path={`/${route.maintenance}/:pageName`} component={MaintenanceSideContainer} />
                 <Route path={`/${route.administration}/:pageName`} component={AdministrationSideContainer} />
-                <Route path={`/${route.site}/:vendorId/:siteId`} component={SiteContainer} />
+                <Route path={`/${route.site}/:vendorId/:siteId`} component={SiteContainer} /*render={(props) => withPageLoading(SiteContainer, props)}*/ />
                 <Route path={`/${route.login}`} component={LoginContainer} />
                 <Redirect to={`/${route.login}`} />
             </Switch>

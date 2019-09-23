@@ -27,6 +27,7 @@ const ReportContainer = props => {
 
     return (
         <div className="container-fluid px-1">
+        
             <div className="bg-white p-2" style={{ borderRadius: 4 }}>
                 <ReportGeneratorView
                     vendorNameList={vendorState.vendorNameList}
@@ -58,7 +59,7 @@ const ReportContainer = props => {
                             selectedDeviceType,
                             selectedDate,
                         } = reportState
-                       
+
                         dispatch(Action.getSiteReportData({ ...reportState, token }))
                     }}
 

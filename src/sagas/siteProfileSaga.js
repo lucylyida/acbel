@@ -9,7 +9,7 @@ function* fetchSiteProfileData(action) {
             { headers: { 'Authorization': 'Bearer ' + action.payload.token }, }
         )
             .then(response => response.json())
-            .then(data => data.payload)
+            .then(data => data)
         yield put(Action.getSiteProfileDataSuccess(siteProfileData))
     } catch (error) {
         yield put({ type: 'FETCH_FAIL', error })

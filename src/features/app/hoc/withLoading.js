@@ -3,6 +3,7 @@ import { fsc } from "../../../helper/fontColorHelper"
 import { withMedia } from "react-media-query-hoc"
 
 const withPageLoading = (PageComponent, props) => {
+    // console.log("withloadinggggggggg/gggggggggggggggggggggggggggg")
     return (
         <Suspense fallback={<LoadingView />}>
             <PageComponent {...props} />

@@ -11,9 +11,12 @@ import { fsc } from '../../../helper/fontColorHelper';
 
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
+import { useCookies } from 'react-cookie'
 
 const HomeStatusView = props => {
     const { media, data } = props
+    const [cookies] = useCookies(['user'])
+    const money_unit = cookies.user.money
     return (
         <div className="container-fluid" style={{ background: 'white', borderRadius: 4 }}>
 
@@ -49,7 +52,7 @@ const HomeStatusView = props => {
                 </div>
 
                 <div className="col-6 col-lg-4 col-xl-3 py-2 text-truncate">
-                    <FourItemBox value={data.total_acc_revenue} unit={"NT$"} desc={"TOTAL ACC. REVENUE"} icon={<MoneyIcon />} />
+                    <FourItemBox value={data.total_acc_revenue} unit={money_unit} desc={"TOTAL ACC. REVENUE"} icon={<MoneyIcon />} />
                 </div>
             </div>
         </div>

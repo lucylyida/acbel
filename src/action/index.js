@@ -7,6 +7,7 @@ export const clearState = () => {
 }
 
 export const getvendorfromapi = (data) => {
+    console.log("get vendor api")
     return {
         type: Action.GET_VENDOR_FROM_API,
         payload: data
@@ -61,6 +62,7 @@ export const getweathercountrySuccess = (data) => {
     }
 }
 // @lucy
+
 export const getVendorInverterSites = () => {
     return {
         type: Action.GET_VENDOR_INVERTER_SITES

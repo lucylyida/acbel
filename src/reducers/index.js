@@ -18,27 +18,17 @@ const rootReducer = combineReducers({
     siteProfileDataReducer,
     siteReportReducer
 })
+
 // const rootReducer = (state, action) => {
 //     if (action.type === ActionType.GET_LOGOUT) {
-//         const { allReducers } = state;
-//         state = { allReducers }
-
-//     }else{
-
+//        const {allReducers} = state;
+//         state = {allReducers}
+//     //    console.log({state})
 //     }
 //     return allReducers(state, action)
 // }
 
 export default rootReducer
 
-// const allReducers = combineReducers({
-//     vendorReducer,
-//     accountReducer,
-//     weatherCountryReducer,
-//     inverterReducer,
-//     globalReducer,
-//     siteProfileDataReducer,
-//     siteReportReducer
-// })
 
-// export default allReducers
+

@@ -1,7 +1,7 @@
 import ActionType from '../action/action'
 
 const initialState = {
-    weatherCountryRaw: [],
+    
    
     weatherCurrentList:[],
     weatherForecastList:[],
@@ -12,7 +12,7 @@ export const weatherCountryReducer = (state = initialState, action) => {
     // console.log(action.payload)
     switch (action.type) {
         case ActionType.GET_WEATHER_COUNTRY_SUCCESS:
-            return ({ ...state, weatherCountryRaw: action.payload, weatherCurrentList: [action.payload.currentWeather],weatherForecastList:[action.payload.forecastWeather], isLoading: false })
+            return ({ ...state,  weatherCurrentList: [action.payload.currentWeather],weatherForecastList:[action.payload.forecastWeather], isLoading: false })
 
         case ActionType.CLEAR_STATE:
                 return {...initialState}

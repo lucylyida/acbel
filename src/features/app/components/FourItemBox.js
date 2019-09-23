@@ -4,7 +4,8 @@ import { fsc, numberFormat } from '../../../helper/fontColorHelper';
 
 const FourItemBox = props => {
     const { value, unit, desc, active, icon, media, useNumberFormat } = props
-    const data = useNumberFormat === undefined || useNumberFormat === true ? numberFormat(value) : value;
+    const temp = typeof value === "number" ? value.toFixed(2) * 1 : value
+    const data = useNumberFormat === undefined || useNumberFormat === true ? numberFormat(temp) : temp;
     return (
         <div className="d-flex align-items-center">
             <div className="d-flex">

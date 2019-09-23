@@ -26,6 +26,7 @@ const Login = props => {
     }
     // console.log(state.loginDataRaw)
     if (state.loginDataRaw === null) {
+
         if (cookies.user !== undefined) {
             removeCookie('user', { path: '/' })
         }

@@ -10,13 +10,20 @@ import * as Action from '../../../action'
 
 const GlobalMapContainer = props => {
     const state = useSelector(state => state.vendorReducer)
-    const { vendorListRaw, siteNameList, siteListRaw, selectedSite } = state
+    const { vendorListRaw, siteNameList, siteListRaw, selectedSite, selectedVendor } = state
 
+
+
+    // const selectedSiteList = selectedSite === null
+    //     ? siteNameList.map(v => v.id === 32 ? { ...v, latitude: "24.2522784", longitude: "120.5190892" } : v)
+    //     : siteNameList
+    //         .filter(d => d.id === selectedSite.id)
+    //         .map(v => v.id === 32 ? { ...v, latitude: "24.2522784", longitude: "120.5190892" } : v)
     const selectedSiteList = selectedSite === null
-        ? siteNameList.map(v => v.id === 32 ? { ...v, latitude: "24.2522784", longitude: "120.5190892" } : v)
-        : siteNameList           
-            .filter(d => d.id === selectedSite.id)
-            .map(v => v.id === 32 ? { ...v, latitude: "24.2522784", longitude: "120.5190892" } : v)
+        ? selectedVendor === null
+            ? siteNameList
+            : siteNameList.filter(d => d.vendor_id === selectedVendor.id)
+        : siteNameList.filter(d => d.vendor_id === selectedSite.vendor_id && d.hid === selectedSite.hid)
 
     const clientLists = selectedSiteList.reduce((r, c) => {
         const index = r.reduce((r1, c1, i1) => c1.country === c.country && c1.city === c.city ? i1 : r1, -1)
@@ -45,14 +52,14 @@ const GlobalMapContainer = props => {
         } else return r
     }, [])
 
-    if (selectedSiteList.length === 0) return  <div className="text-center" style={{ position: "fixed", left: 0, top: "45%", right: 0, bottom: "45%", zIndex: 1 }}>
-    <span className="h3 font-weight-bold text-secondary">Loading...</span>
-</div>
-
+    if (selectedSiteList.length === 0) return <div className="text-center" style={{ position: "fixed", left: 0, top: "45%", right: 0, bottom: "45%", zIndex: 1 }}>
+        <span className="h3 font-weight-bold text-secondary">Loading...</span>
+    </div>
+   
     return (
+
         <div className="mt-3">
-         
-            <MapView clientLists={clientLists} siteNameList={selectedSiteList} siteListRawLength={siteListRaw.length} />
+            <MapView clientLists={clientLists} siteNameList={selectedSiteList} siteListRawLength={siteListRaw.length} selectedSite={selectedSite} selectedVendor={selectedVendor} />
         </div>
     )
 }

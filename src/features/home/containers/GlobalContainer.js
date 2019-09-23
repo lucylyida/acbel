@@ -30,9 +30,11 @@ const GlobalContainer = props => {
 
     const vendorState = useSelector(state => state.vendorReducer)
     const globalHomeStatusDataState = useSelector(state => state.globalReducer)
+
     const dispatch = useDispatch()
 
     // cookies.hasOwnProperty('user') === false  && props.history.replace(`/${route.login}`)
+
 
     const {
         vendorNameList,
@@ -94,6 +96,8 @@ const GlobalContainer = props => {
     // if (globalHomeStatusDataState.globalHomeStatusData.length === 0) return null
 
     const homeStatusData = globalHomeStatusDataState.globalHomeStatusData
+
+
 
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>

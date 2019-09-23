@@ -18,7 +18,7 @@ const DashboardContainer = props => {
     const dispatch = useDispatch()
 
     const [cookies] = useCookies(['user']);
-    cookies.user === undefined && props.history.replace(`/${route.login}`)
+   
     const token = cookies.user.token
 
     const vendorSiteData = isArray(vendorState.vendorSiteData) ? vendorState.vendorSiteData : [vendorState.vendorSiteData]

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Route, Link, Switch, Redirect } from "react-router-dom"
 import * as route from "../../../config/route.config"
 import { withMedia } from "react-media-query-hoc"
@@ -34,7 +34,7 @@ const GlobalContainer = props => {
 
     const dispatch = useDispatch()
 
-    if (cookies.user === undefined) props.history.push(`/${route.login}`)
+    // cookies.hasOwnProperty('user') === false  && props.history.replace(`/${route.login}`)
 
 
     const {
@@ -48,19 +48,21 @@ const GlobalContainer = props => {
         selectedSite,
     } = vendorState
 
+
     const vendor_id = selectedSite !== null
         ? selectedSite.vendor_id
         : selectedVendor !== null
             ? selectedVendor.id
             : cookies.user !== undefined ? cookies.user.vendor_id : undefined
 
-    const token = cookies.user.token
+    const token = cookies.user === undefined ? undefined : cookies.user.token
 
+    if(token === undefined) {
+        props.history.replace(`/${route.login}`)
+        return null
+    }
+    
     const site_id = selectedSite !== null ? parseInt(selectedSite.hid) : null
-
-
-
-
 
 
     // if (selectedVendor === null) {

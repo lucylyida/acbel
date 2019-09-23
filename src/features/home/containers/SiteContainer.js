@@ -7,28 +7,27 @@ import * as route from "../../../config/route.config"
 import SiteNavbar from "../../app/components/SiteNavbar"
 import { withPageLoading } from "../../app/hoc/withLoading"
 import LeftSidebar from "../../app/components/LeftSidebar";
-
-// const DashboardContainer = React.lazy(() => import("../../dashboard/containers/DashboardContainer"))
-// const ForecastContainer = React.lazy(() => import("../../forecast/containers/ForecastContainer"))
-// const MaintenanceContainer = React.lazy(() => import("../../maintenance/containers/MaintenanceContainer"))
-// const ProfileContainer = React.lazy(() => import("../../profile/containers/ProfileContainer"))
-// const InverterContainer = React.lazy(() => import("../../inverter/containers/InverterContainer"))
-// const PanelContainer = React.lazy(() => import("../../panel/containers/PanelContainer"))
-// const RevenueContainer = React.lazy(() => import("../../revenue/containers/RevenueContainer"))
-// const ReportContainer = React.lazy(() => import("../../report/containers/ReportContainer"));
-
-import DashboardContainer from "../../dashboard/containers/DashboardContainer"
-import ForecastContainer from "../../forecast/containers/ForecastContainer"
-import MaintenanceContainer from "../../maintenance/containers/MaintenanceContainer"
-import ProfileContainer from "../../profile/containers/ProfileContainer"
-import InverterContainer from "../../inverter/containers/InverterContainer"
-import PanelContainer from "../../panel/containers/PanelContainer"
-import RevenueContainer from "../../revenue/containers/RevenueContainer"
-import ReportContainer from "../../report/containers/ReportContainer"
-
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
 import { useCookies } from 'react-cookie';
+
+const DashboardContainer = React.lazy(() => import("../../dashboard/containers/DashboardContainer"))
+const ForecastContainer = React.lazy(() => import("../../forecast/containers/ForecastContainer"))
+const MaintenanceContainer = React.lazy(() => import("../../maintenance/containers/MaintenanceContainer"))
+const ProfileContainer = React.lazy(() => import("../../profile/containers/ProfileContainer"))
+const InverterContainer = React.lazy(() => import("../../inverter/containers/InverterContainer"))
+const PanelContainer = React.lazy(() => import("../../panel/containers/PanelContainer"))
+const RevenueContainer = React.lazy(() => import("../../revenue/containers/RevenueContainer"))
+const ReportContainer = React.lazy(() => import("../../report/containers/ReportContainer"));
+
+// import DashboardContainer from "../../dashboard/containers/DashboardContainer"
+// import ForecastContainer from "../../forecast/containers/ForecastContainer"
+// import MaintenanceContainer from "../../maintenance/containers/MaintenanceContainer"
+// import ProfileContainer from "../../profile/containers/ProfileContainer"
+// import InverterContainer from "../../inverter/containers/InverterContainer"
+// import PanelContainer from "../../panel/containers/PanelContainer"
+// import RevenueContainer from "../../revenue/containers/RevenueContainer"
+// import ReportContainer from "../../report/containers/ReportContainer"
 
 const SiteContainer = props => {
     const { match, location, media } = props
@@ -43,17 +42,13 @@ const SiteContainer = props => {
     const vendorState = useSelector(state => state.vendorReducer)
     const dispatch = useDispatch()
 
-    cookies.user === undefined && props.history.push(`/${route.login}`)
-
     const {
         vendorNameList,
         siteNameList,
         selectedVendor,
         selectedSite,
     } = vendorState
-
     
-
     const vendor_id = selectedSite !== null
         ? selectedSite.vendor_id
         : selectedVendor !== null
@@ -68,7 +63,12 @@ const SiteContainer = props => {
         , null)
 
     
-    const token = cookies.user.token
+    const token = cookies.user=== undefined ? undefined : cookies.user.token
+
+    if(token === undefined){
+        props.history.replace(`/${route.login}`)
+        return null
+    }
  
     if (vendorState.isLoading) {
         dispatch(Action.getvendorfromapi({ vendor_id, token }))

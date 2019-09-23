@@ -27,52 +27,67 @@ export class MapContainer extends Component {
             infoSiteData: {},
             vendor_id: -1,
             mapController: 0
+
         }
         this.mapRef = React.createRef()
     }
 
     componentDidMount() {
-        const { clientLists, siteNameList } = this.props
         const { vendor_id } = this.state
         const mmap = this.mapRef.current
         mmap.map.addListener("zoom_changed", () => {
             this.setState({ showingInfoWindow: false })
         })
+
         mmap.map.addListener("bounds_changed", () => {
+            // console.log('didmount')
             const mapBound = mmap.map.getBounds()
-            const clientLocs = this.props.clientLists
-            const clientLocs2 = clientLocs.length >= 1 ? clientLocs : siteNameList
-            // console.log(clientLocs.length, mmap.map.zoom)
-            const listToShow = (clientLocs.length > 1 && mmap.map.zoom <= 10) ? clientLocs : clientLocs2.reduce((r, c) => {
+            const clientLocs2 = this.props.clientLists
+            const listToShow = (this.props.clientLists.length > 1 && mmap.map.zoom <= 10) ? this.props.clientLists : clientLocs2.reduce((r, c) => {
                 const sitesLocs = c.sites.map(v => v)
                 return [...r, ...sitesLocs]
             }, [])
 
-            this.setState({ stores: listToShow, isClientToShow: mmap.map.zoom <= 10 && (vendor_id > -1 || clientLocs.length > 0), isShowInfoWindow: clientLocs.lenght >= 1 })
+            this.setState({ stores: listToShow, isClientToShow: mmap.map.zoom <= 10 && (vendor_id > -1 || this.props.clientLists.length > 1), isShowInfoWindow: this.props.clientLists.lenght >= 1 })
         })
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        if (!equal(this.props, nextProps) || !equal(this.state, nextState)) { return true; } else { return false; }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.selectedSite !== this.props.selectedSite) {
+            const { vendor_id } = this.state
+            const mmap = this.mapRef.current
+            const mapBound = mmap.map.getBounds()
+            const clientLocs2 = this.props.clientLists
+            const listToShow = (this.props.clientLists.length > 1 && mmap.map.zoom <= 10) ? this.props.clientLists : clientLocs2.reduce((r, c) => {
+                const sitesLocs = c.sites.map(v => v)
+                return [...r, ...sitesLocs]
+            }, [])
+
+            this.setState({ showingInfoWindow: false, stores: listToShow, isClientToShow: mmap.map.zoom <= 10 && (vendor_id > -1 || this.props.clientLists.length > 1), isShowInfoWindow: this.props.clientLists.lenght >= 1 })
+        }
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (equal(this.props, nextProps) && equal(this.state, nextState)) {
+            return false;
+        }
+        else {
+            return true
+        }
+    }
 
     UNSAFE_componentWillUpdate(nextProps, nextState) {
-
-
         const mmap = this.mapRef.current
-        const { stores } = this.state
+        // console.log("hello")
+
         const { siteNameList, google, siteListRawLength } = nextProps
-        const dd = siteNameList.map(v => ({ lat: v.latitude, lng: v.longitude }))
+        // const dd = siteNameList.map(v => ({ lat: v.latitude, lng: v.longitude }))
         const lat = siteNameList[0].latitude
         const lng = siteNameList[0].longitude
-        this.setState({ asdasd: 2 })
-        // mmap.map.setCenter(new google.maps.LatLng(lat, lng))
 
         const all_sites = siteNameList.length
         if (all_sites < siteListRawLength) { return mmap.map.setCenter(new google.maps.LatLng(lat, lng)) } else { return null }
     }
-
     _markerDisplay = () => {
         const { stores, isClientToShow } = this.state
         const { clientLists, siteNameList } = this.props
@@ -122,7 +137,7 @@ export class MapContainer extends Component {
         });
     };
     _ClientSites = (props, marker, e) => {
-        console.log(props)
+
         const mmap = this.mapRef.current
         mmap.map.setZoom(11);
         mmap.map.setCenter(marker.getPosition());

@@ -13,14 +13,14 @@ import { useDispatch } from 'react-redux'
 import ActionType from '../../../action/action'
 
 const LeftSidebar = props => {
-    const { online, offline, active, siteName, efficiency, capacity, location, match, history} = props
+    const { online, offline, active, siteName, efficiency, capacity, location, match, history } = props
     const queryParams = querystring.parse(location.search)
     const leftSidebarVisible = queryParams.lsb
     const [cookies, setCookie, removeCookie] = useCookies(['user']);
     const url = match.path
     const dispatch = useDispatch()
     const pageName = match.params.pageName
-    
+
     if (leftSidebarVisible === undefined || leftSidebarVisible === "false") return null
     else
         return (
@@ -118,7 +118,7 @@ const LeftSidebar = props => {
                         Click={() => history.push(`/${route.administration}/${route.profile}`)}
                         removeCookie={() => {
                             removeCookie('user', { path: '/' })
-                            dispatch({ type: ActionType.CLEAR_STATE });                            
+                            dispatch({ type: ActionType.CLEAR_STATE });
                             history.replace(`/${route.login}`);
                         }}
                     />

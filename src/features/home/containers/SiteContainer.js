@@ -103,7 +103,7 @@ const SiteContainer = props => {
                 <div className="w-100 pb-3" style={{ overflow: 'hidden' }}>
                     <Switch>
                         <Route path={`${match.path}/:pageName`} component={SitePage} />
-                        <Redirect to={`${match.path}/${route.profile}`} />
+                        <Redirect to={`${match.path}/${route.dashboard}`} />
                     </Switch>
                 </div>
             </div>
@@ -134,6 +134,6 @@ const SitePage = props => {
         case route.report:
             return withPageLoading(ReportContainer, props)
         default:
-            return withPageLoading(ProfileContainer, props)
+            return withPageLoading(DashboardContainer, props)
     }
 }

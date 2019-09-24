@@ -13,9 +13,12 @@ import * as route from '../../../config/route.config'
 
 const DashboardContainer = props => {
     const vendorState = useSelector(state => state.vendorReducer)
-
     const weatherCurrentCityList = useSelector(state => state.weatherCountryReducer)
+    const dashboardDataState = useSelector(state => state.dashboardDataReducer)
+
     const dispatch = useDispatch()
+
+    const [cookies] = useCookies(['user']);
 
     const wCurrentdata = weatherCurrentCityList.weatherCurrentList
     const wForecastdata = weatherCurrentCityList.weatherForecastList.length === 0 ? [] : weatherCurrentCityList.weatherForecastList[0].list
@@ -32,7 +35,10 @@ const DashboardContainer = props => {
     const humidity = wCurrentdata.length > 0 ? wCurrentdata[0].main.humidity.toFixed(1) * 1 : 0
     const wind = wCurrentdata.length > 0 ? wCurrentdata[0].wind.speed.toFixed(1) * 1 : 0
 
-    const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId }
+    const token = cookies.user.token
+    const money_unit = cookies.user.money
+
+    const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId, token }
 
     const selectSiteDataFromSiteList = vendorState.siteNameList.filter(d => d.vendor_id === parseInt(bodyData.vendor_id) && d.hid === bodyData.site_id)
 
@@ -42,13 +48,43 @@ const DashboardContainer = props => {
     //         dispatch(Action.getweathercountry(latlngData))
     //     }
     // }
-    
-    useEffect(() => {          
-        if (selectSiteDataFromSiteList.length > 0) { 
+
+    const dashboardPowerOutputTrendChartData = dashboardDataState.dashboardPowerOutputTrendDataRaw.map(v => ({
+        time: `${v.hour}`,
+        powerOutput: v.powerOutput
+    }))
+
+    const dashboardEfficiencyTrendChartData = [{
+        "id": "Efficiency",
+        data: dashboardDataState.dashboardEfficiencyTrendDataRaw.map(v => ({
+            "x": `${v.hour}`,
+            "y": v.efficiencyRa
+        }))
+    }]
+
+    const dashboardRadiationTrendData = dashboardDataState.dashboardRadiationTrendDataRaw.map(v => ({
+        time: `${v.hour}`,
+        radiation: v.radiation
+    }))    
+
+    const dashboardPowerVsRadiation = [
+        {
+            "id": "Power",
+            "data": dashboardPowerOutputTrendChartData.map(v => ({ "x": v.time, "y": v.powerOutput })),
+        },
+        {
+            "id": "Irridiance",
+            "data": dashboardRadiationTrendData.map(v => ({ "x": v.time, "y": v.radiation })),
+        }
+    ]
+
+    useEffect(() => {
+        if (selectSiteDataFromSiteList.length > 0) {
             // console.log('dashboard container calling...')          
             const latlngData = { lat: selectSiteDataFromSiteList[0].latitude, lng: selectSiteDataFromSiteList[0].longitude }
             dispatch(Action.getweathercountry(latlngData))
         }
+        dispatch(Action.getDashboardData(bodyData))
     }, [vendorState.siteNameList])
 
     if (selectSiteDataFromSiteList.length === 0) return <div className="text-center" style={{ position: "fixed", left: 0, top: "45%", right: 0, bottom: "45%", zIndex: 1 }}>
@@ -63,13 +99,19 @@ const DashboardContainer = props => {
                     <div className="px-1 pb-1">
                         <div className="bg-white h-100">
                             <DashStatusViewA temperature={temperature} humidity={humidity} wind={wind}
-                                selectedSite={selectSiteDataFromSiteList[0]}
+                                timezone={selectSiteDataFromSiteList[0].time_zone}
+                                dashboardData={dashboardDataState.dashboardDataRaw}
+                                money_unit={money_unit}
                             />
                         </div>
                     </div>
 
                     <div className="p-1">
-                        <div className="bg-white h-100"><DashStatusViewB selectedSite={selectSiteDataFromSiteList[0]} /></div>
+                        <div className="bg-white h-100">
+                            <DashStatusViewB isOnline={selectSiteDataFromSiteList[0].isOnline}
+                                dashboardData={dashboardDataState.dashboardDataRaw}
+                            />
+                        </div>
                     </div>
                 </div>
 
@@ -77,35 +119,35 @@ const DashboardContainer = props => {
                     <div className="bg-white"><DashMap selectedSite={selectSiteDataFromSiteList[0]} /></div>
                 </div>
 
-                <div className="col-lg-6 p-1">
-                    <div className="bg-white ">
+                <div className="col-xl-6 p-1">
+                    <div className="bg-white">
                         {/* Bar requires kes */}
                         <ChartContainer
                             headerText={'SITE OUTPUT TREND'}
                             chartType='bar'
-                            data={sampleData}
-                            keys={['CurrentOutput']}
+                            data={dashboardPowerOutputTrendChartData}
+                            keys={['powerOutput']}
                             color={'#6FD1F6'}
                             axisLeftLegend="Power(kw)"
-                            axisRightLegend="Power(kw)"
+                        // axisRightLegend="Power(kw)"
 
                         />
                     </div>
                 </div>
 
-                <div className="col-lg-6 p-1">
+                <div className="col-xl-6 p-1">
                     <div className="bg-white">
                         <ChartContainer
                             headerText={'SITE EFFICIENCY TREND'}
                             chartType='area'
-                            data={data}
+                            data={dashboardEfficiencyTrendChartData}
                             color={'#FEC71F'}
                             axisLeftLegend="%"
                         />
                     </div>
                 </div>
 
-                <div className="col-lg-6 px-1 pt-1">
+                <div className="col-xl-6 px-1 pt-1">
                     <div className="bg-white">
                         <ChartContainer
                             chartType='area'
@@ -118,12 +160,12 @@ const DashboardContainer = props => {
                     </div>
                 </div>
 
-                <div className="col-lg-6 px-1 pt-1">
+                <div className="col-xl-6 px-1 pt-1">
                     <div className="bg-white">
                         <ChartContainer
                             chartType='area'
                             headerText={'ACTUAL POWER OUTPUT VS RADIATION'}
-                            data={data2}
+                            data={dashboardPowerVsRadiation}
                             color={['#29CE22', '#00C1D2']}
                             axisLeftLegend="Power(kw)"
                             axisRightLegend="Irradiance"

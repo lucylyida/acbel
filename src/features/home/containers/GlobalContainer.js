@@ -31,10 +31,7 @@ const GlobalContainer = props => {
     const vendorState = useSelector(state => state.vendorReducer)
     const globalHomeStatusDataState = useSelector(state => state.globalReducer)
 
-    const dispatch = useDispatch()
-
-    // cookies.hasOwnProperty('user') === false  && props.history.replace(`/${route.login}`)
-
+    const dispatch = useDispatch()    
 
     const {
         vendorNameList,
@@ -45,9 +42,7 @@ const GlobalContainer = props => {
         selectedCountry,
         selectedCity,
         selectedSite,
-    } = vendorState
-
-    // console.log("globallllllllllllllllllllllllllllll")
+    } = vendorState    
 
     const vendor_id = selectedSite !== null
         ? selectedSite.vendor_id
@@ -59,11 +54,11 @@ const GlobalContainer = props => {
 
     const site_id = selectedSite !== null ? parseInt(selectedSite.hid) : null
 
-    const money_unit = cookies.user.money
+    const money_unit = cookies.user === undefined ? null : cookies.user.money
 
     // console.log("!!!!!!!!!!!!!! >>>> ", vendorState.isLoading)
     // if (selectedVendor === null) {
-    /*if (vendorState.isLoading  || globalHomeStatusDataState.isLoading ) {*/
+    // if (vendorState.isLoading  || globalHomeStatusDataState.isLoading ) {
     // console.log(vendor_id, site_id)
     // console.log({ selectedVendor, selectedSite })      
     // dispatch(Action.getvendorfromapi({ vendor_id, token }))

@@ -1,6 +1,6 @@
 
 
-// export const BASE_URL = "http://192.168.100.24:3333"
+// export const BASE_URL = "http://192.168.100.8:3333"
 
 export const BASE_URL = "http://202.73.49.62:823"
 
@@ -47,3 +47,11 @@ const apiKey = '86585144f307f9c2e145b653008bdb43'
 export const WEATHER_URL = (lat, lng) => `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apiKey}&units=metric`
 
 export const WEATHER_FORECAST_URL = (lat, lng) => `http://api.openweathermap.org/data/2.5/forecast?appid=${apiKey}&lat=${lat}&lon=${lng}&units=metric`
+
+export const FETCH_DASHBOARD_DATA = (vendorId, siteId) => `${BASE_URL}/dashboard/${vendorId}/${siteId}/live-status`
+
+export const FETCH_DASHBOARD_POWER_OUTPUT_TREND_DATA = (vendorId, siteId) => `${BASE_URL}/dashboard/${vendorId}/${siteId}/power-output-trend`
+
+export const FETCH_DASHBOARD_EFFICIENCY_TREND_DATA = (vendorId, siteId) => `${BASE_URL}/dashboard/${vendorId}/${siteId}/efficiency-trend`
+
+export const FETCH_DASHBOARD_RADIATION_TREND_DATA = (vendorId, siteId) => `${BASE_URL}/dashboard/${vendorId}/${siteId}/radiation-trend`

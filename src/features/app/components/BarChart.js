@@ -9,8 +9,6 @@ const BarChart = (props) => {
 }
 
 const configCommonProperties = (data, keys, color, legendAnchor, axisRight, axisLeft) => ({
-
-
     data: data,
     colors: color,
     padding: 0.4,

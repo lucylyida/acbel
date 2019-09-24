@@ -4,7 +4,8 @@ import { fsc } from '../../../helper/fontColorHelper';
 import FourItemBox from '../../app/components/FourItemBox'
 
 const DashStatusViewB = props => {
-    const { media, selectedSite } = props
+    const { media, isOnline, dashboardData } = props   
+    const checkNull = dashboardData === null
     return (
         <div className="container-fluid" style={{ background: 'white', borderRadius: 4 }}>
 
@@ -14,23 +15,23 @@ const DashStatusViewB = props => {
                 </div>
 
                 <div className="col-6 col-sm-4 py-2 ">
-                    <FourItemBox value={1859} unit={"kW"} desc={"TOTAL POWER OUTPUT"} />
+                    <FourItemBox value={checkNull ? '...' : dashboardData.totalPowerOutput} unit={"kW"} desc={"TOTAL POWER OUTPUT"} />
                 </div>
 
                 <div className="col-6 col-sm-4 py-2 ">
-                    <FourItemBox value={88} unit={'%'} desc={"EQUIPMENT RELIABILITY"} />
+                    <FourItemBox value={checkNull ? '...' : dashboardData.equipmentReliability} unit={'%'} desc={"EQUIPMENT RELIABILITY"} />
                 </div>
 
                 <div className="col-4 col-sm-4 py-2 ">
-                    <FourItemBox value={selectedSite.isOnline ? 'Online' : 'Offline'} desc={"SITE STATUS"} />
+                    <FourItemBox value={isOnline ? 'Online' : 'Offline'} desc={"SITE STATUS"} />
                 </div>
 
                 <div className="col-2 col-sm-4 py-2 ">
-                    <FourItemBox value={93} unit={"%"} desc={"RA"} />
+                    <FourItemBox value={checkNull ? '...' : dashboardData.efficiencyRa} unit={"%"} desc={"RA"} />
                 </div>
 
                 <div className="col-6 col-sm-4 py-2 ">
-                    <FourItemBox value={76} unit={"%"} desc={"DATA CONNECTIVITY"} />
+                    <FourItemBox value={checkNull ? '...' : dashboardData.dataConnectivity} unit={"%"} desc={"DATA CONNECTIVITY"} />
                 </div>
 
             </div>

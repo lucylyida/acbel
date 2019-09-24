@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import * as route from "../../../config/route.config"
 import KmLink from '../../../kumocom/KmLink'
@@ -16,10 +16,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
 
 const SiteNavbar = props => {
-    const { match, location, history, media, selectSite } = props    
+    const { match, location, history, media, selectSite } = props
+    const [width, setWidth] = useState(window.innerWidth)
     // const warning = 0
     // const good = 14
     // const bad = 35
+    window.onresize = () => setWidth(window.innerWidth)
+
+    const cond = width < 840
 
     return (
         <div className="container-fluid px-0 py-3">
@@ -44,7 +48,7 @@ const SiteNavbar = props => {
                     </a>
                 </div>
                 <div className="d-flex flex-column justify-content-center pl-2" style={{ lineHeight: '1.3' }}>
-                    <div style={{ color: "#2244aa", fontSize: fsc(media, 28) }}>{selectSite !== null && selectSite.site_name}</div>
+                    <div style={{ color: "#2244aa", fontSize: cond ? 18 : 28/*fsc(media, 28)*/ }}>{selectSite !== null && selectSite.site_name}</div>
                     <div style={{ color: "gray" }} >
                         {selectSite !== null && `${selectSite.location} City, ${selectSite.country}`}
                     </div>
@@ -57,7 +61,8 @@ const SiteNavbar = props => {
                         <span className="px-3 font-weight-bold">UK English</span>
                     </div> */}
                     <KmDropdown
-                        labelHide={media.mobile}
+                        // labelHide={media.mobile}
+                        labelHide={cond}
                         onClick={() => console.log('click')}
                         selectedItem={{ icon: <Flag width={24} height={24} />, text: 'UK English' }}
                         data={[

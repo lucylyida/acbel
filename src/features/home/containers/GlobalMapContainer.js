@@ -52,10 +52,18 @@ const GlobalMapContainer = props => {
         } else return r
     }, [])
 
-    if (selectedSiteList.length === 0) return <div className="text-center" style={{ position: "fixed", left: 0, top: "45%", right: 0, bottom: "45%", zIndex: 1 }}>
-        <span className="h3 font-weight-bold text-secondary">Loading...</span>
-    </div>
-   
+    if (selectedSiteList.length === 0) {
+        return <div className="text-center" style={{ position: "fixed", left: "45%", top: "45%",  bottom: "45%" }}>
+            <span className="h3 font-weight-bold text-secondary">Loading...</span>
+        </div>
+    }
+
+    // if (selectedSiteList.length === 0) {
+    //     return <div className="text-center pt-5">
+    //         <span className="h3 font-weight-bold text-secondary">Loading...</span>
+    //     </div>
+    // }
+
     return (
 
         <div className="mt-3">

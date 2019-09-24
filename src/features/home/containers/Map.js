@@ -38,7 +38,6 @@ export class MapContainer extends Component {
         mmap.map.addListener("zoom_changed", () => {
             this.setState({ showingInfoWindow: false })
         })
-
         mmap.map.addListener("bounds_changed", () => {
             // console.log('didmount')
             const mapBound = mmap.map.getBounds()
@@ -55,8 +54,6 @@ export class MapContainer extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.clientLists !== this.props.clientLists) {
-
-
             const { vendor_id } = this.state
             const mmap = this.mapRef.current
             const mapBound = mmap.map.getBounds()
@@ -65,8 +62,7 @@ export class MapContainer extends Component {
                 const sitesLocs = c.sites.map(v => v)
                 return [...r, ...sitesLocs]
             }, [])
-            this.setState({ showingInfoWindow: false, stores: listToShow, isClientToShow: mmap.map.zoom <= 10 && (vendor_id > -1 || this.props.clientLists.length >= 1), isShowInfoWindow: this.props.clientLists.lenght >= 1 })
-            console.log(this.props.clientLists.length)
+            this.setState({ showingInfoWindow: false, stores: listToShow, isClientToShow: mmap.map.zoom <= 10 && (vendor_id > -1 || this.props.clientLists.length >= 1), isShowInfoWindow: this.props.clientLists.lenght >= 1 })           
         }
     }
 

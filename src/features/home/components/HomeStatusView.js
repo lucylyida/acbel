@@ -11,12 +11,9 @@ import { fsc } from '../../../helper/fontColorHelper';
 
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
-import { useCookies } from 'react-cookie'
 
 const HomeStatusView = props => {
-    const { media, data } = props
-    const [cookies] = useCookies(['user'])
-    const money_unit = cookies.user.money
+    const { media, data, money_unit } = props  
     return (
         <div className="container-fluid" style={{ background: 'white', borderRadius: 4 }}>
 

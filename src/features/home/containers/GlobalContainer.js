@@ -56,24 +56,21 @@ const GlobalContainer = props => {
             : cookies.user !== undefined ? cookies.user.vendor_id : undefined
 
     const token = cookies.user === undefined ? undefined : cookies.user.token
-   
-    if (token === undefined) {
-        props.history.replace(`/${route.login}`)
-        return null
-    }
 
     const site_id = selectedSite !== null ? parseInt(selectedSite.hid) : null
 
+    const money_unit = cookies.user.money
+
     // console.log("!!!!!!!!!!!!!! >>>> ", vendorState.isLoading)
     // if (selectedVendor === null) {
-    if (vendorState.isLoading  /* || globalHomeStatusDataState.isLoading */) {
-        // console.log(vendor_id, site_id)
-        // console.log({ selectedVendor, selectedSite })      
-        // dispatch(Action.getvendorfromapi({ vendor_id, token }))
-        // dispatch(Action.getSiteListFromApi({ vendor_id, site_id, token }))
-        dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id, token }))
-        // return null
-    }
+    /*if (vendorState.isLoading  || globalHomeStatusDataState.isLoading ) {*/
+    // console.log(vendor_id, site_id)
+    // console.log({ selectedVendor, selectedSite })      
+    // dispatch(Action.getvendorfromapi({ vendor_id, token }))
+    // dispatch(Action.getSiteListFromApi({ vendor_id, site_id, token }))
+    // dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id, token }))
+    // return null
+    // }
     // }
 
     /*
@@ -95,9 +92,21 @@ const GlobalContainer = props => {
 
     // if (globalHomeStatusDataState.globalHomeStatusData.length === 0) return null
 
+    // if (vendorState.isLoading) {
+    //     dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id, token }))
+    // }
+
+    useEffect(() => {
+        dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id, token }))
+        // console.log('global container calling...')
+    }, [selectedVendor, selectedSite])
+
+    if (token === undefined) {
+        props.history.replace(`/${route.login}`)
+        return null
+    }
+
     const homeStatusData = globalHomeStatusDataState.globalHomeStatusData
-
-
 
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
@@ -121,7 +130,7 @@ const GlobalContainer = props => {
                     />
                 </div>
                 <div className="w-100 pb-2">
-                    <HomeStatusView data={homeStatusData} />
+                    <HomeStatusView data={homeStatusData} money_unit={money_unit} />
                     <HomefilterView
                         vendorNameList={vendorNameList}
                         siteNameList={siteNameList}

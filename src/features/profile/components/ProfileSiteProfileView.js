@@ -23,27 +23,29 @@ const ProfileSiteProfileView = props => {
     return (
         <div className="p-4 h-100" style={{ backgroundColor: '#FFFFFF', borderRadius: 4 }}>
 
-            <div className='py-2' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"SITE PROFILE"}</div>
+            <div className='py-2' style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"SITE PROFILE"}</div>           
 
-            <div className="d-flex pt-2 pb-4 flex-wrap">
-                {
-                    startDate !== null &&
-                    <div className="py-2">
-                        <FourItemBox value={startDate} desc={"START DATE"} useNumberFormat={false} />
-                    </div>
-                }
-                {
-                    priceSetup !== null &&
-                    <div className={`px-${media.mobile ? '3' : '5'} py-2`}>
-                        <FourItemBox value={priceSetup} unit={money_unit} desc={"PRICE SET-UP"} />
-                    </div>
-                }
-                {
-                    capacity !== null &&
-                    <div className="py-2">
-                        <FourItemBox value={capacity} unit={"kW"} desc={"CAPACITY"} />
-                    </div>
-                }
+            <div className="container-fluid p-0 m-0">
+                <div className="row pt-2 pb-3">
+                    {
+                        startDate !== null &&
+                        <div className="col-4 col-lg-5 col-xl-4">
+                            <FourItemBox value={startDate} desc={"START DATE"} useNumberFormat={false} />
+                        </div>
+                    }
+                    {
+                        priceSetup !== null &&
+                        <div className="col-4 col-lg-4 col-xl-4">
+                            <FourItemBox value={priceSetup} unit={money_unit} desc={"PRICE SET-UP"} />
+                        </div>
+                    }
+                    {
+                        capacity !== null &&
+                        <div className="col-4 col-lg-3 col-xl-4">
+                            <FourItemBox value={capacity} unit={"kW"} desc={"CAPACITY"} />
+                        </div>
+                    }
+                </div>
             </div>
 
             <div className="d-flex">
@@ -51,7 +53,6 @@ const ProfileSiteProfileView = props => {
                     alt="panel"
                     className="img rounded img-fluid w-100"
                 />
-
             </div>
 
             {/* <div className="container-fluid p-1">

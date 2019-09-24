@@ -37,8 +37,7 @@ function* fetchGlobalHomeStatusData(action) {
         const siteListData = yield site.json().then(data => data.payload)
         const globalStatusData = yield globalStatus.json().then(data => data)
 
-        // console.log("d12345678", vendorsListData, siteListData, globalStatusData)
-
+        // console.log("d12345678", vendorsListData, siteListData, globalStatusData)           
         yield put(Action.getVendorSuccess(vendorsListData))
         yield put(Action.getSiteListFromApiSuccess(siteListData))
         yield put(Action.getGlobalHomeStatusDataSuccess(globalStatusData))

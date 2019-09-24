@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import ProfileSiteProfielView from '../components/ProfileSiteProfileView'
 import ProfileInverterView from '../components/ProfileInverterView'
 import ProfilePanelView from '../components/ProfilePanelView'
@@ -14,7 +14,6 @@ const ProfileContainer = props => {
 
     const dispatch = useDispatch()
 
-
     const [cookies] = useCookies(['user']);
     const money_unit = cookies.user.money
 
@@ -22,9 +21,16 @@ const ProfileContainer = props => {
 
     const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId, token }
 
-    if (siteProfileDataState.isLoading) {
+    // console.log('profile container')
+
+    // if (siteProfileDataState.isLoading) {
+    //     dispatch(Action.getSiteProfileData(bodyData))
+    // }
+
+    useEffect(() => {
         dispatch(Action.getSiteProfileData(bodyData))
-    }
+        // console.log('profile container calling...')
+    }, [siteProfileDataState.siteProfileData])
 
     const siteProfileData = siteProfileDataState.siteProfileDataRaw.length === 0 ?
         {
@@ -49,7 +55,7 @@ const ProfileContainer = props => {
             } */}
             <div className="row m-0">
 
-                <div className="col-md-5 px-1">
+                <div className="col-lg-5 px-1">
                     <ProfileSiteProfielView
                         startDate={siteProfileData.startDate}
                         priceSetup={siteProfileData.priceSetup}
@@ -60,7 +66,7 @@ const ProfileContainer = props => {
                     />
                 </div>
 
-                <div className="col-md-7 p-0">
+                <div className="col-lg-7 p-0">
                     <div className="px-1 pb-1">
                         <ProfileInverterView
                             totalInverter={siteProfileData.amtInverter}

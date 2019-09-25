@@ -55,3 +55,5 @@ export const FETCH_DASHBOARD_POWER_OUTPUT_TREND_DATA = (vendorId, siteId) => `${
 export const FETCH_DASHBOARD_EFFICIENCY_TREND_DATA = (vendorId, siteId) => `${BASE_URL}/dashboard/${vendorId}/${siteId}/efficiency-trend`
 
 export const FETCH_DASHBOARD_RADIATION_TREND_DATA = (vendorId, siteId) => `${BASE_URL}/dashboard/${vendorId}/${siteId}/radiation-trend`
+
+export const FETCH_DASHBOARD_POWER_NORMALIZED_TREND_DATA = (vendorId, siteId) => `${BASE_URL}/dashboard/${vendorId}/${siteId}/power-normalized-trend`

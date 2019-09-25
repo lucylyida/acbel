@@ -30,9 +30,9 @@ const MyResponsiveLine = (props) => {
             crosshairType="y"
             useMesh={true}
             yFormat={(d) => numberFormat(d)}
-            tooltip={(d) => {
+            tooltip={(d) => {               
                 const unit = d.point.serieId === 'Efficiency' ? '%' : d.point.serieId === 'Power' ? 'kW' : ''
-                return <div className="px-4 py-2 bg-white" style={{ borderRadius: 10 }}>
+                return <div className="px-4 py-2 bg-white" style={{ borderRadius: 4 }}>
                     <div>{`${d.point.serieId} : ${d.point.data.yFormatted} ${unit}`}</div>
                     <div>{`Time : ${d.point.data.x}`}</div>
                 </div>;

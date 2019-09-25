@@ -13,26 +13,30 @@ function* fetchDashboardData(action) {
     //     yield put(Action.getDashboardDataSuccess(dashboardData))
     // } catch (error) {
     //     yield put({ type: 'FETCH_FAIL', error })
-    // }
+    // }   
     const TokenHeader = { headers: { 'Authorization': 'Bearer ' + action.payload.token }, }
     try {
         const [
             dashboardLiveData,
             dashboardPowerOutputTrend,
             dashboardEfficiencyTrend,
-            dashboardRadiationTrend
+            dashboardRadiationTrend,
+            dashboardPowerNormalizedTrend,
         ] = yield all([
             call(fetch, api.FETCH_DASHBOARD_DATA(action.payload.vendor_id, action.payload.site_id), TokenHeader),
             call(fetch, api.FETCH_DASHBOARD_POWER_OUTPUT_TREND_DATA(action.payload.vendor_id, action.payload.site_id), TokenHeader),
             call(fetch, api.FETCH_DASHBOARD_EFFICIENCY_TREND_DATA(action.payload.vendor_id, action.payload.site_id), TokenHeader),
-            call(fetch, api.FETCH_DASHBOARD_RADIATION_TREND_DATA(action.payload.vendor_id, action.payload.site_id), TokenHeader)
+            call(fetch, api.FETCH_DASHBOARD_RADIATION_TREND_DATA(action.payload.vendor_id, action.payload.site_id), TokenHeader),
+            call(fetch, api.FETCH_DASHBOARD_POWER_NORMALIZED_TREND_DATA(action.payload.vendor_id, action.payload.site_id), TokenHeader),
         ])
         const dashboardData = yield dashboardLiveData.json().then(data => data)
         const dashboardPowerOutputTrendData = yield dashboardPowerOutputTrend.json().then(data => data)
         const dashboardEfficiencyTrendData = yield dashboardEfficiencyTrend.json().then(data => data)
         const dashboardRadiationTrendData = yield dashboardRadiationTrend.json().then(data => data)
+        const dashboardPowerNormalizedTrendData = yield dashboardPowerNormalizedTrend.json().then(data => data)
         yield put(Action.getDashboardDataSuccess({
-            dashboardData, dashboardPowerOutputTrendData, dashboardEfficiencyTrendData, dashboardRadiationTrendData
+            dashboardData, dashboardPowerOutputTrendData, dashboardEfficiencyTrendData,
+            dashboardRadiationTrendData, dashboardPowerNormalizedTrendData
         }))
     } catch (error) {
         yield put({ type: 'FETCH_FAIL', error })

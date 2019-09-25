@@ -5,7 +5,8 @@ const initialState = {
     dashboardDataRaw: null,
     dashboardPowerOutputTrendDataRaw: [],
     dashboardEfficiencyTrendDataRaw: [],
-    dashboardRadiationTrendDataRaw: []
+    dashboardRadiationTrendDataRaw: [],
+    dashboardPowerNormalizedTrendDataRaw: [],
 }
 
 const dashboardDataReducer = (state = initialState, action) => {
@@ -16,7 +17,8 @@ const dashboardDataReducer = (state = initialState, action) => {
                 dashboardData,
                 dashboardPowerOutputTrendData,
                 dashboardEfficiencyTrendData,
-                dashboardRadiationTrendData
+                dashboardRadiationTrendData,
+                dashboardPowerNormalizedTrendData
             } = action.payload
             return ({
                 ...state,
@@ -24,6 +26,7 @@ const dashboardDataReducer = (state = initialState, action) => {
                 dashboardPowerOutputTrendDataRaw: dashboardPowerOutputTrendData.payload,
                 dashboardEfficiencyTrendDataRaw: dashboardEfficiencyTrendData.payload,
                 dashboardRadiationTrendDataRaw: dashboardRadiationTrendData.payload,
+                dashboardPowerNormalizedTrendDataRaw: dashboardPowerNormalizedTrendData.payload,
                 isLoading: false,
             })
         }

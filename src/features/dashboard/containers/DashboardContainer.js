@@ -6,10 +6,8 @@ import DashStatusViewB from '../components/DashStatusViewB';
 
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
-import moment from 'moment'
-import { isArray } from "util";
+
 import { useCookies } from 'react-cookie'
-import * as route from '../../../config/route.config'
 
 const DashboardContainer = props => {
     const vendorState = useSelector(state => state.vendorReducer)
@@ -42,17 +40,24 @@ const DashboardContainer = props => {
 
     const selectSiteDataFromSiteList = vendorState.siteNameList.filter(d => d.vendor_id === parseInt(bodyData.vendor_id) && d.hid === bodyData.site_id)
 
+    useEffect(() => {
+        if (selectSiteDataFromSiteList.length > 0) {
+            const latlngData = { lat: selectSiteDataFromSiteList[0].latitude, lng: selectSiteDataFromSiteList[0].longitude }
+            dispatch(Action.getweathercountry(latlngData))
+        }
+        dispatch(Action.getDashboardData(bodyData))
+    }, [vendorState.siteNameList])
     // if (weatherCurrentCityList.isLoading) {
     //     if (selectSiteDataFromSiteList.length > 0) {
     //         const latlngData = { lat: selectSiteDataFromSiteList[0].latitude, lng: selectSiteDataFromSiteList[0].longitude }
     //         dispatch(Action.getweathercountry(latlngData))
     //     }
-    // }
+    // }   
 
     const dashboardPowerOutputTrendChartData = dashboardDataState.dashboardPowerOutputTrendDataRaw.map(v => ({
         "time": `${v.hour}:00`,
         "Power Output": v.powerOutput
-    })).sort((left, right) => left.time.localeCompare(right.time))
+    })).sort((left, right) => left.time.localeCompare(right.time))   
 
     const dashboardEfficiencyTrendChartData = [{
         "id": "Efficiency",
@@ -61,11 +66,6 @@ const DashboardContainer = props => {
             "y": v.efficiencyRa
         })).sort((left, right) => left.x.localeCompare(right.x))
     }]
-
-    // const dashboardRadiationTrendData = dashboardDataState.dashboardRadiationTrendDataRaw.map(v => ({
-    //     time: `${v.hour}:00`,
-    //     radiation: v.radiation
-    // }))      
 
     const dashboardPowerVsRadiation = [
         {
@@ -82,13 +82,22 @@ const DashboardContainer = props => {
         }
     ]
 
-    useEffect(() => {
-        dispatch(Action.getDashboardData(bodyData))
-        if (selectSiteDataFromSiteList.length > 0) {
-            const latlngData = { lat: selectSiteDataFromSiteList[0].latitude, lng: selectSiteDataFromSiteList[0].longitude }
-            dispatch(Action.getweathercountry(latlngData))
+    const dashboardNormalizedPowerVsRadiation = [
+        {
+            "id": "Radiance",
+            "data": dashboardDataState.dashboardRadiationTrendDataRaw
+                .map(v => ({ "x": `${v.hour}:00`, "y": v.radiation }))
+                .sort((left, right) => left.x.localeCompare(right.x))
+        },
+        {
+            "id": "Power Normalized",
+            "data": dashboardDataState.dashboardPowerNormalizedTrendDataRaw
+                .map(v => ({ "x": `${v.hour}:00`, "y": v.powerNormalized }))
+                .sort((left, right) => left.x.localeCompare(right.x))
         }
-    }, [vendorState.siteNameList])
+    ]
+
+
 
     if (selectSiteDataFromSiteList.length === 0) return <div className="text-center" style={{ position: "fixed", left: 0, top: "45%", right: 0, bottom: "45%", zIndex: 1 }}>
         <span className="h3 font-weight-bold text-secondary">Loading...</span>
@@ -118,7 +127,7 @@ const DashboardContainer = props => {
                     </div>
                 </div>
 
-                <div className="col-xl-5 px-1">
+                <div className="col-xl-5 px-1 pb-1">
                     <div className="bg-white"><DashMap selectedSite={selectSiteDataFromSiteList[0]} /></div>
                 </div>
 
@@ -154,7 +163,7 @@ const DashboardContainer = props => {
                         <ChartContainer
                             chartType='area'
                             headerText={'POWER GENERATION NORMALIZED AGAINST RADIANCE'}
-                            data={data1}
+                            data={dashboardNormalizedPowerVsRadiation}
                             color={['#6522CE', '#309BF3']}
                             axisLeftLegend="Power(kw)"
                             axisRightLegend="Radiance"
@@ -331,52 +340,52 @@ const data1 = [
         "data": [
             {
                 "x": "06:00",
-                "y": 7900
+                "y": 790
             },
 
             {
                 "x": "07:00",
-                "y": 3000
+                "y": 300
             },
             {
                 "x": "08:00",
-                "y": 3500
+                "y": 350
             },
             {
                 "x": "09:00",
-                "y": 10000
+                "y": 1000
             },
             {
                 "x": "10:00",
-                "y": 4500
+                "y": 450
             },
             {
                 "x": "11:00",
-                "y": 14000
+                "y": 1400
             },
             {
                 "x": "12:00",
-                "y": 11000
+                "y": 1100
             },
             {
                 "x": "13:00",
-                "y": 15000
+                "y": 1500
             },
             {
                 "x": "14:00",
-                "y": 9000
+                "y": 900
             },
             {
                 "x": "15:00",
-                "y": 8000
+                "y": 800
             },
             {
                 "x": "16:00",
-                "y": 19000
+                "y": 1900
             },
             {
                 "x": "17:00",
-                "y": 6000
+                "y": 600
             }
 
         ]

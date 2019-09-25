@@ -50,41 +50,44 @@ const DashboardContainer = props => {
     // }
 
     const dashboardPowerOutputTrendChartData = dashboardDataState.dashboardPowerOutputTrendDataRaw.map(v => ({
-        time: `${v.hour}`,
-        powerOutput: v.powerOutput
-    }))
+        "time": `${v.hour}:00`,
+        "Power Output": v.powerOutput
+    })).sort((left, right) => left.time.localeCompare(right.time))
 
     const dashboardEfficiencyTrendChartData = [{
         "id": "Efficiency",
         data: dashboardDataState.dashboardEfficiencyTrendDataRaw.map(v => ({
-            "x": `${v.hour}`,
+            "x": `${v.hour}:00`,
             "y": v.efficiencyRa
-        }))
+        })).sort((left, right) => left.x.localeCompare(right.x))
     }]
 
-    const dashboardRadiationTrendData = dashboardDataState.dashboardRadiationTrendDataRaw.map(v => ({
-        time: `${v.hour}`,
-        radiation: v.radiation
-    }))    
+    // const dashboardRadiationTrendData = dashboardDataState.dashboardRadiationTrendDataRaw.map(v => ({
+    //     time: `${v.hour}:00`,
+    //     radiation: v.radiation
+    // }))      
 
     const dashboardPowerVsRadiation = [
         {
             "id": "Power",
-            "data": dashboardPowerOutputTrendChartData.map(v => ({ "x": v.time, "y": v.powerOutput })),
+            "data": dashboardDataState.dashboardPowerOutputTrendDataRaw
+                .map(v => ({ "x": `${v.hour}:00`, "y": v.powerOutput }))
+                .sort((left, right) => left.x.localeCompare(right.x))
         },
         {
             "id": "Irridiance",
-            "data": dashboardRadiationTrendData.map(v => ({ "x": v.time, "y": v.radiation })),
+            "data": dashboardDataState.dashboardRadiationTrendDataRaw
+                .map(v => ({ "x": `${v.hour}:00`, "y": v.radiation }))
+                .sort((left, right) => left.x.localeCompare(right.x))
         }
     ]
 
     useEffect(() => {
+        dispatch(Action.getDashboardData(bodyData))
         if (selectSiteDataFromSiteList.length > 0) {
-            // console.log('dashboard container calling...')          
             const latlngData = { lat: selectSiteDataFromSiteList[0].latitude, lng: selectSiteDataFromSiteList[0].longitude }
             dispatch(Action.getweathercountry(latlngData))
         }
-        dispatch(Action.getDashboardData(bodyData))
     }, [vendorState.siteNameList])
 
     if (selectSiteDataFromSiteList.length === 0) return <div className="text-center" style={{ position: "fixed", left: 0, top: "45%", right: 0, bottom: "45%", zIndex: 1 }}>
@@ -95,7 +98,7 @@ const DashboardContainer = props => {
         <div className="container-fluid">
 
             <div className="row">
-                <div className="col-lg-7 p-0 pb-1 d-flex flex-column justify-content-between">
+                <div className="col-xl-7 p-0 pb-1 d-flex flex-column justify-content-between">
                     <div className="px-1 pb-1">
                         <div className="bg-white h-100">
                             <DashStatusViewA temperature={temperature} humidity={humidity} wind={wind}
@@ -115,7 +118,7 @@ const DashboardContainer = props => {
                     </div>
                 </div>
 
-                <div className="col-lg-5 px-1">
+                <div className="col-xl-5 px-1">
                     <div className="bg-white"><DashMap selectedSite={selectSiteDataFromSiteList[0]} /></div>
                 </div>
 
@@ -126,11 +129,10 @@ const DashboardContainer = props => {
                             headerText={'SITE OUTPUT TREND'}
                             chartType='bar'
                             data={dashboardPowerOutputTrendChartData}
-                            keys={['powerOutput']}
+                            keys={['Power Output']}
                             color={'#6FD1F6'}
-                            axisLeftLegend="Power(kw)"
+                            axisLeftLegend="Power(kW)"
                         // axisRightLegend="Power(kw)"
-
                         />
                     </div>
                 </div>
@@ -142,7 +144,7 @@ const DashboardContainer = props => {
                             chartType='area'
                             data={dashboardEfficiencyTrendChartData}
                             color={'#FEC71F'}
-                            axisLeftLegend="%"
+                            axisLeftLegend="Efficiency(%)"
                         />
                     </div>
                 </div>

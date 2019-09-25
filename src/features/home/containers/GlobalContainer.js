@@ -31,7 +31,7 @@ const GlobalContainer = props => {
     const vendorState = useSelector(state => state.vendorReducer)
     const globalHomeStatusDataState = useSelector(state => state.globalReducer)
 
-    const dispatch = useDispatch()    
+    const dispatch = useDispatch()
 
     const {
         vendorNameList,
@@ -42,7 +42,7 @@ const GlobalContainer = props => {
         selectedCountry,
         selectedCity,
         selectedSite,
-    } = vendorState    
+    } = vendorState
 
     const vendor_id = selectedSite !== null
         ? selectedSite.vendor_id

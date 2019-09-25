@@ -4,8 +4,13 @@ import BarChart from './BarChart'
 import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../../../helper/fontColorHelper'
 
+
+
 const ChartContainer = props => {
-    const { headerText, chartType, data, color, keys, axisLeftLegend, axisRightLegend, legendAnchor = 'top-right', axisBottomLegend = 'Time', exportIcon, media } = props
+    const { headerText, chartType, data, color, keys, axisLeftLegend, axisRightLegend, legendAnchor = 'top-right', axisBottomLegend = 'Time', exportIcon, media } = props    
+
+    const isTickWhichShouldBeHidden = tick => false//data.length > 0 && data[0].data.length >= 18 && parseInt(tick.split(":")[0]) % 2 === 0 
+    
     const axisLeft = {
         orient: 'left',
         tickSize: 0,
@@ -16,6 +21,7 @@ const ChartContainer = props => {
         legendPosition: 'middle',
         tickvalue: 5,
     }
+
     const axisRight = axisRightLegend === undefined ? undefined : {
         orient: 'right',
         tickSize: 5,
@@ -33,7 +39,8 @@ const ChartContainer = props => {
         tickRotation: 0,
         legend: axisBottomLegend,
         legendOffset: 50,
-        legendPosition: 'middle'
+        legendPosition: 'middle',
+        format: tick => (isTickWhichShouldBeHidden(tick) ? '' : tick)
     }
     return (
         <div className="p-1 w-100">

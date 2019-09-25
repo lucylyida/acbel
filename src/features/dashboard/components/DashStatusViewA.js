@@ -22,27 +22,27 @@ const DashStatusViewA = props => {
                     </div>
                 </div>
 
-                <div className="col-6 col-sm-4 py-2">
+                <div className="col-6 col-md-4 py-2 text-truncate">
                     <FourItemBox value={temperature} unit={<span>&#8451;</span>} icon={<SunnyIcon />} />
                 </div>
 
-                <div className="col-6 col-sm-4 py-2 ">
+                <div className="col-6 col-md-4 py-2 text-truncate">
                     <FourItemBox value={humidity} unit={'%'} desc={"HUMIDITY"} />
                 </div>
 
-                <div className="col-6 col-sm-4 py-2 ">
+                <div className="col-6 col-md-4 py-2 text-truncate">
                     <FourItemBox value={wind} unit={'m/s'} desc={"WIND"} />
                 </div>
 
-                <div className="col-6 col-sm-4 py-2 ">
+                <div className="col-6 col-md-4 py-2 text-truncate">
                     <FourItemBox value={checkNull ? '...' : dashboardData.todayPower} unit={"kW"} desc={"TODAY'S POWER"} />
                 </div>
 
-                <div className="col-6 col-sm-4 py-2 ">
+                <div className="col-6 col-md-4 py-2 text-truncate">
                     <FourItemBox value={checkNull ? '...' : dashboardData.totalAccRevenue} unit={money_unit} desc={"TOTAL ACC. REVENUE"} />
                 </div>
 
-                <div className="col-6 col-sm-4 py-2">
+                <div className="col-6 col-md-4 py-2 text-truncate">
                     <FourItemBox value={checkNull ? '...' : dashboardData.totalAccPower} unit={"kW"} desc={"TOTAL ACC. POWER"} />
                 </div>
 

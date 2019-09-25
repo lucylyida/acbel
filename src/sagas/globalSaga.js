@@ -5,6 +5,7 @@ import * as api from "../network-sec/api"
 
 function* fetchGlobalHomeStatusData(action) {
     const body = action.payload
+    const TokenHeader = { headers: { 'Authorization': 'Bearer ' + action.payload.token }, }
     try {
         // const globalhomestatusdata = yield fetch(api.FETCH_GLOBAL_HOME_STATUS_DATA(body.vendor_id, body.site_id),
         //     { headers: { 'Authorization': 'Bearer ' + action.payload.token }, })
@@ -17,19 +18,22 @@ function* fetchGlobalHomeStatusData(action) {
 
         // console.log("GET ---------------->>")
         const [vendor, site, globalStatus] = yield all([
-            call(fetch, action.payload.vendor_id === null ? api.FETCH_VENDOR_LIST : api.FETCH_VENDOR(action.payload.vendor_id),
-                { headers: { 'Authorization': 'Bearer ' + action.payload.token }, }),
+            call(fetch,
+                action.payload.vendor_id === null
+                    ? api.FETCH_VENDOR_LIST
+                    : api.FETCH_VENDOR(action.payload.vendor_id),
+                TokenHeader
+            ),
 
-            call(fetch, 
+            call(fetch,
                 action.payload.site_id !== null
-                ? api.FETCH_VENDOR_SITE(action.payload.vendor_id, action.payload.site_id)
-                :
-                 action.payload.vendor_id === null
-                    ? api.FETCH_VENDOR_SITES
-                    : api.FETCH_VENDOR_SITE_LIST(action.payload.vendor_id),
-                { headers: { 'Authorization': 'Bearer ' + action.payload.token }, }),
+                    ? api.FETCH_VENDOR_SITE(action.payload.vendor_id, action.payload.site_id)
+                    : action.payload.vendor_id === null
+                        ? api.FETCH_VENDOR_SITES
+                        : api.FETCH_VENDOR_SITE_LIST(action.payload.vendor_id),
+                TokenHeader),
 
-            call(fetch, api.FETCH_GLOBAL_HOME_STATUS_DATA(body.vendor_id, body.site_id), { headers: { 'Authorization': 'Bearer ' + action.payload.token } })
+            call(fetch, api.FETCH_GLOBAL_HOME_STATUS_DATA(body.vendor_id, body.site_id), TokenHeader)
         ])
         // console.log("----------output time",vendor,site,globalStatus)
 

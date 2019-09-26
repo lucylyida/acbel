@@ -16,7 +16,7 @@ const KmToggleButton = (props) => {
     const userStyle = style === undefined ? {} : style
     return (
         <button
-            onClick={() => onClick(btnNumber)}
+            onClick={() => onClick()}
             type="button"
             className={`btn px-2 py-1 ${className}`}
             style={{ ...defaultStyle, ...userStyle }}

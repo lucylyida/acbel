@@ -13,6 +13,7 @@ const initialState = {
 const globalReducer = (state=initialState,action)=>{
     switch(action.type){
         case Action.GET_GLOBAL_HOME_STATUS_DATA_SUCCESS : {
+          
         //    !action.payload.success && alert(action.payload.message)  
                 return({
                     ...state,
@@ -20,7 +21,7 @@ const globalReducer = (state=initialState,action)=>{
                    
                     isLoading:false,
                 })
-         
+       
         }
         case Action.CLEAR_STATE:
                 return {...initialState}

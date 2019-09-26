@@ -69,6 +69,7 @@ const GlobalContainer = props => {
         // console.log({ selectedVendor, selectedSite })      
         // dispatch(Action.getvendorfromapi({ vendor_id, token }))
         // dispatch(Action.getSiteListFromApi({ vendor_id, site_id, token }))
+        
         dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id, token }))
         // return null
     }

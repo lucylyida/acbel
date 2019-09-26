@@ -5,7 +5,7 @@ import * as api from "../network-sec/api"
 
 function* fetchVendor(action) {
     try {
-        const [vendor, site, vendorSite] = yield all([
+        const [vendor, site, vendorSite,globalStatus] = yield all([
            
             call(fetch, action.payload.vendor_id === null ? api.FETCH_VENDOR_LIST : api.FETCH_VENDOR(action.payload.vendor_id),
                 { headers: { 'Authorization': 'Bearer ' + action.payload.token }, }),
@@ -18,7 +18,10 @@ function* fetchVendor(action) {
                 { headers: { 'Authorization': 'Bearer ' + action.payload.token }, }),
 
             call(fetch, api.FETCH_VENDOR_SITE(action.payload.vendor_id, action.payload.site_id),
-                { headers: { 'Authorization': 'Bearer ' + action.payload.token }, })
+                { headers: { 'Authorization': 'Bearer ' + action.payload.token }, }),
+
+            call(fetch, api.FETCH_GLOBAL_HOME_STATUS_DATA(action.payload.vendor_id, action.payload.site_id),
+             { headers: { 'Authorization': 'Bearer ' + action.payload.token } }) , 
                 
         ])
         const vendors = yield vendor.json().then(data => data.payload)
@@ -26,10 +29,12 @@ function* fetchVendor(action) {
 
         const sites = yield site.json().then(data => data.payload)
         const vendorSiteData = yield vendorSite.json().then(data => data)
-
+        const globalStatusData = yield globalStatus.json().then(data => data)
+        
         yield put({ type: ActionType.GET_VENDOR_SUCCESS, payload: vendorArray })
         yield put(Action.getSiteListFromApiSuccess(sites))
         yield put(Action.getVendorSiteDataSuccess(vendorSiteData))
+        yield put(Action.getGlobalHomeStatusDataSuccess(globalStatusData))
         // console.log({vendors,sites,vendorSiteData})
     } catch (error) {
         yield put({ type: 'FETCH_FAIL', error })

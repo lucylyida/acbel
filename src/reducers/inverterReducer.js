@@ -21,12 +21,11 @@ const inverterReducer = (state = initialState, action) => {
     switch (action.type) {
         case ActionType.GET_VENDOR_INVERTER_SITES_SUCCESS: {
             
-            // !action.payload.success && alert(action.payload.message) 
-            
-            const panelInfoList = action.payload.payload.panelInfos.filter(v => v.vendor_id === 2 && v.site_id === "1")
-            const panelList = action.payload.payload.panels.filter(v => v.vendor_id === 2 && v.site_id === "1")
-            const inverterList = action.payload.payload.inverters.filter(v => v.vendor_id === 2 && v.site_id === "1")
+            const panelInfoList = action.payload.panelInfos.payload.filter(v => v.vendor_id === 2 && v.site_id === "1")
+            const panelList = action.payload.panels.payload.filter(v => v.vendor_id === 2 && v.site_id === "1")
+            const inverterList = action.payload.inverters.payload.filter(v => v.vendor_id === 2 && v.site_id === "1")
                 .map(v => ({ ...v, panels: panelList.filter(c => v.inv_dint === c.inverter_id) }))
+              
             return ({
                 ...state,
                 // vendorInverterSiteRaw: inverterList,

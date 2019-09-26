@@ -40,7 +40,8 @@ const SiteContainer = props => {
     }
     // const queryDataEnc = enc(queryData)
     const vendorState = useSelector(state => state.vendorReducer)
-     const dispatch = useDispatch()
+    const globalHomeStatusDataState = useSelector(state => state.globalReducer)
+    const dispatch = useDispatch()
 
     const {
         vendorNameList,
@@ -63,6 +64,8 @@ const SiteContainer = props => {
         c.vendor_id === parseInt(bodyData.vendor_id) && c.hid === bodyData.site_id ? c : r
         , null)
 
+    const homeStatusData = globalHomeStatusDataState.globalHomeStatusData
+  
 
     const token = cookies.user === undefined ? undefined : cookies.user.token
 
@@ -75,6 +78,7 @@ const SiteContainer = props => {
         console.log("site container api fetchingggggggggggg")
         // dispatch(Action.getvendorfromapi({ vendor_id, token }))
         dispatch(Action.getSiteListFromApi({ vendor_id: bodyData.vendor_id, site_id, token }))
+        dispatch(Action.getVendorInverterSites(token))
     }
     // dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id, token }))
     return (
@@ -83,7 +87,12 @@ const SiteContainer = props => {
             <div className="d-flex flex-row flex-wrap flex-md-nowrap">
                 <div className="flex-grow-1">
                     <LeftSidebar
-                        online={218} offline={12} siteChoose={true} active={selectSite === null ? false : selectSite.isOnline} efficiency={100} capacity={170.00}
+                        online={homeStatusData === null ? null : homeStatusData.total_online_sites}
+                        offline={homeStatusData === null ? null : homeStatusData.total_offline_sites}
+                        siteChoose={true}
+                        active={selectSite === null ? false : selectSite.isOnline}
+                        efficiency={selectSite === null ? null : selectSite.efficiencyRa}
+                        capacity={selectSite === null ? null : selectSite.capacity_kw}
                         siteName={selectSite === null ? null : selectSite.site_name}
                     />
                 </div>

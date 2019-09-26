@@ -10,22 +10,32 @@ import { fsc, numberFormat } from "../../../helper/fontColorHelper";
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
 
+
 const InverterDigit = (no) => no < 10 ? '00' + no : no < 100 ? '0' + no : no
 
 const InverterContainer = props => {
     const { media } = props
     const [compareMode, switchNormalMode] = useState(false)
 
+
     const selected = 'btn_3'
 
     const dispatch = useDispatch()
     const inverterState = useSelector(state => state.inverterReducer)
-    if (inverterState.isLoading) dispatch(Action.getVendorInverterSites())
+
+    // const token = cookies.user === undefined ? undefined : cookies.user.token
+
+    // if (token === undefined) {
+    //     props.history.replace(`/${route.login}`)
+    //     return null
+    // }
+
 
     const { selectedInverters, vendorInverterNameList } = inverterState
     // if(state.isLoading) return "LOading.."
+    console.log(inverterState)
 
-    const inverterCompView =  vendorInverterNameList.map((v, k) => {
+    const inverterCompView = vendorInverterNameList.map((v, k) => {
         const txt = InverterDigit(k + 1)
         return (
             <InverterCollapseItem
@@ -43,7 +53,7 @@ const InverterContainer = props => {
             />
         )
     })
-  
+
     return (
         <div className="container-fluid">
             <div className="row">

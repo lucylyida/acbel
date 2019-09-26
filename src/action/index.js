@@ -63,9 +63,11 @@ export const getweathercountrySuccess = (data) => {
 }
 // @lucy
 
-export const getVendorInverterSites = () => {
+export const getVendorInverterSites = (data) => {
+    
     return {
-        type: Action.GET_VENDOR_INVERTER_SITES
+        type: Action.GET_VENDOR_INVERTER_SITES,
+        payload:data
     }
 }
 export const getVendorInverterSitesSuccess = (data) => {

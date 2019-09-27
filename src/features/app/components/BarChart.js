@@ -1,6 +1,6 @@
 import React from 'react'
 import { ResponsiveBar } from '@nivo/bar'
-
+import { numberFormat } from '../../../helper/fontColorHelper';
 
 const BarChart = (props) => {
 
@@ -9,8 +9,6 @@ const BarChart = (props) => {
 }
 
 const configCommonProperties = (data, keys, color, legendAnchor, axisRight, axisLeft) => ({
-
-
     data: data,
     colors: color,
     padding: 0.4,
@@ -33,6 +31,14 @@ const configCommonProperties = (data, keys, color, legendAnchor, axisRight, axis
         legend: 'Time',
         legendOffset: 50,
         legendPosition: 'middle'
+    },
+    yFormat: (d) => numberFormat(d),
+    tooltip: (d) => {       
+        const unit = d.id === 'Power Output' ? 'kW' : ''
+        return <div className="px-4 py-2 bg-white rounded">
+            <div>{`${d.id} : ${d.value} ${unit}`}</div>
+            <div>{`Time : ${d.indexValue}`}</div>
+        </div>;
     },
     theme: {
         axis: {

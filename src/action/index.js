@@ -130,6 +130,20 @@ export const getVendorSiteDataSuccess = (data) => {
     }
 }
 
+export const getDashboardData = (data) => {
+    return {
+        type: Action.GET_DASHBOARD_DATA,
+        payload: data,
+    }
+}
+
+export const getDashboardDataSuccess = (data) => {
+    return {
+        type: Action.GET_DASHBOARD_DATA_SUCCESS,
+        payload: data,
+    }
+}
+
 export const globalHandleSelectFilter = filterData => {
     return {
         type: Action.GLOBAL_HANDLE_SELECT_FILTER,

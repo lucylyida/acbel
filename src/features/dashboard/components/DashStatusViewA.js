@@ -3,16 +3,12 @@ import moment from 'moment-timezone'
 
 import FourItemBox from '../../app/components/FourItemBox'
 import SunnyIcon from '../../../assets/icons/Sunny_Icon'
-
 import { withMedia } from 'react-media-query-hoc';
 import { fsc } from '../../../helper/fontColorHelper';
-import {useCookies} from 'react-cookie'
 
 const DashStatusViewA = props => {
-    const { media, temperature, humidity, wind,selectedSite } = props
-    const [cookies] = useCookies(['user'])
-    const money_unit = cookies.user.money
-    const timezone = selectedSite.time_zone
+    const { media, temperature, humidity, wind, timezone, dashboardData, money_unit } = props   
+    const checkNull = dashboardData === null
     return (
         <div className="container-fluid" style={{ background: 'white', borderRadius: 4 }}>
 
@@ -26,28 +22,28 @@ const DashStatusViewA = props => {
                     </div>
                 </div>
 
-                <div className="col-6 col-sm-4 py-2">
+                <div className="col-6 col-md-4 py-2 text-truncate">
                     <FourItemBox value={temperature} unit={<span>&#8451;</span>} icon={<SunnyIcon />} />
                 </div>
 
-                <div className="col-6 col-sm-4 py-2 ">
+                <div className="col-6 col-md-4 py-2 text-truncate">
                     <FourItemBox value={humidity} unit={'%'} desc={"HUMIDITY"} />
                 </div>
 
-                <div className="col-6 col-sm-4 py-2 ">
+                <div className="col-6 col-md-4 py-2 text-truncate">
                     <FourItemBox value={wind} unit={'m/s'} desc={"WIND"} />
                 </div>
 
-                <div className="col-6 col-sm-4 py-2 ">
-                    <FourItemBox value={324} unit={"kW"} desc={"TODAY'S POWER"} />
+                <div className="col-6 col-md-4 py-2 text-truncate">
+                    <FourItemBox value={checkNull ? '...' : dashboardData.todayPower} unit={"kW"} desc={"TODAY'S POWER"} />
                 </div>
 
-                <div className="col-6 col-sm-4 py-2 ">
-                    <FourItemBox value={384} unit={money_unit} desc={"TOTAL ACC REVENUE"} />
+                <div className="col-6 col-md-4 py-2 text-truncate">
+                    <FourItemBox value={checkNull ? '...' : dashboardData.totalAccRevenue} unit={money_unit} desc={"TOTAL ACC. REVENUE"} />
                 </div>
 
-                <div className="col-6 col-sm-4 py-2">
-                    <FourItemBox value={22280034} unit={"kW"} desc={"TOTAL ACC. POWER"} />
+                <div className="col-6 col-md-4 py-2 text-truncate">
+                    <FourItemBox value={checkNull ? '...' : dashboardData.totalAccPower} unit={"kW"} desc={"TOTAL ACC. POWER"} />
                 </div>
 
             </div>

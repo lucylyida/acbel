@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import ChartContainer from "../../app/components/ChartContainer"
 import DashMap from '../components/DashMapView';
 import DashStatusViewA from '../components/DashStatusViewA';
@@ -6,16 +6,17 @@ import DashStatusViewB from '../components/DashStatusViewB';
 
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
-import moment from 'moment'
-import { isArray } from "util";
+
 import { useCookies } from 'react-cookie'
-import * as route from '../../../config/route.config'
 
 const DashboardContainer = props => {
     const vendorState = useSelector(state => state.vendorReducer)
-
     const weatherCurrentCityList = useSelector(state => state.weatherCountryReducer)
+    const dashboardDataState = useSelector(state => state.dashboardDataReducer)
+
     const dispatch = useDispatch()
+
+    const [cookies] = useCookies(['user']);
 
     const wCurrentdata = weatherCurrentCityList.weatherCurrentList
     const wForecastdata = weatherCurrentCityList.weatherForecastList.length === 0 ? [] : weatherCurrentCityList.weatherForecastList[0].list
@@ -32,16 +33,71 @@ const DashboardContainer = props => {
     const humidity = wCurrentdata.length > 0 ? wCurrentdata[0].main.humidity.toFixed(1) * 1 : 0
     const wind = wCurrentdata.length > 0 ? wCurrentdata[0].wind.speed.toFixed(1) * 1 : 0
 
-    const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId }
+    const token = cookies.user.token
+    const money_unit = cookies.user.money
+
+    const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId, token }
 
     const selectSiteDataFromSiteList = vendorState.siteNameList.filter(d => d.vendor_id === parseInt(bodyData.vendor_id) && d.hid === bodyData.site_id)
 
-    if (weatherCurrentCityList.isLoading) {
+    useEffect(() => {
         if (selectSiteDataFromSiteList.length > 0) {
             const latlngData = { lat: selectSiteDataFromSiteList[0].latitude, lng: selectSiteDataFromSiteList[0].longitude }
             dispatch(Action.getweathercountry(latlngData))
         }
-    }
+        dispatch(Action.getDashboardData(bodyData))
+    }, [vendorState.siteNameList])
+    // if (weatherCurrentCityList.isLoading) {
+    //     if (selectSiteDataFromSiteList.length > 0) {
+    //         const latlngData = { lat: selectSiteDataFromSiteList[0].latitude, lng: selectSiteDataFromSiteList[0].longitude }
+    //         dispatch(Action.getweathercountry(latlngData))
+    //     }
+    // }   
+
+    const dashboardPowerOutputTrendChartData = dashboardDataState.dashboardPowerOutputTrendDataRaw.map(v => ({
+        "time": `${v.hour}:00`,
+        "Power Output": v.powerOutput
+    })).sort((left, right) => left.time.localeCompare(right.time))
+
+    const dashboardEfficiencyTrendChartData = [{
+        "id": "Efficiency",
+        data: dashboardDataState.dashboardEfficiencyTrendDataRaw.map(v => ({
+            "x": `${v.hour}:00`,
+            "y": v.efficiencyRa
+        })).sort((left, right) => left.x.localeCompare(right.x))
+    }]
+
+    const dashboardPowerVsRadiation = [
+        {
+            "id": "Power",
+            "data": dashboardDataState.dashboardPowerOutputTrendDataRaw
+                .map(v => ({ "x": `${v.hour}:00`, "y": v.powerOutput }))
+                .sort((left, right) => left.x.localeCompare(right.x))
+        },
+        {
+            "id": "Irridiance",
+            "data": dashboardDataState.dashboardRadiationTrendDataRaw
+                .map(v => ({ "x": `${v.hour}:00`, "y": v.radiation }))
+                .sort((left, right) => left.x.localeCompare(right.x))
+        }
+    ]
+
+    const dashboardNormalizedPowerVsRadiation = [
+        {
+            "id": "Radiance",
+            "data": dashboardDataState.dashboardRadiationTrendDataRaw
+                .map(v => ({ "x": `${v.hour}:00`, "y": v.radiation }))
+                .sort((left, right) => left.x.localeCompare(right.x))
+        },
+        {
+            "id": "Power Normalized",
+            "data": dashboardDataState.dashboardPowerNormalizedTrendDataRaw
+                .map(v => ({ "x": `${v.hour}:00`, "y": v.powerNormalized }))
+                .sort((left, right) => left.x.localeCompare(right.x))
+        }
+    ]
+
+
 
     if (selectSiteDataFromSiteList.length === 0) return <div className="text-center" style={{ position: "fixed", left: 0, top: "45%", right: 0, bottom: "45%", zIndex: 1 }}>
         <span className="h3 font-weight-bold text-secondary">Loading...</span>
@@ -51,58 +107,63 @@ const DashboardContainer = props => {
         <div className="container-fluid">
 
             <div className="row">
-                <div className="col-md-7 p-0 pb-1 d-flex flex-column justify-content-between">
+                <div className="col-xl-7 p-0 pb-1 d-flex flex-column justify-content-between">
                     <div className="px-1 pb-1">
                         <div className="bg-white h-100">
                             <DashStatusViewA temperature={temperature} humidity={humidity} wind={wind}
-                                selectedSite={selectSiteDataFromSiteList[0]}
+                                timezone={selectSiteDataFromSiteList[0].time_zone}
+                                dashboardData={dashboardDataState.dashboardDataRaw}
+                                money_unit={money_unit}
                             />
                         </div>
                     </div>
 
                     <div className="p-1">
-                        <div className="bg-white h-100"><DashStatusViewB selectedSite={selectSiteDataFromSiteList[0]} /></div>
+                        <div className="bg-white h-100">
+                            <DashStatusViewB isOnline={selectSiteDataFromSiteList[0].isOnline}
+                                dashboardData={dashboardDataState.dashboardDataRaw}
+                            />
+                        </div>
                     </div>
                 </div>
 
-                <div className="col-md-5 px-1">
+                <div className="col-xl-5 px-1 pb-1">
                     <div className="bg-white"><DashMap selectedSite={selectSiteDataFromSiteList[0]} /></div>
                 </div>
 
-                <div className="col-md-6 p-1">
-                    <div className="bg-white ">
+                <div className="col-xl-6 p-1">
+                    <div className="bg-white">
                         {/* Bar requires kes */}
                         <ChartContainer
                             headerText={'SITE OUTPUT TREND'}
                             chartType='bar'
-                            data={sampleData}
-                            keys={['CurrentOutput']}
+                            data={dashboardPowerOutputTrendChartData}
+                            keys={['Power Output']}
                             color={'#6FD1F6'}
-                            axisLeftLegend="Power(kw)"
-                            axisRightLegend="Power(kw)"
-
+                            axisLeftLegend="Power(kW)"
+                        // axisRightLegend="Power(kw)"
                         />
                     </div>
                 </div>
 
-                <div className="col-md-6 p-1">
+                <div className="col-xl-6 p-1">
                     <div className="bg-white">
                         <ChartContainer
                             headerText={'SITE EFFICIENCY TREND'}
                             chartType='area'
-                            data={data}
+                            data={dashboardEfficiencyTrendChartData}
                             color={'#FEC71F'}
-                            axisLeftLegend="%"
+                            axisLeftLegend="Efficiency(%)"
                         />
                     </div>
                 </div>
 
-                <div className="col-md-6 px-1 pt-1">
+                <div className="col-xl-6 px-1 pt-1">
                     <div className="bg-white">
                         <ChartContainer
                             chartType='area'
                             headerText={'POWER GENERATION NORMALIZED AGAINST RADIANCE'}
-                            data={data1}
+                            data={dashboardNormalizedPowerVsRadiation}
                             color={['#6522CE', '#309BF3']}
                             axisLeftLegend="Power(kw)"
                             axisRightLegend="Radiance"
@@ -110,12 +171,12 @@ const DashboardContainer = props => {
                     </div>
                 </div>
 
-                <div className="col-md-6 px-1 pt-1">
+                <div className="col-xl-6 px-1 pt-1">
                     <div className="bg-white">
                         <ChartContainer
                             chartType='area'
                             headerText={'ACTUAL POWER OUTPUT VS RADIATION'}
-                            data={data2}
+                            data={dashboardPowerVsRadiation}
                             color={['#29CE22', '#00C1D2']}
                             axisLeftLegend="Power(kw)"
                             axisRightLegend="Irradiance"
@@ -279,52 +340,52 @@ const data1 = [
         "data": [
             {
                 "x": "06:00",
-                "y": 7900
+                "y": 790
             },
 
             {
                 "x": "07:00",
-                "y": 3000
+                "y": 300
             },
             {
                 "x": "08:00",
-                "y": 3500
+                "y": 350
             },
             {
                 "x": "09:00",
-                "y": 10000
+                "y": 1000
             },
             {
                 "x": "10:00",
-                "y": 4500
+                "y": 450
             },
             {
                 "x": "11:00",
-                "y": 14000
+                "y": 1400
             },
             {
                 "x": "12:00",
-                "y": 11000
+                "y": 1100
             },
             {
                 "x": "13:00",
-                "y": 15000
+                "y": 1500
             },
             {
                 "x": "14:00",
-                "y": 9000
+                "y": 900
             },
             {
                 "x": "15:00",
-                "y": 8000
+                "y": 800
             },
             {
                 "x": "16:00",
-                "y": 19000
+                "y": 1900
             },
             {
                 "x": "17:00",
-                "y": 6000
+                "y": 600
             }
 
         ]

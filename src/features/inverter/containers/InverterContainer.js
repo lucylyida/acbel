@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import ChartContainer from "../../app/components/ChartContainer"
 import KmToggleButton from "../../../kumocom/KmToggleButton";
 import KmSearchbox from "../../../kumocom/KmSearchbox"
@@ -6,6 +6,7 @@ import KmButton from "../../../kumocom/KmButton"
 import InverterCollapseItem from "../components/InverterCollapseItem"
 import { withMedia } from 'react-media-query-hoc'
 import { fsc, numberFormat } from "../../../helper/fontColorHelper";
+import { useCookies } from 'react-cookie'
 
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
@@ -16,24 +17,25 @@ const InverterDigit = (no) => no < 10 ? '00' + no : no < 100 ? '0' + no : no
 const InverterContainer = props => {
     const { media } = props
     const [compareMode, switchNormalMode] = useState(false)
-
+    const [cookies] = useCookies(['user']);
+    const token = cookies.user.token
 
     const selected = 'btn_3'
 
     const dispatch = useDispatch()
     const inverterState = useSelector(state => state.inverterReducer)
-
-    // const token = cookies.user === undefined ? undefined : cookies.user.token
-
-    // if (token === undefined) {
-    //     props.history.replace(`/${route.login}`)
-    //     return null
-    // }
-
-
     const { selectedInverters, vendorInverterNameList } = inverterState
+     console.log({vendorInverterNameList})
+    const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId, token }
+   
+    // const selectedInverter = vendorInverterNameList.filter(d => d.vendor_id === parseInt(bodyData.vendor_id) && d.hid === bodyData.site_id)
+    useEffect(() => {
+        dispatch(Action.getVendorInverterSites(bodyData))
+        console.log("effecting inverter container")
+    }, [selectedInverters])
+
+
     // if(state.isLoading) return "LOading.."
-    console.log(inverterState)
 
     const inverterCompView = vendorInverterNameList.map((v, k) => {
         const txt = InverterDigit(k + 1)

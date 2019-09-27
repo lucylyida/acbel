@@ -65,7 +65,7 @@ const SiteContainer = props => {
         , null)
 
     const homeStatusData = globalHomeStatusDataState.globalHomeStatusData
-  
+
 
     const token = cookies.user === undefined ? undefined : cookies.user.token
 
@@ -78,7 +78,7 @@ const SiteContainer = props => {
         console.log("site container api fetchingggggggggggg")
         // dispatch(Action.getvendorfromapi({ vendor_id, token }))
         dispatch(Action.getSiteListFromApi({ vendor_id: bodyData.vendor_id, site_id, token }))
-        dispatch(Action.getVendorInverterSites(token))
+        // dispatch(Action.getVendorInverterSites(token))
     }
     // dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id, token }))
     return (

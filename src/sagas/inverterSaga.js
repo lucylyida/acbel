@@ -4,15 +4,19 @@ import { call, put, takeEvery, take, all, fork } from 'redux-saga/effects'
 import * as api from "../network-sec/api"
 
 function* fetchVendorInverterList(action) {
-   
+   const body= action.payload
+   const TokenHeader = { headers: { 'Authorization': 'Bearer ' + body.token }, }
     try{
         const [inverter, panel, panelInfo] = yield all([
-            call(fetch, api.FETCH_VENDOR_INVERTER_SITES, { headers: { 'Authorization': 'Bearer ' + action.payload }, }),
-            call(fetch, api.FETCH_VENDOR_PANEL_SITES, { headers: { 'Authorization': 'Bearer ' + action.payload }, }),
-            call(fetch, api.FETCH_PANEL_INFO, { headers: { 'Authorization': 'Bearer ' + action.payload }, })
+            call(fetch, api.FETCH_VENDOR_INVERTER_SITES(body.vendor_id,body.site_id), TokenHeader),
+            call(fetch, api.FETCH_VENDOR_PANEL_SITES(body.vendor_id,body.site_id), TokenHeader),
+            call(fetch, api.FETCH_PANEL_INFO(body.vendor_id,body.site_id),TokenHeader)
         ])
+        // console.log(api.FETCH_VENDOR_INVERTER_SITES(body.vendor_id,body.site_id))
         const inverters = yield inverter.json().then(data => data)
+       
         const panels = yield panel.json().then(data => data)
+      
         const panelInfos = yield panelInfo.json().then(data => data)
         // console.log({inverters,panels,panelInfos})
         yield put(Action.getVendorInverterSitesSuccess({ inverters, panels, panelInfos }))

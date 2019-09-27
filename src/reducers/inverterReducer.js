@@ -18,14 +18,20 @@ const initialState = {
 }
 
 const inverterReducer = (state = initialState, action) => {
+  
     switch (action.type) {
         case ActionType.GET_VENDOR_INVERTER_SITES_SUCCESS: {
-            
-            const panelInfoList = action.payload.panelInfos.payload.filter(v => v.vendor_id === 2 && v.site_id === "1")
-            const panelList = action.payload.panels.payload.filter(v => v.vendor_id === 2 && v.site_id === "1")
-            const inverterList = action.payload.inverters.payload.filter(v => v.vendor_id === 2 && v.site_id === "1")
-                .map(v => ({ ...v, panels: panelList.filter(c => v.inv_dint === c.inverter_id) }))
-              
+            const panelInfoList = action.payload.panelInfos.payload
+            const panelList = action.payload.panels.payload
+            const inverterList = action.payload.inverters.payload.
+            map(v => ({ ...v, panels: panelList.filter(c => v.inv_dint === c.inverter_id) }))
+
+            // const panelInfoList = action.payload.panelInfos.payload.filter(v => v.vendor_id === 2 && v.site_id === "1")
+            // const panelList = action.payload.panels.payload.filter(v => v.vendor_id === 2 && v.site_id === "1")
+            // const inverterList = action.payload.inverters.payload.filter(v => v.vendor_id === 2 && v.site_id === "1")
+            //     .map(v => ({ ...v, panels: panelList.filter(c => v.inv_dint === c.inverter_id) }))
+            //   console.log(inverterList)
+
             return ({
                 ...state,
                 // vendorInverterSiteRaw: inverterList,
@@ -52,7 +58,7 @@ const inverterReducer = (state = initialState, action) => {
 
         }
         case ActionType.CLEAR_STATE:
-                return {...initialState}
+            return { ...initialState }
 
         default: return state
     }

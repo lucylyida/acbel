@@ -4,6 +4,8 @@ import { call, put, takeEvery, take, all } from 'redux-saga/effects'
 import * as api from "../network-sec/api"
 
 function* fetchVendor(action) {
+    const TokenHeader = { headers: { 'Authorization': 'Bearer ' + action.payload.token }, }
+    
     try {
         const [vendor, site, vendorSite,globalStatus] = yield all([
            
@@ -15,7 +17,7 @@ function* fetchVendor(action) {
                 : action.payload.vendor_id === null
                     ? api.FETCH_VENDOR_SITES
                     : api.FETCH_VENDOR_SITE_LIST(action.payload.vendor_id),
-                { headers: { 'Authorization': 'Bearer ' + action.payload.token }, }),
+                TokenHeader),
 
             call(fetch, api.FETCH_VENDOR_SITE(action.payload.vendor_id, action.payload.site_id),
                 { headers: { 'Authorization': 'Bearer ' + action.payload.token }, }),
@@ -24,6 +26,7 @@ function* fetchVendor(action) {
              { headers: { 'Authorization': 'Bearer ' + action.payload.token } }) , 
                 
         ])
+
         const vendors = yield vendor.json().then(data => data.payload)
         const vendorArray = Array.isArray(vendors) ? vendors : [vendors]
 

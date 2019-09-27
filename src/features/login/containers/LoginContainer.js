@@ -23,8 +23,9 @@ const Login = props => {
         if (cookies.user === undefined) {
             setCookie('user', state.loginDataRaw, { path: '/' })
         }
+        props.history.replace(`/${route.global}`)
     }
-    // console.log(state.loginDataRaw)
+
     if (state.loginDataRaw === null) {
         if (cookies.user !== undefined) {
             removeCookie('user', { path: '/' })
@@ -38,7 +39,7 @@ const Login = props => {
         }
     }
 
-    state.loginDataRaw !== null && props.history.replace(`/${route.global}`)
+    // if (state.loginDataRaw !== null && cookies.user !== undefined) props.history.replace(`/${route.global}`)
 
     return (
         <div className="container-fluid pt-5" >

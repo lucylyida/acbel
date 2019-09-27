@@ -6,6 +6,7 @@ import inverterReducer from './inverterReducer'
 import globalReducer from './globalReducer'
 import siteProfileDataReducer from './siteProfileReducer'
 import siteReportReducer from './siteReportReducer'
+import dashboardDataReducer from './dashboardReducer'
 
 import ActionType from '../action/action'
 
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
     inverterReducer,
     globalReducer,
     siteProfileDataReducer,
-    siteReportReducer
+    siteReportReducer,
+    dashboardDataReducer
 })
 
 // const rootReducer = (state, action) => {

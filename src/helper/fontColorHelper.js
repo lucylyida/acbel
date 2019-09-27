@@ -5,4 +5,4 @@ export const fsc = (media, fontSize) => {
     else return fontSize
 }
 
-export const numberFormat = (data) => data === undefined || data === null ? "" : data.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+export const numberFormat = data => data === undefined || data === null ? "" : data.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')

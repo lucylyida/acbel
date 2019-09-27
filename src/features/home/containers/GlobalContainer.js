@@ -30,9 +30,8 @@ const GlobalContainer = props => {
 
     const vendorState = useSelector(state => state.vendorReducer)
     const globalHomeStatusDataState = useSelector(state => state.globalReducer)
-    const dispatch = useDispatch()
 
-    // cookies.hasOwnProperty('user') === false  && props.history.replace(`/${route.login}`)
+    const dispatch = useDispatch()
 
     const {
         vendorNameList,
@@ -45,8 +44,6 @@ const GlobalContainer = props => {
         selectedSite,
     } = vendorState
 
-    // console.log("globallllllllllllllllllllllllllllll")
-
     const vendor_id = selectedSite !== null
         ? selectedSite.vendor_id
         : selectedVendor !== null
@@ -54,13 +51,10 @@ const GlobalContainer = props => {
             : cookies.user !== undefined ? cookies.user.vendor_id : undefined
 
     const token = cookies.user === undefined ? undefined : cookies.user.token
-   
-    if (token === undefined) {
-        props.history.replace(`/${route.login}`)
-        return null
-    }
 
     const site_id = selectedSite !== null ? parseInt(selectedSite.hid) : null
+
+    const money_unit = cookies.user === undefined ? null : cookies.user.money
 
     // console.log("!!!!!!!!!!!!!! >>>> ", vendorState.isLoading)
     // if (selectedVendor === null) {
@@ -94,6 +88,20 @@ const GlobalContainer = props => {
 
     // if (globalHomeStatusDataState.globalHomeStatusData.length === 0) return null
 
+    // if (vendorState.isLoading) {
+    //     dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id, token }))
+    // }
+
+    useEffect(() => {
+        dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id, token }))
+        //  console.log('global container calling...')
+    }, [selectedVendor, selectedSite])
+
+    if (token === undefined) {
+        props.history.replace(`/${route.login}`)
+        return null
+    }
+
     const homeStatusData = globalHomeStatusDataState.globalHomeStatusData
 
     return (
@@ -118,7 +126,7 @@ const GlobalContainer = props => {
                     />
                 </div>
                 <div className="w-100 pb-2">
-                    <HomeStatusView data={homeStatusData} />
+                    <HomeStatusView data={homeStatusData} money_unit={money_unit} />
                     <HomefilterView
                         vendorNameList={vendorNameList}
                         siteNameList={siteNameList}

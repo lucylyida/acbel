@@ -25,10 +25,7 @@ const GlobalListContainer = props => {
             currentOutput: v.powerOutput, efficiency: parseFloat(v.efficiencyRa), siteStatus: v.isOnline === true ? "Online" : "Offline",
             more: "MORE INFO"
         }))
-
-    // const sites = siteNameList.map(v => v.vendor_id)
-    // console.log({sites})
-    // console.log({aa:state.siteNameList})
+    
     return (
         <div className="py-2">
             <div className="">

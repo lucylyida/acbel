@@ -34,9 +34,7 @@ const InverterContainer = props => {
             dispatch(Action.getVendorInverterSites(bodyData));
         }, 20 * 1000);       
         return () => clearInterval(id);
-    }, [])
-
-    console.log({ vendorInverterNameList })
+    }, [])    
     
     const inverterCompView = vendorInverterNameList.map((v, k) => {
         const txt = InverterDigit(k + 1)

@@ -4,7 +4,7 @@ import { call, put, takeEvery, take, all, fork } from 'redux-saga/effects'
 import * as api from "../network-sec/api"
 
 function* fetchVendorInverterList(action) {
-   const body= action.payload
+   const body= action.payload   
    const TokenHeader = { headers: { 'Authorization': 'Bearer ' + body.token }, }
     try{
         const [inverter, panel, panelInfo] = yield all([
@@ -14,7 +14,7 @@ function* fetchVendorInverterList(action) {
         ])
         // console.log(api.FETCH_VENDOR_INVERTER_SITES(body.vendor_id,body.site_id))
         const inverters = yield inverter.json().then(data => data)
-       
+    //    console.log({inverters})
         const panels = yield panel.json().then(data => data)
       
         const panelInfos = yield panelInfo.json().then(data => data)

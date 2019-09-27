@@ -3,16 +3,15 @@ import { ResponsiveLine } from '@nivo/line'
 import { numberFormat } from '../../../helper/fontColorHelper';
 
 const MyResponsiveLine = (props) => {
-    const { data, color, axisRight, axisLeft, legendAnchor, axisBottom } = props
+    const { data, color, axisRight, axisLeft, legendAnchor, axisBottom, isAllZero, media } = props
     return (
         <ResponsiveLine
             data={data}
             margin={{
-                "top": 40,
+                "top": isAllZero ? media.tablet ? 290 : 190 : 40,
                 "right": axisRight && axisRight.legend ? 70 : !axisRight ? 20 : 50,
                 "bottom": 60,
                 "left": axisLeft.legend ? 60 : 40
-
             }}
             xScale={{ type: 'point' }}
             // yScale={{ type: 'linear', stacked: false, min: '0', max: 'auto' }}
@@ -30,7 +29,7 @@ const MyResponsiveLine = (props) => {
             crosshairType="y"
             useMesh={true}
             yFormat={(d) => numberFormat(d)}
-            tooltip={(d) => {               
+            tooltip={(d) => {
                 const unit = d.point.serieId === 'Efficiency' ? '%' : d.point.serieId === 'Power' ? 'kW' : ''
                 return <div className="px-4 py-2 bg-white" style={{ borderRadius: 4 }}>
                     <div>{`${d.point.serieId} : ${d.point.data.yFormatted} ${unit}`}</div>
@@ -61,7 +60,7 @@ const MyResponsiveLine = (props) => {
                     anchor: legendAnchor,
                     direction: 'row',
                     translateX: -40,
-                    translateY: -27,
+                    translateY: isAllZero ? media.tablet ? -190 : -180 : -27,
                     itemWidth: 53,
                     itemHeight: 0,
                     itemsSpacing: 50,

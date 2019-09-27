@@ -75,7 +75,7 @@ const DashboardContainer = props => {
                 .sort((left, right) => left.x.localeCompare(right.x))
         },
         {
-            "id": "Irridiance",
+            "id": "Irradiance",
             "data": dashboardDataState.dashboardRadiationTrendDataRaw
                 .map(v => ({ "x": `${v.hour}:00`, "y": v.radiation }))
                 .sort((left, right) => left.x.localeCompare(right.x))
@@ -84,24 +84,25 @@ const DashboardContainer = props => {
 
     const dashboardNormalizedPowerVsRadiation = [
         {
-            "id": "Radiance",
-            "data": dashboardDataState.dashboardRadiationTrendDataRaw
-                .map(v => ({ "x": `${v.hour}:00`, "y": v.radiation }))
-                .sort((left, right) => left.x.localeCompare(right.x))
-        },
-        {
             "id": "Power Normalized",
             "data": dashboardDataState.dashboardPowerNormalizedTrendDataRaw
                 .map(v => ({ "x": `${v.hour}:00`, "y": v.powerNormalized }))
                 .sort((left, right) => left.x.localeCompare(right.x))
+        },
+        {
+            "id": "Radiance",
+            "data": dashboardDataState.dashboardRadiationTrendDataRaw
+                .map(v => ({ "x": `${v.hour}:00`, "y": v.radiation }))
+                .sort((left, right) => left.x.localeCompare(right.x))
         }
-    ]
-
-
+    ]    
 
     if (selectSiteDataFromSiteList.length === 0) return <div className="text-center" style={{ position: "fixed", left: 0, top: "45%", right: 0, bottom: "45%", zIndex: 1 }}>
         <span className="h3 font-weight-bold text-secondary">Loading...</span>
     </div>;
+
+    const timezone = selectSiteDataFromSiteList[0].time_zone
+    const inOnline = selectSiteDataFromSiteList[0].isOnline
 
     return (
         <div className="container-fluid">
@@ -111,7 +112,7 @@ const DashboardContainer = props => {
                     <div className="px-1 pb-1">
                         <div className="bg-white h-100">
                             <DashStatusViewA temperature={temperature} humidity={humidity} wind={wind}
-                                timezone={selectSiteDataFromSiteList[0].time_zone}
+                                timezone={timezone}
                                 dashboardData={dashboardDataState.dashboardDataRaw}
                                 money_unit={money_unit}
                             />
@@ -120,7 +121,7 @@ const DashboardContainer = props => {
 
                     <div className="p-1">
                         <div className="bg-white h-100">
-                            <DashStatusViewB isOnline={selectSiteDataFromSiteList[0].isOnline}
+                            <DashStatusViewB isOnline={inOnline}
                                 dashboardData={dashboardDataState.dashboardDataRaw}
                             />
                         </div>
@@ -165,7 +166,7 @@ const DashboardContainer = props => {
                             headerText={'POWER GENERATION NORMALIZED AGAINST RADIANCE'}
                             data={dashboardNormalizedPowerVsRadiation}
                             color={['#6522CE', '#309BF3']}
-                            axisLeftLegend="Power(kw)"
+                            axisLeftLegend="Power(kW)"
                             axisRightLegend="Radiance"
                         />
                     </div>
@@ -178,7 +179,7 @@ const DashboardContainer = props => {
                             headerText={'ACTUAL POWER OUTPUT VS RADIATION'}
                             data={dashboardPowerVsRadiation}
                             color={['#29CE22', '#00C1D2']}
-                            axisLeftLegend="Power(kw)"
+                            axisLeftLegend="Power(kW)"
                             axisRightLegend="Irradiance"
                         />
                     </div>

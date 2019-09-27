@@ -18,14 +18,12 @@ const GlobalListContainer = props => {
 
     const state = useSelector(state => state.vendorReducer)
     const siteNameList = state.siteNameList
-    const data = siteNameList
-        // .filter(d => d.hid === state.selectedSite.hid)
-        .map(v => ({
-            id: v.id, vendor_id: v.vendor_id, site: v.site_name, capacity: parseFloat(v.capacity_kw), siteid: v.hid,
-            currentOutput: v.powerOutput, efficiency: parseFloat(v.efficiencyRa), siteStatus: v.isOnline === true ? "Online" : "Offline",
-            more: "MORE INFO"
-        }))
-    
+    const data = siteNameList.map(v => ({
+        id: v.id, vendor_id: v.vendor_id, site: v.site_name, capacity: parseFloat(v.capacity_kw), siteid: v.hid,
+        currentOutput: v.powerOutput, efficiency: parseFloat(v.efficiencyRa), siteStatus: v.isOnline === true ? "Online" : "Offline",
+        more: "MORE INFO"
+    }))
+
     return (
         <div className="py-2">
             <div className="">
@@ -34,7 +32,7 @@ const GlobalListContainer = props => {
                         columns={columns(media, handleClick)}
                         data={data}
                         keyField={"id"}
-                        defaultSortField={"id"}
+                        defaultSortField={"site"}
                         highlightOnHover={true}
                         style={{ borderRadius: 6, whiteSpace: 'nowrap', }}
                         customTheme={tableTheme(media)}

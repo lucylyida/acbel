@@ -1,4 +1,4 @@
-import React, { Suspense } from "react"
+import React, { useEffect } from "react"
 import { Route, Redirect, Switch } from "react-router-dom"
 import { enc } from "../../../network-sec/cypher"
 import { withMedia } from "react-media-query-hoc"
@@ -66,21 +66,28 @@ const SiteContainer = props => {
 
     const homeStatusData = globalHomeStatusDataState.globalHomeStatusData
 
-
     const token = cookies.user === undefined ? undefined : cookies.user.token
+
+    useEffect(() => {
+        dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id, token }))
+    }, [selectedVendor, selectedSite])
 
     if (token === undefined) {
         props.history.replace(`/${route.login}`)
         return null
     }
 
-    if (vendorState.isLoading) {
-        console.log("site container api fetchingggggggggggg")
-        // dispatch(Action.getvendorfromapi({ vendor_id, token }))
-        dispatch(Action.getSiteListFromApi({ vendor_id: bodyData.vendor_id, site_id, token }))
-        // dispatch(Action.getVendorInverterSites(token))
-    }
+    // if (vendorState.isLoading) {
+    //     console.log("site container api fetchingggggggggggg")
+    //      dispatch(Action.getvendorfromapi({ vendor_id, token }))
+    //     dispatch(Action.getSiteListFromApi({ vendor_id: bodyData.vendor_id, site_id, token }))
+    //     dispatch(Action.getVendorInverterSites(token))
+    // }
     // dispatch(Action.getGlobalHomeStatusData({ vendor_id, site_id, token }))
+
+
+
+
     return (
         <div className={`container-fluid ${media.mobile ? "px-0" : "px-4"}`}>
             <SiteNavbar {...props} selectSite={selectSite} />
@@ -99,7 +106,7 @@ const SiteContainer = props => {
                 <div className="w-100 pb-3" style={{ overflow: 'hidden' }}>
                     <Switch>
                         <Route path={`${match.path}/:pageName`} component={SitePage} />
-                        <Redirect to={`${match.path}/${route.profile}`} />
+                        <Redirect to={`${match.path}/${route.dashboard}`} />
                     </Switch>
                 </div>
             </div>
@@ -130,6 +137,6 @@ const SitePage = props => {
         case route.report:
             return withPageLoading(ReportContainer, props)
         default:
-            return withPageLoading(ProfileContainer, props)
+            return withPageLoading(DashboardContainer, props)
     }
 }

@@ -24,7 +24,7 @@ const inverterReducer = (state = initialState, action) => {
             const panelInfoList = action.payload.panelInfos.payload
             const panelList = action.payload.panels.payload
             const inverterList = action.payload.inverters.payload.
-            map(v => ({ ...v, panels: panelList.filter(c => v.inv_dint === c.inverter_id) }))
+            map(v => ({ ...v, panels: panelList.filter(c => v.deviceId === c.inverter_id) }))
 
             // const panelInfoList = action.payload.panelInfos.payload.filter(v => v.vendor_id === 2 && v.site_id === "1")
             // const panelList = action.payload.panels.payload.filter(v => v.vendor_id === 2 && v.site_id === "1")

@@ -1,10 +1,10 @@
 
 
-// export const BASE_URL = "http://192.168.100.8:3333"
-
- export const BASE_URL = "http://202.73.49.62:823"
-
 // export const BASE_URL = "http://192.168.100.34:3333"
+
+export const BASE_URL = "http://202.73.49.62:823"
+
+//  export const BASE_URL = "http://192.168.100.7:3333"
 
 export const LOGIN = `${BASE_URL}/auth/login`
 
@@ -18,11 +18,11 @@ export const FETCH_VENDOR_SITE_LIST = (vendorId) => `${BASE_URL}/vendors/${vendo
 
 export const FETCH_VENDOR_SITE = (vendorId, siteId) => `${BASE_URL}/vendors/${vendorId}/sites/${siteId}`
 // @lucy modified
-export const FETCH_VENDOR_INVERTER_SITES =(vendorId,siteId)=> `${BASE_URL}/vendors/${vendorId}/sites/${siteId}/inverters`
+export const FETCH_VENDOR_INVERTER_SITES = (vendorId, siteId) => `${BASE_URL}/vendors/${vendorId}/sites/${siteId}/inverters`
 
-export const FETCH_VENDOR_PANEL_SITES  =(vendorId,siteId)=>`${BASE_URL}/vendors/${vendorId}/sites/${siteId}/panels`
+export const FETCH_VENDOR_PANEL_SITES = (vendorId, siteId) => `${BASE_URL}/vendors/${vendorId}/sites/${siteId}/panels`
 
-export const FETCH_PANEL_INFO  =(vendorId,siteId)=> `${BASE_URL}/vendors/panelInfo/${vendorId}/sites/${siteId}`
+export const FETCH_PANEL_INFO = (vendorId, siteId) => `${BASE_URL}/vendors/panelInfo/${vendorId}/sites/${siteId}`
 
 export const FETCH_SITE_PROFILE_DATA = (vendorId, siteId) => `${BASE_URL}/vendors/${vendorId}/sites/${siteId}/profiles`
 

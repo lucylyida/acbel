@@ -29,8 +29,7 @@ const FourItemBox = props => {
                     }}
                     >
                         {isMoney ? media.mobile ? unit + ' ' + data : unit + data : data}
-                    </div>
-                    <div className="pl-1" style={{ fontSize: fsc(media, 14), fontWeight: 100, color: '#000000' }}>{unit === 'NT$' || unit === "THB" ? null : unit}</div>
+                    </div>                   
                     <div className="pl-1" style={{ fontSize: fsc(media, 14), fontWeight: 100, color: '#000000' }}>{isMoney ? null : unit}</div>
                 </div>
                 <div className="text-truncate" style={{ fontSize: fsc(media, 13), color: '#aaaaaa' }}>{desc}</div>

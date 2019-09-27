@@ -7,10 +7,17 @@ import { fsc } from '../../../helper/fontColorHelper'
 
 
 const ChartContainer = props => {
-    const { headerText, chartType, data, color, keys, axisLeftLegend, axisRightLegend, legendAnchor = 'top-right', axisBottomLegend = 'Time', exportIcon, media } = props    
+    const { headerText, chartType, data, color, keys, axisLeftLegend, axisRightLegend, legendAnchor = 'top-right', axisBottomLegend = 'Time', exportIcon, media } = props
+
+
+    const isAllZero = data.length > 0
+        ? data[0].hasOwnProperty("id")
+            ? data.map(v => v.data.every(c => c.y === 0 || c.y === null)).every(d => d === true)
+            : data.every(c => c["Power Output"] === 0 || c["Power Output"] === null)
+        : null    
 
     const isTickWhichShouldBeHidden = tick => false//data.length > 0 && data[0].data.length >= 18 && parseInt(tick.split(":")[0]) % 2 === 0 
-    
+
     const axisLeft = {
         orient: 'left',
         tickSize: 0,
@@ -72,19 +79,20 @@ const ChartContainer = props => {
                         float: 'right',
                         cursor: 'pointer !important',
                         fontSize: fsc(media, 14)
-
                     }}>
                         <i className="fas fa-external-link-alt" style={{ cursor: 'inherient' }}> </i> <span style={{ marginTop: -3, cursor: 'pointer', paddingLeft: 5 }}>Export</span>
                     </div>
                 }
-                <div className="" style={{ width: "96%", height: media.tablet ? 350 : 250, marginLeft: '2%' }}>
+                <div style={{ width: "96%", height: media.tablet ? 350 : 250, marginLeft: '2%', }}>
                     {chartType === "area" && <AreaChart
                         data={data}
                         color={color}
                         axisLeft={axisLeft}
                         axisRight={axisRight}
                         legendAnchor={legendAnchor}
-                        axisBottom={axisBottom} />}
+                        axisBottom={axisBottom}
+                        isAllZero={isAllZero}
+                        media={media} />}
                     {chartType === 'bar' && <BarChart
                         data={data}
                         color={color}
@@ -92,7 +100,9 @@ const ChartContainer = props => {
                         axisLeft={axisLeft}
                         axisRight={axisRight}
                         axisBottom={axisBottom}
-                        legendAnchor={legendAnchor} />}
+                        legendAnchor={legendAnchor}
+                        isAllZero={isAllZero}
+                        media={media} />}
                 </div>
             </div>
         </div>

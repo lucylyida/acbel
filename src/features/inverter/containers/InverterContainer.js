@@ -11,7 +11,6 @@ import { useCookies } from 'react-cookie'
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
 
-
 const InverterDigit = (no) => no < 10 ? '00' + no : no < 100 ? '0' + no : no
 
 const InverterContainer = props => {
@@ -25,25 +24,27 @@ const InverterContainer = props => {
     const dispatch = useDispatch()
     const inverterState = useSelector(state => state.inverterReducer)
     const { selectedInverters, vendorInverterNameList } = inverterState
-     console.log({vendorInverterNameList})
     const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId, token }
-   
+
     // const selectedInverter = vendorInverterNameList.filter(d => d.vendor_id === parseInt(bodyData.vendor_id) && d.hid === bodyData.site_id)
+
     useEffect(() => {
-        dispatch(Action.getVendorInverterSites(bodyData))
-        console.log("effecting inverter container")
-    }, [selectedInverters])
+        dispatch(Action.getVendorInverterSites(bodyData));
+        let id = setInterval(() => {
+            dispatch(Action.getVendorInverterSites(bodyData));
+        }, 20 * 1000);       
+        return () => clearInterval(id);
+    }, [])
 
-
-    // if(state.isLoading) return "LOading.."
-
+    console.log({ vendorInverterNameList })
+    
     const inverterCompView = vendorInverterNameList.map((v, k) => {
         const txt = InverterDigit(k + 1)
         return (
             <InverterCollapseItem
                 key={k}
                 text={txt}
-                codeno={`${v.inv_dint}`}
+                codeno={`${v.deviceId}`}
                 selected={selectedInverters.includes(txt)}
                 onClick={d => dispatch(Action.globalHandleSelectFilter({ selectedInverter: d }))}
                 data={[

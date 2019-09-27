@@ -11,7 +11,7 @@ const DashStatusViewB = props => {
 
             <div className='row py-2'>
                 <div className='col-12 py-2' >
-                    <span style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"PERFOMANCE"}</span>
+                    <span style={{ color: '#FF8902', fontSize: fsc(media, 14) }}>{"PERFORMANCE"}</span>
                 </div>
 
                 <div className="col-6 col-sm-4 py-2 ">

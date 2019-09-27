@@ -4,19 +4,19 @@ import { numberFormat } from '../../../helper/fontColorHelper';
 
 const BarChart = (props) => {
 
-    const { data, keys, color, legendAnchor, axisRight, axisLeft } = props
-    return <ResponsiveBar {...configCommonProperties(data, keys, color, legendAnchor, axisRight, axisLeft)} />
+    const { data, keys, color, legendAnchor, axisRight, axisLeft, isAllZero, media } = props
+    return <ResponsiveBar {...configCommonProperties(data, keys, color, legendAnchor, axisRight, axisLeft, isAllZero, media)} />
 }
 
-const configCommonProperties = (data, keys, color, legendAnchor, axisRight, axisLeft) => ({
+const configCommonProperties = (data, keys, color, legendAnchor, axisRight, axisLeft, isAllZero, media) => ({
     data: data,
     colors: color,
     padding: 0.4,
-    keys,
+    keys,   
     enableLabel: false,
     indexBy: 'time',
     margin: {
-        top: 40,
+        top: isAllZero ? media.tablet ? 290 : 190 : 40,
         right: axisRight && axisRight.legend ? 70 : !axisRight ? 20 : 50,
         bottom: 60,
         left: axisLeft.legend ? 60 : 40
@@ -33,7 +33,7 @@ const configCommonProperties = (data, keys, color, legendAnchor, axisRight, axis
         legendPosition: 'middle'
     },
     yFormat: (d) => numberFormat(d),
-    tooltip: (d) => {       
+    tooltip: (d) => {
         const unit = d.id === 'Power Output' ? 'kW' : ''
         return <div className="px-4 py-2 bg-white rounded">
             <div>{`${d.id} : ${d.value} ${unit}`}</div>
@@ -65,7 +65,7 @@ const configCommonProperties = (data, keys, color, legendAnchor, axisRight, axis
             anchor: legendAnchor,
             direction: 'row',
             translateX: -4,
-            translateY: -27,
+            translateY: isAllZero ? media.tablet ? -190 : -180 : -27,
             itemWidth: 100,
             itemHeight: 0,
             itemsSpacing: 4,

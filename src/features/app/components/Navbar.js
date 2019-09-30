@@ -1,14 +1,14 @@
 import React from "react"
 import querystring from "query-string"
 import { withMedia } from "react-media-query-hoc"
-import * as route from "../../../config/route.config"
-import KmLink from '../../../kumocom/KmLink'
 import KmDropdown from "../../../kumocom/KmDropdown"
-import SgFlag from '../../../assets/icons/Flag_Singapore'
-import ThaiFlag from '../../../assets/icons/Flag_Thailand'
-import ThaiwanFlag from '../../../assets/icons/Flag_Thaiwan'
 import Flag from '../../../assets/icons/Flag_Kingdom'
-import AcbelLogo from '../../../assets/icons/Acbel_Logo'
+// import * as route from "../../../config/route.config"
+// import KmLink from '../../../kumocom/KmLink'
+// import SgFlag from '../../../assets/icons/Flag_Singapore'
+// import ThaiFlag from '../../../assets/icons/Flag_Thailand'
+// import ThaiwanFlag from '../../../assets/icons/Flag_Thaiwan'
+// import AcbelLogo from '../../../assets/icons/Acbel_Logo'
 import { fsc } from "../../../helper/fontColorHelper"
 
 const Navbar = props => {

@@ -1,21 +1,22 @@
 import React from "react"
-import moment from 'moment'
-import { Route, Link, Switch, Redirect, } from "react-router-dom"
-import { withMedia } from 'react-media-query-hoc'
-import { fsc, numberFormat } from '../../../helper/fontColorHelper'
+// import moment from 'moment'
+// import { Route, Link, Switch, Redirect, } from "react-router-dom"
+// import * as route from "../../../config/route.config"
+// import { fsc, numberFormat } from '../../../helper/fontColorHelper'
 import ComparasionNavbar from "../../app/components/ComprisonNavbar"
 import LeftSidebar from "../../app/components/LeftSidebar";
 import SiteComprisonInputView from "../components/SiteComparisonInputView"
 import MapComprisonView from "../components/MapComparisonView"
 import ChartComparisonView from "../components/ChartComparisonView"
-import * as route from "../../../config/route.config"
+import { withMedia } from 'react-media-query-hoc'
+
 import querystring from "query-string"
 
-import {useSelector,useDispatch} from 'react-redux'
-import {getvendorfromapi} from '../../../action'
+// import {useSelector,useDispatch} from 'react-redux'
+// import {getvendorfromapi} from '../../../action'
 
 const ComparasionSideContainer = props => {
-    const { media, match } = props
+    const { media,/* match*/ } = props
 
   
     return (
@@ -55,7 +56,7 @@ const ComparionPage = props => {
 }
 
 
-{/* <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
+/* <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>
     <ComparasionNavbar {...props} />
     <div className="d-flex flex-row flex-wrap flex-md-nowrap" style={{ overflow: "hidden" }}>
 
@@ -73,4 +74,4 @@ const ComparionPage = props => {
             </div>
         </div>
     </div>
-</div> */}
+</div> */

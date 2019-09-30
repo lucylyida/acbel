@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 
 import { withMedia } from 'react-media-query-hoc'
-import { fsc } from '../helper/fontColorHelper'
 
 const KmDatePicker = props => {
     const { place = "auto-end", media, noMinWidth = true, style = {}, noWidth, noIcon, onChange, value } = props

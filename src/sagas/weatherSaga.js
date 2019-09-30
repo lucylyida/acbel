@@ -1,7 +1,7 @@
 import ActionType from '../action/action'
 import * as Action from '../action'
-import { WEATHER_URL } from '../network-sec/api'
-import { call, put, takeEvery, take, all } from 'redux-saga/effects'
+// import { WEATHER_URL } from '../network-sec/api'
+import { call, put, takeEvery, all } from 'redux-saga/effects'
 import * as api from '../network-sec/api'
 
 // function* fetchWeatherCountry(action) {

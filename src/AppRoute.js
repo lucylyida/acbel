@@ -1,7 +1,7 @@
 import React from "react"
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
-import queryString from "query-string"
-import { enc, dec } from "./network-sec/cypher"
+// import queryString from "query-string"
+// import { enc, dec } from "./network-sec/cypher"
 import GlobalContainer from "./features/home/containers/GlobalContainer"
 import SiteContainer from "./features/home/containers/SiteContainer"
 import MaintenanceSideContainer from "./features/side-maintenance/containers/MaintenanceSideContainer"
@@ -11,7 +11,7 @@ import ComprisonSideContainer from "./features/side-comparasion/containers/Compa
 import LoginContainer from "./features/login/containers/LoginContainer"
 
 import * as route from "./config/route.config"
-import { withPageLoading } from "./features/app/hoc/withLoading"
+// import { withPageLoading } from "./features/app/hoc/withLoading"
 
 // const GlobalContainer = React.lazy(() => import("./features/home/containers/GlobalContainer"))
 // const SiteContainer = React.lazy(() => import("./features/home/containers/SiteContainer"))

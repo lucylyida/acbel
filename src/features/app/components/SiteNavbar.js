@@ -1,19 +1,21 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
+
 import * as route from "../../../config/route.config"
 import KmLink from '../../../kumocom/KmLink'
 import KmDropdown from "../../../kumocom/KmDropdown"
 import { withRouter } from "react-router-dom"
-import SgFlag from '../../../assets/icons/Flag_Singapore'
-import ThaiFlag from '../../../assets/icons/Flag_Thailand'
-import ThaiwanFlag from '../../../assets/icons/Flag_Thaiwan'
+
 import Flag from '../../../assets/icons/Flag_Kingdom'
+// import SgFlag from '../../../assets/icons/Flag_Singapore'
+// import ThaiFlag from '../../../assets/icons/Flag_Thailand'
+// import ThaiwanFlag from '../../../assets/icons/Flag_Thaiwan'
 import AcbelLogo from '../../../assets/icons/Acbel_Logo'
 import { withMedia } from "react-media-query-hoc"
 import { fsc } from "../../../helper/fontColorHelper"
 import { _hadleMenuClick } from "./Navbar"
-import { useSelector, useDispatch } from 'react-redux'
-import * as Action from '../../../action'
+// import { useSelector, useDispatch } from 'react-redux'
+// import * as Action from '../../../action'
+// import { Link } from "react-router-dom"
 
 const SiteNavbar = props => {
     const { match, location, history, media, selectSite } = props

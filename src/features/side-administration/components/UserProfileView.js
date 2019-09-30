@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { withMedia } from "react-media-query-hoc";
 import querystring from "query-string"
-import * as route from "../../../config/route.config"
+// import * as route from "../../../config/route.config"
 import KmButton from "../../../kumocom/KmButton"
 import { fsc } from '../../../helper/fontColorHelper'
 import KmInputBox from "../../../kumocom/KmInputBox";

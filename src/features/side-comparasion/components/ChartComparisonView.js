@@ -1,11 +1,13 @@
 import React from "react"
-import { fsc, numberFormat } from '../../../helper/fontColorHelper'
-import * as route from "../../../config/route.config"
+
 import { withMedia } from 'react-media-query-hoc'
 import ChartContainer from "../../app/components/ChartContainer"
 
+// import { fsc, numberFormat } from '../../../helper/fontColorHelper'
+// import * as route from "../../../config/route.config"
+
 const ChartComparisonView = props => {
-    const { } = props
+    // const { } = props
     return (
         <div className="container-fluid p-0" style={{ overflow: 'hidden' }}>
             <div className="pb-1 px-1">

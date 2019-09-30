@@ -1,12 +1,12 @@
 import React from "react"
-import querystring from 'query-string'
+// import querystring from 'query-string'
 import RevenueStatusView from "../components/RevenueStatusView";
 import SearchPanel from '../../app/components/SearchPanel'
 import ChartContainer from "../../app/components/ChartContainer"
 import moment from 'moment';
 
 const RevenueContainer = props => {
-    const { } = props
+    // const { } = props
 
     const date = data[0].data[0].x;
     console.log(date)

@@ -1,10 +1,10 @@
 import React, { useEffect } from "react"
 import { Route, Redirect, Switch } from "react-router-dom"
-import { enc } from "../../../network-sec/cypher"
-import { withMedia } from "react-media-query-hoc"
-import { fsc } from "../../../helper/fontColorHelper"
+// import { enc } from "../../../network-sec/cypher"
+// import { fsc } from "../../../helper/fontColorHelper"
 import * as route from "../../../config/route.config"
 import SiteNavbar from "../../app/components/SiteNavbar"
+import { withMedia } from "react-media-query-hoc"
 import { withPageLoading } from "../../app/hoc/withLoading"
 import LeftSidebar from "../../app/components/LeftSidebar";
 import { useSelector, useDispatch } from 'react-redux'
@@ -30,21 +30,21 @@ const ReportContainer = React.lazy(() => import("../../report/containers/ReportC
 // import ReportContainer from "../../report/containers/ReportContainer"
 
 const SiteContainer = props => {
-    const { match, location, media } = props
+    const { match,/* location*/ media } = props
     const [cookies] = useCookies(['user']);
-    const queryData = {
-        siteId: 1,
-        siteName: "Organic Farmer's Association",
-        city: "Hualien City",
-        country: "Taiwan"
-    }
+    // const queryData = {
+    //     siteId: 1,
+    //     siteName: "Organic Farmer's Association",
+    //     city: "Hualien City",
+    //     country: "Taiwan"
+    // }
     // const queryDataEnc = enc(queryData)
     const vendorState = useSelector(state => state.vendorReducer)
     const globalHomeStatusDataState = useSelector(state => state.globalReducer)
     const dispatch = useDispatch()
 
     const {
-        vendorNameList,
+       /* vendorNameList,*/
         siteNameList,
         selectedVendor,
         selectedSite,

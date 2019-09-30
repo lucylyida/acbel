@@ -2,7 +2,7 @@ import React from 'react'
 import FourItemBox from '../../app/components/FourItemBox'
 
 const PanelStatusView = props => {
-    const { } = props
+    // const { } = props
     return (
         <div className="container-fluid py-2">
             <div className="row">

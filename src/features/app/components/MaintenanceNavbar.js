@@ -1,5 +1,5 @@
 import React from "react"
-import querystring from "query-string"
+// import querystring from "query-string"
 import { withMedia } from "react-media-query-hoc"
 import * as route from "../../../config/route.config"
 import KmLink from '../../../kumocom/KmLink'
@@ -9,7 +9,7 @@ import Navbar from "./Navbar"
 import KmButton from '../../../kumocom/KmButton'
 
 const MaintenanceNavbar = props => {
-    const { match, location, history, media } = props
+    const { media, location,/* history,match, */ } = props
     return (
         // <Navbar {...props}>
         //     <div className={`d-flex flex-column justify-content-center ${media.mobile ? "pl-3 pr-1" : "px-4"}`} >

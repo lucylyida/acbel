@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
-import InfoWindowEx from "./InfoWindowEx";
 import MapStyle from '../../home/containers/MapStyle';
-import { fsc } from '../../../helper/fontColorHelper';
+// import InfoWindowEx from "./InfoWindowEx";
+// import { fsc } from '../../../helper/fontColorHelper';
 import { withMedia } from 'react-media-query-hoc';
 import SolarPanelIcon from '../../../assets/images/solarPanel.png'
 
@@ -35,7 +35,7 @@ export class MapContainer extends Component {
     };
 
     render() {
-        const { media, selectedSite } = this.props      
+        const {/* media,*/ selectedSite } = this.props      
         const stores = [
 
             {

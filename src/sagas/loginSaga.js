@@ -2,7 +2,7 @@ import ActionType from '../action/action'
 import * as Action from "../action"
 import * as api from "../network-sec/api"
 
-import { call, put, takeEvery, take } from 'redux-saga/effects'
+import { put, takeEvery, } from 'redux-saga/effects'
 
 function* fetchLogin(action) {
     const payload = action.payload

@@ -2,19 +2,18 @@ import React from 'react'
 import AreaChart from './AreaChart'
 import BarChart from './BarChart'
 import { withMedia } from 'react-media-query-hoc'
-import { fsc } from '../../../helper/fontColorHelper'
-
-
+import { fsc, numberFormat } from '../../../helper/fontColorHelper'
 
 const ChartContainer = props => {
     const { headerText, chartType, data, color, keys, axisLeftLegend, axisRightLegend, legendAnchor = 'top-right', axisBottomLegend = 'Time', exportIcon, media } = props
 
-
     const isAllZero = data.length > 0
         ? data[0].hasOwnProperty("id")
-            ? data.map(v => v.data.every(c => c.y === 0 || c.y === null)).every(d => d === true)
-            : data.every(c => c["Power Output"] === 0 || c["Power Output"] === null)
-        : null    
+            ? data
+                .map(v => v.data.every(c => c.y === 0) || v.data.every(c => c.y === null))
+                .every(d => d === true)
+            : data.every(c => c["Power Output"] === 0) || data.every(c => c["Power Output"] === null)
+        : null
 
     const isTickWhichShouldBeHidden = tick => false//data.length > 0 && data[0].data.length >= 18 && parseInt(tick.split(":")[0]) % 2 === 0 
 
@@ -24,19 +23,21 @@ const ChartContainer = props => {
         tickPadding: 6,
         tickRotation: 0,
         legend: axisLeftLegend,
-        legendOffset: -50,
+        legendOffset: -60,
         legendPosition: 'middle',
         tickvalue: 5,
+        format: tick => numberFormat(tick)
     }
 
     const axisRight = axisRightLegend === undefined ? undefined : {
         orient: 'right',
-        tickSize: 5,
-        tickPadding: 10,
+        tickSize: 0,
+        tickPadding: 6,
         tickRotation: 0,
         legend: axisRightLegend,
-        legendOffset: 59,
-        legendPosition: 'middle'
+        legendOffset: 60,
+        legendPosition: 'middle',
+        format: tick => numberFormat(tick)
     }
 
     const axisBottom = {

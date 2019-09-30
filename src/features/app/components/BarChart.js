@@ -12,14 +12,14 @@ const configCommonProperties = (data, keys, color, legendAnchor, axisRight, axis
     data: data,
     colors: color,
     padding: 0.4,
-    keys,   
+    keys,
     enableLabel: false,
     indexBy: 'time',
     margin: {
         top: isAllZero ? media.tablet ? 290 : 190 : 40,
-        right: axisRight && axisRight.legend ? 70 : !axisRight ? 20 : 50,
+        right: axisRight && axisRight.legend ? 80 : !axisRight ? 20 : 50,
         bottom: 60,
-        left: axisLeft.legend ? 60 : 40
+        left: axisLeft.legend ? 70 : 40
     },
     axisLeft: axisLeft,
     axisRight: axisRight,
@@ -32,11 +32,10 @@ const configCommonProperties = (data, keys, color, legendAnchor, axisRight, axis
         legendOffset: 50,
         legendPosition: 'middle'
     },
-    yFormat: (d) => numberFormat(d),
     tooltip: (d) => {
         const unit = d.id === 'Power Output' ? 'kW' : ''
         return <div className="px-4 py-2 bg-white rounded">
-            <div>{`${d.id} : ${d.value} ${unit}`}</div>
+            <div>{`${d.id} : ${numberFormat(d.value)} ${unit}`}</div>
             <div>{`Time : ${d.indexValue}`}</div>
         </div>;
     },

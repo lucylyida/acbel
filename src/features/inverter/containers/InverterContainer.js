@@ -26,16 +26,16 @@ const InverterContainer = props => {
     const { selectedInverters, vendorInverterNameList } = inverterState
     const bodyData = { vendor_id: props.match.params.vendorId, site_id: props.match.params.siteId, token }
 
-    // const selectedInverter = vendorInverterNameList.filter(d => d.vendor_id === parseInt(bodyData.vendor_id) && d.hid === bodyData.site_id)
+    // const selectedInverter = vendorInverterNameList.filter(d => d.vendor_id === parseInt(bodyData.vendor_id) && d.hid === bodyData.site_id)   
 
     useEffect(() => {
         dispatch(Action.getVendorInverterSites(bodyData));
         let id = setInterval(() => {
             dispatch(Action.getVendorInverterSites(bodyData));
-        }, 20 * 1000);       
+        }, 20 * 1000);
         return () => clearInterval(id);
-    }, [])    
-    
+    }, [])
+
     const inverterCompView = vendorInverterNameList.map((v, k) => {
         const txt = InverterDigit(k + 1)
         return (

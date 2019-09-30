@@ -1,10 +1,10 @@
 // import Action from '../action/action'
-import  Action from '../action/action'
+import Action from '../action/action'
 import equal from "deep-equal"
 //@nayhtet
 const initialState = {
-     vendorListRaw: [],
-     siteListRaw: [],
+    vendorListRaw: [],
+    siteListRaw: [],
 
     vendorNameList: [],
     siteNameList: [],
@@ -32,8 +32,8 @@ const vendorReducer = (state = initialState, action) => {
             // console.log("++++++++++++++++++++VEndor,", vv)
             return ({
                 ...state,
-                vendorListRaw: vv ,
-                vendorNameList: vv,
+                vendorListRaw: vv,
+                vendorNameList: vv.sort((a, b) => a.vendor_name.localeCompare(b.vendor_name)),
                 isLoading: false
             })
         }
@@ -51,11 +51,11 @@ const vendorReducer = (state = initialState, action) => {
                 .filter((it, i, ar) => ar.reduce((r1, c1, i1) => c1.name === it.name ? i1 : r1, -1) === i)
             const cityNameList = [...cityListRaw]
             // console.log("---------------------------------------------->>SIte")
-           
+
             return ({
                 ...state,
                 siteListRaw: vv,
-                siteNameList: vv,
+                siteNameList: vv.sort((a, b) => a.site_name.localeCompare(b.site_name)),
                 countryListRaw: countryListRaw,
                 countryNameList: countryNameList,
                 cityListRaw,
@@ -143,8 +143,8 @@ const vendorReducer = (state = initialState, action) => {
         }
 
         case Action.CLEAR_STATE:
-                return initialState
-                
+            return initialState
+
         default: return state
     }
 }

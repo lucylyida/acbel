@@ -76,7 +76,7 @@ const columns = memoize((media, handleClick) => [
         name: 'SITE',
         selector: 'site',
         sortable: true,
-        minWidth: '350px',
+        minWidth: '500px',
         cell: row => <div style={{ color: '#153784', fontWeight: 700, textAlign: 'center' }}>{row.site}</div>
     },
     {
@@ -91,33 +91,33 @@ const columns = memoize((media, handleClick) => [
         selector: 'currentOutput',
         sortable: true,
         right: true,
-        minWidth: '170px'
+        minWidth: '120px'
     },
     {
         name: 'EFFICIENCY (%)',
         selector: 'efficiency',
         sortable: true,
         right: true,
-        minWidth: '130px'
+        minWidth: '120px'
     },
     {
         name: 'SITE STATUS',
         selector: 'siteStatus',
         sortable: true,
         right: true,
-        minWidth: '110px'
+        minWidth: '120px'
     },
     {
         name: '',
         selector: 'more',
         right: true,
-        minWidth: '110px',
+        minWidth: '200px',
         ignoreRowClick: true,
         allowOverflow: true,
         button: true,
         cell: row => {
             return (
-                <div onClick={() => handleClick(row)} style={{ textAlign: 'right', paddingRight: 5, cursor: 'pointer', fontSize: fsc(media, 13), color: '#a3a3a2' }}>{row.more}<span className="pl-2"><i className="fa fa-caret-right" /></span></div>
+                <div onClick={() => handleClick(row)} style={{ textAlign: 'right', cursor: 'pointer', fontSize: fsc(media, 13), color: '#a3a3a2' }}>{row.more}<span className="pl-2"><i className="fa fa-caret-right" /></span></div>
             )
         }
     },

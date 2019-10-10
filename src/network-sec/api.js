@@ -4,7 +4,9 @@
 
 export const BASE_URL = "http://202.73.49.62:823"
 
-//  export const BASE_URL = "http://192.168.100.7:3333"
+// export const BASE_URL = "http://192.168.100.7:3333"
+
+// export const BASE_URL = "http://192.168.100.108:8080"
 
 export const LOGIN = `${BASE_URL}/auth/login`
 

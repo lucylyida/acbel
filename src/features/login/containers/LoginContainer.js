@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import KmButton from "../../../kumocom/KmButton";
 import KmInputBox from "../../../kumocom/KmInputBox"
 import { withMedia } from "react-media-query-hoc"
@@ -7,7 +7,7 @@ import * as route from '../../../config/route.config'
 import { useSelector, useDispatch } from 'react-redux'
 import { getLoginFromApi } from '../../../action'
 import { useCookies } from 'react-cookie';
-import ActionType from '../../../action/action'
+// import ActionType from '../../../action/action'
 
 const Login = props => {
 
@@ -19,18 +19,27 @@ const Login = props => {
     const state = useSelector(state => state.accountReducer)
     const dispatch = useDispatch()
 
-    if (state.loginDataRaw !== null) {
-        if (cookies.user === undefined) {
-            setCookie('user', state.loginDataRaw, { path: '/' })
-        }
-        props.history.replace(`/${route.global}`)
-    }
+    // if (state.loginDataRaw !== null) {
+    //     if (cookies.user === undefined) {
+    //         setCookie('user', state.loginDataRaw, { path: '/' })
+    //     }
+    //     props.history.replace(`/${route.global}`)
+    // }
 
-    if (state.loginDataRaw === null) {
-        if (cookies.user !== undefined) {
+    // if (state.loginDataRaw === null) {
+    //     if (cookies.user !== undefined) {
+    //         removeCookie('user', { path: '/' })
+    //     }
+    // }
+
+    useEffect(() => {       
+        if (state.loginDataRaw !== null && cookies.user === undefined) {
+            setCookie('user', state.loginDataRaw, { path: '/' })
+            props.history.replace(`/${route.global}`)
+        } else {
             removeCookie('user', { path: '/' })
         }
-    }
+    }, [state.loginDataRaw])
 
     const handleLogin = (e) => {
         e.preventDefault()

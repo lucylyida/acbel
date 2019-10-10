@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { withMedia } from 'react-media-query-hoc'
 import { fsc } from '../../../helper/fontColorHelper'
 
@@ -7,7 +7,7 @@ import ReportGenerateHistoryView from '../components/ReportGenerateHistoryView'
 
 import { useSelector, useDispatch } from 'react-redux'
 import * as Action from '../../../action'
-import action from "../../../action/action";
+
 import { useCookies } from 'react-cookie'
 
 const ReportContainer = props => {
@@ -52,15 +52,15 @@ const ReportContainer = props => {
                         //     selectedReportType: reportState.selectedReportType, 
                         //     selectedDeviceType: reportState.selectedDeviceType, 
                         //     selectedDate: reportState.selectedDate })
-                        const {
-                            selectedVendor,
-                            selectedSite,
-                            selectedReportType,
-                            selectedDeviceType,
-                            selectedDate,
-                        } = reportState
+                        // const {
+                        //     selectedVendor,
+                        //     selectedSite,
+                        //     selectedReportType,
+                        //     selectedDeviceType,
+                        //     selectedDate,
+                        // } = reportState
 
-                        dispatch(Action.getSiteReportData({ ...reportState, token }))
+                        dispatch(Action.getSiteReportData({...reportState, token }))
                     }}
 
                 />

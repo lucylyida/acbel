@@ -1,16 +1,15 @@
 import React from "react"
-import { Link } from "react-router-dom"
-import * as route from "../../../config/route.config"
-import { enc } from "../../../network-sec/cypher"
 import MapView from './Map';
+import { useSelector } from 'react-redux'
 
-import { getvendorfromapi } from '../../../action'
-import { useSelector, useDispatch } from 'react-redux'
-import * as Action from '../../../action'
+// import * as route from "../../../config/route.config"
+// import { enc } from "../../../network-sec/cypher"
+// import { getvendorfromapi } from '../../../action'
+// import * as Action from '../../../action'
 
 const GlobalMapContainer = props => {
     const state = useSelector(state => state.vendorReducer)
-    const { vendorListRaw, siteNameList, siteListRaw, selectedSite, selectedVendor } = state
+    const {/* vendorListRaw,*/ siteNameList, siteListRaw, selectedSite, selectedVendor } = state
 
 
 

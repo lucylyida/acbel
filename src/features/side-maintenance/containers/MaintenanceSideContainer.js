@@ -1,8 +1,8 @@
 import React from "react"
-import moment from 'moment'
-import { Route, Link, Switch, Redirect, } from "react-router-dom"
+// import moment from 'moment'
+// import { Route, Link, Switch, Redirect, } from "react-router-dom"
+// import { fsc, numberFormat } from '../../../helper/fontColorHelper'
 import { withMedia } from 'react-media-query-hoc'
-import { fsc, numberFormat } from '../../../helper/fontColorHelper'
 import MaintenanceNavbar from "../../app/components/MaintenanceNavbar"
 import LeftSidebar from "../../app/components/LeftSidebar";
 import MaintenanceSideListContainer from "./MaintenanceSideListContainer"
@@ -10,7 +10,7 @@ import MaintenanceSideCalendarContainer from "./MaintenanceSideCalendarContainer
 import * as route from "../../../config/route.config"
 
 const MaintenanceContainer = props => {
-    const { media, match } = props
+    const { media,/* match */} = props
 
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>

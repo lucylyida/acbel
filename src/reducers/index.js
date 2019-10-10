@@ -8,7 +8,6 @@ import siteProfileDataReducer from './siteProfileReducer'
 import siteReportReducer from './siteReportReducer'
 import dashboardDataReducer from './dashboardReducer'
 
-import ActionType from '../action/action'
 
 const rootReducer = combineReducers({
     vendorReducer,

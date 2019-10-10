@@ -36,7 +36,7 @@ export class MapContainer extends Component {
             this.setState({ showingInfoWindow: false })
         })
         mmap.map.addListener("bounds_changed", () => {
-            const mapBound = mmap.map.getBounds()
+            // const mapBound = mmap.map.getBounds()
             const clientLocs2 = this.props.clientLists
             const listToShow = (this.props.clientLists.length > 1 && mmap.map.zoom <= 10) ? this.props.clientLists : clientLocs2.reduce((r, c) => {
                 const sitesLocs = c.sites.map(v => v)
@@ -50,7 +50,7 @@ export class MapContainer extends Component {
         if (prevProps.clientLists !== this.props.clientLists) {
             const { vendor_id } = this.state
             const mmap = this.mapRef.current
-            const mapBound = mmap.map.getBounds()
+            // const mapBound = mmap.map.getBounds()
             const clientLocs2 = this.props.clientLists
             const listToShow = (this.props.clientLists.length > 1 && mmap.map.zoom <= 10) ? this.props.clientLists : clientLocs2.reduce((r, c) => {
                 const sitesLocs = c.sites.map(v => v)
@@ -78,7 +78,7 @@ export class MapContainer extends Component {
         const { stores, isClientToShow } = this.state
         const { clientLists, siteNameList } = this.props
         const siteNameListLength = siteNameList.length
-        const mmap = this.mapRef.current
+        // const mmap = this.mapRef.current
         const icon = (isClientToShow) && (siteNameListLength !== 1) ? Animatedicon(this.props) : SolarPanelIcon
         return stores === undefined ? [] : isClientToShow ?
             clientLists.map((store, index) => {

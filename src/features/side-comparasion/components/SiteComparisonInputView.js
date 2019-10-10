@@ -1,14 +1,16 @@
 import React from "react"
-import { fsc, numberFormat } from '../../../helper/fontColorHelper'
-import * as route from "../../../config/route.config"
-import KmSearchbox from '../../../kumocom/KmSearchbox'
+import { fsc } from '../../../helper/fontColorHelper'
 import KmSelector from '../../../kumocom/KmSelector'
 import KmButton from '../../../kumocom/KmButton'
 import { withMedia } from 'react-media-query-hoc'
 import querystring from "query-string"
 
+// import * as route from "../../../config/route.config"
+// import KmSearchbox from '../../../kumocom/KmSearchbox'
+
 const SiteComparisonView = props => {
-    const { history, match, location, media ,vendorNameList} = props
+    // vendorNameList
+    const { history, match, location, media ,} = props
     const search = location.search
     const cr = querystring.parse(search).cr
     return (        

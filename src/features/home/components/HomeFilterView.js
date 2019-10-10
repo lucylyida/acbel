@@ -1,29 +1,29 @@
 import React from 'react'
 
-
-import KmSearchbox from '../../../kumocom/KmSearchbox'
 import KmButton from '../../../kumocom/KmButton'
 import KmSelector from '../../../kumocom/KmSelector'
 
 import { withMedia } from 'react-media-query-hoc';
 import { fsc } from '../../../helper/fontColorHelper';
 
+// import KmSearchbox from '../../../kumocom/KmSearchbox'
 // use in from GlobalContainer
 const HomefilterView = props => {
     const {
         media,
         vendorNameList,
         siteNameList,
-        countryNameList,
-        cityNameList,
-        selectedVendor,
-        selectedCountry,
-        selectedCity,
         selectedSite,
         onVendorChange,
-        onCountryChange,
-        onCityChange,
+        selectedVendor,
         onSiteChange,
+        // selectedCountry,
+        // selectedCity,
+        // countryNameList,
+        // cityNameList,
+        // onCountryChange,
+        // onCityChange,
+        
 
     } = props // @nayhtet
 

@@ -1,14 +1,12 @@
 import React from "react"
 import * as route from "../../../config/route.config"
-import { dec } from "../../../network-sec/cypher"
 import { memoize } from 'react-data-table-component';
 import tableTheme from "./tableTheme"
-
 import { withMedia } from 'react-media-query-hoc'
 import { fsc } from "../../../helper/fontColorHelper";
 import KmTable from '../../../kumocom/KmTable'
-import moment from "moment"
-
+// import moment from "moment"
+// import { dec } from "../../../network-sec/cypher"
 import { useSelector } from 'react-redux'
 
 const GlobalListContainer = props => {

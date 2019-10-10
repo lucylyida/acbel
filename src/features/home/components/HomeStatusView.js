@@ -7,13 +7,10 @@ import CapacityIcon from '../../../assets/icons/CapacityIcon';
 import ConnnectivityIcon from '../../../assets/icons/Connectivity_icon';
 import MoneyIcon from '../../../assets/icons/Money_Icon';
 import { withMedia } from 'react-media-query-hoc';
-import { fsc } from '../../../helper/fontColorHelper';
 
-import { useSelector, useDispatch } from 'react-redux'
-import * as Action from '../../../action'
 
 const HomeStatusView = props => {
-    const { media, data, money_unit } = props  
+    const {  data, money_unit } = props  
     return (
         <div className="container-fluid" style={{ background: 'white', borderRadius: 4 }}>
 

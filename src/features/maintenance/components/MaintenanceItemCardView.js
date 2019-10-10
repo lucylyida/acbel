@@ -1,5 +1,5 @@
 import React from 'react'
-import moment from 'moment'
+//  import moment from 'moment'
 import EditIcon from '../../../assets/icons/Edit_Icon'
 
 const MaintenanceItemCardView = props => {
@@ -49,5 +49,5 @@ const MaintenanceItemCardView = props => {
 
 export default MaintenanceItemCardView;
 
-{/* <MaintenanceItemCard 
-MaintenanceType={'Ad-Hoc'} Time={time} Description={'Database and Server Maintenance'} Supplier={Supplier} Edit={Edit} Width={'280px'} Date={date} Month={month} /> */}
+/* <MaintenanceItemCard 
+MaintenanceType={'Ad-Hoc'} Time={time} Description={'Database and Server Maintenance'} Supplier={Supplier} Edit={Edit} Width={'280px'} Date={date} Month={month} /> */

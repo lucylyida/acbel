@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react"
-import { Route, Link, Switch, Redirect } from "react-router-dom"
+import React, {  useEffect } from "react"
+import { Route, Switch, Redirect } from "react-router-dom"
 import * as route from "../../../config/route.config"
 import { withMedia } from "react-media-query-hoc"
-import { fsc } from "../../../helper/fontColorHelper"
+
 import GlobalMapContainer from "./GlobalMapContainer"
 import GlobalListContainer from "./GlobalListContainer"
 import GlobalNavbar from "../../app/components/GlobalNavbar"
@@ -17,7 +17,7 @@ import * as Action from '../../../action'
 import { useCookies } from 'react-cookie';
 
 const GlobalContainer = props => {
-    const { match, location, media } = props
+    const { match,/* location,*/ media } = props
     const [cookies] = useCookies(['user']);
     const queryData = {
         siteId: 1,
@@ -26,7 +26,7 @@ const GlobalContainer = props => {
         country: "Taiwan"
     }
 
-    const queryDataEnc = enc(queryData)
+    // const queryDataEnc = enc(queryData)
 
     const vendorState = useSelector(state => state.vendorReducer)
     const globalHomeStatusDataState = useSelector(state => state.globalReducer)

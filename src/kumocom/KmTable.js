@@ -1,5 +1,5 @@
 import React from 'react'
-import DataTable, { memoize } from 'react-data-table-component';
+import DataTable, {/* memoize */} from 'react-data-table-component';
 import { withMedia } from 'react-media-query-hoc'
 
 const KmTable = props => {

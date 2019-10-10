@@ -1,8 +1,9 @@
 import React, { useState } from "react"
-import moment from 'moment'
-import { Route, Link, Switch, Redirect, } from "react-router-dom"
+// import moment from 'moment'
+// import { Route, Link, Switch, Redirect, } from "react-router-dom"
+
+import { fsc } from '../../../helper/fontColorHelper'
 import { withMedia } from 'react-media-query-hoc'
-import { fsc, numberFormat } from '../../../helper/fontColorHelper'
 import KmTable from '../../../kumocom/KmTable'
 import { memoize } from 'react-data-table-component'
 import tableTheme from "../../home/containers/tableTheme"
@@ -14,7 +15,7 @@ import Money_Icon from '../../../assets/icons/Money_Icon'
 
 
 const MaintenanceSideListContainer = props => {
-    const { media, match } = props
+    const { media, /*match*/ } = props
 
     return (
         <div className={`container-fluid py-2 ${media.mobile ? "px-1" : "px-4"}`}>

@@ -7,7 +7,6 @@ import * as route from '../../../config/route.config'
 import { useSelector, useDispatch } from 'react-redux'
 import { getLoginFromApi } from '../../../action'
 import { useCookies } from 'react-cookie';
-// import ActionType from '../../../action/action'
 
 const Login = props => {
 

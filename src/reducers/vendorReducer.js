@@ -1,6 +1,6 @@
 // import Action from '../action/action'
 import Action from '../action/action'
-import equal from "deep-equal"
+// import equal from "deep-equal"
 //@nayhtet
 const initialState = {
     vendorListRaw: [],

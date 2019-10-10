@@ -1,14 +1,14 @@
 import React from "react"
-import querystring from "query-string"
+// import querystring from "query-string"
+// import KmLink from '../../../kumocom/KmLink'
 import { withMedia } from "react-media-query-hoc"
 import * as route from "../../../config/route.config"
-import KmLink from '../../../kumocom/KmLink'
 import AcbelLogo from '../../../assets/icons/Acbel_Logo'
 import { fsc } from "../../../helper/fontColorHelper"
 import Navbar from "./Navbar"
 
 const ReportNavbar = props => {
-    const { match, location, history, media } = props
+    const { media, location,/* history, match*/ } = props
     return (
         <Navbar {...props}>
             <div className={`d-flex flex-column justify-content-center ${media.mobile ? "pl-3 pr-1" : "px-4"}`} >

@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import {InputField } from './KmDatePicker'
 import { withMedia } from 'react-media-query-hoc'
-import { fsc } from '../helper/fontColorHelper'
+
 
 const KmTimePicker = props =>{
     const { place = "auto-end", media, placeholder,noIcon,noMinWidth,noWidth,style } = props

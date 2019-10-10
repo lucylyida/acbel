@@ -1,6 +1,6 @@
 import ActionType from '../action/action'
 import * as Action from "../action"
-import { call, put, takeEvery, take, all, fork } from 'redux-saga/effects'
+import { call, put, takeEvery, all, } from 'redux-saga/effects'
 import * as api from "../network-sec/api"
 
 function* fetchDashboardData(action) {

@@ -1,8 +1,8 @@
 import React from "react"
-import moment from 'moment'
-import { Route, Link, Switch, Redirect, } from "react-router-dom"
+// import moment from 'moment'
+// import { Route, Link, Switch, Redirect, } from "react-router-dom"
+import { fsc } from '../../../helper/fontColorHelper'
 import { withMedia } from 'react-media-query-hoc'
-import { fsc, numberFormat } from '../../../helper/fontColorHelper'
 import KmSearchbox from '../../../kumocom/KmSearchbox'
 import KmTable from '../../../kumocom/KmTable'
 import tableTheme from "../../home/containers/tableTheme"
@@ -10,7 +10,7 @@ import { memoize } from 'react-data-table-component';
 
 
 const MaintenanceSideCalendarContainer = props => {
-    const { media, match } = props
+    const { media,/* match*/ } = props
 
     return (
         <div className={`container-fluid p-0`}>
